@@ -7,16 +7,15 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 
-class LogoutController extends Controller
-{
-    public function logout(Request $request): RedirectResponse
-    {
-        Auth::logout();
+class LogoutController extends Controller {
 
-        $request->session()->invalidate();
+      public function logout(Request $request): RedirectResponse {
+            Auth::logout();
 
-        $request->session()->regenerateToken();
+            $request->session()->invalidate();
 
-        return redirect('/');
-    }
+            $request->session()->regenerateToken();
+
+            return redirect('/');
+      }
 }

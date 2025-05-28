@@ -22,7 +22,6 @@ use App\Http\Controllers\UserController;
 //Route::resource('users', UserController::class);
 Route::post('/users/store', [UserController::class, 'store'])->name('users.store');
 
-
 // Dashboard
 Route::get('/', [HomePageController::class, 'home'])->name('home');
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
