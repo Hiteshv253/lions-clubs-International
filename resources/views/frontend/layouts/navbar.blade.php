@@ -77,10 +77,10 @@
                                           <a href="404.html" class="dropdown-item">404 Page</a>
                                     </div>
                               </div>
-<!--                              <div class="nav-btn px-3">
-                                    <button class="btn-search btn btn-primary btn-md-square rounded-circle flex-shrink-0" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search"></i></button>
-                                    <a href="#" class="btn btn-primary rounded-pill py-2 px-4 ms-3 flex-shrink-0"> Get a Quote</a>
-                              </div>-->
+                              <!--                              <div class="nav-btn px-3">
+                                                                  <button class="btn-search btn btn-primary btn-md-square rounded-circle flex-shrink-0" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search"></i></button>
+                                                                  <a href="#" class="btn btn-primary rounded-pill py-2 px-4 ms-3 flex-shrink-0"> Get a Quote</a>
+                                                            </div>-->
                         </div>
                   </div>
                   <div class="d-none d-xl-flex flex-shrink-0 ps-4">

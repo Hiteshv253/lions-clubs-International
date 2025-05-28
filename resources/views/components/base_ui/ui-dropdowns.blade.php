@@ -1,77 +1,77 @@
 @extends('layouts.master')
 
 @push('vendor-script')
-    <!-- prismjs plugin -->
-    <script src="{{ asset('') }}assets/libs/prismjs/prism.js"></script>
+<!-- prismjs plugin -->
+<script src="{{ asset('') }}assets/libs/prismjs/prism.js"></script>
 @endpush
 
 @section('content')
-    <!-- start page title -->
-    <div class="row">
-        <div class="col-12">
+<!-- start page title -->
+<div class="row">
+      <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                <h4 class="mb-sm-0">Dropdowns</h4>
+                  <h4 class="mb-sm-0">Dropdowns</h4>
 
-                <div class="page-title-right">
-                    <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">Base UI</a></li>
-                        <li class="breadcrumb-item active">Dropdowns</li>
-                    </ol>
-                </div>
+                  <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                              <li class="breadcrumb-item"><a href="javascript: void(0);">Base UI</a></li>
+                              <li class="breadcrumb-item active">Dropdowns</li>
+                        </ol>
+                  </div>
 
             </div>
-        </div>
-    </div>
-    <!-- end page title -->
+      </div>
+</div>
+<!-- end page title -->
 
-    <div class="row">
-        <div class="col-lg-12">
+<div class="row">
+      <div class="col-lg-12">
             <div class="card">
-                <div class="card-header align-items-center d-flex">
-                    <h4 class="card-title mb-0 flex-grow-1">Single Button Dropdown</h4>
-                    <div class="flex-shrink-0">
-                        <div class="form-check form-switch form-switch-right form-switch-md">
-                            <label for="dropdown-base-example" class="form-label text-muted">Show Code</label>
-                            <input class="form-check-input code-switcher" type="checkbox" id="dropdown-base-example">
+                  <div class="card-header align-items-center d-flex">
+                        <h4 class="card-title mb-0 flex-grow-1">Single Button Dropdown</h4>
+                        <div class="flex-shrink-0">
+                              <div class="form-check form-switch form-switch-right form-switch-md">
+                                    <label for="dropdown-base-example" class="form-label text-muted">Show Code</label>
+                                    <input class="form-check-input code-switcher" type="checkbox" id="dropdown-base-example">
+                              </div>
                         </div>
-                    </div>
-                </div><!-- end card header -->
+                  </div><!-- end card header -->
 
-                <div class="card-body">
-                    <p class="text-muted">Use <code>btn</code> class at to create a dropdown
-                        toggle with &lt;button&gt; element.
-                    </p>
-                    <div class="live-preview">
-                        <div class="d-flex flex-wrap gap-3">
-                            <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Dropdown button
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
-                            </div>
+                  <div class="card-body">
+                        <p class="text-muted">Use <code>btn</code> class at to create a dropdown
+                              toggle with &lt;button&gt; element.
+                        </p>
+                        <div class="live-preview">
+                              <div class="d-flex flex-wrap gap-3">
+                                    <div class="dropdown">
+                                          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                                  data-bs-toggle="dropdown" aria-expanded="false">
+                                                Dropdown button
+                                          </button>
+                                          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                                <a class="dropdown-item" href="#">Action</a>
+                                                <a class="dropdown-item" href="#">Another action</a>
+                                                <a class="dropdown-item" href="#">Something else here</a>
+                                          </div>
+                                    </div>
 
-                            <div class="dropdown">
-                                <a href="#" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
-                                    Dropdown link
-                                </a>
+                                    <div class="dropdown">
+                                          <a href="#" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown"
+                                             aria-expanded="false">
+                                                Dropdown link
+                                          </a>
 
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                </div>
-                            </div>
+                                          <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#">Action</a>
+                                                <a class="dropdown-item" href="#">Another action</a>
+                                                <a class="dropdown-item" href="#">Something else here</a>
+                                          </div>
+                                    </div>
+                              </div>
                         </div>
-                    </div>
 
-                    <div class="d-none code-view">
-                        <pre class="language-markup" style="height: 375px;">
+                        <div class="d-none code-view">
+                              <pre class="language-markup" style="height: 375px;">
 <code>&lt;!-- Single Button Dropdown --&gt;
 &lt;div class=&quot;dropdown&quot;&gt;
 &lt;button class=&quot;btn btn-secondary dropdown-toggle&quot; type=&quot;button&quot; id=&quot;dropdownMenuButton&quot; data-bs-toggle=&quot;dropdown&quot; aria-expanded=&quot;false&quot;&gt;
@@ -94,124 +94,124 @@ Dropdown link
 &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Something else here&lt;/a&gt;
 &lt;/div&gt;
 &lt;/div&gt;</code></pre>
-                    </div>
-                </div><!-- end card-body -->
+                        </div>
+                  </div><!-- end card-body -->
             </div><!-- end card -->
-        </div>
-    </div>
+      </div>
+</div>
 
-    <div class="row">
-        <div class="col-lg-12">
+<div class="row">
+      <div class="col-lg-12">
             <div class="card">
-                <div class="card-header align-items-center d-flex">
-                    <h4 class="card-title mb-0 flex-grow-1">Dropdown Color Variant</h4>
-                    <div class="flex-shrink-0">
-                        <div class="form-check form-switch form-switch-right form-switch-md">
-                            <label for="dropdown-variant" class="form-label text-muted">Show Code</label>
-                            <input class="form-check-input code-switcher" type="checkbox" id="dropdown-variant">
+                  <div class="card-header align-items-center d-flex">
+                        <h4 class="card-title mb-0 flex-grow-1">Dropdown Color Variant</h4>
+                        <div class="flex-shrink-0">
+                              <div class="form-check form-switch form-switch-right form-switch-md">
+                                    <label for="dropdown-variant" class="form-label text-muted">Show Code</label>
+                                    <input class="form-check-input code-switcher" type="checkbox" id="dropdown-variant">
+                              </div>
                         </div>
-                    </div>
-                </div><!-- end card header -->
+                  </div><!-- end card header -->
 
-                <div class="card-body">
-                    <p class="text-muted">Use <code>btn-</code> class with below mentioned variation to color dropdown
-                        toggle.</p>
-                    <div class="live-preview">
-                        <div class="d-flex flex-wrap gap-3">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">Primary</button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Separated link</a>
-                                </div>
-                            </div><!-- /btn-group -->
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">Success</button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Separated link</a>
-                                </div>
-                            </div><!-- /btn-group -->
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">Light</button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Separated link</a>
-                                </div>
-                            </div><!-- /btn-group -->
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">Info</button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Separated link</a>
-                                </div>
-                            </div><!-- /btn-group -->
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-secondary dropdown-toggle"
-                                    data-bs-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">Secondary</button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Separated link</a>
-                                </div>
-                            </div><!-- /btn-group -->
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">Warning</button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Separated link</a>
-                                </div>
-                            </div><!-- /btn-group -->
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">Danger</button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Separated link</a>
-                                </div>
-                            </div><!-- /btn-group -->
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">Dark</button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Separated link</a>
-                                </div>
-                            </div><!-- /btn-group -->
+                  <div class="card-body">
+                        <p class="text-muted">Use <code>btn-</code> class with below mentioned variation to color dropdown
+                              toggle.</p>
+                        <div class="live-preview">
+                              <div class="d-flex flex-wrap gap-3">
+                                    <div class="btn-group">
+                                          <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                                                  aria-haspopup="true" aria-expanded="false">Primary</button>
+                                          <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#">Action</a>
+                                                <a class="dropdown-item" href="#">Another action</a>
+                                                <a class="dropdown-item" href="#">Something else here</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="#">Separated link</a>
+                                          </div>
+                                    </div><!-- /btn-group -->
+                                    <div class="btn-group">
+                                          <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown"
+                                                  aria-haspopup="true" aria-expanded="false">Success</button>
+                                          <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#">Action</a>
+                                                <a class="dropdown-item" href="#">Another action</a>
+                                                <a class="dropdown-item" href="#">Something else here</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="#">Separated link</a>
+                                          </div>
+                                    </div><!-- /btn-group -->
+                                    <div class="btn-group">
+                                          <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown"
+                                                  aria-haspopup="true" aria-expanded="false">Light</button>
+                                          <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#">Action</a>
+                                                <a class="dropdown-item" href="#">Another action</a>
+                                                <a class="dropdown-item" href="#">Something else here</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="#">Separated link</a>
+                                          </div>
+                                    </div><!-- /btn-group -->
+                                    <div class="btn-group">
+                                          <button type="button" class="btn btn-info dropdown-toggle" data-bs-toggle="dropdown"
+                                                  aria-haspopup="true" aria-expanded="false">Info</button>
+                                          <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#">Action</a>
+                                                <a class="dropdown-item" href="#">Another action</a>
+                                                <a class="dropdown-item" href="#">Something else here</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="#">Separated link</a>
+                                          </div>
+                                    </div><!-- /btn-group -->
+                                    <div class="btn-group">
+                                          <button type="button" class="btn btn-secondary dropdown-toggle"
+                                                  data-bs-toggle="dropdown" aria-haspopup="true"
+                                                  aria-expanded="false">Secondary</button>
+                                          <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#">Action</a>
+                                                <a class="dropdown-item" href="#">Another action</a>
+                                                <a class="dropdown-item" href="#">Something else here</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="#">Separated link</a>
+                                          </div>
+                                    </div><!-- /btn-group -->
+                                    <div class="btn-group">
+                                          <button type="button" class="btn btn-warning dropdown-toggle" data-bs-toggle="dropdown"
+                                                  aria-haspopup="true" aria-expanded="false">Warning</button>
+                                          <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#">Action</a>
+                                                <a class="dropdown-item" href="#">Another action</a>
+                                                <a class="dropdown-item" href="#">Something else here</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="#">Separated link</a>
+                                          </div>
+                                    </div><!-- /btn-group -->
+                                    <div class="btn-group">
+                                          <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"
+                                                  aria-haspopup="true" aria-expanded="false">Danger</button>
+                                          <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#">Action</a>
+                                                <a class="dropdown-item" href="#">Another action</a>
+                                                <a class="dropdown-item" href="#">Something else here</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="#">Separated link</a>
+                                          </div>
+                                    </div><!-- /btn-group -->
+                                    <div class="btn-group">
+                                          <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown"
+                                                  aria-haspopup="true" aria-expanded="false">Dark</button>
+                                          <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#">Action</a>
+                                                <a class="dropdown-item" href="#">Another action</a>
+                                                <a class="dropdown-item" href="#">Something else here</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="#">Separated link</a>
+                                          </div>
+                                    </div><!-- /btn-group -->
+                              </div>
                         </div>
-                    </div>
 
-                    <div class="d-none code-view">
-                        <pre class="language-markup" style="height: 375px;">
+                        <div class="d-none code-view">
+                              <pre class="language-markup" style="height: 375px;">
 <code>&lt;!-- Dropdown Variant --&gt;
 &lt;div class=&quot;btn-group&quot;&gt;
 &lt;button type=&quot;button&quot; class=&quot;btn btn-primary dropdown-toggle&quot; data-bs-toggle=&quot;dropdown&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;Primary&lt;/button&gt;
@@ -300,139 +300,139 @@ Dropdown link
 &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Separated link&lt;/a&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;!-- /btn-group --&gt;</code></pre>
-                    </div>
-                </div><!-- end card-body -->
+                        </div>
+                  </div><!-- end card-body -->
             </div><!-- end card -->
-        </div>
-    </div>
+      </div>
+</div>
 
 
-    <div class="row">
-        <div class="col-lg-12">
+<div class="row">
+      <div class="col-lg-12">
             <div class="card">
-                <div class="card-header align-items-center d-flex">
-                    <h4 class="card-title mb-0 flex-grow-1">Split Button Dropdown</h4>
-                    <div class="flex-shrink-0">
-                        <div class="form-check form-switch form-switch-right form-switch-md">
-                            <label for="spilt-button-dropdown" class="form-label text-muted">Show Code</label>
-                            <input class="form-check-input code-switcher" type="checkbox" id="spilt-button-dropdown">
+                  <div class="card-header align-items-center d-flex">
+                        <h4 class="card-title mb-0 flex-grow-1">Split Button Dropdown</h4>
+                        <div class="flex-shrink-0">
+                              <div class="form-check form-switch form-switch-right form-switch-md">
+                                    <label for="spilt-button-dropdown" class="form-label text-muted">Show Code</label>
+                                    <input class="form-check-input code-switcher" type="checkbox" id="spilt-button-dropdown">
+                              </div>
                         </div>
-                    </div>
-                </div><!-- end card header -->
+                  </div><!-- end card header -->
 
-                <div class="card-body">
-                    <p class="text-muted">Use <code>dropdown-toggle-split</code> to create split button dropdowns as a
-                        single button dropdown. </p>
-                    <div class="live-preview">
-                        <div class="d-flex flex-wrap gap-3">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-primary">Primary</button>
-                                <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Separated link</a>
-                                </div>
-                            </div><!-- /btn-group -->
+                  <div class="card-body">
+                        <p class="text-muted">Use <code>dropdown-toggle-split</code> to create split button dropdowns as a
+                              single button dropdown. </p>
+                        <div class="live-preview">
+                              <div class="d-flex flex-wrap gap-3">
+                                    <div class="btn-group">
+                                          <button type="button" class="btn btn-primary">Primary</button>
+                                          <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split"
+                                                  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                                          <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#">Action</a>
+                                                <a class="dropdown-item" href="#">Another action</a>
+                                                <a class="dropdown-item" href="#">Something else here</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="#">Separated link</a>
+                                          </div>
+                                    </div><!-- /btn-group -->
 
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-success">Success</button>
-                                <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Separated link</a>
-                                </div>
-                            </div><!-- /btn-group -->
+                                    <div class="btn-group">
+                                          <button type="button" class="btn btn-success">Success</button>
+                                          <button type="button" class="btn btn-success dropdown-toggle dropdown-toggle-split"
+                                                  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                                          <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#">Action</a>
+                                                <a class="dropdown-item" href="#">Another action</a>
+                                                <a class="dropdown-item" href="#">Something else here</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="#">Separated link</a>
+                                          </div>
+                                    </div><!-- /btn-group -->
 
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-light">Light</button>
-                                <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Separated link</a>
-                                </div>
-                            </div><!-- /btn-group -->
+                                    <div class="btn-group">
+                                          <button type="button" class="btn btn-light">Light</button>
+                                          <button type="button" class="btn btn-light dropdown-toggle dropdown-toggle-split"
+                                                  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                                          <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#">Action</a>
+                                                <a class="dropdown-item" href="#">Another action</a>
+                                                <a class="dropdown-item" href="#">Something else here</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="#">Separated link</a>
+                                          </div>
+                                    </div><!-- /btn-group -->
 
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-info">Info</button>
-                                <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Separated link</a>
-                                </div>
-                            </div><!-- /btn-group -->
+                                    <div class="btn-group">
+                                          <button type="button" class="btn btn-info">Info</button>
+                                          <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split"
+                                                  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                                          <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#">Action</a>
+                                                <a class="dropdown-item" href="#">Another action</a>
+                                                <a class="dropdown-item" href="#">Something else here</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="#">Separated link</a>
+                                          </div>
+                                    </div><!-- /btn-group -->
 
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-secondary">Secondary</button>
-                                <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Separated link</a>
-                                </div>
-                            </div><!-- /btn-group -->
+                                    <div class="btn-group">
+                                          <button type="button" class="btn btn-secondary">Secondary</button>
+                                          <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
+                                                  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                                          <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#">Action</a>
+                                                <a class="dropdown-item" href="#">Another action</a>
+                                                <a class="dropdown-item" href="#">Something else here</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="#">Separated link</a>
+                                          </div>
+                                    </div><!-- /btn-group -->
 
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-warning">Warning</button>
-                                <button type="button" class="btn btn-warning dropdown-toggle dropdown-toggle-split"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Separated link</a>
-                                </div>
-                            </div><!-- /btn-group -->
+                                    <div class="btn-group">
+                                          <button type="button" class="btn btn-warning">Warning</button>
+                                          <button type="button" class="btn btn-warning dropdown-toggle dropdown-toggle-split"
+                                                  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                                          <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#">Action</a>
+                                                <a class="dropdown-item" href="#">Another action</a>
+                                                <a class="dropdown-item" href="#">Something else here</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="#">Separated link</a>
+                                          </div>
+                                    </div><!-- /btn-group -->
 
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-danger">Danger</button>
-                                <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Separated link</a>
-                                </div>
-                            </div><!-- /btn-group -->
+                                    <div class="btn-group">
+                                          <button type="button" class="btn btn-danger">Danger</button>
+                                          <button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split"
+                                                  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                                          <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#">Action</a>
+                                                <a class="dropdown-item" href="#">Another action</a>
+                                                <a class="dropdown-item" href="#">Something else here</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="#">Separated link</a>
+                                          </div>
+                                    </div><!-- /btn-group -->
 
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-dark">Dark</button>
-                                <button type="button" class="btn btn-dark dropdown-toggle dropdown-toggle-split"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Separated link</a>
-                                </div>
-                            </div><!-- /btn-group -->
+                                    <div class="btn-group">
+                                          <button type="button" class="btn btn-dark">Dark</button>
+                                          <button type="button" class="btn btn-dark dropdown-toggle dropdown-toggle-split"
+                                                  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                                          <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#">Action</a>
+                                                <a class="dropdown-item" href="#">Another action</a>
+                                                <a class="dropdown-item" href="#">Something else here</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="#">Separated link</a>
+                                          </div>
+                                    </div><!-- /btn-group -->
+                              </div>
                         </div>
-                    </div>
 
-                    <div class="d-none code-view">
-                        <pre class="language-markup" style="height: 375px;">
+                        <div class="d-none code-view">
+                              <pre class="language-markup" style="height: 375px;">
 <code>&lt;!-- Split Button Dropdown --&gt;
 &lt;div class=&quot;btn-group&quot;&gt;
 &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;&gt;Primary&lt;/button&gt;
@@ -530,95 +530,95 @@ Dropdown link
 &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Separated link&lt;/a&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;!-- /btn-group --&gt;</code></pre>
-                    </div>
-                </div><!-- end card-body -->
+                        </div>
+                  </div><!-- end card-body -->
             </div><!-- end card -->
-        </div>
-    </div>
+      </div>
+</div>
 
 
-    <div class="row">
-        <div class="col-lg-12">
+<div class="row">
+      <div class="col-lg-12">
             <div class="card">
-                <div class="card-header align-items-center d-flex">
-                    <h4 class="card-title mb-0 flex-grow-1">Dropdown Sizing</h4>
-                    <div class="flex-shrink-0">
-                        <div class="form-check form-switch form-switch-right form-switch-md">
-                            <label for="dropdown-size" class="form-label text-muted">Show Code</label>
-                            <input class="form-check-input code-switcher" type="checkbox" id="dropdown-size">
+                  <div class="card-header align-items-center d-flex">
+                        <h4 class="card-title mb-0 flex-grow-1">Dropdown Sizing</h4>
+                        <div class="flex-shrink-0">
+                              <div class="form-check form-switch form-switch-right form-switch-md">
+                                    <label for="dropdown-size" class="form-label text-muted">Show Code</label>
+                                    <input class="form-check-input code-switcher" type="checkbox" id="dropdown-size">
+                              </div>
                         </div>
-                    </div>
-                </div><!-- end card header -->
+                  </div><!-- end card header -->
 
-                <div class="card-body">
-                    <p class="text-muted">Use <code>btn-lg</code> class to create a large size dropdown
-                        button and <code>btn-sm</code> to create a small size dropdown button.</p>
-                    <div class="live-preview">
-                        <div class="d-flex flex-wrap gap-3 align-items-center">
-                            <!-- Large button groups (default and split) -->
-                            <div class="btn-group">
-                                <button class="btn btn-primary btn-lg dropdown-toggle" type="button"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Large button
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Separated link</a>
-                                </div>
-                            </div>
+                  <div class="card-body">
+                        <p class="text-muted">Use <code>btn-lg</code> class to create a large size dropdown
+                              button and <code>btn-sm</code> to create a small size dropdown button.</p>
+                        <div class="live-preview">
+                              <div class="d-flex flex-wrap gap-3 align-items-center">
+                                    <!-- Large button groups (default and split) -->
+                                    <div class="btn-group">
+                                          <button class="btn btn-primary btn-lg dropdown-toggle" type="button"
+                                                  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Large button
+                                          </button>
+                                          <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#">Action</a>
+                                                <a class="dropdown-item" href="#">Another action</a>
+                                                <a class="dropdown-item" href="#">Something else here</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="#">Separated link</a>
+                                          </div>
+                                    </div>
 
-                            <div class="btn-group">
-                                <button class="btn btn-light btn-lg" type="button">
-                                    Large split button
-                                </button>
-                                <button type="button" class="btn btn-lg btn-light dropdown-toggle dropdown-toggle-split"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Separated link</a>
-                                </div>
-                            </div>
+                                    <div class="btn-group">
+                                          <button class="btn btn-light btn-lg" type="button">
+                                                Large split button
+                                          </button>
+                                          <button type="button" class="btn btn-lg btn-light dropdown-toggle dropdown-toggle-split"
+                                                  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                                          <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#">Action</a>
+                                                <a class="dropdown-item" href="#">Another action</a>
+                                                <a class="dropdown-item" href="#">Something else here</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="#">Separated link</a>
+                                          </div>
+                                    </div>
 
-                            <!-- Small button groups (default and split) -->
-                            <div class="btn-group">
-                                <button class="btn btn-primary btn-sm dropdown-toggle" type="button"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    Small button
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Separated link</a>
-                                </div>
-                            </div>
+                                    <!-- Small button groups (default and split) -->
+                                    <div class="btn-group">
+                                          <button class="btn btn-primary btn-sm dropdown-toggle" type="button"
+                                                  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                Small button
+                                          </button>
+                                          <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#">Action</a>
+                                                <a class="dropdown-item" href="#">Another action</a>
+                                                <a class="dropdown-item" href="#">Something else here</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="#">Separated link</a>
+                                          </div>
+                                    </div>
 
-                            <div class="btn-group">
-                                <button class="btn btn-light btn-sm" type="button">
-                                    Small split button
-                                </button>
-                                <button type="button" class="btn btn-sm btn-light dropdown-toggle dropdown-toggle-split"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Separated link</a>
-                                </div>
-                            </div>
+                                    <div class="btn-group">
+                                          <button class="btn btn-light btn-sm" type="button">
+                                                Small split button
+                                          </button>
+                                          <button type="button" class="btn btn-sm btn-light dropdown-toggle dropdown-toggle-split"
+                                                  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
+                                          <div class="dropdown-menu">
+                                                <a class="dropdown-item" href="#">Action</a>
+                                                <a class="dropdown-item" href="#">Another action</a>
+                                                <a class="dropdown-item" href="#">Something else here</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="#">Separated link</a>
+                                          </div>
+                                    </div>
+                              </div>
                         </div>
-                    </div>
 
-                    <div class="d-none code-view">
-                        <pre class="language-markup" style="height: 375px;">
+                        <div class="d-none code-view">
+                              <pre class="language-markup" style="height: 375px;">
 <code>&lt;!-- Dropdown Sizing --&gt;
 &lt;div class=&quot;btn-group&quot;&gt;
 &lt;button class=&quot;btn btn-primary btn-lg dropdown-toggle&quot; type=&quot;button&quot; data-bs-toggle=&quot;dropdown&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;
@@ -675,48 +675,48 @@ Small split button
 &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Separated link&lt;/a&gt;
 &lt;/div&gt;
 &lt;/div&gt;</code></pre>
-                    </div>
-                </div><!-- end card-body -->
+                        </div>
+                  </div><!-- end card-body -->
             </div><!-- end card -->
-        </div>
-    </div>
+      </div>
+</div>
 
-    <div class="row">
-        <div class="col-lg-12">
+<div class="row">
+      <div class="col-lg-12">
             <div class="card">
-                <div class="card-header align-items-center d-flex">
-                    <h4 class="card-title mb-0 flex-grow-1">Dark Dropdowns</h4>
-                    <div class="flex-shrink-0">
-                        <div class="form-check form-switch form-switch-right form-switch-md">
-                            <label for="dark-dropdowns" class="form-label text-muted">Show Code</label>
-                            <input class="form-check-input code-switcher" type="checkbox" id="dark-dropdowns">
+                  <div class="card-header align-items-center d-flex">
+                        <h4 class="card-title mb-0 flex-grow-1">Dark Dropdowns</h4>
+                        <div class="flex-shrink-0">
+                              <div class="form-check form-switch form-switch-right form-switch-md">
+                                    <label for="dark-dropdowns" class="form-label text-muted">Show Code</label>
+                                    <input class="form-check-input code-switcher" type="checkbox" id="dark-dropdowns">
+                              </div>
                         </div>
-                    </div>
-                </div><!-- end card header -->
+                  </div><!-- end card header -->
 
-                <div class="card-body">
-                    <p class="text-muted">Use <code>dropdown-menu-dark</code> class onto an existing dropdown-menu to
-                        create dropdown items dark.</p>
-                    <div class="live-preview">
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Dropdown button
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-                                <li><a class="dropdown-item active" href="#">Action</a></li>
-                                <li><a class="dropdown-item" href="#">Another action</a></li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Separated link</a></li>
-                            </ul>
+                  <div class="card-body">
+                        <p class="text-muted">Use <code>dropdown-menu-dark</code> class onto an existing dropdown-menu to
+                              create dropdown items dark.</p>
+                        <div class="live-preview">
+                              <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                          Dropdown button
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+                                          <li><a class="dropdown-item active" href="#">Action</a></li>
+                                          <li><a class="dropdown-item" href="#">Another action</a></li>
+                                          <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                          <li>
+                                                <hr class="dropdown-divider">
+                                          </li>
+                                          <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                    </ul>
+                              </div>
                         </div>
-                    </div>
 
-                    <div class="d-none code-view">
-                        <pre class="language-markup" style="height: 200px;">
+                        <div class="d-none code-view">
+                              <pre class="language-markup" style="height: 200px;">
 <code>&lt;!-- Dark Dropdowns --&gt;
 &lt;div class=&quot;dropdown&quot;&gt;
 &lt;button class=&quot;btn btn-secondary dropdown-toggle&quot; type=&quot;button&quot; id=&quot;dropdownMenuButton2&quot; data-bs-toggle=&quot;dropdown&quot;
@@ -733,117 +733,117 @@ Dropdown button
 &lt;li&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;</code></pre>
-                    </div>
-                </div><!-- end card-body -->
+                        </div>
+                  </div><!-- end card-body -->
             </div><!-- end card -->
-        </div>
-    </div>
+      </div>
+</div>
 
-    <div class="row">
-        <div class="col-lg-12">
+<div class="row">
+      <div class="col-lg-12">
             <div class="card">
-                <div class="card-header align-items-center d-flex">
-                    <h4 class="card-title mb-0 flex-grow-1">Alignment options</h4>
-                    <div class="flex-shrink-0">
-                        <div class="form-check form-switch form-switch-right form-switch-md">
-                            <label for="alignment-options" class="form-label text-muted">Show Code</label>
-                            <input class="form-check-input code-switcher" type="checkbox" id="alignment-options">
+                  <div class="card-header align-items-center d-flex">
+                        <h4 class="card-title mb-0 flex-grow-1">Alignment options</h4>
+                        <div class="flex-shrink-0">
+                              <div class="form-check form-switch form-switch-right form-switch-md">
+                                    <label for="alignment-options" class="form-label text-muted">Show Code</label>
+                                    <input class="form-check-input code-switcher" type="checkbox" id="alignment-options">
+                              </div>
                         </div>
-                    </div>
-                </div><!-- end card header -->
+                  </div><!-- end card header -->
 
-                <div class="card-body">
-                    <p class="text-muted">Dropdown demo with various <code>dropdown alignment</code> options.</p>
-                    <div class="live-preview">
-                        <div class="d-flex flex-wrap gap-3">
-                            <div class="btn-group">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Dropdown
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <li><a class="dropdown-item" href="#">Menu item</a></li>
-                                    <li><a class="dropdown-item" href="#">Menu item</a></li>
-                                    <li><a class="dropdown-item" href="#">Menu item</a></li>
-                                </ul>
-                            </div>
+                  <div class="card-body">
+                        <p class="text-muted">Dropdown demo with various <code>dropdown alignment</code> options.</p>
+                        <div class="live-preview">
+                              <div class="d-flex flex-wrap gap-3">
+                                    <div class="btn-group">
+                                          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                                  data-bs-toggle="dropdown" aria-expanded="false">
+                                                Dropdown
+                                          </button>
+                                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                <li><a class="dropdown-item" href="#">Menu item</a></li>
+                                                <li><a class="dropdown-item" href="#">Menu item</a></li>
+                                                <li><a class="dropdown-item" href="#">Menu item</a></li>
+                                          </ul>
+                                    </div>
 
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-secondary dropdown-toggle"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Right-aligned menu
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><a class="dropdown-item" href="#">Menu item</a></li>
-                                    <li><a class="dropdown-item" href="#">Menu item</a></li>
-                                    <li><a class="dropdown-item" href="#">Menu item</a></li>
-                                </ul>
-                            </div>
+                                    <div class="btn-group">
+                                          <button type="button" class="btn btn-secondary dropdown-toggle"
+                                                  data-bs-toggle="dropdown" aria-expanded="false">
+                                                Right-aligned menu
+                                          </button>
+                                          <ul class="dropdown-menu dropdown-menu-end">
+                                                <li><a class="dropdown-item" href="#">Menu item</a></li>
+                                                <li><a class="dropdown-item" href="#">Menu item</a></li>
+                                                <li><a class="dropdown-item" href="#">Menu item</a></li>
+                                          </ul>
+                                    </div>
 
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-secondary dropdown-toggle"
-                                    data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                                    Left-aligned, right-aligned lg
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-lg-end">
-                                    <li><a class="dropdown-item" href="#">Menu item</a></li>
-                                    <li><a class="dropdown-item" href="#">Menu item</a></li>
-                                    <li><a class="dropdown-item" href="#">Menu item</a></li>
-                                </ul>
-                            </div>
+                                    <div class="btn-group">
+                                          <button type="button" class="btn btn-secondary dropdown-toggle"
+                                                  data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                                                Left-aligned, right-aligned lg
+                                          </button>
+                                          <ul class="dropdown-menu dropdown-menu-lg-end">
+                                                <li><a class="dropdown-item" href="#">Menu item</a></li>
+                                                <li><a class="dropdown-item" href="#">Menu item</a></li>
+                                                <li><a class="dropdown-item" href="#">Menu item</a></li>
+                                          </ul>
+                                    </div>
 
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-secondary dropdown-toggle"
-                                    data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
-                                    Right-aligned, left-aligned lg
-                                </button>
-                                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
-                                    <li><a class="dropdown-item" href="#">Menu item</a></li>
-                                    <li><a class="dropdown-item" href="#">Menu item</a></li>
-                                    <li><a class="dropdown-item" href="#">Menu item</a></li>
-                                </ul>
-                            </div>
+                                    <div class="btn-group">
+                                          <button type="button" class="btn btn-secondary dropdown-toggle"
+                                                  data-bs-toggle="dropdown" data-bs-display="static" aria-expanded="false">
+                                                Right-aligned, left-aligned lg
+                                          </button>
+                                          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start">
+                                                <li><a class="dropdown-item" href="#">Menu item</a></li>
+                                                <li><a class="dropdown-item" href="#">Menu item</a></li>
+                                                <li><a class="dropdown-item" href="#">Menu item</a></li>
+                                          </ul>
+                                    </div>
 
-                            <div class="btn-group dropstart">
-                                <button type="button" class="btn btn-secondary dropdown-toggle"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Dropstart
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Menu item</a></li>
-                                    <li><a class="dropdown-item" href="#">Menu item</a></li>
-                                    <li><a class="dropdown-item" href="#">Menu item</a></li>
-                                </ul>
-                            </div>
+                                    <div class="btn-group dropstart">
+                                          <button type="button" class="btn btn-secondary dropdown-toggle"
+                                                  data-bs-toggle="dropdown" aria-expanded="false">
+                                                Dropstart
+                                          </button>
+                                          <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item" href="#">Menu item</a></li>
+                                                <li><a class="dropdown-item" href="#">Menu item</a></li>
+                                                <li><a class="dropdown-item" href="#">Menu item</a></li>
+                                          </ul>
+                                    </div>
 
-                            <div class="btn-group dropend">
-                                <button type="button" class="btn btn-secondary dropdown-toggle"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Dropend
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Menu item</a></li>
-                                    <li><a class="dropdown-item" href="#">Menu item</a></li>
-                                    <li><a class="dropdown-item" href="#">Menu item</a></li>
-                                </ul>
-                            </div>
+                                    <div class="btn-group dropend">
+                                          <button type="button" class="btn btn-secondary dropdown-toggle"
+                                                  data-bs-toggle="dropdown" aria-expanded="false">
+                                                Dropend
+                                          </button>
+                                          <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item" href="#">Menu item</a></li>
+                                                <li><a class="dropdown-item" href="#">Menu item</a></li>
+                                                <li><a class="dropdown-item" href="#">Menu item</a></li>
+                                          </ul>
+                                    </div>
 
-                            <div class="btn-group dropup">
-                                <button type="button" class="btn btn-secondary dropdown-toggle"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                    Dropup
-                                </button>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Menu item</a></li>
-                                    <li><a class="dropdown-item" href="#">Menu item</a></li>
-                                    <li><a class="dropdown-item" href="#">Menu item</a></li>
-                                </ul>
-                            </div>
+                                    <div class="btn-group dropup">
+                                          <button type="button" class="btn btn-secondary dropdown-toggle"
+                                                  data-bs-toggle="dropdown" aria-expanded="false">
+                                                Dropup
+                                          </button>
+                                          <ul class="dropdown-menu">
+                                                <li><a class="dropdown-item" href="#">Menu item</a></li>
+                                                <li><a class="dropdown-item" href="#">Menu item</a></li>
+                                                <li><a class="dropdown-item" href="#">Menu item</a></li>
+                                          </ul>
+                                    </div>
+                              </div>
                         </div>
-                    </div>
 
-                    <div class="d-none code-view">
-                        <pre class="language-markup" style="height: 275px;">
+                        <div class="d-none code-view">
+                              <pre class="language-markup" style="height: 275px;">
 <code>&lt;!-- Alignment options --&gt;
 &lt;div class=&quot;btn-group&quot;&gt;
 &lt;button class=&quot;btn btn-secondary dropdown-toggle&quot; type=&quot;button&quot; id=&quot;dropdownMenuButton&quot; data-bs-toggle=&quot;dropdown&quot; aria-expanded=&quot;false&quot;&gt;
@@ -923,66 +923,66 @@ Dropup
 &lt;li&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Menu item&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;</code></pre>
-                    </div>
-                </div><!-- end card-body -->
+                        </div>
+                  </div><!-- end card-body -->
             </div><!-- end card -->
-        </div>
-    </div>
+      </div>
+</div>
 
-    <div class="row">
-        <div class="col-lg-12">
+<div class="row">
+      <div class="col-lg-12">
             <div class="card">
-                <div class="card-header align-items-center d-flex">
-                    <h4 class="card-title mb-0 flex-grow-1">Dropdown Options</h4>
-                    <div class="flex-shrink-0">
-                        <div class="form-check form-switch form-switch-right form-switch-md">
-                            <label for="dropdown-options" class="form-label text-muted">Show Code</label>
-                            <input class="form-check-input code-switcher" type="checkbox" id="dropdown-options">
+                  <div class="card-header align-items-center d-flex">
+                        <h4 class="card-title mb-0 flex-grow-1">Dropdown Options</h4>
+                        <div class="flex-shrink-0">
+                              <div class="form-check form-switch form-switch-right form-switch-md">
+                                    <label for="dropdown-options" class="form-label text-muted">Show Code</label>
+                                    <input class="form-check-input code-switcher" type="checkbox" id="dropdown-options">
+                              </div>
                         </div>
-                    </div>
-                </div><!-- end card header -->
+                  </div><!-- end card header -->
 
-                <div class="card-body">
-                    <p class="text-muted">Use <code>data-bs-offset</code> or
-                        <code>data-bs-reference</code> to change the position of the dropdown.
-                    </p>
+                  <div class="card-body">
+                        <p class="text-muted">Use <code>data-bs-offset</code> or
+                              <code>data-bs-reference</code> to change the position of the dropdown.
+                        </p>
 
-                    <div class="live-preview">
-                        <div class="d-flex flex-wrap gap-3">
-                            <div class="dropdown me-1">
-                                <button type="button" class="btn btn-secondary dropdown-toggle" id="dropdownMenuOffset"
-                                    data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="10,20">
-                                    Offset
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                </ul>
-                            </div>
+                        <div class="live-preview">
+                              <div class="d-flex flex-wrap gap-3">
+                                    <div class="dropdown me-1">
+                                          <button type="button" class="btn btn-secondary dropdown-toggle" id="dropdownMenuOffset"
+                                                  data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="10,20">
+                                                Offset
+                                          </button>
+                                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+                                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                          </ul>
+                                    </div>
 
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-secondary">Reference</button>
-                                <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
-                                    id="dropdownMenuReference" data-bs-toggle="dropdown" aria-expanded="false"
-                                    data-bs-reference="parent">
-                                    <span class="visually-hidden">Toggle Dropdown</span>
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuReference">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                    <li>
-                                        <hr class="dropdown-divider">
-                                    </li>
-                                    <li><a class="dropdown-item" href="#">Separated link</a></li>
-                                </ul>
-                            </div>
+                                    <div class="btn-group">
+                                          <button type="button" class="btn btn-secondary">Reference</button>
+                                          <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
+                                                  id="dropdownMenuReference" data-bs-toggle="dropdown" aria-expanded="false"
+                                                  data-bs-reference="parent">
+                                                <span class="visually-hidden">Toggle Dropdown</span>
+                                          </button>
+                                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuReference">
+                                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                                <li>
+                                                      <hr class="dropdown-divider">
+                                                </li>
+                                                <li><a class="dropdown-item" href="#">Separated link</a></li>
+                                          </ul>
+                                    </div>
+                              </div>
                         </div>
-                    </div>
 
-                    <div class="d-none code-view">
-                        <pre class="language-markup" style="height: 275px;">
+                        <div class="d-none code-view">
+                              <pre class="language-markup" style="height: 275px;">
 <code>&lt;!-- Dropdown Options --&gt;
 &lt;div class=&quot;dropdown&quot;&gt;
 &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary dropdown-toggle&quot; id=&quot;dropdownMenuOffset&quot;
@@ -1012,85 +1012,85 @@ data-bs-toggle=&quot;dropdown&quot; aria-expanded=&quot;false&quot; data-bs-refe
 &lt;li&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Separated link&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;</code></pre>
-                    </div>
-                </div><!-- end card-body -->
+                        </div>
+                  </div><!-- end card-body -->
             </div><!-- end card -->
-        </div>
-    </div>
+      </div>
+</div>
 
-    <div class="row">
-        <div class="col-lg-12">
+<div class="row">
+      <div class="col-lg-12">
             <div class="card">
-                <div class="card-header align-items-center d-flex">
-                    <h4 class="card-title mb-0 flex-grow-1">Auto Close Behavior</h4>
-                    <div class="flex-shrink-0">
-                        <div class="form-check form-switch form-switch-right form-switch-md">
-                            <label for="auto-close-behavior" class="form-label text-muted">Show Code</label>
-                            <input class="form-check-input code-switcher" type="checkbox" id="auto-close-behavior">
+                  <div class="card-header align-items-center d-flex">
+                        <h4 class="card-title mb-0 flex-grow-1">Auto Close Behavior</h4>
+                        <div class="flex-shrink-0">
+                              <div class="form-check form-switch form-switch-right form-switch-md">
+                                    <label for="auto-close-behavior" class="form-label text-muted">Show Code</label>
+                                    <input class="form-check-input code-switcher" type="checkbox" id="auto-close-behavior">
+                              </div>
                         </div>
-                    </div>
-                </div><!-- end card header -->
+                  </div><!-- end card header -->
 
-                <div class="card-body">
-                    <p class="text-muted">By default, the dropdown menu is closed when clicking inside or outside the
-                        dropdown menu. You can use the <code>autoClose</code> option to change this behavior of the
-                        dropdown.</p>
-                    <div class="live-preview">
-                        <div class="d-flex flex-wrap gap-3">
-                            <div class="btn-group">
-                                <button class="btn btn-light dropdown-toggle" type="button" id="defaultDropdown"
-                                    data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
-                                    Default dropdown
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="defaultDropdown">
-                                    <li><a class="dropdown-item" href="javascript:void(0);">Menu item</a></li>
-                                    <li><a class="dropdown-item" href="javascript:void(0);">Menu item</a></li>
-                                    <li><a class="dropdown-item" href="javascript:void(0);">Menu item</a></li>
-                                </ul>
-                            </div>
+                  <div class="card-body">
+                        <p class="text-muted">By default, the dropdown menu is closed when clicking inside or outside the
+                              dropdown menu. You can use the <code>autoClose</code> option to change this behavior of the
+                              dropdown.</p>
+                        <div class="live-preview">
+                              <div class="d-flex flex-wrap gap-3">
+                                    <div class="btn-group">
+                                          <button class="btn btn-light dropdown-toggle" type="button" id="defaultDropdown"
+                                                  data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
+                                                Default dropdown
+                                          </button>
+                                          <ul class="dropdown-menu" aria-labelledby="defaultDropdown">
+                                                <li><a class="dropdown-item" href="javascript:void(0);">Menu item</a></li>
+                                                <li><a class="dropdown-item" href="javascript:void(0);">Menu item</a></li>
+                                                <li><a class="dropdown-item" href="javascript:void(0);">Menu item</a></li>
+                                          </ul>
+                                    </div>
 
-                            <div class="btn-group">
-                                <button class="btn btn-light dropdown-toggle" type="button"
-                                    id="dropdownMenuClickableOutside" data-bs-toggle="dropdown"
-                                    data-bs-auto-close="inside" aria-expanded="false">
-                                    Clickable outside
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickableOutside">
-                                    <li><a class="dropdown-item" href="javascript:void(0);">Menu item</a></li>
-                                    <li><a class="dropdown-item" href="javascript:void(0);">Menu item</a></li>
-                                    <li><a class="dropdown-item" href="javascript:void(0);">Menu item</a></li>
-                                </ul>
-                            </div>
+                                    <div class="btn-group">
+                                          <button class="btn btn-light dropdown-toggle" type="button"
+                                                  id="dropdownMenuClickableOutside" data-bs-toggle="dropdown"
+                                                  data-bs-auto-close="inside" aria-expanded="false">
+                                                Clickable outside
+                                          </button>
+                                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickableOutside">
+                                                <li><a class="dropdown-item" href="javascript:void(0);">Menu item</a></li>
+                                                <li><a class="dropdown-item" href="javascript:void(0);">Menu item</a></li>
+                                                <li><a class="dropdown-item" href="javascript:void(0);">Menu item</a></li>
+                                          </ul>
+                                    </div>
 
-                            <div class="btn-group">
-                                <button class="btn btn-light dropdown-toggle" type="button"
-                                    id="dropdownMenuClickableInside" data-bs-toggle="dropdown"
-                                    data-bs-auto-close="outside" aria-expanded="false">
-                                    Clickable inside
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickableInside">
-                                    <li><a class="dropdown-item" href="javascript:void(0);">Menu item</a></li>
-                                    <li><a class="dropdown-item" href="javascript:void(0);">Menu item</a></li>
-                                    <li><a class="dropdown-item" href="javascript:void(0);">Menu item</a></li>
-                                </ul>
-                            </div>
+                                    <div class="btn-group">
+                                          <button class="btn btn-light dropdown-toggle" type="button"
+                                                  id="dropdownMenuClickableInside" data-bs-toggle="dropdown"
+                                                  data-bs-auto-close="outside" aria-expanded="false">
+                                                Clickable inside
+                                          </button>
+                                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickableInside">
+                                                <li><a class="dropdown-item" href="javascript:void(0);">Menu item</a></li>
+                                                <li><a class="dropdown-item" href="javascript:void(0);">Menu item</a></li>
+                                                <li><a class="dropdown-item" href="javascript:void(0);">Menu item</a></li>
+                                          </ul>
+                                    </div>
 
-                            <div class="btn-group">
-                                <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuClickable"
-                                    data-bs-toggle="dropdown" data-bs-auto-close="false" aria-expanded="false">
-                                    Manual close
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickable">
-                                    <li><a class="dropdown-item" href="javascript:void(0);">Menu item</a></li>
-                                    <li><a class="dropdown-item" href="javascript:void(0);">Menu item</a></li>
-                                    <li><a class="dropdown-item" href="javascript:void(0);">Menu item</a></li>
-                                </ul>
-                            </div>
+                                    <div class="btn-group">
+                                          <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuClickable"
+                                                  data-bs-toggle="dropdown" data-bs-auto-close="false" aria-expanded="false">
+                                                Manual close
+                                          </button>
+                                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickable">
+                                                <li><a class="dropdown-item" href="javascript:void(0);">Menu item</a></li>
+                                                <li><a class="dropdown-item" href="javascript:void(0);">Menu item</a></li>
+                                                <li><a class="dropdown-item" href="javascript:void(0);">Menu item</a></li>
+                                          </ul>
+                                    </div>
+                              </div>
                         </div>
-                    </div>
 
-                    <div class="d-none code-view">
-                        <pre class="language-markup" style="height: 275px;">
+                        <div class="d-none code-view">
+                              <pre class="language-markup" style="height: 275px;">
 <code>&lt;!-- Default dropdown --&gt;
 &lt;div class=&quot;btn-group&quot;&gt;
 &lt;button class=&quot;btn btn-light dropdown-toggle&quot; type=&quot;button&quot; id=&quot;defaultDropdown&quot; data-bs-toggle=&quot;dropdown&quot; data-bs-auto-close=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;
@@ -1138,179 +1138,179 @@ Manual close
 &lt;li&gt;&lt;a class=&quot;dropdown-item&quot; href=&quot;javascript:void(0);&quot;&gt;Menu item&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/div&gt;</code></pre>
-                    </div>
-                </div><!-- end card-body -->
+                        </div>
+                  </div><!-- end card-body -->
             </div><!-- end card -->
-        </div>
-    </div>
+      </div>
+</div>
 
 
-    <div class="row">
-        <div class="col-lg-12">
+<div class="row">
+      <div class="col-lg-12">
             <div class="card">
-                <div class="card-header align-items-center d-flex">
-                    <h4 class="card-title mb-0 flex-grow-1">Dropdown Menu Item Color</h4>
-                    <div class="flex-shrink-0">
-                        <div class="form-check form-switch form-switch-right form-switch-md">
-                            <label for="dropdown-menu-item-color" class="form-label text-muted">Show Code</label>
-                            <input class="form-check-input code-switcher" type="checkbox" id="dropdown-menu-item-color">
+                  <div class="card-header align-items-center d-flex">
+                        <h4 class="card-title mb-0 flex-grow-1">Dropdown Menu Item Color</h4>
+                        <div class="flex-shrink-0">
+                              <div class="form-check form-switch form-switch-right form-switch-md">
+                                    <label for="dropdown-menu-item-color" class="form-label text-muted">Show Code</label>
+                                    <input class="form-check-input code-switcher" type="checkbox" id="dropdown-menu-item-color">
+                              </div>
                         </div>
-                    </div>
-                </div><!-- end card header -->
+                  </div><!-- end card header -->
 
-                <div class="card-body">
-                    <p class="text-muted">Example of dropdown menu and dropdown item color.</p>
-                    <div class="live-preview">
-                        <div class="row">
-                            <div class="col-xxl-3">
-                                <div>
-                                    <h6 class="font-size-13 mb-3">Dropdown Menu Success link example
-                                    </h6>
-                                    <div class="clearfix">
-                                        <div class="dropdown-menu d-inline-block position-relative dropdownmenu-success"
-                                            style="z-index: 1;">
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <a class="dropdown-item active" href="#">Something else here</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Separated link</a>
-                                        </div>
+                  <div class="card-body">
+                        <p class="text-muted">Example of dropdown menu and dropdown item color.</p>
+                        <div class="live-preview">
+                              <div class="row">
+                                    <div class="col-xxl-3">
+                                          <div>
+                                                <h6 class="font-size-13 mb-3">Dropdown Menu Success link example
+                                                </h6>
+                                                <div class="clearfix">
+                                                      <div class="dropdown-menu d-inline-block position-relative dropdownmenu-success"
+                                                           style="z-index: 1;">
+                                                            <a class="dropdown-item" href="#">Action</a>
+                                                            <a class="dropdown-item" href="#">Another action</a>
+                                                            <a class="dropdown-item active" href="#">Something else here</a>
+                                                            <div class="dropdown-divider"></div>
+                                                            <a class="dropdown-item" href="#">Separated link</a>
+                                                      </div>
+                                                </div>
+                                          </div>
                                     </div>
-                                </div>
-                            </div>
-                            <!--end col-->
+                                    <!--end col-->
 
-                            <div class="col-lg-9">
-                                <div class="mt-lg-0 mt-3">
-                                    <h6 class="font-size-13 mb-0">Dropdown Menu link Color example</h6>
-                                    <div>
-                                        <div class="row">
-                                            <div class="col-lg-4 col-sm-6">
-                                                <div class="mt-3">
-                                                    <p class="font-size-13 mb-2">Dropdown menu Primary link</p>
-                                                    <div class="btn-group">
-                                                        <button type="button" class="btn btn-primary dropdown-toggle"
-                                                            data-bs-toggle="dropdown"
-                                                            aria-expanded="false">Primary</button>
-                                                        <div class="dropdown-menu dropdownmenu-primary">
-                                                            <a class="dropdown-item" href="#">Action</a>
-                                                            <a class="dropdown-item" href="#">Another action</a>
-                                                            <a class="dropdown-item" href="#">Something else
-                                                                here</a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a class="dropdown-item" href="#">Separated link</a>
-                                                        </div>
-                                                    </div><!-- btn-group -->
-                                                </div>
-                                            </div>
-                                            <!--end col-->
-                                            <div class="col-lg-4 col-sm-6">
-                                                <div class="mt-3">
-                                                    <p class="font-size-13 mb-2">Dropdown menu Secondary link</p>
-                                                    <div class="btn-group">
-                                                        <button type="button" class="btn btn-secondary dropdown-toggle"
-                                                            data-bs-toggle="dropdown"
-                                                            aria-expanded="false">Secondary</button>
-                                                        <div class="dropdown-menu dropdownmenu-secondary">
-                                                            <a class="dropdown-item" href="#">Action</a>
-                                                            <a class="dropdown-item" href="#">Another action</a>
-                                                            <a class="dropdown-item" href="#">Something else
-                                                                here</a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a class="dropdown-item" href="#">Separated link</a>
-                                                        </div>
-                                                    </div><!-- btn-group -->
-                                                </div>
-                                            </div>
-                                            <!--end col-->
-                                            <div class="col-lg-4 col-sm-6">
-                                                <div class="mt-3">
-                                                    <p class="font-size-13 mb-2">Dropdown menu Success link</p>
-                                                    <div class="btn-group">
-                                                        <button type="button" class="btn btn-success dropdown-toggle"
-                                                            data-bs-toggle="dropdown"
-                                                            aria-expanded="false">Success</button>
-                                                        <div class="dropdown-menu dropdownmenu-success">
-                                                            <a class="dropdown-item" href="#">Action</a>
-                                                            <a class="dropdown-item" href="#">Another action</a>
-                                                            <a class="dropdown-item" href="#">Something else
-                                                                here</a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a class="dropdown-item" href="#">Separated link</a>
-                                                        </div>
-                                                    </div><!-- btn-group -->
-                                                </div>
-                                            </div>
-                                            <!--end col-->
-                                            <div class="col-lg-4 col-sm-6">
-                                                <div class="mt-3">
-                                                    <p class="font-size-13 mb-2">Dropdown menu Warning link</p>
-                                                    <div class="btn-group">
-                                                        <button type="button" class="btn btn-warning dropdown-toggle"
-                                                            data-bs-toggle="dropdown"
-                                                            aria-expanded="false">Warning</button>
-                                                        <div class="dropdown-menu dropdownmenu-warning">
-                                                            <a class="dropdown-item" href="#">Action</a>
-                                                            <a class="dropdown-item" href="#">Another action</a>
-                                                            <a class="dropdown-item" href="#">Something else
-                                                                here</a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a class="dropdown-item" href="#">Separated link</a>
-                                                        </div>
-                                                    </div><!-- btn-group -->
-                                                </div>
-                                            </div>
-                                            <!--end col-->
-                                            <div class="col-lg-4 col-sm-6">
-                                                <div class="mt-3">
-                                                    <p class="font-size-13 mb-2">Dropdown menu Info link</p>
-                                                    <div class="btn-group">
-                                                        <button type="button" class="btn btn-info dropdown-toggle"
-                                                            data-bs-toggle="dropdown" aria-expanded="false">Info</button>
-                                                        <div class="dropdown-menu dropdownmenu-info">
-                                                            <a class="dropdown-item" href="#">Action</a>
-                                                            <a class="dropdown-item" href="#">Another action</a>
-                                                            <a class="dropdown-item" href="#">Something else
-                                                                here</a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a class="dropdown-item" href="#">Separated link</a>
-                                                        </div>
-                                                    </div><!-- btn-group -->
-                                                </div>
-                                            </div>
-                                            <!--end col-->
-                                            <div class="col-lg-4 col-sm-6">
-                                                <div class="mt-3">
-                                                    <p class="font-size-13 mb-2">Dropdown menu Danger link</p>
-                                                    <div class="btn-group">
-                                                        <button type="button" class="btn btn-danger dropdown-toggle"
-                                                            data-bs-toggle="dropdown"
-                                                            aria-expanded="false">Danger</button>
-                                                        <div class="dropdown-menu dropdownmenu-danger">
-                                                            <a class="dropdown-item" href="#">Action</a>
-                                                            <a class="dropdown-item" href="#">Another action</a>
-                                                            <a class="dropdown-item" href="#">Something else
-                                                                here</a>
-                                                            <div class="dropdown-divider"></div>
-                                                            <a class="dropdown-item" href="#">Separated link</a>
-                                                        </div>
-                                                    </div><!-- btn-group -->
-                                                </div>
-                                            </div>
-                                            <!--end col-->
-                                        </div>
-                                        <!--end row-->
+                                    <div class="col-lg-9">
+                                          <div class="mt-lg-0 mt-3">
+                                                <h6 class="font-size-13 mb-0">Dropdown Menu link Color example</h6>
+                                                <div>
+                                                      <div class="row">
+                                                            <div class="col-lg-4 col-sm-6">
+                                                                  <div class="mt-3">
+                                                                        <p class="font-size-13 mb-2">Dropdown menu Primary link</p>
+                                                                        <div class="btn-group">
+                                                                              <button type="button" class="btn btn-primary dropdown-toggle"
+                                                                                      data-bs-toggle="dropdown"
+                                                                                      aria-expanded="false">Primary</button>
+                                                                              <div class="dropdown-menu dropdownmenu-primary">
+                                                                                    <a class="dropdown-item" href="#">Action</a>
+                                                                                    <a class="dropdown-item" href="#">Another action</a>
+                                                                                    <a class="dropdown-item" href="#">Something else
+                                                                                          here</a>
+                                                                                    <div class="dropdown-divider"></div>
+                                                                                    <a class="dropdown-item" href="#">Separated link</a>
+                                                                              </div>
+                                                                        </div><!-- btn-group -->
+                                                                  </div>
+                                                            </div>
+                                                            <!--end col-->
+                                                            <div class="col-lg-4 col-sm-6">
+                                                                  <div class="mt-3">
+                                                                        <p class="font-size-13 mb-2">Dropdown menu Secondary link</p>
+                                                                        <div class="btn-group">
+                                                                              <button type="button" class="btn btn-secondary dropdown-toggle"
+                                                                                      data-bs-toggle="dropdown"
+                                                                                      aria-expanded="false">Secondary</button>
+                                                                              <div class="dropdown-menu dropdownmenu-secondary">
+                                                                                    <a class="dropdown-item" href="#">Action</a>
+                                                                                    <a class="dropdown-item" href="#">Another action</a>
+                                                                                    <a class="dropdown-item" href="#">Something else
+                                                                                          here</a>
+                                                                                    <div class="dropdown-divider"></div>
+                                                                                    <a class="dropdown-item" href="#">Separated link</a>
+                                                                              </div>
+                                                                        </div><!-- btn-group -->
+                                                                  </div>
+                                                            </div>
+                                                            <!--end col-->
+                                                            <div class="col-lg-4 col-sm-6">
+                                                                  <div class="mt-3">
+                                                                        <p class="font-size-13 mb-2">Dropdown menu Success link</p>
+                                                                        <div class="btn-group">
+                                                                              <button type="button" class="btn btn-success dropdown-toggle"
+                                                                                      data-bs-toggle="dropdown"
+                                                                                      aria-expanded="false">Success</button>
+                                                                              <div class="dropdown-menu dropdownmenu-success">
+                                                                                    <a class="dropdown-item" href="#">Action</a>
+                                                                                    <a class="dropdown-item" href="#">Another action</a>
+                                                                                    <a class="dropdown-item" href="#">Something else
+                                                                                          here</a>
+                                                                                    <div class="dropdown-divider"></div>
+                                                                                    <a class="dropdown-item" href="#">Separated link</a>
+                                                                              </div>
+                                                                        </div><!-- btn-group -->
+                                                                  </div>
+                                                            </div>
+                                                            <!--end col-->
+                                                            <div class="col-lg-4 col-sm-6">
+                                                                  <div class="mt-3">
+                                                                        <p class="font-size-13 mb-2">Dropdown menu Warning link</p>
+                                                                        <div class="btn-group">
+                                                                              <button type="button" class="btn btn-warning dropdown-toggle"
+                                                                                      data-bs-toggle="dropdown"
+                                                                                      aria-expanded="false">Warning</button>
+                                                                              <div class="dropdown-menu dropdownmenu-warning">
+                                                                                    <a class="dropdown-item" href="#">Action</a>
+                                                                                    <a class="dropdown-item" href="#">Another action</a>
+                                                                                    <a class="dropdown-item" href="#">Something else
+                                                                                          here</a>
+                                                                                    <div class="dropdown-divider"></div>
+                                                                                    <a class="dropdown-item" href="#">Separated link</a>
+                                                                              </div>
+                                                                        </div><!-- btn-group -->
+                                                                  </div>
+                                                            </div>
+                                                            <!--end col-->
+                                                            <div class="col-lg-4 col-sm-6">
+                                                                  <div class="mt-3">
+                                                                        <p class="font-size-13 mb-2">Dropdown menu Info link</p>
+                                                                        <div class="btn-group">
+                                                                              <button type="button" class="btn btn-info dropdown-toggle"
+                                                                                      data-bs-toggle="dropdown" aria-expanded="false">Info</button>
+                                                                              <div class="dropdown-menu dropdownmenu-info">
+                                                                                    <a class="dropdown-item" href="#">Action</a>
+                                                                                    <a class="dropdown-item" href="#">Another action</a>
+                                                                                    <a class="dropdown-item" href="#">Something else
+                                                                                          here</a>
+                                                                                    <div class="dropdown-divider"></div>
+                                                                                    <a class="dropdown-item" href="#">Separated link</a>
+                                                                              </div>
+                                                                        </div><!-- btn-group -->
+                                                                  </div>
+                                                            </div>
+                                                            <!--end col-->
+                                                            <div class="col-lg-4 col-sm-6">
+                                                                  <div class="mt-3">
+                                                                        <p class="font-size-13 mb-2">Dropdown menu Danger link</p>
+                                                                        <div class="btn-group">
+                                                                              <button type="button" class="btn btn-danger dropdown-toggle"
+                                                                                      data-bs-toggle="dropdown"
+                                                                                      aria-expanded="false">Danger</button>
+                                                                              <div class="dropdown-menu dropdownmenu-danger">
+                                                                                    <a class="dropdown-item" href="#">Action</a>
+                                                                                    <a class="dropdown-item" href="#">Another action</a>
+                                                                                    <a class="dropdown-item" href="#">Something else
+                                                                                          here</a>
+                                                                                    <div class="dropdown-divider"></div>
+                                                                                    <a class="dropdown-item" href="#">Separated link</a>
+                                                                              </div>
+                                                                        </div><!-- btn-group -->
+                                                                  </div>
+                                                            </div>
+                                                            <!--end col-->
+                                                      </div>
+                                                      <!--end row-->
 
+                                                </div>
+                                          </div>
                                     </div>
-                                </div>
-                            </div>
-                            <!--end col-->
+                                    <!--end col-->
+                              </div>
+                              <!--end row-->
                         </div>
-                        <!--end row-->
-                    </div>
 
-                    <div class="d-none code-view">
-                        <pre class="language-markup" style="height: 275px;">
+                        <div class="d-none code-view">
+                              <pre class="language-markup" style="height: 275px;">
 <code>&lt;!-- Dropdown Menu Item Color --&gt;
 &lt;div class=&quot;btn-group&quot;&gt;
 &lt;button type=&quot;button&quot; class=&quot;btn btn-primary dropdown-toggle&quot; data-bs-toggle=&quot;dropdown&quot; aria-expanded=&quot;false&quot;&gt;Primary&lt;/button&gt;
@@ -1377,104 +1377,104 @@ Manual close
 &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Separated link&lt;/a&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;!-- btn-group --&gt;</code></pre>
-                    </div>
-                </div><!-- end card-body -->
+                        </div>
+                  </div><!-- end card-body -->
             </div><!-- end card -->
-        </div>
-        <!--end col-->
-    </div>
-    <!--end row-->
+      </div>
+      <!--end col-->
+</div>
+<!--end row-->
 
 
-    <div class="row">
-        <div class="col-lg-12">
+<div class="row">
+      <div class="col-lg-12">
             <div class="card">
-                <div class="card-header align-items-center d-flex">
-                    <h4 class="card-title mb-0 flex-grow-1">Menu Content</h4>
-                    <div class="flex-shrink-0">
-                        <div class="form-check form-switch form-switch-right form-switch-md">
-                            <label for="menu-content" class="form-label text-muted">Show Code</label>
-                            <input class="form-check-input code-switcher" type="checkbox" id="menu-content">
+                  <div class="card-header align-items-center d-flex">
+                        <h4 class="card-title mb-0 flex-grow-1">Menu Content</h4>
+                        <div class="flex-shrink-0">
+                              <div class="form-check form-switch form-switch-right form-switch-md">
+                                    <label for="menu-content" class="form-label text-muted">Show Code</label>
+                                    <input class="form-check-input code-switcher" type="checkbox" id="menu-content">
+                              </div>
                         </div>
-                    </div>
-                </div><!-- end card header -->
+                  </div><!-- end card header -->
 
-                <div class="card-body">
-                    <p class="text-muted">Example of dropdown menu containing
-                        <code>Headers, Text and Forms</code> content.
-                    </p>
-                    <div class="live-preview">
-                        <div class="d-flex flex-wrap gap-2">
-                            <!-- Header -->
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                    Header
-                                </button>
-                                <div class="dropdown-menu">
-                                    <div class="dropdown-header noti-title">
-                                        <h5 class="font-size-13 text-muted text-truncate mb-0">Welcome Jessie!</h5>
+                  <div class="card-body">
+                        <p class="text-muted">Example of dropdown menu containing
+                              <code>Headers, Text and Forms</code> content.
+                        </p>
+                        <div class="live-preview">
+                              <div class="d-flex flex-wrap gap-2">
+                                    <!-- Header -->
+                                    <div class="btn-group">
+                                          <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown"
+                                                  aria-haspopup="true" aria-expanded="false">
+                                                Header
+                                          </button>
+                                          <div class="dropdown-menu">
+                                                <div class="dropdown-header noti-title">
+                                                      <h5 class="font-size-13 text-muted text-truncate mb-0">Welcome Jessie!</h5>
+                                                </div>
+                                                <!-- item-->
+                                                <a class="dropdown-item" href="#">Action</a>
+                                                <a class="dropdown-item" href="#">Another action</a>
+                                                <a class="dropdown-item" href="#">Something else here</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="#">Separated link</a>
+                                          </div>
                                     </div>
-                                    <!-- item-->
-                                    <a class="dropdown-item" href="#">Action</a>
-                                    <a class="dropdown-item" href="#">Another action</a>
-                                    <a class="dropdown-item" href="#">Something else here</a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#">Separated link</a>
-                                </div>
-                            </div>
 
-                            <!-- Text -->
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                    Text
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-md p-3">
-                                    <p>
-                                        Some example text that's free-flowing within the dropdown menu.
-                                    </p>
-                                    <p class="mb-0">
-                                        And this is more example text.
-                                    </p>
-                                </div>
-                            </div>
+                                    <!-- Text -->
+                                    <div class="btn-group">
+                                          <button type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown"
+                                                  aria-haspopup="true" aria-expanded="false">
+                                                Text
+                                          </button>
+                                          <div class="dropdown-menu dropdown-menu-md p-3">
+                                                <p>
+                                                      Some example text that's free-flowing within the dropdown menu.
+                                                </p>
+                                                <p class="mb-0">
+                                                      And this is more example text.
+                                                </p>
+                                          </div>
+                                    </div>
 
-                            <!-- Forms -->
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                    Forms
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-md p-4">
-                                    <form>
-                                        <div class="mb-2">
-                                            <label class="form-label" for="exampleDropdownFormEmail">Email address</label>
-                                            <input type="email" class="form-control" id="exampleDropdownFormEmail"
-                                                placeholder="email@example.com">
-                                        </div>
-                                        <div class="mb-2">
-                                            <label class="form-label" for="exampleDropdownFormPassword">Password</label>
-                                            <input type="password" class="form-control" id="exampleDropdownFormPassword"
-                                                placeholder="Password">
-                                        </div>
-                                        <div class="mb-2">
-                                            <div class="form-check custom-checkbox">
-                                                <input type="checkbox" class="form-check-input"
-                                                    id="rememberdropdownCheck">
-                                                <label class="form-check-label" for="rememberdropdownCheck">Remember
-                                                    me</label>
-                                            </div>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary">Sign in</button>
-                                    </form>
-                                </div>
-                            </div>
+                                    <!-- Forms -->
+                                    <div class="btn-group">
+                                          <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown"
+                                                  aria-haspopup="true" aria-expanded="false">
+                                                Forms
+                                          </button>
+                                          <div class="dropdown-menu dropdown-menu-md p-4">
+                                                <form>
+                                                      <div class="mb-2">
+                                                            <label class="form-label" for="exampleDropdownFormEmail">Email address</label>
+                                                            <input type="email" class="form-control" id="exampleDropdownFormEmail"
+                                                                   placeholder="email@example.com">
+                                                      </div>
+                                                      <div class="mb-2">
+                                                            <label class="form-label" for="exampleDropdownFormPassword">Password</label>
+                                                            <input type="password" class="form-control" id="exampleDropdownFormPassword"
+                                                                   placeholder="Password">
+                                                      </div>
+                                                      <div class="mb-2">
+                                                            <div class="form-check custom-checkbox">
+                                                                  <input type="checkbox" class="form-check-input"
+                                                                         id="rememberdropdownCheck">
+                                                                  <label class="form-check-label" for="rememberdropdownCheck">Remember
+                                                                        me</label>
+                                                            </div>
+                                                      </div>
+                                                      <button type="submit" class="btn btn-primary">Sign in</button>
+                                                </form>
+                                          </div>
+                                    </div>
+                              </div>
                         </div>
-                    </div>
 
-                    <div class="d-none code-view">
-                        <pre class="language-markup" style="height: 275px;">
+                        <div class="d-none code-view">
+                              <pre class="language-markup" style="height: 275px;">
 <code>&lt;!-- Menu Content --&gt;
 &lt;div class=&quot;btn-group&quot;&gt;
 &lt;button type=&quot;button&quot; class=&quot;btn btn-primary dropdown-toggle&quot; data-bs-toggle=&quot;dropdown&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;
@@ -1533,853 +1533,853 @@ Forms
 &lt;/form&gt;
 &lt;/div&gt;
 &lt;/div&gt;</code></pre>
-                    </div>
-                </div><!-- end card-body -->
+                        </div>
+                  </div><!-- end card-body -->
             </div><!-- end card -->
-        </div>
-        <!--end col-->
-    </div>
-    <!--end row-->
+      </div>
+      <!--end col-->
+</div>
+<!--end row-->
 
 
-    <div class="row">
-        <div class="col-lg-12">
+<div class="row">
+      <div class="col-lg-12">
             <div class="card">
-                <div class="card-header align-items-center d-flex">
-                    <h4 class="card-title mb-0 flex-grow-1">Notifications</h4>
-                    <div class="flex-shrink-0">
-                        <div class="form-check form-switch form-switch-right form-switch-md">
-                            <label for="default" class="form-label text-muted">Show Code</label>
-                            <input class="form-check-input code-switcher" type="checkbox" id="default">
+                  <div class="card-header align-items-center d-flex">
+                        <h4 class="card-title mb-0 flex-grow-1">Notifications</h4>
+                        <div class="flex-shrink-0">
+                              <div class="form-check form-switch form-switch-right form-switch-md">
+                                    <label for="default" class="form-label text-muted">Show Code</label>
+                                    <input class="form-check-input code-switcher" type="checkbox" id="default">
+                              </div>
                         </div>
-                    </div>
-                </div><!-- end card header -->
+                  </div><!-- end card header -->
 
-                <div class="card-body">
-                    <p class="text-muted">Dropdown with notification containing multiple tabs.</p>
-                    <div class="live-preview">
-                        <div class="row g-3">
-                            <div class="col-xxl-3 col-lg-5 col-md-6">
-                                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0 d-inline-block position-relative w-100"
-                                    aria-labelledby="page-header-notifications-dropdown" style="z-index: 1;">
-                                    <div class="dropdown-head bg-primary bg-pattern rounded-top">
-                                        <div class="p-3">
-                                            <div class="row align-items-center">
-                                                <div class="col">
-                                                    <h6 class="m-0 fs-16 fw-semibold text-white"> Notifications </h6>
-                                                </div>
-                                                <div class="col-auto dropdown-tabs">
-                                                    <span class="badge bg-light-subtle text-body fs-13"
-                                                        data-key="t-view-all"> 4 New</span>
-                                                </div>
-                                            </div>
-                                        </div>
+                  <div class="card-body">
+                        <p class="text-muted">Dropdown with notification containing multiple tabs.</p>
+                        <div class="live-preview">
+                              <div class="row g-3">
+                                    <div class="col-xxl-3 col-lg-5 col-md-6">
+                                          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0 d-inline-block position-relative w-100"
+                                               aria-labelledby="page-header-notifications-dropdown" style="z-index: 1;">
+                                                <div class="dropdown-head bg-primary bg-pattern rounded-top">
+                                                      <div class="p-3">
+                                                            <div class="row align-items-center">
+                                                                  <div class="col">
+                                                                        <h6 class="m-0 fs-16 fw-semibold text-white"> Notifications </h6>
+                                                                  </div>
+                                                                  <div class="col-auto dropdown-tabs">
+                                                                        <span class="badge bg-light-subtle text-body fs-13"
+                                                                              data-key="t-view-all"> 4 New</span>
+                                                                  </div>
+                                                            </div>
+                                                      </div>
 
-                                        <div class="px-2 pt-2">
-                                            <ul class="nav nav-tabs dropdown-tabs nav-tabs-custom"
-                                                data-dropdown-tabs="true" id="notificationItemsTab1" role="tablist">
-                                                <li class="nav-item waves-effect waves-light">
-                                                    <a class="nav-link active" data-bs-toggle="tab" href="#all-noti-tab1"
-                                                        role="tab" aria-selected="true">
-                                                        All (4)
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item waves-effect waves-light">
-                                                    <a class="nav-link" data-bs-toggle="tab" href="#messages-tab1"
-                                                        role="tab" aria-selected="false">
-                                                        Messages
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item waves-effect waves-light">
-                                                    <a class="nav-link" data-bs-toggle="tab" href="#alerts-tab1"
-                                                        role="tab" aria-selected="false">
-                                                        Alerts
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                                      <div class="px-2 pt-2">
+                                                            <ul class="nav nav-tabs dropdown-tabs nav-tabs-custom"
+                                                                data-dropdown-tabs="true" id="notificationItemsTab1" role="tablist">
+                                                                  <li class="nav-item waves-effect waves-light">
+                                                                        <a class="nav-link active" data-bs-toggle="tab" href="#all-noti-tab1"
+                                                                           role="tab" aria-selected="true">
+                                                                              All (4)
+                                                                        </a>
+                                                                  </li>
+                                                                  <li class="nav-item waves-effect waves-light">
+                                                                        <a class="nav-link" data-bs-toggle="tab" href="#messages-tab1"
+                                                                           role="tab" aria-selected="false">
+                                                                              Messages
+                                                                        </a>
+                                                                  </li>
+                                                                  <li class="nav-item waves-effect waves-light">
+                                                                        <a class="nav-link" data-bs-toggle="tab" href="#alerts-tab1"
+                                                                           role="tab" aria-selected="false">
+                                                                              Alerts
+                                                                        </a>
+                                                                  </li>
+                                                            </ul>
+                                                      </div>
+                                                </div>
+
+                                                <div class="tab-content" id="notificationItemsTabContent4">
+                                                      <div class="tab-pane fade show active py-2 ps-2" id="all-noti-tab1"
+                                                           role="tabpanel">
+                                                            <div data-simplebar style="max-height: 300px;" class="pe-2">
+                                                                  <div class="text-reset notification-item d-block dropdown-item">
+                                                                        <div class="d-flex">
+                                                                              <div class="flex-shrink-0 avatar-xs me-3">
+                                                                                    <span
+                                                                                          class="avatar-title bg-info-subtle text-info rounded-circle fs-16">
+                                                                                          <i class="bx bx-badge-check"></i>
+                                                                                    </span>
+                                                                              </div>
+                                                                              <div class="flex-grow-1">
+                                                                                    <h6 class="mt-0 mb-2 lh-base">Your
+                                                                                          <b>Elite</b> author Graphic Optimization
+                                                                                          <span class="text-secondary">reward</span>
+                                                                                          is ready!
+                                                                                    </h6>
+                                                                                    <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
+                                                                                          <span><i class="mdi mdi-clock-outline"></i> Just 30 sec
+                                                                                                ago</span>
+                                                                                    </p>
+                                                                              </div>
+                                                                              <div class="px-2 fs-16">
+                                                                                    <input class="form-check-input" type="checkbox">
+                                                                              </div>
+                                                                        </div>
+                                                                  </div>
+
+                                                                  <div class="text-reset notification-item d-block dropdown-item">
+                                                                        <div class="d-flex">
+                                                                              <img src="assets/images/users/avatar-2.jpg"
+                                                                                   class="me-3 rounded-circle avatar-xs" alt="user-pic">
+                                                                              <div class="flex-grow-1">
+                                                                                    <a href="#!">
+                                                                                          <h6 class="mt-0 mb-1 fs-13 fw-semibold"> Angela Bernier
+                                                                                          </h6>
+                                                                                    </a>
+                                                                                    <div class="fs-13 text-muted">
+                                                                                          <p class="mb-1">Answered to your comment on the cash
+                                                                                                flow forecast's graph ð.</p>
+                                                                                    </div>
+                                                                                    <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
+                                                                                          <span><i class="mdi mdi-clock-outline"></i> 48 min
+                                                                                                ago</span>
+                                                                                    </p>
+                                                                              </div>
+                                                                              <div class="px-2 fs-16">
+                                                                                    <input class="form-check-input" type="checkbox">
+                                                                              </div>
+                                                                        </div>
+                                                                  </div>
+
+                                                                  <div class="text-reset notification-item d-block dropdown-item">
+                                                                        <div class="d-flex">
+                                                                              <div class="flex-shrink-0 avatar-xs me-3">
+                                                                                    <span
+                                                                                          class="avatar-title bg-danger-subtle text-danger rounded-circle fs-16">
+                                                                                          <i class='bx bx-message-square-dots'></i>
+                                                                                    </span>
+                                                                              </div>
+                                                                              <div class="flex-grow-1">
+                                                                                    <h6 class="mt-0 mb-2 fs-13 lh-base">You have received <b
+                                                                                                class="text-success">20</b> new messages in the
+                                                                                          conversation</h6>
+                                                                                    <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
+                                                                                          <span><i class="mdi mdi-clock-outline"></i> 2 hrs
+                                                                                                ago</span>
+                                                                                    </p>
+                                                                              </div>
+                                                                              <div class="px-2 fs-16">
+                                                                                    <input class="form-check-input" type="checkbox">
+                                                                              </div>
+                                                                        </div>
+                                                                  </div>
+
+                                                                  <div class="text-reset notification-item d-block dropdown-item">
+                                                                        <div class="d-flex">
+                                                                              <img src="assets/images/users/avatar-8.jpg"
+                                                                                   class="me-3 rounded-circle avatar-xs" alt="user-pic">
+                                                                              <div class="flex-grow-1">
+                                                                                    <a href="#!">
+                                                                                          <h6 class="mt-0 mb-1 fs-13 fw-semibold"> Maureen Gibson
+                                                                                          </h6>
+                                                                                    </a>
+                                                                                    <div class="fs-13 text-muted">
+                                                                                          <p class="mb-1">We talked about a project on linkedin.
+                                                                                          </p>
+                                                                                    </div>
+                                                                                    <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
+                                                                                          <span><i class="mdi mdi-clock-outline"></i> 4 hrs
+                                                                                                ago</span>
+                                                                                    </p>
+                                                                              </div>
+                                                                              <div class="px-2 fs-16">
+                                                                                    <input class="form-check-input" type="checkbox">
+                                                                              </div>
+                                                                        </div>
+                                                                  </div>
+
+                                                                  <div class="my-3 text-center">
+                                                                        <button type="button"
+                                                                                class="btn btn-soft-success waves-effect waves-light">
+                                                                              View All Notifications <i
+                                                                                    class="ri-arrow-right-line align-middle"></i>
+                                                                        </button>
+                                                                  </div>
+                                                            </div>
+
+                                                      </div>
+
+                                                      <div class="tab-pane fade py-2 ps-2" id="messages-tab1" role="tabpanel"
+                                                           aria-labelledby="messages-tab">
+                                                            <div data-simplebar style="max-height: 300px;" class="pe-2">
+                                                                  <div class="text-reset notification-item d-block dropdown-item">
+                                                                        <div class="d-flex">
+                                                                              <img src="assets/images/users/avatar-3.jpg"
+                                                                                   class="me-3 rounded-circle avatar-xs" alt="user-pic">
+                                                                              <div class="flex-grow-1">
+                                                                                    <a href="#!">
+                                                                                          <h6 class="mt-0 mb-1 fs-13 fw-semibold"> James Lemire</h6>
+                                                                                    </a>
+                                                                                    <div class="fs-13 text-muted">
+                                                                                          <p class="mb-1">We talked about a project on linkedin.
+                                                                                          </p>
+                                                                                    </div>
+                                                                                    <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
+                                                                                          <span><i class="mdi mdi-clock-outline"></i> 30 min
+                                                                                                ago</span>
+                                                                                    </p>
+                                                                              </div>
+                                                                              <div class="px-2 fs-16">
+                                                                                    <input class="form-check-input" type="checkbox">
+                                                                              </div>
+                                                                        </div>
+                                                                  </div>
+
+                                                                  <div class="text-reset notification-item d-block dropdown-item">
+                                                                        <div class="d-flex">
+                                                                              <img src="assets/images/users/avatar-2.jpg"
+                                                                                   class="me-3 rounded-circle avatar-xs" alt="user-pic">
+                                                                              <div class="flex-grow-1">
+                                                                                    <a href="#!">
+                                                                                          <h6 class="mt-0 mb-1 fs-13 fw-semibold"> Angela Bernier
+                                                                                          </h6>
+                                                                                    </a>
+                                                                                    <div class="fs-13 text-muted">
+                                                                                          <p class="mb-1">Answered to your comment on the cash
+                                                                                                flow forecast's graph ð.</p>
+                                                                                    </div>
+                                                                                    <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
+                                                                                          <span><i class="mdi mdi-clock-outline"></i> 2 hrs
+                                                                                                ago</span>
+                                                                                    </p>
+                                                                              </div>
+                                                                              <div class="px-2 fs-16">
+                                                                                    <input class="form-check-input" type="checkbox">
+                                                                              </div>
+                                                                        </div>
+                                                                  </div>
+
+                                                                  <div class="text-reset notification-item d-block dropdown-item">
+                                                                        <div class="d-flex">
+                                                                              <img src="assets/images/users/avatar-6.jpg"
+                                                                                   class="me-3 rounded-circle avatar-xs" alt="user-pic">
+                                                                              <div class="flex-grow-1">
+                                                                                    <a href="#!">
+                                                                                          <h6 class="mt-0 mb-1 fs-13 fw-semibold"> Kenneth Brown
+                                                                                          </h6>
+                                                                                    </a>
+                                                                                    <div class="fs-13 text-muted">
+                                                                                          <p class="mb-1">Mentionned you in his comment on ð
+                                                                                                invoice #12501.</p>
+                                                                                    </div>
+                                                                                    <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
+                                                                                          <span><i class="mdi mdi-clock-outline"></i> 10 hrs
+                                                                                                ago</span>
+                                                                                    </p>
+                                                                              </div>
+                                                                              <div class="px-2 fs-16">
+                                                                                    <input class="form-check-input" type="checkbox">
+                                                                              </div>
+                                                                        </div>
+                                                                  </div>
+
+                                                                  <div class="text-reset notification-item d-block dropdown-item">
+                                                                        <div class="d-flex">
+                                                                              <img src="assets/images/users/avatar-8.jpg"
+                                                                                   class="me-3 rounded-circle avatar-xs" alt="user-pic">
+                                                                              <div class="flex-grow-1">
+                                                                                    <a href="#!">
+                                                                                          <h6 class="mt-0 mb-1 fs-13 fw-semibold"> Maureen Gibson
+                                                                                          </h6>
+                                                                                    </a>
+                                                                                    <div class="fs-13 text-muted">
+                                                                                          <p class="mb-1">We talked about a project on linkedin.
+                                                                                          </p>
+                                                                                    </div>
+                                                                                    <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
+                                                                                          <span><i class="mdi mdi-clock-outline"></i> 3 days
+                                                                                                ago</span>
+                                                                                    </p>
+                                                                              </div>
+                                                                              <div class="px-2 fs-16">
+                                                                                    <input class="form-check-input" type="checkbox">
+                                                                              </div>
+                                                                        </div>
+                                                                  </div>
+
+                                                                  <div class="my-3 text-center">
+                                                                        <button type="button"
+                                                                                class="btn btn-soft-success waves-effect waves-light">View
+                                                                              All Messages <i
+                                                                                    class="ri-arrow-right-line align-middle"></i></button>
+                                                                  </div>
+                                                            </div>
+                                                      </div>
+                                                      <div class="tab-pane fade p-4" id="alerts-tab1" role="tabpanel"
+                                                           aria-labelledby="alerts-tab">
+                                                            <div class="w-25 pt-3 mx-auto">
+                                                                  <img src="assets/images/svg/bell.svg" class="img-fluid"
+                                                                       alt="user-pic">
+                                                            </div>
+                                                            <div class="text-center pb-5 mt-2">
+                                                                  <h6 class="fs-18 fw-semibold lh-base">Hey! You have no any notifications
+                                                                  </h6>
+                                                            </div>
+                                                      </div>
+                                                </div>
+                                          </div>
                                     </div>
+                                    <!--end col-->
 
-                                    <div class="tab-content" id="notificationItemsTabContent4">
-                                        <div class="tab-pane fade show active py-2 ps-2" id="all-noti-tab1"
-                                            role="tabpanel">
-                                            <div data-simplebar style="max-height: 300px;" class="pe-2">
-                                                <div class="text-reset notification-item d-block dropdown-item">
-                                                    <div class="d-flex">
-                                                        <div class="flex-shrink-0 avatar-xs me-3">
-                                                            <span
-                                                                class="avatar-title bg-info-subtle text-info rounded-circle fs-16">
-                                                                <i class="bx bx-badge-check"></i>
-                                                            </span>
-                                                        </div>
-                                                        <div class="flex-grow-1">
-                                                            <h6 class="mt-0 mb-2 lh-base">Your
-                                                                <b>Elite</b> author Graphic Optimization
-                                                                <span class="text-secondary">reward</span>
-                                                                is ready!
-                                                            </h6>
-                                                            <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
-                                                                <span><i class="mdi mdi-clock-outline"></i> Just 30 sec
-                                                                    ago</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="px-2 fs-16">
-                                                            <input class="form-check-input" type="checkbox">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="text-reset notification-item d-block dropdown-item">
-                                                    <div class="d-flex">
-                                                        <img src="assets/images/users/avatar-2.jpg"
-                                                            class="me-3 rounded-circle avatar-xs" alt="user-pic">
-                                                        <div class="flex-grow-1">
-                                                            <a href="#!">
-                                                                <h6 class="mt-0 mb-1 fs-13 fw-semibold"> Angela Bernier
-                                                                </h6>
-                                                            </a>
-                                                            <div class="fs-13 text-muted">
-                                                                <p class="mb-1">Answered to your comment on the cash
-                                                                    flow forecast's graph ð.</p>
+                                    <div class="col-xxl-3 col-lg-5 col-md-6">
+                                          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0 d-inline-block position-relative w-100"
+                                               aria-labelledby="page-header-notifications-dropdown" style="z-index: 1;">
+                                                <div class="dropdown-head bg-success bg-pattern rounded-top">
+                                                      <div class="p-3">
+                                                            <div class="row align-items-center">
+                                                                  <div class="col">
+                                                                        <h6 class="m-0 fs-16 fw-semibold text-white"> Notifications </h6>
+                                                                  </div>
+                                                                  <div class="col-auto dropdown-tabs">
+                                                                        <span class="badge bg-light-subtle text-body fs-13"
+                                                                              data-key="t-view-all"> 4 New</span>
+                                                                  </div>
                                                             </div>
-                                                            <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
-                                                                <span><i class="mdi mdi-clock-outline"></i> 48 min
-                                                                    ago</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="px-2 fs-16">
-                                                            <input class="form-check-input" type="checkbox">
-                                                        </div>
-                                                    </div>
+                                                      </div>
+
+                                                      <div class="px-2 pt-2">
+                                                            <ul class="nav nav-tabs dropdown-tabs nav-tabs-custom"
+                                                                data-dropdown-tabs="true" id="notificationItemsTab2" role="tablist">
+                                                                  <li class="nav-item waves-effect waves-light">
+                                                                        <a class="nav-link active" data-bs-toggle="tab"
+                                                                           href="#all-noti-tab2" role="tab" aria-selected="true">
+                                                                              All (4)
+                                                                        </a>
+                                                                  </li>
+                                                                  <li class="nav-item waves-effect waves-light">
+                                                                        <a class="nav-link" data-bs-toggle="tab" href="#messages-tab2"
+                                                                           role="tab" aria-selected="false">
+                                                                              Messages
+                                                                        </a>
+                                                                  </li>
+                                                                  <li class="nav-item waves-effect waves-light">
+                                                                        <a class="nav-link" data-bs-toggle="tab" href="#alerts-tab2"
+                                                                           role="tab" aria-selected="false">
+                                                                              Alerts
+                                                                        </a>
+                                                                  </li>
+                                                            </ul>
+                                                      </div>
                                                 </div>
 
-                                                <div class="text-reset notification-item d-block dropdown-item">
-                                                    <div class="d-flex">
-                                                        <div class="flex-shrink-0 avatar-xs me-3">
-                                                            <span
-                                                                class="avatar-title bg-danger-subtle text-danger rounded-circle fs-16">
-                                                                <i class='bx bx-message-square-dots'></i>
-                                                            </span>
-                                                        </div>
-                                                        <div class="flex-grow-1">
-                                                            <h6 class="mt-0 mb-2 fs-13 lh-base">You have received <b
-                                                                    class="text-success">20</b> new messages in the
-                                                                conversation</h6>
-                                                            <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
-                                                                <span><i class="mdi mdi-clock-outline"></i> 2 hrs
-                                                                    ago</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="px-2 fs-16">
-                                                            <input class="form-check-input" type="checkbox">
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                <div class="tab-content" id="notificationItemsTabContent1">
+                                                      <div class="tab-pane fade show active py-2 ps-2" id="all-noti-tab2"
+                                                           role="tabpanel">
+                                                            <div data-simplebar style="max-height: 300px;" class="pe-2">
+                                                                  <div class="text-reset notification-item d-block dropdown-item">
+                                                                        <div class="d-flex">
+                                                                              <div class="flex-shrink-0 avatar-xs me-3">
+                                                                                    <span
+                                                                                          class="avatar-title bg-info-subtle text-info rounded-circle fs-16">
+                                                                                          <i class="bx bx-badge-check"></i>
+                                                                                    </span>
+                                                                              </div>
+                                                                              <div class="flex-grow-1">
+                                                                                    <h6 class="mt-0 mb-2 lh-base">Your
+                                                                                          <b>Elite</b> author Graphic Optimization
+                                                                                          <span class="text-secondary">reward</span>
+                                                                                          is ready!
+                                                                                    </h6>
+                                                                                    <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
+                                                                                          <span><i class="mdi mdi-clock-outline"></i> Just 30 sec
+                                                                                                ago</span>
+                                                                                    </p>
+                                                                              </div>
+                                                                              <div class="px-2 fs-16">
+                                                                                    <input class="form-check-input" type="checkbox">
+                                                                              </div>
+                                                                        </div>
+                                                                  </div>
 
-                                                <div class="text-reset notification-item d-block dropdown-item">
-                                                    <div class="d-flex">
-                                                        <img src="assets/images/users/avatar-8.jpg"
-                                                            class="me-3 rounded-circle avatar-xs" alt="user-pic">
-                                                        <div class="flex-grow-1">
-                                                            <a href="#!">
-                                                                <h6 class="mt-0 mb-1 fs-13 fw-semibold"> Maureen Gibson
-                                                                </h6>
-                                                            </a>
-                                                            <div class="fs-13 text-muted">
-                                                                <p class="mb-1">We talked about a project on linkedin.
-                                                                </p>
+                                                                  <div class="text-reset notification-item d-block dropdown-item">
+                                                                        <div class="d-flex">
+                                                                              <img src="assets/images/users/avatar-2.jpg"
+                                                                                   class="me-3 rounded-circle avatar-xs" alt="user-pic">
+                                                                              <div class="flex-grow-1">
+                                                                                    <a href="#!">
+                                                                                          <h6 class="mt-0 mb-1 fs-13 fw-semibold"> Angela Bernier
+                                                                                          </h6>
+                                                                                    </a>
+                                                                                    <div class="fs-13 text-muted">
+                                                                                          <p class="mb-1">Answered to your comment on the cash
+                                                                                                flow forecast's graph ð.</p>
+                                                                                    </div>
+                                                                                    <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
+                                                                                          <span><i class="mdi mdi-clock-outline"></i> 48 min
+                                                                                                ago</span>
+                                                                                    </p>
+                                                                              </div>
+                                                                              <div class="px-2 fs-16">
+                                                                                    <input class="form-check-input" type="checkbox">
+                                                                              </div>
+                                                                        </div>
+                                                                  </div>
+
+                                                                  <div class="text-reset notification-item d-block dropdown-item">
+                                                                        <div class="d-flex">
+                                                                              <div class="flex-shrink-0 avatar-xs me-3">
+                                                                                    <span
+                                                                                          class="avatar-title bg-danger-subtle text-danger rounded-circle fs-16">
+                                                                                          <i class='bx bx-message-square-dots'></i>
+                                                                                    </span>
+                                                                              </div>
+                                                                              <div class="flex-grow-1">
+                                                                                    <h6 class="mt-0 mb-2 fs-13 lh-base">You have received <b
+                                                                                                class="text-success">20</b> new messages in the
+                                                                                          conversation</h6>
+                                                                                    <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
+                                                                                          <span><i class="mdi mdi-clock-outline"></i> 2 hrs
+                                                                                                ago</span>
+                                                                                    </p>
+                                                                              </div>
+                                                                              <div class="px-2 fs-16">
+                                                                                    <input class="form-check-input" type="checkbox">
+                                                                              </div>
+                                                                        </div>
+                                                                  </div>
+
+                                                                  <div class="text-reset notification-item d-block dropdown-item">
+                                                                        <div class="d-flex">
+                                                                              <img src="assets/images/users/avatar-8.jpg"
+                                                                                   class="me-3 rounded-circle avatar-xs" alt="user-pic">
+                                                                              <div class="flex-grow-1">
+                                                                                    <a href="#!">
+                                                                                          <h6 class="mt-0 mb-1 fs-13 fw-semibold"> Maureen Gibson
+                                                                                          </h6>
+                                                                                    </a>
+                                                                                    <div class="fs-13 text-muted">
+                                                                                          <p class="mb-1">We talked about a project on linkedin.
+                                                                                          </p>
+                                                                                    </div>
+                                                                                    <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
+                                                                                          <span><i class="mdi mdi-clock-outline"></i> 4 hrs
+                                                                                                ago</span>
+                                                                                    </p>
+                                                                              </div>
+                                                                              <div class="px-2 fs-16">
+                                                                                    <input class="form-check-input" type="checkbox">
+                                                                              </div>
+                                                                        </div>
+                                                                  </div>
+
+                                                                  <div class="my-3 text-center">
+                                                                        <button type="button"
+                                                                                class="btn btn-soft-success waves-effect waves-light">View
+                                                                              All Notifications <i
+                                                                                    class="ri-arrow-right-line align-middle"></i></button>
+                                                                  </div>
                                                             </div>
-                                                            <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
-                                                                <span><i class="mdi mdi-clock-outline"></i> 4 hrs
-                                                                    ago</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="px-2 fs-16">
-                                                            <input class="form-check-input" type="checkbox">
-                                                        </div>
-                                                    </div>
-                                                </div>
 
-                                                <div class="my-3 text-center">
-                                                    <button type="button"
-                                                        class="btn btn-soft-success waves-effect waves-light">
-                                                        View All Notifications <i
-                                                            class="ri-arrow-right-line align-middle"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
+                                                      </div>
 
-                                        </div>
+                                                      <div class="tab-pane fade py-2 ps-2" id="messages-tab2" role="tabpanel"
+                                                           aria-labelledby="messages-tab">
+                                                            <div data-simplebar style="max-height: 300px;" class="pe-2">
+                                                                  <div class="text-reset notification-item d-block dropdown-item">
+                                                                        <div class="d-flex">
+                                                                              <img src="assets/images/users/avatar-3.jpg"
+                                                                                   class="me-3 rounded-circle avatar-xs" alt="user-pic">
+                                                                              <div class="flex-grow-1">
+                                                                                    <a href="#!">
+                                                                                          <h6 class="mt-0 mb-1 fs-13 fw-semibold"> James Lemire</h6>
+                                                                                    </a>
+                                                                                    <div class="fs-13 text-muted">
+                                                                                          <p class="mb-1">We talked about a project on linkedin.
+                                                                                          </p>
+                                                                                    </div>
+                                                                                    <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
+                                                                                          <span><i class="mdi mdi-clock-outline"></i> 30 min
+                                                                                                ago</span>
+                                                                                    </p>
+                                                                              </div>
+                                                                              <div class="px-2 fs-16">
+                                                                                    <input class="form-check-input" type="checkbox">
+                                                                              </div>
+                                                                        </div>
+                                                                  </div>
 
-                                        <div class="tab-pane fade py-2 ps-2" id="messages-tab1" role="tabpanel"
-                                            aria-labelledby="messages-tab">
-                                            <div data-simplebar style="max-height: 300px;" class="pe-2">
-                                                <div class="text-reset notification-item d-block dropdown-item">
-                                                    <div class="d-flex">
-                                                        <img src="assets/images/users/avatar-3.jpg"
-                                                            class="me-3 rounded-circle avatar-xs" alt="user-pic">
-                                                        <div class="flex-grow-1">
-                                                            <a href="#!">
-                                                                <h6 class="mt-0 mb-1 fs-13 fw-semibold"> James Lemire</h6>
-                                                            </a>
-                                                            <div class="fs-13 text-muted">
-                                                                <p class="mb-1">We talked about a project on linkedin.
-                                                                </p>
+                                                                  <div class="text-reset notification-item d-block dropdown-item">
+                                                                        <div class="d-flex">
+                                                                              <img src="assets/images/users/avatar-2.jpg"
+                                                                                   class="me-3 rounded-circle avatar-xs" alt="user-pic">
+                                                                              <div class="flex-grow-1">
+                                                                                    <a href="#!">
+                                                                                          <h6 class="mt-0 mb-1 fs-13 fw-semibold">Angela Bernier
+                                                                                          </h6>
+                                                                                    </a>
+                                                                                    <div class="fs-13 text-muted">
+                                                                                          <p class="mb-1">Answered to your comment on the cash
+                                                                                                flow forecast's graph ð.</p>
+                                                                                    </div>
+                                                                                    <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
+                                                                                          <span><i class="mdi mdi-clock-outline"></i>2 hrs
+                                                                                                ago</span>
+                                                                                    </p>
+                                                                              </div>
+                                                                              <div class="px-2 fs-16">
+                                                                                    <input class="form-check-input" type="checkbox">
+                                                                              </div>
+                                                                        </div>
+                                                                  </div>
+
+                                                                  <div class="text-reset notification-item d-block dropdown-item">
+                                                                        <div class="d-flex">
+                                                                              <img src="assets/images/users/avatar-6.jpg"
+                                                                                   class="me-3 rounded-circle avatar-xs" alt="user-pic">
+                                                                              <div class="flex-grow-1">
+                                                                                    <a href="#!">
+                                                                                          <h6 class="mt-0 mb-1 fs-13 fw-semibold">Kenneth Brown</h6>
+                                                                                    </a>
+                                                                                    <div class="fs-13 text-muted">
+                                                                                          <p class="mb-1">Mentionned you in his comment on ð
+                                                                                                invoice #12501.</p>
+                                                                                    </div>
+                                                                                    <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
+                                                                                          <span><i class="mdi mdi-clock-outline"></i> 10 hrs
+                                                                                                ago</span>
+                                                                                    </p>
+                                                                              </div>
+                                                                              <div class="px-2 fs-16">
+                                                                                    <input class="form-check-input" type="checkbox">
+                                                                              </div>
+                                                                        </div>
+                                                                  </div>
+
+                                                                  <div class="text-reset notification-item d-block dropdown-item">
+                                                                        <div class="d-flex">
+                                                                              <img src="assets/images/users/avatar-8.jpg"
+                                                                                   class="me-3 rounded-circle avatar-xs" alt="user-pic">
+                                                                              <div class="flex-grow-1">
+                                                                                    <a href="#!">
+                                                                                          <h6 class="mt-0 mb-1 fs-13 fw-semibold"> Maureen Gibson
+                                                                                          </h6>
+                                                                                    </a>
+                                                                                    <div class="fs-13 text-muted">
+                                                                                          <p class="mb-1">We talked about a project on linkedin.
+                                                                                          </p>
+                                                                                    </div>
+                                                                                    <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
+                                                                                          <span><i class="mdi mdi-clock-outline"></i>3 days
+                                                                                                ago</span>
+                                                                                    </p>
+                                                                              </div>
+                                                                              <div class="px-2 fs-16">
+                                                                                    <input class="form-check-input" type="checkbox">
+                                                                              </div>
+                                                                        </div>
+                                                                  </div>
+
+                                                                  <div class="my-3 text-center">
+                                                                        <button type="button"
+                                                                                class="btn btn-soft-success waves-effect waves-light">View All
+                                                                              Messages <i class="ri-arrow-right-line align-middle"></i></button>
+                                                                  </div>
                                                             </div>
-                                                            <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
-                                                                <span><i class="mdi mdi-clock-outline"></i> 30 min
-                                                                    ago</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="px-2 fs-16">
-                                                            <input class="form-check-input" type="checkbox">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="text-reset notification-item d-block dropdown-item">
-                                                    <div class="d-flex">
-                                                        <img src="assets/images/users/avatar-2.jpg"
-                                                            class="me-3 rounded-circle avatar-xs" alt="user-pic">
-                                                        <div class="flex-grow-1">
-                                                            <a href="#!">
-                                                                <h6 class="mt-0 mb-1 fs-13 fw-semibold"> Angela Bernier
-                                                                </h6>
-                                                            </a>
-                                                            <div class="fs-13 text-muted">
-                                                                <p class="mb-1">Answered to your comment on the cash
-                                                                    flow forecast's graph ð.</p>
+                                                      </div>
+                                                      <div class="tab-pane fade p-4" id="alerts-tab2" role="tabpanel"
+                                                           aria-labelledby="alerts-tab">
+                                                            <div class="w-25 pt-3 mx-auto">
+                                                                  <img src="assets/images/svg/bell.svg" class="img-fluid"
+                                                                       alt="user-pic">
                                                             </div>
-                                                            <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
-                                                                <span><i class="mdi mdi-clock-outline"></i> 2 hrs
-                                                                    ago</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="px-2 fs-16">
-                                                            <input class="form-check-input" type="checkbox">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="text-reset notification-item d-block dropdown-item">
-                                                    <div class="d-flex">
-                                                        <img src="assets/images/users/avatar-6.jpg"
-                                                            class="me-3 rounded-circle avatar-xs" alt="user-pic">
-                                                        <div class="flex-grow-1">
-                                                            <a href="#!">
-                                                                <h6 class="mt-0 mb-1 fs-13 fw-semibold"> Kenneth Brown
-                                                                </h6>
-                                                            </a>
-                                                            <div class="fs-13 text-muted">
-                                                                <p class="mb-1">Mentionned you in his comment on ð
-                                                                    invoice #12501.</p>
+                                                            <div class="text-center pb-5 mt-2">
+                                                                  <h6 class="fs-18 fw-semibold lh-base">Hey! You have no any notifications
+                                                                  </h6>
                                                             </div>
-                                                            <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
-                                                                <span><i class="mdi mdi-clock-outline"></i> 10 hrs
-                                                                    ago</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="px-2 fs-16">
-                                                            <input class="form-check-input" type="checkbox">
-                                                        </div>
-                                                    </div>
+                                                      </div>
                                                 </div>
-
-                                                <div class="text-reset notification-item d-block dropdown-item">
-                                                    <div class="d-flex">
-                                                        <img src="assets/images/users/avatar-8.jpg"
-                                                            class="me-3 rounded-circle avatar-xs" alt="user-pic">
-                                                        <div class="flex-grow-1">
-                                                            <a href="#!">
-                                                                <h6 class="mt-0 mb-1 fs-13 fw-semibold"> Maureen Gibson
-                                                                </h6>
-                                                            </a>
-                                                            <div class="fs-13 text-muted">
-                                                                <p class="mb-1">We talked about a project on linkedin.
-                                                                </p>
-                                                            </div>
-                                                            <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
-                                                                <span><i class="mdi mdi-clock-outline"></i> 3 days
-                                                                    ago</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="px-2 fs-16">
-                                                            <input class="form-check-input" type="checkbox">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="my-3 text-center">
-                                                    <button type="button"
-                                                        class="btn btn-soft-success waves-effect waves-light">View
-                                                        All Messages <i
-                                                            class="ri-arrow-right-line align-middle"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane fade p-4" id="alerts-tab1" role="tabpanel"
-                                            aria-labelledby="alerts-tab">
-                                            <div class="w-25 pt-3 mx-auto">
-                                                <img src="assets/images/svg/bell.svg" class="img-fluid"
-                                                    alt="user-pic">
-                                            </div>
-                                            <div class="text-center pb-5 mt-2">
-                                                <h6 class="fs-18 fw-semibold lh-base">Hey! You have no any notifications
-                                                </h6>
-                                            </div>
-                                        </div>
+                                          </div>
                                     </div>
-                                </div>
-                            </div>
-                            <!--end col-->
+                                    <!--end col-->
 
-                            <div class="col-xxl-3 col-lg-5 col-md-6">
-                                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0 d-inline-block position-relative w-100"
-                                    aria-labelledby="page-header-notifications-dropdown" style="z-index: 1;">
-                                    <div class="dropdown-head bg-success bg-pattern rounded-top">
-                                        <div class="p-3">
-                                            <div class="row align-items-center">
-                                                <div class="col">
-                                                    <h6 class="m-0 fs-16 fw-semibold text-white"> Notifications </h6>
-                                                </div>
-                                                <div class="col-auto dropdown-tabs">
-                                                    <span class="badge bg-light-subtle text-body fs-13"
-                                                        data-key="t-view-all"> 4 New</span>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div class="col-xxl-3 col-lg-5 col-md-6">
+                                          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0 d-inline-block position-relative w-100"
+                                               aria-labelledby="page-header-notifications-dropdown" style="z-index: 1;">
+                                                <div class="dropdown-head bg-secondary bg-pattern rounded-top">
+                                                      <div class="p-3">
+                                                            <div class="row align-items-center">
+                                                                  <div class="col">
+                                                                        <h6 class="m-0 fs-16 fw-semibold text-white"> Notifications </h6>
+                                                                  </div>
+                                                                  <div class="col-auto dropdown-tabs">
+                                                                        <span class="badge bg-light-subtle text-body fs-13"
+                                                                              data-key="t-view-all"> 4 New</span>
+                                                                  </div>
+                                                            </div>
+                                                      </div>
 
-                                        <div class="px-2 pt-2">
-                                            <ul class="nav nav-tabs dropdown-tabs nav-tabs-custom"
-                                                data-dropdown-tabs="true" id="notificationItemsTab2" role="tablist">
-                                                <li class="nav-item waves-effect waves-light">
-                                                    <a class="nav-link active" data-bs-toggle="tab"
-                                                        href="#all-noti-tab2" role="tab" aria-selected="true">
-                                                        All (4)
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item waves-effect waves-light">
-                                                    <a class="nav-link" data-bs-toggle="tab" href="#messages-tab2"
-                                                        role="tab" aria-selected="false">
-                                                        Messages
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item waves-effect waves-light">
-                                                    <a class="nav-link" data-bs-toggle="tab" href="#alerts-tab2"
-                                                        role="tab" aria-selected="false">
-                                                        Alerts
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                                      <div class="px-2 pt-2">
+                                                            <ul class="nav nav-tabs dropdown-tabs nav-tabs-custom"
+                                                                data-dropdown-tabs="true" id="notificationItemsTab3" role="tablist">
+                                                                  <li class="nav-item waves-effect waves-light">
+                                                                        <a class="nav-link active" data-bs-toggle="tab"
+                                                                           href="#all-noti-tab3" role="tab" aria-selected="true">
+                                                                              All (4)
+                                                                        </a>
+                                                                  </li>
+                                                                  <li class="nav-item waves-effect waves-light">
+                                                                        <a class="nav-link" data-bs-toggle="tab" href="#messages-tab3"
+                                                                           role="tab" aria-selected="false">
+                                                                              Messages
+                                                                        </a>
+                                                                  </li>
+                                                                  <li class="nav-item waves-effect waves-light">
+                                                                        <a class="nav-link" data-bs-toggle="tab" href="#alerts-tab3"
+                                                                           role="tab" aria-selected="false">
+                                                                              Alerts
+                                                                        </a>
+                                                                  </li>
+                                                            </ul>
+                                                      </div>
+                                                </div>
+
+                                                <div class="tab-content" id="notificationItemsTabContent3">
+                                                      <div class="tab-pane fade show active py-2 ps-2" id="all-noti-tab3"
+                                                           role="tabpanel">
+                                                            <div data-simplebar style="max-height: 300px;" class="pe-2">
+                                                                  <div class="text-reset notification-item d-block dropdown-item">
+                                                                        <div class="d-flex">
+                                                                              <div class="flex-shrink-0 avatar-xs me-3">
+                                                                                    <span
+                                                                                          class="avatar-title bg-info-subtle text-info rounded-circle fs-16">
+                                                                                          <i class="bx bx-badge-check"></i>
+                                                                                    </span>
+                                                                              </div>
+                                                                              <div class="flex-grow-1">
+                                                                                    <h6 class="mt-0 mb-2 lh-base">Your
+                                                                                          <b>Elite</b> author Graphic Optimization
+                                                                                          <span class="text-secondary">reward</span>
+                                                                                          is ready!
+                                                                                    </h6>
+                                                                                    <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
+                                                                                          <span><i class="mdi mdi-clock-outline"></i>
+                                                                                                Just 30 sec ago</span>
+                                                                                    </p>
+                                                                              </div>
+                                                                              <div class="px-2 fs-16">
+                                                                                    <input class="form-check-input" type="checkbox">
+                                                                              </div>
+                                                                        </div>
+                                                                  </div>
+
+                                                                  <div class="text-reset notification-item d-block dropdown-item">
+                                                                        <div class="d-flex">
+                                                                              <img src="assets/images/users/avatar-2.jpg"
+                                                                                   class="me-3 rounded-circle avatar-xs" alt="user-pic">
+                                                                              <div class="flex-grow-1">
+                                                                                    <a href="#!">
+                                                                                          <h6 class="mt-0 mb-1 fs-13 fw-semibold">Angela Bernier
+                                                                                          </h6>
+                                                                                    </a>
+                                                                                    <div class="fs-13 text-muted">
+                                                                                          <p class="mb-1">Answered to your comment on the cash
+                                                                                                flow forecast's graph ð.</p>
+                                                                                    </div>
+                                                                                    <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
+                                                                                          <span><i class="mdi mdi-clock-outline"></i>48 min
+                                                                                                ago</span>
+                                                                                    </p>
+                                                                              </div>
+                                                                              <div class="px-2 fs-16">
+                                                                                    <input class="form-check-input" type="checkbox">
+                                                                              </div>
+                                                                        </div>
+                                                                  </div>
+
+                                                                  <div class="text-reset notification-item d-block dropdown-item">
+                                                                        <div class="d-flex">
+                                                                              <div class="flex-shrink-0 avatar-xs me-3">
+                                                                                    <span
+                                                                                          class="avatar-title bg-danger-subtle text-danger rounded-circle fs-16">
+                                                                                          <i class='bx bx-message-square-dots'></i>
+                                                                                    </span>
+                                                                              </div>
+                                                                              <div class="flex-grow-1">
+                                                                                    <h6 class="mt-0 mb-2 fs-13 lh-base">You have received <b
+                                                                                                class="text-success">20</b> new messages in the
+                                                                                          conversation</h6>
+                                                                                    <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
+                                                                                          <span><i class="mdi mdi-clock-outline"></i> 2 hrs
+                                                                                                ago</span>
+                                                                                    </p>
+                                                                              </div>
+                                                                              <div class="px-2 fs-16">
+                                                                                    <input class="form-check-input" type="checkbox">
+                                                                              </div>
+                                                                        </div>
+                                                                  </div>
+
+                                                                  <div class="text-reset notification-item d-block dropdown-item">
+                                                                        <div class="d-flex">
+                                                                              <img src="assets/images/users/avatar-8.jpg"
+                                                                                   class="me-3 rounded-circle avatar-xs" alt="user-pic">
+                                                                              <div class="flex-grow-1">
+                                                                                    <a href="#!">
+                                                                                          <h6 class="mt-0 mb-1 fs-13 fw-semibold">Maureen Gibson
+                                                                                          </h6>
+                                                                                    </a>
+                                                                                    <div class="fs-13 text-muted">
+                                                                                          <p class="mb-1">We talked about a project on linkedin.
+                                                                                          </p>
+                                                                                    </div>
+                                                                                    <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
+                                                                                          <span><i class="mdi mdi-clock-outline"></i> 4 hrs
+                                                                                                ago</span>
+                                                                                    </p>
+                                                                              </div>
+                                                                              <div class="px-2 fs-16">
+                                                                                    <input class="form-check-input" type="checkbox">
+                                                                              </div>
+                                                                        </div>
+                                                                  </div>
+
+                                                                  <div class="my-3 text-center">
+                                                                        <button type="button"
+                                                                                class="btn btn-soft-success waves-effect waves-light">View All
+                                                                              Notifications <i
+                                                                                    class="ri-arrow-right-line align-middle"></i></button>
+                                                                  </div>
+                                                            </div>
+
+                                                      </div>
+
+                                                      <div class="tab-pane fade py-2 ps-2" id="messages-tab3" role="tabpanel"
+                                                           aria-labelledby="messages-tab">
+                                                            <div data-simplebar style="max-height: 300px;" class="pe-2">
+                                                                  <div class="text-reset notification-item d-block dropdown-item">
+                                                                        <div class="d-flex">
+                                                                              <img src="assets/images/users/avatar-3.jpg"
+                                                                                   class="me-3 rounded-circle avatar-xs" alt="user-pic">
+                                                                              <div class="flex-grow-1">
+                                                                                    <a href="#!">
+                                                                                          <h6 class="mt-0 mb-1 fs-13 fw-semibold">James Lemire</h6>
+                                                                                    </a>
+                                                                                    <div class="fs-13 text-muted">
+                                                                                          <p class="mb-1">We talked about a project on linkedin.
+                                                                                          </p>
+                                                                                    </div>
+                                                                                    <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
+                                                                                          <span><i class="mdi mdi-clock-outline"></i> 30 min
+                                                                                                ago</span>
+                                                                                    </p>
+                                                                              </div>
+                                                                              <div class="px-2 fs-16">
+                                                                                    <input class="form-check-input" type="checkbox">
+                                                                              </div>
+                                                                        </div>
+                                                                  </div>
+
+                                                                  <div class="text-reset notification-item d-block dropdown-item">
+                                                                        <div class="d-flex">
+                                                                              <img src="assets/images/users/avatar-2.jpg"
+                                                                                   class="me-3 rounded-circle avatar-xs" alt="user-pic">
+                                                                              <div class="flex-grow-1">
+                                                                                    <a href="#!">
+                                                                                          <h6 class="mt-0 mb-1 fs-13 fw-semibold">Angela Bernier
+                                                                                          </h6>
+                                                                                    </a>
+                                                                                    <div class="fs-13 text-muted">
+                                                                                          <p class="mb-1">Answered to your comment on the cash
+                                                                                                flow forecast's graph ð.</p>
+                                                                                    </div>
+                                                                                    <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
+                                                                                          <span><i class="mdi mdi-clock-outline"></i> 2 hrs
+                                                                                                ago</span>
+                                                                                    </p>
+                                                                              </div>
+                                                                              <div class="px-2 fs-16">
+                                                                                    <input class="form-check-input" type="checkbox">
+                                                                              </div>
+                                                                        </div>
+                                                                  </div>
+
+                                                                  <div class="text-reset notification-item d-block dropdown-item">
+                                                                        <div class="d-flex">
+                                                                              <img src="assets/images/users/avatar-6.jpg"
+                                                                                   class="me-3 rounded-circle avatar-xs" alt="user-pic">
+                                                                              <div class="flex-grow-1">
+                                                                                    <a href="#!">
+                                                                                          <h6 class="mt-0 mb-1 fs-13 fw-semibold">Kenneth Brown</h6>
+                                                                                    </a>
+                                                                                    <div class="fs-13 text-muted">
+                                                                                          <p class="mb-1">Mentionned you in his comment on ð
+                                                                                                invoice #12501.</p>
+                                                                                    </div>
+                                                                                    <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
+                                                                                          <span><i class="mdi mdi-clock-outline"></i> 10 hrs
+                                                                                                ago</span>
+                                                                                    </p>
+                                                                              </div>
+                                                                              <div class="px-2 fs-16">
+                                                                                    <input class="form-check-input" type="checkbox">
+                                                                              </div>
+                                                                        </div>
+                                                                  </div>
+
+                                                                  <div class="text-reset notification-item d-block dropdown-item">
+                                                                        <div class="d-flex">
+                                                                              <img src="assets/images/users/avatar-8.jpg"
+                                                                                   class="me-3 rounded-circle avatar-xs" alt="user-pic">
+                                                                              <div class="flex-grow-1">
+                                                                                    <a href="#!">
+                                                                                          <h6 class="mt-0 mb-1 fs-13 fw-semibold"> Maureen Gibson
+                                                                                          </h6>
+                                                                                    </a>
+                                                                                    <div class="fs-13 text-muted">
+                                                                                          <p class="mb-1">We talked about a project on linkedin.
+                                                                                          </p>
+                                                                                    </div>
+                                                                                    <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
+                                                                                          <span><i class="mdi mdi-clock-outline"></i> 3 days
+                                                                                                ago</span>
+                                                                                    </p>
+                                                                              </div>
+                                                                              <div class="px-2 fs-16">
+                                                                                    <input class="form-check-input" type="checkbox">
+                                                                              </div>
+                                                                        </div>
+                                                                  </div>
+
+                                                                  <div class="my-3 text-center">
+                                                                        <button type="button"
+                                                                                class="btn btn-soft-success waves-effect waves-light">View All
+                                                                              Messages <i class="ri-arrow-right-line align-middle"></i></button>
+                                                                  </div>
+                                                            </div>
+                                                      </div>
+                                                      <div class="tab-pane fade p-4" id="alerts-tab3" role="tabpanel"
+                                                           aria-labelledby="alerts-tab">
+                                                            <div class="w-25 pt-3 mx-auto">
+                                                                  <img src="assets/images/svg/bell.svg" class="img-fluid"
+                                                                       alt="user-pic">
+                                                            </div>
+                                                            <div class="text-center pb-5 mt-2">
+                                                                  <h6 class="fs-18 fw-semibold lh-base">Hey! You have no any notifications
+                                                                  </h6>
+                                                            </div>
+                                                      </div>
+                                                </div>
+                                          </div>
                                     </div>
-
-                                    <div class="tab-content" id="notificationItemsTabContent1">
-                                        <div class="tab-pane fade show active py-2 ps-2" id="all-noti-tab2"
-                                            role="tabpanel">
-                                            <div data-simplebar style="max-height: 300px;" class="pe-2">
-                                                <div class="text-reset notification-item d-block dropdown-item">
-                                                    <div class="d-flex">
-                                                        <div class="flex-shrink-0 avatar-xs me-3">
-                                                            <span
-                                                                class="avatar-title bg-info-subtle text-info rounded-circle fs-16">
-                                                                <i class="bx bx-badge-check"></i>
-                                                            </span>
-                                                        </div>
-                                                        <div class="flex-grow-1">
-                                                            <h6 class="mt-0 mb-2 lh-base">Your
-                                                                <b>Elite</b> author Graphic Optimization
-                                                                <span class="text-secondary">reward</span>
-                                                                is ready!
-                                                            </h6>
-                                                            <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
-                                                                <span><i class="mdi mdi-clock-outline"></i> Just 30 sec
-                                                                    ago</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="px-2 fs-16">
-                                                            <input class="form-check-input" type="checkbox">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="text-reset notification-item d-block dropdown-item">
-                                                    <div class="d-flex">
-                                                        <img src="assets/images/users/avatar-2.jpg"
-                                                            class="me-3 rounded-circle avatar-xs" alt="user-pic">
-                                                        <div class="flex-grow-1">
-                                                            <a href="#!">
-                                                                <h6 class="mt-0 mb-1 fs-13 fw-semibold"> Angela Bernier
-                                                                </h6>
-                                                            </a>
-                                                            <div class="fs-13 text-muted">
-                                                                <p class="mb-1">Answered to your comment on the cash
-                                                                    flow forecast's graph ð.</p>
-                                                            </div>
-                                                            <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
-                                                                <span><i class="mdi mdi-clock-outline"></i> 48 min
-                                                                    ago</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="px-2 fs-16">
-                                                            <input class="form-check-input" type="checkbox">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="text-reset notification-item d-block dropdown-item">
-                                                    <div class="d-flex">
-                                                        <div class="flex-shrink-0 avatar-xs me-3">
-                                                            <span
-                                                                class="avatar-title bg-danger-subtle text-danger rounded-circle fs-16">
-                                                                <i class='bx bx-message-square-dots'></i>
-                                                            </span>
-                                                        </div>
-                                                        <div class="flex-grow-1">
-                                                            <h6 class="mt-0 mb-2 fs-13 lh-base">You have received <b
-                                                                    class="text-success">20</b> new messages in the
-                                                                conversation</h6>
-                                                            <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
-                                                                <span><i class="mdi mdi-clock-outline"></i> 2 hrs
-                                                                    ago</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="px-2 fs-16">
-                                                            <input class="form-check-input" type="checkbox">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="text-reset notification-item d-block dropdown-item">
-                                                    <div class="d-flex">
-                                                        <img src="assets/images/users/avatar-8.jpg"
-                                                            class="me-3 rounded-circle avatar-xs" alt="user-pic">
-                                                        <div class="flex-grow-1">
-                                                            <a href="#!">
-                                                                <h6 class="mt-0 mb-1 fs-13 fw-semibold"> Maureen Gibson
-                                                                </h6>
-                                                            </a>
-                                                            <div class="fs-13 text-muted">
-                                                                <p class="mb-1">We talked about a project on linkedin.
-                                                                </p>
-                                                            </div>
-                                                            <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
-                                                                <span><i class="mdi mdi-clock-outline"></i> 4 hrs
-                                                                    ago</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="px-2 fs-16">
-                                                            <input class="form-check-input" type="checkbox">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="my-3 text-center">
-                                                    <button type="button"
-                                                        class="btn btn-soft-success waves-effect waves-light">View
-                                                        All Notifications <i
-                                                            class="ri-arrow-right-line align-middle"></i></button>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="tab-pane fade py-2 ps-2" id="messages-tab2" role="tabpanel"
-                                            aria-labelledby="messages-tab">
-                                            <div data-simplebar style="max-height: 300px;" class="pe-2">
-                                                <div class="text-reset notification-item d-block dropdown-item">
-                                                    <div class="d-flex">
-                                                        <img src="assets/images/users/avatar-3.jpg"
-                                                            class="me-3 rounded-circle avatar-xs" alt="user-pic">
-                                                        <div class="flex-grow-1">
-                                                            <a href="#!">
-                                                                <h6 class="mt-0 mb-1 fs-13 fw-semibold"> James Lemire</h6>
-                                                            </a>
-                                                            <div class="fs-13 text-muted">
-                                                                <p class="mb-1">We talked about a project on linkedin.
-                                                                </p>
-                                                            </div>
-                                                            <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
-                                                                <span><i class="mdi mdi-clock-outline"></i> 30 min
-                                                                    ago</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="px-2 fs-16">
-                                                            <input class="form-check-input" type="checkbox">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="text-reset notification-item d-block dropdown-item">
-                                                    <div class="d-flex">
-                                                        <img src="assets/images/users/avatar-2.jpg"
-                                                            class="me-3 rounded-circle avatar-xs" alt="user-pic">
-                                                        <div class="flex-grow-1">
-                                                            <a href="#!">
-                                                                <h6 class="mt-0 mb-1 fs-13 fw-semibold">Angela Bernier
-                                                                </h6>
-                                                            </a>
-                                                            <div class="fs-13 text-muted">
-                                                                <p class="mb-1">Answered to your comment on the cash
-                                                                    flow forecast's graph ð.</p>
-                                                            </div>
-                                                            <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
-                                                                <span><i class="mdi mdi-clock-outline"></i>2 hrs
-                                                                    ago</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="px-2 fs-16">
-                                                            <input class="form-check-input" type="checkbox">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="text-reset notification-item d-block dropdown-item">
-                                                    <div class="d-flex">
-                                                        <img src="assets/images/users/avatar-6.jpg"
-                                                            class="me-3 rounded-circle avatar-xs" alt="user-pic">
-                                                        <div class="flex-grow-1">
-                                                            <a href="#!">
-                                                                <h6 class="mt-0 mb-1 fs-13 fw-semibold">Kenneth Brown</h6>
-                                                            </a>
-                                                            <div class="fs-13 text-muted">
-                                                                <p class="mb-1">Mentionned you in his comment on ð
-                                                                    invoice #12501.</p>
-                                                            </div>
-                                                            <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
-                                                                <span><i class="mdi mdi-clock-outline"></i> 10 hrs
-                                                                    ago</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="px-2 fs-16">
-                                                            <input class="form-check-input" type="checkbox">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="text-reset notification-item d-block dropdown-item">
-                                                    <div class="d-flex">
-                                                        <img src="assets/images/users/avatar-8.jpg"
-                                                            class="me-3 rounded-circle avatar-xs" alt="user-pic">
-                                                        <div class="flex-grow-1">
-                                                            <a href="#!">
-                                                                <h6 class="mt-0 mb-1 fs-13 fw-semibold"> Maureen Gibson
-                                                                </h6>
-                                                            </a>
-                                                            <div class="fs-13 text-muted">
-                                                                <p class="mb-1">We talked about a project on linkedin.
-                                                                </p>
-                                                            </div>
-                                                            <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
-                                                                <span><i class="mdi mdi-clock-outline"></i>3 days
-                                                                    ago</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="px-2 fs-16">
-                                                            <input class="form-check-input" type="checkbox">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="my-3 text-center">
-                                                    <button type="button"
-                                                        class="btn btn-soft-success waves-effect waves-light">View All
-                                                        Messages <i class="ri-arrow-right-line align-middle"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane fade p-4" id="alerts-tab2" role="tabpanel"
-                                            aria-labelledby="alerts-tab">
-                                            <div class="w-25 pt-3 mx-auto">
-                                                <img src="assets/images/svg/bell.svg" class="img-fluid"
-                                                    alt="user-pic">
-                                            </div>
-                                            <div class="text-center pb-5 mt-2">
-                                                <h6 class="fs-18 fw-semibold lh-base">Hey! You have no any notifications
-                                                </h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--end col-->
-
-                            <div class="col-xxl-3 col-lg-5 col-md-6">
-                                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0 d-inline-block position-relative w-100"
-                                    aria-labelledby="page-header-notifications-dropdown" style="z-index: 1;">
-                                    <div class="dropdown-head bg-secondary bg-pattern rounded-top">
-                                        <div class="p-3">
-                                            <div class="row align-items-center">
-                                                <div class="col">
-                                                    <h6 class="m-0 fs-16 fw-semibold text-white"> Notifications </h6>
-                                                </div>
-                                                <div class="col-auto dropdown-tabs">
-                                                    <span class="badge bg-light-subtle text-body fs-13"
-                                                        data-key="t-view-all"> 4 New</span>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="px-2 pt-2">
-                                            <ul class="nav nav-tabs dropdown-tabs nav-tabs-custom"
-                                                data-dropdown-tabs="true" id="notificationItemsTab3" role="tablist">
-                                                <li class="nav-item waves-effect waves-light">
-                                                    <a class="nav-link active" data-bs-toggle="tab"
-                                                        href="#all-noti-tab3" role="tab" aria-selected="true">
-                                                        All (4)
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item waves-effect waves-light">
-                                                    <a class="nav-link" data-bs-toggle="tab" href="#messages-tab3"
-                                                        role="tab" aria-selected="false">
-                                                        Messages
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item waves-effect waves-light">
-                                                    <a class="nav-link" data-bs-toggle="tab" href="#alerts-tab3"
-                                                        role="tab" aria-selected="false">
-                                                        Alerts
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <div class="tab-content" id="notificationItemsTabContent3">
-                                        <div class="tab-pane fade show active py-2 ps-2" id="all-noti-tab3"
-                                            role="tabpanel">
-                                            <div data-simplebar style="max-height: 300px;" class="pe-2">
-                                                <div class="text-reset notification-item d-block dropdown-item">
-                                                    <div class="d-flex">
-                                                        <div class="flex-shrink-0 avatar-xs me-3">
-                                                            <span
-                                                                class="avatar-title bg-info-subtle text-info rounded-circle fs-16">
-                                                                <i class="bx bx-badge-check"></i>
-                                                            </span>
-                                                        </div>
-                                                        <div class="flex-grow-1">
-                                                            <h6 class="mt-0 mb-2 lh-base">Your
-                                                                <b>Elite</b> author Graphic Optimization
-                                                                <span class="text-secondary">reward</span>
-                                                                is ready!
-                                                            </h6>
-                                                            <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
-                                                                <span><i class="mdi mdi-clock-outline"></i>
-                                                                    Just 30 sec ago</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="px-2 fs-16">
-                                                            <input class="form-check-input" type="checkbox">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="text-reset notification-item d-block dropdown-item">
-                                                    <div class="d-flex">
-                                                        <img src="assets/images/users/avatar-2.jpg"
-                                                            class="me-3 rounded-circle avatar-xs" alt="user-pic">
-                                                        <div class="flex-grow-1">
-                                                            <a href="#!">
-                                                                <h6 class="mt-0 mb-1 fs-13 fw-semibold">Angela Bernier
-                                                                </h6>
-                                                            </a>
-                                                            <div class="fs-13 text-muted">
-                                                                <p class="mb-1">Answered to your comment on the cash
-                                                                    flow forecast's graph ð.</p>
-                                                            </div>
-                                                            <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
-                                                                <span><i class="mdi mdi-clock-outline"></i>48 min
-                                                                    ago</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="px-2 fs-16">
-                                                            <input class="form-check-input" type="checkbox">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="text-reset notification-item d-block dropdown-item">
-                                                    <div class="d-flex">
-                                                        <div class="flex-shrink-0 avatar-xs me-3">
-                                                            <span
-                                                                class="avatar-title bg-danger-subtle text-danger rounded-circle fs-16">
-                                                                <i class='bx bx-message-square-dots'></i>
-                                                            </span>
-                                                        </div>
-                                                        <div class="flex-grow-1">
-                                                            <h6 class="mt-0 mb-2 fs-13 lh-base">You have received <b
-                                                                    class="text-success">20</b> new messages in the
-                                                                conversation</h6>
-                                                            <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
-                                                                <span><i class="mdi mdi-clock-outline"></i> 2 hrs
-                                                                    ago</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="px-2 fs-16">
-                                                            <input class="form-check-input" type="checkbox">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="text-reset notification-item d-block dropdown-item">
-                                                    <div class="d-flex">
-                                                        <img src="assets/images/users/avatar-8.jpg"
-                                                            class="me-3 rounded-circle avatar-xs" alt="user-pic">
-                                                        <div class="flex-grow-1">
-                                                            <a href="#!">
-                                                                <h6 class="mt-0 mb-1 fs-13 fw-semibold">Maureen Gibson
-                                                                </h6>
-                                                            </a>
-                                                            <div class="fs-13 text-muted">
-                                                                <p class="mb-1">We talked about a project on linkedin.
-                                                                </p>
-                                                            </div>
-                                                            <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
-                                                                <span><i class="mdi mdi-clock-outline"></i> 4 hrs
-                                                                    ago</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="px-2 fs-16">
-                                                            <input class="form-check-input" type="checkbox">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="my-3 text-center">
-                                                    <button type="button"
-                                                        class="btn btn-soft-success waves-effect waves-light">View All
-                                                        Notifications <i
-                                                            class="ri-arrow-right-line align-middle"></i></button>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="tab-pane fade py-2 ps-2" id="messages-tab3" role="tabpanel"
-                                            aria-labelledby="messages-tab">
-                                            <div data-simplebar style="max-height: 300px;" class="pe-2">
-                                                <div class="text-reset notification-item d-block dropdown-item">
-                                                    <div class="d-flex">
-                                                        <img src="assets/images/users/avatar-3.jpg"
-                                                            class="me-3 rounded-circle avatar-xs" alt="user-pic">
-                                                        <div class="flex-grow-1">
-                                                            <a href="#!">
-                                                                <h6 class="mt-0 mb-1 fs-13 fw-semibold">James Lemire</h6>
-                                                            </a>
-                                                            <div class="fs-13 text-muted">
-                                                                <p class="mb-1">We talked about a project on linkedin.
-                                                                </p>
-                                                            </div>
-                                                            <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
-                                                                <span><i class="mdi mdi-clock-outline"></i> 30 min
-                                                                    ago</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="px-2 fs-16">
-                                                            <input class="form-check-input" type="checkbox">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="text-reset notification-item d-block dropdown-item">
-                                                    <div class="d-flex">
-                                                        <img src="assets/images/users/avatar-2.jpg"
-                                                            class="me-3 rounded-circle avatar-xs" alt="user-pic">
-                                                        <div class="flex-grow-1">
-                                                            <a href="#!">
-                                                                <h6 class="mt-0 mb-1 fs-13 fw-semibold">Angela Bernier
-                                                                </h6>
-                                                            </a>
-                                                            <div class="fs-13 text-muted">
-                                                                <p class="mb-1">Answered to your comment on the cash
-                                                                    flow forecast's graph ð.</p>
-                                                            </div>
-                                                            <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
-                                                                <span><i class="mdi mdi-clock-outline"></i> 2 hrs
-                                                                    ago</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="px-2 fs-16">
-                                                            <input class="form-check-input" type="checkbox">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="text-reset notification-item d-block dropdown-item">
-                                                    <div class="d-flex">
-                                                        <img src="assets/images/users/avatar-6.jpg"
-                                                            class="me-3 rounded-circle avatar-xs" alt="user-pic">
-                                                        <div class="flex-grow-1">
-                                                            <a href="#!">
-                                                                <h6 class="mt-0 mb-1 fs-13 fw-semibold">Kenneth Brown</h6>
-                                                            </a>
-                                                            <div class="fs-13 text-muted">
-                                                                <p class="mb-1">Mentionned you in his comment on ð
-                                                                    invoice #12501.</p>
-                                                            </div>
-                                                            <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
-                                                                <span><i class="mdi mdi-clock-outline"></i> 10 hrs
-                                                                    ago</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="px-2 fs-16">
-                                                            <input class="form-check-input" type="checkbox">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="text-reset notification-item d-block dropdown-item">
-                                                    <div class="d-flex">
-                                                        <img src="assets/images/users/avatar-8.jpg"
-                                                            class="me-3 rounded-circle avatar-xs" alt="user-pic">
-                                                        <div class="flex-grow-1">
-                                                            <a href="#!">
-                                                                <h6 class="mt-0 mb-1 fs-13 fw-semibold"> Maureen Gibson
-                                                                </h6>
-                                                            </a>
-                                                            <div class="fs-13 text-muted">
-                                                                <p class="mb-1">We talked about a project on linkedin.
-                                                                </p>
-                                                            </div>
-                                                            <p class="mb-0 fs-11 fw-medium text-uppercase text-muted">
-                                                                <span><i class="mdi mdi-clock-outline"></i> 3 days
-                                                                    ago</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="px-2 fs-16">
-                                                            <input class="form-check-input" type="checkbox">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="my-3 text-center">
-                                                    <button type="button"
-                                                        class="btn btn-soft-success waves-effect waves-light">View All
-                                                        Messages <i class="ri-arrow-right-line align-middle"></i></button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="tab-pane fade p-4" id="alerts-tab3" role="tabpanel"
-                                            aria-labelledby="alerts-tab">
-                                            <div class="w-25 pt-3 mx-auto">
-                                                <img src="assets/images/svg/bell.svg" class="img-fluid"
-                                                    alt="user-pic">
-                                            </div>
-                                            <div class="text-center pb-5 mt-2">
-                                                <h6 class="fs-18 fw-semibold lh-base">Hey! You have no any notifications
-                                                </h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--end col-->
+                                    <!--end col-->
+                              </div>
+                              <!--end row-->
                         </div>
-                        <!--end row-->
-                    </div>
 
-                    <div class="d-none code-view">
-                        <pre class="language-markup" style="height: 275px;">
+                        <div class="d-none code-view">
+                              <pre class="language-markup" style="height: 275px;">
 <code>&lt;!-- Notifications --&gt;
 &lt;div class=&quot;dropdown-menu dropdown-menu-lg dropdown-menu-end p-0 d-inline-block position-relative&quot; aria-labelledby=&quot;page-header-notifications-dropdown&quot; style=&quot;z-index: 1;&quot;&gt;
 &lt;div class=&quot;dropdown-head bg-primary bg-pattern rounded-top&quot;&gt;
@@ -2594,11 +2594,11 @@ Forms
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;</code></pre>
-                    </div>
-                </div><!-- end card-body -->
+                        </div>
+                  </div><!-- end card-body -->
             </div><!-- end card -->
-        </div>
-        <!--end col-->
-    </div>
-    <!--end row-->
+      </div>
+      <!--end col-->
+</div>
+<!--end row-->
 @endsection

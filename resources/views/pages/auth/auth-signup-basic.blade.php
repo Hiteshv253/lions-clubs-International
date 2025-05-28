@@ -40,7 +40,7 @@
                                     </div>
                                     <div class="p-2 mt-4">
                                           <form action="{{ route('users.store') }}" class="needs-validation" novalidate  method="POST">
-                                                  @csrf
+                                                @csrf
 
                                                 <div class="mb-3">
                                                       <label for="useremail" class="form-label">Email <span

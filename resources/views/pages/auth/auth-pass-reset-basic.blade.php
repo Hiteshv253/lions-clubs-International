@@ -80,7 +80,7 @@
                         <div class="mt-4 text-center">
                               <p class="mb-0">Wait, I remember my password.1.. <a href="/login" class="fw-semibold text-primary text-decoration-underline"> Click here </a> </p>
                         </div>
-                           <div class="mt-4 text-center">
+                        <div class="mt-4 text-center">
                               <p class="mb-0"><a href="/" class="fw-semibold text-primary text-decoration-underline"> Back To Website </a> </p>
                         </div>
 
