@@ -1,31 +1,11 @@
 <?php
 
-use App\Http\Controllers\Auth\ForgotPasswordController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\LogoutController;
-use App\Http\Controllers\Auth\ResetPasswordController;
-use App\Http\Controllers\Frontend\HomePageController;
-
-/*
-  |--------------------------------------------------------------------------
-  | Web Routes
-  |--------------------------------------------------------------------------
-  |
-  | Here is where you can register web routes for your application. These
-  | routes are loaded by the RouteServiceProvider and all of them will
-  | be assigned to the "web" middleware group. Make something great!
-  |
- */
+Route::prefix('lions')->group(function () {
 
 // Dashboard
-Route::get('/', [HomePageController::class, 'home'])->name('home');
-Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
-Route::post('/', [LoginController::class, 'authenticate'])->name('login')->middleware('guest');
-Route::get('/logout', [LogoutController::class, 'logout'])->name('logout')->middleware('auth');
-
-Route::prefix('lions')->middleware(['auth'])->group(function () {
-
+      Route::get('/', [LoginController::class, 'index'])->name('login')->middleware('guest');
+      Route::post('/', [LoginController::class, 'authenticate'])->name('login')->middleware('guest');
+      Route::get('/logout', [LogoutController::class, 'logout'])->name('logout')->middleware('auth');
 
       Route::view('/dashboard-analytics', 'menu.dashboards.dashboard-analytics');
       Route::view('/dashboard-crm', 'menu.dashboards.dashboard-crm');
