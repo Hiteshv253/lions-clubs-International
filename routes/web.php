@@ -6,12 +6,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Frontend\HomePageController;
-//
-//
-//
-use App\Http\Controllers\Admin\RoleController;
-use App\Http\Controllers\Admin\PermissionController;
-use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\UserController;
 
 /*
   |--------------------------------------------------------------------------
@@ -23,11 +18,14 @@ use App\Http\Controllers\Admin\UserController;
   | be assigned to the "web" middleware group. Make something great!
   |
  */
-Route::middleware(['web'])->group(function () {
-      Route::get('/login', [LoginController::class, 'index'])->name('login');
-});
+
+//Route::resource('users', UserController::class);
+Route::post('/users/store', [UserController::class, 'store'])->name('users.store');
+
+
 // Dashboard
 Route::get('/', [HomePageController::class, 'home'])->name('home');
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/', [LoginController::class, 'authenticate'])->name('login')->middleware('guest');
 Route::get('/logout', [LogoutController::class, 'logout'])->name('logout')->middleware('auth');
@@ -43,6 +41,7 @@ Route::view('/auth-signin-basic', 'pages.auth.auth-signin-basic');
 Route::view('/auth-signin-cover', 'pages.auth.auth-signin-cover');
 Route::view('/auth-signup-basic', 'pages.auth.auth-signup-basic');
 Route::view('/auth-signup-cover', 'pages.auth.auth-signup-cover');
+Route::resource('users', 'UserController');
 
 Route::prefix('lions')->middleware(['auth'])->group(function () {
 

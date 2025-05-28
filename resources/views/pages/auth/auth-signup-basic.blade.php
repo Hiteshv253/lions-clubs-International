@@ -39,7 +39,8 @@
                                           <p class="text-muted">Get your free lionsclubs account now</p>
                                     </div>
                                     <div class="p-2 mt-4">
-                                          <form class="needs-validation" novalidate action="index.html">
+                                          <form action="{{ route('users.store') }}" class="needs-validation" novalidate  method="POST">
+                                                  @csrf
 
                                                 <div class="mb-3">
                                                       <label for="useremail" class="form-label">Email <span
