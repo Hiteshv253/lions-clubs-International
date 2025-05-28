@@ -129,7 +129,7 @@
                                             </div>
                                         </td>
                                         <td class="company_name">Nesta Technologies</td>
-                                        <td class="email_id">tonyanoble@velzon.com</td>
+                                        <td class="email_id">tonyanoble@lionsclubs.com</td>
                                         <td class="phone">414-453-5725</td>
                                         <td class="lead_score">154</td>
                                         <td class="tags">
@@ -393,7 +393,7 @@
                                 </tr>
                                 <tr>
                                     <td class="fw-medium" scope="row">Email ID</td>
-                                    <td>tonyanoble@velzon.com</td>
+                                    <td>tonyanoble@lionsclubs.com</td>
                                 </tr>
                                 <tr>
                                     <td class="fw-medium" scope="row">Phone No</td>

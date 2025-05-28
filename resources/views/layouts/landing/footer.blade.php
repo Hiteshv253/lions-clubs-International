@@ -9,7 +9,7 @@
                     <div class="mt-4 fs-13">
                         <p>Premium Multipurpose Admin & Dashboard Template</p>
                         <p class="ff-secondary">You can build any type of web application like eCommerce, CRM,
-                            CMS, Project management apps, Admin Panels, etc using Velzon.</p>
+                            CMS, Project management apps, Admin Panels, etc using lionsclubs.</p>
                     </div>
                 </div>
             </div>
@@ -60,7 +60,7 @@
                     <p class="copy-rights mb-0">
                         <script>
                             document.write(new Date().getFullYear())
-                        </script> Â© Velzon - Themesbrand
+                        </script> Â© lionsclubs - lionsinternational
                     </p>
                 </div>
             </div>

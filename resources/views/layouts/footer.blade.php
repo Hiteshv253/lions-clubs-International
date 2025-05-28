@@ -4,11 +4,11 @@
             <div class="col-sm-6">
                 <script>
                     document.write(new Date().getFullYear())
-                </script> Â© Velzon.
+                </script> Â© lionsclubs.
             </div>
             <div class="col-sm-6">
                 <div class="text-sm-end d-none d-sm-block">
-                    Design & Develop by Themesbrand
+                    Design & Develop by lionsinternational
                 </div>
             </div>
         </div>
@@ -819,7 +819,7 @@
                 <button type="button" class="btn btn-light w-100" id="reset-layout">Reset</button>
             </div>
             <div class="col-6">
-                <a href="https://1.envato.market/velzon-admin" target="_blank" class="btn btn-primary w-100">Buy
+                <a href="https://1.envato.market/lionsclubs-admin" target="_blank" class="btn btn-primary w-100">Buy
                     Now</a>
             </div>
         </div>

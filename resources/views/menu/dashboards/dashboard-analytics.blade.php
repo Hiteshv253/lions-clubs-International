@@ -582,7 +582,7 @@
                             <tbody>
                                 <tr>
                                     <td>
-                                        <a href="javascript:void(0);">/themesbrand/skote-25867</a>
+                                        <a href="javascript:void(0);">/lionsinternational/skote-25867</a>
                                     </td>
                                     <td>99</td>
                                     <td>25.3%</td>
@@ -603,7 +603,7 @@
                                 </tr><!-- end -->
                                 <tr>
                                     <td>
-                                        <a href="javascript:void(0);">/themesbrand/minia-26441</a>
+                                        <a href="javascript:void(0);">/lionsinternational/minia-26441</a>
                                     </td>
                                     <td>53</td>
                                     <td>14.2%</td>

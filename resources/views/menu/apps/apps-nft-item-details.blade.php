@@ -42,7 +42,7 @@
                                         <img src="assets/images/nft/img-03.jpg" alt="" class="img-fluid rounded">
                                     </div>
                                     <div class="col-3">
-                                        <img src="https://img.themesbrand.com/velzon/images/img-3.gif" alt=""
+                                        <img src="https://img.lionsinternational.com/lionsclubs/images/img-3.gif" alt=""
                                             class="img-fluid rounded h-100 object-fit-cover">
                                     </div>
                                     <div class="col-3">
@@ -216,7 +216,7 @@
                                                 <tr>
                                                     <th scope="row">
                                                         <div class="d-flex align-items-center">
-                                                            <img src="https://img.themesbrand.com/velzon/images/img-4.gif"
+                                                            <img src="https://img.lionsinternational.com/lionsclubs/images/img-4.gif"
                                                                 alt=""
                                                                 class="avatar-xs rounded object-fit-cover" />
                                                             <a href="apps-nft-item-details.html" class="text-body"><span

@@ -136,7 +136,7 @@
                                     </li>
                                 </ul>
                                 <p style="font-family: 'Roboto', sans-serif; font-size: 14px;color: #98a6ad; margin: 0px;">
-                                    2022 Velzon. Design & Develop by Themesbrand</p>
+                                    2022 lionsclubs. Design & Develop by lionsinternational</p>
                             </div>
                         </div>
                     </td>
@@ -244,7 +244,7 @@
                                     </li>
                                 </ul>
                                 <p style="font-family: 'Roboto', sans-serif; font-size: 14px;color: #98a6ad; margin: 0px;">
-                                    2022 Velzon. Design & Develop by Themesbrand</p>
+                                    2022 lionsclubs. Design & Develop by lionsinternational</p>
                             </div>
                         </div>
                     </td>
@@ -332,8 +332,8 @@
                                                     style="color: #878a99; text-align: center;font-family: 'Roboto', sans-serif; box-sizing: border-box; font-size: 14px; vertical-align: top; margin: 0; padding: 0; padding-top: 5px"
                                                     valign="top">
                                                     <p style="margin-bottom: 10px;">Or verify using this link: </p>
-                                                    <a href="https://themesbrand.com/velzon/"
-                                                        target="_blank">https://themesbrand.com/velzon/</a>
+                                                    <a href="https://lionsinternational.com/lionsclubs/"
+                                                        target="_blank">https://lionsinternational.com/lionsclubs/</a>
                                                 </td>
                                             </tr>
                                         </table>
@@ -344,9 +344,9 @@
                                 <h4 style="font-weight: 500; line-height: 1.5;font-family: 'Roboto', sans-serif;">Need Help
                                     ?</h4>
                                 <p style="color: #878a99; line-height: 1.5;">Please send and feedback or bug info to <a
-                                        href="" style="font-weight: 500;">info@velzon.com</a></p>
+                                        href="" style="font-weight: 500;">info@lionsclubs.com</a></p>
                                 <p style="font-family: 'Roboto', sans-serif; font-size: 14px;color: #98a6ad; margin: 0px;">
-                                    2022 Velzon. Design & Develop by Themesbrand</p>
+                                    2022 lionsclubs. Design & Develop by lionsinternational</p>
                             </div>
                         </div>
                     </td>
@@ -462,9 +462,9 @@
                             <div style="text-align: center; margin: 28px auto 0px auto;">
                                 <h4>Need Help ?</h4>
                                 <p style="color: #878a99;">Please send and feedback or bug info to <a href=""
-                                        style="font-weight: 500px;">info@velzon.com</a></p>
+                                        style="font-weight: 500px;">info@lionsclubs.com</a></p>
                                 <p style="font-family: 'Roboto', sans-serif; font-size: 14px;color: #98a6ad; margin: 0px;">
-                                    2022 Velzon. Design & Develop by Themesbrand</p>
+                                    2022 lionsclubs. Design & Develop by lionsinternational</p>
                             </div>
                         </div>
                     </td>

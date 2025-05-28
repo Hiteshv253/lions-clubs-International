@@ -32,7 +32,7 @@
                                 <li>
                                     <ul class="director">
                                         <li>
-                                            <a href="javascript:void(0);" class="fw-semibold"><span>Velzon Admin</span></a>
+                                            <a href="javascript:void(0);" class="fw-semibold"><span>lionsclubs Admin</span></a>
                                             <ul class="subdirector">
                                                 <li><a href="javascript:void(0);" class="fw-semibold"><span>Contact
                                                             Us</span></a></li>
@@ -293,7 +293,7 @@
                             <div class="verti-sitemap">
                                 <ul class="list-unstyled mb-0">
                                     <li class="p-0 parent-title"><a href="javascript: void(0);"
-                                            class="fw-medium fs-14">Velzon</a></li>
+                                            class="fw-medium fs-14">lionsclubs</a></li>
                                     <li>
                                         <div class="first-list">
                                             <div class="list-wrap">

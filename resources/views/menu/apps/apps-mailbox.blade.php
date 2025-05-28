@@ -695,7 +695,7 @@
                     <div>
                         <div class="mb-3 position-relative">
                             <input type="text" class="form-control email-compose-input" data-choices
-                                data-choices-limit="15" value="support@themesbrand.com" data-choices-removeItem
+                                data-choices-limit="15" value="support@lionsinternational.com" data-choices-removeItem
                                 placeholder="To">
                             <div class="position-absolute top-0 end-0">
                                 <div class="d-flex">

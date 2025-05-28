@@ -63,6 +63,7 @@
                               <a href="/about" class="nav-item nav-link">About</a>
                               <a href="/service" class="nav-item nav-link">Services</a>
                               <a href="/contact" class="nav-item nav-link">Contact</a>
+                              <a href="/login" class="nav-item nav-link">Login</a>
                               <a href="blog.html" class="nav-item nav-link">Blog</a>
                               <div class="nav-item dropdown">
                                     <a href="#" class="nav-link" data-bs-toggle="dropdown">

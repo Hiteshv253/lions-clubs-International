@@ -27,9 +27,9 @@
                 <div class="px-4 mx-n4" data-simplebar style="height: calc(100vh - 468px);">
                     <ul class="to-do-menu list-unstyled" id="projectlist-data">
                         <li>
-                            <a data-bs-toggle="collapse" href="#velzonAdmin" class="nav-link fs-13 active">Velzon Admin &
+                            <a data-bs-toggle="collapse" href="#lionsclubsAdmin" class="nav-link fs-13 active">lionsclubs Admin &
                                 Dashboard</a>
-                            <div class="collapse show" id="velzonAdmin">
+                            <div class="collapse show" id="lionsclubsAdmin">
                                 <ul class="mb-0 sub-menu list-unstyled ps-3 vstack gap-2 mb-2">
                                     <li>
                                         <a href="#!"><i class="ri-stop-mini-fill align-middle fs-15 text-danger"></i>
@@ -131,7 +131,7 @@
                     </button>
                 </div>
                 <div class="col-sm order-3 order-sm-2 mt-3 mt-sm-0">
-                    <h5 class="fw-semibold mb-0">Velzon Admin & Dashboard <span
+                    <h5 class="fw-semibold mb-0">lionsclubs Admin & Dashboard <span
                             class="badge bg-primary align-bottom ms-2">v2.0.0</span></h5>
                 </div>
 

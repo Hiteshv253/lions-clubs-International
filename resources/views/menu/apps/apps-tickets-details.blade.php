@@ -28,7 +28,7 @@
                                             Dashboard</h4>
                                         <div class="hstack gap-3 flex-wrap">
                                             <div class="text-muted"><i class="ri-building-line align-bottom me-1"></i><span
-                                                    id="ticket-client">Themesbrand</span></div>
+                                                    id="ticket-client">lionsinternational</span></div>
                                             <div class="vr"></div>
                                             <div class="text-muted">Create Date : <span class="fw-medium "
                                                     id="create-date">20 Dec, 2021</span></div>
@@ -239,11 +239,11 @@ userIdx: {}
                                 </tr>
                                 <tr>
                                     <td class="fw-medium">Client</td>
-                                    <td id="t-client">Themesbrand</td>
+                                    <td id="t-client">lionsinternational</td>
                                 </tr>
                                 <tr>
                                     <td class="fw-medium">Project</td>
-                                    <td>Velzon - Admin Dashboard</td>
+                                    <td>lionsclubs - Admin Dashboard</td>
                                 </tr>
                                 <tr>
                                     <td class="fw-medium">Assigned To:</td>
@@ -339,7 +339,7 @@ userIdx: {}
                             </div>
                         </div>
                         <div class="flex-grow-1 ms-3">
-                            <h6 class="mb-1"><a href="javascript:void(0);">Velzon-admin.zip</a></h6>
+                            <h6 class="mb-1"><a href="javascript:void(0);">lionsclubs-admin.zip</a></h6>
                             <small class="text-muted">3.2 MB</small>
                         </div>
                         <div class="hstack gap-3 fs-16">
@@ -354,7 +354,7 @@ userIdx: {}
                             </div>
                         </div>
                         <div class="flex-grow-1 ms-3">
-                            <h6 class="mb-1"><a href="javascript:void(0);">Velzon-admin.ppt</a></h6>
+                            <h6 class="mb-1"><a href="javascript:void(0);">lionsclubs-admin.ppt</a></h6>
                             <small class="text-muted">4.5 MB</small>
                         </div>
                         <div class="hstack gap-3 fs-16">

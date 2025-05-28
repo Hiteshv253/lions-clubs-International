@@ -98,7 +98,7 @@
                             <div class="flex-grow-1">
                                 <h5 class="mb-1 fs-15"><a href="apps-projects-overview.html" class="text-body">Slack brand
                                         logo design</a></h5>
-                                <p class="text-muted text-truncate-two-lines mb-3">Create a Brand logo design for a velzon
+                                <p class="text-muted text-truncate-two-lines mb-3">Create a Brand logo design for a lionsclubs
                                     admin.</p>
                             </div>
                         </div>

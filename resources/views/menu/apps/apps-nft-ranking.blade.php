@@ -34,7 +34,7 @@
             <div class="card" id="contactList">
                 <div class="card-header">
                     <div class="d-flex align-items center">
-                        <h5 class="card-title mb-0 flex-grow-1">The top NFTs ranking on Velzon</h5>
+                        <h5 class="card-title mb-0 flex-grow-1">The top NFTs ranking on lionsclubs</h5>
                         <p class="text-muted mb-0">Updated: 28 April, 2022 08:05:00</p>
                     </div>
                 </div>
@@ -108,7 +108,7 @@
                                     </td>
                                     <td class="collection">
                                         <div class="d-flex align-items-center">
-                                            <img src="https://img.themesbrand.com/velzon/images/img-1.gif" alt=""
+                                            <img src="https://img.lionsinternational.com/lionsclubs/images/img-1.gif" alt=""
                                                 class="avatar-xs rounded-circle object-fit-cover me-2"> <a
                                                 href="apps-nft-item-details.html" class="text-body">Patterns Arts &
                                                 Culture</a>
@@ -154,7 +154,7 @@
                                     </td>
                                     <td class="collection">
                                         <div class="d-flex align-items-center">
-                                            <img src="https://img.themesbrand.com/velzon/images/img-2.gif" alt=""
+                                            <img src="https://img.lionsinternational.com/lionsclubs/images/img-2.gif" alt=""
                                                 class="avatar-xs rounded-circle object-fit-cover me-2"> <a
                                                 href="apps-nft-item-details.html" class="text-body">Long-tailed
                                                 Macaque</a>
@@ -221,7 +221,7 @@
                                     </td>
                                     <td class="collection">
                                         <div class="d-flex align-items-center">
-                                            <img src="https://img.themesbrand.com/velzon/images/img-5.gif" alt=""
+                                            <img src="https://img.lionsinternational.com/lionsclubs/images/img-5.gif" alt=""
                                                 class="avatar-xs rounded-circle object-fit-cover me-2"> <a
                                                 href="apps-nft-item-details.html" class="text-body">The Chirstoper</a>
                                         </div>
@@ -243,7 +243,7 @@
                                     </td>
                                     <td class="collection">
                                         <div class="d-flex align-items-center">
-                                            <img src="https://img.themesbrand.com/velzon/images/img-3.gif" alt=""
+                                            <img src="https://img.lionsinternational.com/lionsclubs/images/img-3.gif" alt=""
                                                 class="avatar-xs rounded-circle object-fit-cover me-2"> <a
                                                 href="apps-nft-item-details.html" class="text-body">Walking On Air</a>
                                         </div>

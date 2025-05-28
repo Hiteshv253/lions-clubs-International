@@ -28,12 +28,12 @@
                             <div class="row g-1 mb-3">
                                 <div class="col-lg-6">
                                     <img src="assets/images/nft/img-05.jpg" alt="" class="img-fluid rounded">
-                                    <img src="https://img.themesbrand.com/velzon/images/img-1.gif" alt=""
+                                    <img src="https://img.lionsinternational.com/lionsclubs/images/img-1.gif" alt=""
                                         class="img-fluid rounded mt-1">
                                 </div>
                                 <!--end col-->
                                 <div class="col-lg-6">
-                                    <img src="https://img.themesbrand.com/velzon/images/img-4.gif" alt=""
+                                    <img src="https://img.lionsinternational.com/lionsclubs/images/img-4.gif" alt=""
                                         class="img-fluid rounded mb-1">
                                     <img src="assets/images/nft/img-04.jpg" alt="" class="img-fluid rounded">
                                 </div>
@@ -54,12 +54,12 @@
                             <div class="row g-1 mb-3">
                                 <div class="col-lg-6">
                                     <img src="assets/images/nft/img-06.jpg" alt="" class="img-fluid rounded">
-                                    <img src="https://img.themesbrand.com/velzon/images/img-2.gif" alt=""
+                                    <img src="https://img.lionsinternational.com/lionsclubs/images/img-2.gif" alt=""
                                         class="img-fluid rounded mt-1">
                                 </div>
                                 <!--end col-->
                                 <div class="col-lg-6">
-                                    <img src="https://img.themesbrand.com/velzon/images/img-5.gif" alt=""
+                                    <img src="https://img.lionsinternational.com/lionsclubs/images/img-5.gif" alt=""
                                         class="img-fluid rounded mb-1">
                                     <img src="assets/images/nft/img-03.jpg" alt="" class="img-fluid rounded">
                                 </div>
@@ -80,12 +80,12 @@
                             <div class="row g-1 mb-3">
                                 <div class="col-lg-6">
                                     <img src="assets/images/nft/img-02.jpg" alt="" class="img-fluid rounded">
-                                    <img src="https://img.themesbrand.com/velzon/images/img-3.gif" alt=""
+                                    <img src="https://img.lionsinternational.com/lionsclubs/images/img-3.gif" alt=""
                                         class="img-fluid rounded mt-1">
                                 </div>
                                 <!--end col-->
                                 <div class="col-lg-6">
-                                    <img src="https://img.themesbrand.com/velzon/images/img-1.gif" alt=""
+                                    <img src="https://img.lionsinternational.com/lionsclubs/images/img-1.gif" alt=""
                                         class="img-fluid rounded mb-1">
                                     <img src="assets/images/nft/img-01.jpg" alt="" class="img-fluid rounded">
                                 </div>
@@ -233,7 +233,7 @@
                         </div>
                     </div>
                     <div class="explore-place-bid-img overflow-hidden rounded">
-                        <img src="https://img.themesbrand.com/velzon/images/img-1.gif" alt=""
+                        <img src="https://img.lionsinternational.com/lionsclubs/images/img-1.gif" alt=""
                             class="img-fluid explore-img">
                         <div class="bg-overlay"></div>
                         <div class="place-bid-btn">
@@ -296,7 +296,7 @@
                         </div>
                     </div>
                     <div class="explore-place-bid-img overflow-hidden rounded">
-                        <img src="https://img.themesbrand.com/velzon/images/img-3.gif" alt=""
+                        <img src="https://img.lionsinternational.com/lionsclubs/images/img-3.gif" alt=""
                             class="img-fluid explore-img">
                         <div class="bg-overlay"></div>
                         <div class="place-bid-btn">
@@ -370,7 +370,7 @@
                             class="mdi mdi-cards-heart fs-16"></i></button>
                 </div>
                 <div class="explore-place-bid-img">
-                    <img src="https://img.themesbrand.com/velzon/images/img-2.gif" alt=""
+                    <img src="https://img.lionsinternational.com/lionsclubs/images/img-2.gif" alt=""
                         class="card-img-top explore-img" />
                     <div class="bg-overlay"></div>
                     <div class="place-bid-btn">
@@ -431,7 +431,7 @@
                             class="mdi mdi-cards-heart fs-16"></i></button>
                 </div>
                 <div class="explore-place-bid-img">
-                    <img src="https://img.themesbrand.com/velzon/images/img-4.gif" alt=""
+                    <img src="https://img.lionsinternational.com/lionsclubs/images/img-4.gif" alt=""
                         class="card-img-top explore-img" />
                     <div class="bg-overlay"></div>
                     <div class="place-bid-btn">
@@ -520,7 +520,7 @@
         <!--end col-->
         <div class="col">
             <div class="card">
-                <img src="https://img.themesbrand.com/velzon/images/img-5.gif" alt=""
+                <img src="https://img.lionsinternational.com/lionsclubs/images/img-5.gif" alt=""
                     class="card-img-top object-fit-cover" height="120">
                 <div class="card-body text-center">
                     <img src="assets/images/nft/img-04.jpg" alt=""
@@ -555,7 +555,7 @@
                 <img src="assets/images/nft/img-05.jpg" alt="" class="card-img-top object-fit-cover"
                     height="120">
                 <div class="card-body text-center">
-                    <img src="https://img.themesbrand.com/velzon/images/img-2.gif" alt=""
+                    <img src="https://img.lionsinternational.com/lionsclubs/images/img-2.gif" alt=""
                         class="avatar-md mt-n5 rounded-circle mx-auto d-block object-fit-cover">
                     <h5 class="mt-3 mb-1"><a href="pages-profile.html">Thomas Taylor</a></h5>
                     <p class="text-muted">345 Products</p>
@@ -571,7 +571,7 @@
                 <img src="assets/images/nft/img-02.jpg" alt="" class="card-img-top object-fit-cover"
                     height="120">
                 <div class="card-body text-center">
-                    <img src="https://img.themesbrand.com/velzon/images/img-1.gif" alt=""
+                    <img src="https://img.lionsinternational.com/lionsclubs/images/img-1.gif" alt=""
                         class="avatar-md mt-n5 rounded-circle mx-auto d-block object-fit-cover">
                     <h5 class="mt-3 mb-1"><a href="pages-profile.html">James Price</a></h5>
                     <p class="text-muted">745 Products</p>

@@ -400,7 +400,7 @@
                                                         height="16">
                                                 </div>
                                             </div>
-                                            <h6 class="mb-0">Themesbrand</h6>
+                                            <h6 class="mb-0">lionsinternational</h6>
                                         </div>
                                     </td>
                                     <td>
@@ -698,7 +698,7 @@
                             </div>
                         </div>
                         <div class="flex-grow-1 ms-3">
-                            <h6 class="fs-16">Invite your friends to Velzon</h6>
+                            <h6 class="fs-16">Invite your friends to lionsclubs</h6>
                             <p class="text-muted mb-0">Nor again is there anyone who loves or pursues or desires to obtain
                                 pain of itself, because it is pain, but because occasionally.</p>
                         </div>

@@ -13,11 +13,6 @@ use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\UserController;
 
-Route::middleware(['auth'])->prefix('admin')->group(function () {
-      Route::resource('roles', RoleController::class);
-      Route::resource('permissions', PermissionController::class);
-      Route::resource('users', UserController::class);
-});
 /*
   |--------------------------------------------------------------------------
   | Web Routes
@@ -28,12 +23,26 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
   | be assigned to the "web" middleware group. Make something great!
   |
  */
-
+Route::middleware(['web'])->group(function () {
+      Route::get('/login', [LoginController::class, 'index'])->name('login');
+});
 // Dashboard
 Route::get('/', [HomePageController::class, 'home'])->name('home');
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/', [LoginController::class, 'authenticate'])->name('login')->middleware('guest');
 Route::get('/logout', [LogoutController::class, 'logout'])->name('logout')->middleware('auth');
+
+Route::get('/auth-pass-reset-basic', [ForgotPasswordController::class, 'index'])->name('password.forgot')->middleware('guest');
+Route::post('/auth-pass-reset-basic', [ForgotPasswordController::class, 'forgot'])->name('password.forgot')->middleware('guest');
+
+Route::get('/auth-pass-change-basic', [ResetPasswordController::class, 'index'])->name('password.reset')->middleware('guest');
+
+Route::post('/auth-pass-change-basic', [ResetPasswordController::class, 'reset'])->name('password.reset')->middleware('guest');
+
+Route::view('/auth-signin-basic', 'pages.auth.auth-signin-basic');
+Route::view('/auth-signin-cover', 'pages.auth.auth-signin-cover');
+Route::view('/auth-signup-basic', 'pages.auth.auth-signup-basic');
+Route::view('/auth-signup-cover', 'pages.auth.auth-signup-cover');
 
 Route::prefix('lions')->middleware(['auth'])->group(function () {
 
@@ -119,15 +128,10 @@ Route::prefix('lions')->middleware(['auth'])->group(function () {
 
 // Pages
 
-      Route::view('/auth-signin-basic', 'pages.auth.auth-signin-basic');
-      Route::view('/auth-signin-cover', 'pages.auth.auth-signin-cover');
-      Route::view('/auth-signup-basic', 'pages.auth.auth-signup-basic');
-      Route::view('/auth-signup-cover', 'pages.auth.auth-signup-cover');
-      Route::get('/auth-pass-reset-basic', [ForgotPasswordController::class, 'index'])->name('password.forgot')->middleware('guest');
-      Route::post('/auth-pass-reset-basic', [ForgotPasswordController::class, 'forgot'])->name('password.forgot')->middleware('guest');
+
+
       Route::view('/auth-pass-reset-cover', 'pages.auth.auth-pass-reset-cover');
-      Route::get('/auth-pass-change-basic', [ResetPasswordController::class, 'index'])->name('password.reset')->middleware('guest');
-      Route::post('/auth-pass-change-basic', [ResetPasswordController::class, 'reset'])->name('password.reset')->middleware('guest');
+
       Route::view('/auth-pass-change-cover', 'pages.auth.auth-pass-change-cover');
       Route::view('/auth-lockscreen-basic', 'pages.auth.auth-lockscreen-basic');
       Route::view('/auth-lockscreen-cover', 'pages.auth.auth-lockscreen-cover');

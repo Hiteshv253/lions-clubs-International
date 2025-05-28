@@ -42,7 +42,7 @@
 <code class="language-markup">&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
-&lt;title&gt;Velzon - Responsive Admin Dashboard Template&lt;/title&gt;
+&lt;title&gt;lionsclubs - Responsive Admin Dashboard Template&lt;/title&gt;
 &lt;/head&gt;
 &lt;body&gt;
 &lt;div&gt;

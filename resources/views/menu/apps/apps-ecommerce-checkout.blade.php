@@ -505,7 +505,7 @@
                                     <td class="fw-semibold text-end">$ 359.96</td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2">Discount <span class="text-muted">(VELZON15)</span> : </td>
+                                    <td colspan="2">Discount <span class="text-muted">(lionsclubs15)</span> : </td>
                                     <td class="text-end">- $ 50.00</td>
                                 </tr>
                                 <tr>

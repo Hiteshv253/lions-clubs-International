@@ -1,8 +1,8 @@
 /*
-Template Name: Velzon - Admin & Dashboard Template
-Author: Themesbrand
-Website: https://Themesbrand.com/
-Contact: Themesbrand@gmail.com
+Template Name: lionsclubs - Admin & Dashboard Template
+Author: lionsinternational
+Website: https://lionsinternational.com/
+Contact: lionsinternational@gmail.com
 File: Password addon Js File
 */
 

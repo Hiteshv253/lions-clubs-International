@@ -414,7 +414,7 @@
                                     </div>
                                     <div class="flex-grow-1">
                                         <label class="form-check-label mb-0 ps-2" for="task_six">Styling wireframe design
-                                            and documentation for velzon admin</label>
+                                            and documentation for lionsclubs admin</label>
                                     </div>
                                     <div class="flex-shrink-0 ms-2">
                                         <p class="text-muted fs-12 mb-0">27 Sep, 2021</p>

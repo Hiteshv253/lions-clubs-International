@@ -38,7 +38,7 @@
 
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
-                        <li class="breadcrumb-item"><a href="javascript: void(0);">Velzon</a></li>
+                        <li class="breadcrumb-item"><a href="javascript: void(0);">lionsclubs</a></li>
                         <li class="breadcrumb-item active">Widgets</li>
                     </ol>
                 </div>
@@ -477,7 +477,7 @@
                         <h6 class="fs-15 fw-semibold">Marketing Director <span class="text-muted fs-13">(2-4 Yrs
                                 Exp.)</span></h6>
                     </a>
-                    <p class="text-muted mb-0"><i class="ri-building-line align-bottom"></i> Themesbrand <span
+                    <p class="text-muted mb-0"><i class="ri-building-line align-bottom"></i> lionsinternational <span
                             class="ms-2"><i class="ri-map-pin-2-line align-bottom"></i> California</span></p>
                 </div>
             </div>
@@ -502,7 +502,7 @@
                         <h6 class="fs-15 fw-semibold">Sr. Web Designer <span class="text-muted fs-13">(2+ Yrs Exp.)</span>
                         </h6>
                     </a>
-                    <p class="text-muted mb-0"><i class="ri-building-line align-bottom"></i> Themesbrand <span
+                    <p class="text-muted mb-0"><i class="ri-building-line align-bottom"></i> lionsinternational <span
                             class="ms-2"><i class="ri-map-pin-2-line align-bottom"></i> California</span></p>
                 </div>
             </div>
@@ -527,7 +527,7 @@
                         <h6 class="fs-15 fw-semibold">Sr. Web Designer <span class="text-muted fs-13">(2+ Yrs Exp.)</span>
                         </h6>
                     </a>
-                    <p class="text-muted mb-0"><i class="ri-building-line align-bottom"></i> Themesbrand <span
+                    <p class="text-muted mb-0"><i class="ri-building-line align-bottom"></i> lionsinternational <span
                             class="ms-2"><i class="ri-map-pin-2-line align-bottom"></i> California</span></p>
                 </div>
             </div>
@@ -552,7 +552,7 @@
                         <h6 class="fs-15 fw-semibold">Sr. Web Designer <span class="text-muted fs-13">(2+ Yrs Exp.)</span>
                         </h6>
                     </a>
-                    <p class="text-muted mb-0"><i class="ri-building-line align-bottom"></i> Themesbrand <span
+                    <p class="text-muted mb-0"><i class="ri-building-line align-bottom"></i> lionsinternational <span
                             class="ms-2"><i class="ri-map-pin-2-line align-bottom"></i> California</span></p>
                 </div>
             </div>
@@ -1136,7 +1136,7 @@
                                             </div>
                                             <div class="flex-grow-1">
                                                 <label class="form-check-label mb-0 ps-2" for="task_six">Styling wireframe
-                                                    design and documentation for velzon admin</label>
+                                                    design and documentation for lionsclubs admin</label>
                                             </div>
                                             <div class="flex-shrink-0 ms-2">
                                                 <p class="text-muted fs-12 mb-0">27 Sep, 2021</p>

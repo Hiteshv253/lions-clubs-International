@@ -141,7 +141,7 @@
                                         <td class="id" style="display:none;"><a href="javascript:void(0);"
                                                 class="fw-medium link-primary">#VZ2101</a></td>
                                         <td class="customer_name">Mary Cousar</td>
-                                        <td class="email">marycousar@velzon.com</td>
+                                        <td class="email">marycousar@lionsclubs.com</td>
                                         <td class="phone">580-464-4694</td>
                                         <td class="date">06 Apr, 2021</td>
                                         <td class="status"><span

@@ -196,7 +196,7 @@
 
                                         <div class="w-100">
                                             <div class="d-flex align-items-center">
-                                                <img src="https://img.themesbrand.com/velzon/images/img-2.gif"
+                                                <img src="https://img.lionsinternational.com/lionsclubs/images/img-2.gif"
                                                     class="img-fluid avatar-xs rounded-circle object-fit-cover"
                                                     alt="">
                                                 <div class="ms-3 flex-grow-1">
@@ -427,7 +427,7 @@
                     <div class="swiper-slide">
                         <div class="card explore-box card-animate rounded">
                             <div class="explore-place-bid-img">
-                                <img src="https://img.themesbrand.com/velzon/images/img-3.gif" alt=""
+                                <img src="https://img.lionsinternational.com/lionsclubs/images/img-3.gif" alt=""
                                     class="img-fluid card-img-top explore-img" />
                                 <div class="bg-overlay"></div>
                                 <div class="place-bid-btn">
@@ -483,7 +483,7 @@
                     <div class="swiper-slide">
                         <div class="card explore-box card-animate rounded">
                             <div class="explore-place-bid-img">
-                                <img src="https://img.themesbrand.com/velzon/images/img-1.gif" alt=""
+                                <img src="https://img.lionsinternational.com/lionsclubs/images/img-1.gif" alt=""
                                     class="img-fluid card-img-top explore-img" />
                                 <div class="bg-overlay"></div>
                                 <div class="place-bid-btn">
@@ -512,7 +512,7 @@
                     <div class="swiper-slide">
                         <div class="card explore-box card-animate rounded">
                             <div class="explore-place-bid-img">
-                                <img src="https://img.themesbrand.com/velzon/images/img-4.gif" alt=""
+                                <img src="https://img.lionsinternational.com/lionsclubs/images/img-4.gif" alt=""
                                     class="img-fluid card-img-top explore-img" />
                                 <div class="bg-overlay"></div>
                                 <div class="place-bid-btn">
@@ -735,7 +735,7 @@
                                     <tr>
                                         <td>
                                             <div class="d-flex align-items-center">
-                                                <img src="https://img.themesbrand.com/velzon/images/img-5.gif"
+                                                <img src="https://img.lionsinternational.com/lionsclubs/images/img-5.gif"
                                                     alt="" class="avatar-sm rounded-circle">
                                                 <div class="ms-3">
                                                     <a href="#!">
@@ -828,7 +828,7 @@
                                     <td>
                                         <div class="d-flex align-items-center">
                                             <div class="me-2">
-                                                <img src="https://img.themesbrand.com/velzon/images/img-5.gif"
+                                                <img src="https://img.lionsinternational.com/lionsclubs/images/img-5.gif"
                                                     alt="" class="avatar-xs rounded-circle">
                                             </div>
                                             <div class="flex-grow-1">
@@ -1042,7 +1042,7 @@
                             </div>
                             <div class="swiper-slide">
                                 <div class="dash-collection overflow-hidden rounded-top position-relative">
-                                    <img src="https://img.themesbrand.com/velzon/images/img-5.gif" alt=""
+                                    <img src="https://img.lionsinternational.com/lionsclubs/images/img-5.gif" alt=""
                                         height="220" class="object-fit-cover w-100" />
                                     <div
                                         class="content position-absolute bottom-0 m-2 p-2 start-0 end-0 rounded d-flex align-items-center">

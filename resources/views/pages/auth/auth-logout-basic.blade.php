@@ -34,7 +34,7 @@
 
                             <div class="mt-4 pt-2">
                                 <h5>You are Logged Out</h5>
-                                <p class="text-muted">Thank you for using <span class="fw-semibold">velzon</span> admin
+                                <p class="text-muted">Thank you for using <span class="fw-semibold">lionsclubs</span> admin
                                     template</p>
                                 <div class="mt-4">
                                     <a href="auth-signin-basic.html" class="btn btn-success w-100">Sign In</a>

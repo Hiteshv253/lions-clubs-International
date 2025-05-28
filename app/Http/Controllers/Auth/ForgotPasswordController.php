@@ -6,23 +6,19 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Password;
 
-class ForgotPasswordController extends Controller
-{
-    public function index()
-    {
-        return view('pages.auth.auth-pass-reset-basic');
-    }
+class ForgotPasswordController extends Controller {
 
-    public function forgot(Request $request)
-    {
-        $request->validate(['email' => 'required|email']);
+      public function index() {
+            return view('pages.auth.auth-pass-reset-basic');
+      }
 
-        $status = Password::sendResetLink(
-            $request->only('email')
-        );
+      public function forgot(Request $request) {
+            $request->validate(['email' => 'required|email']);
 
-        return $status === Password::RESET_LINK_SENT
-            ? back()->with(['status' => __($status)])
-            : back()->withErrors(['email' => __($status)]);
-    }
+            $status = Password::sendResetLink(
+                        $request->only('email')
+            );
+
+            return $status === Password::RESET_LINK_SENT ? back()->with(['status' => __($status)]) : back()->withErrors(['email' => __($status)]);
+      }
 }

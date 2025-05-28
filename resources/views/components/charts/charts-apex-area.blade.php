@@ -4,11 +4,11 @@
     <!-- apexcharts -->
     <script src="{{ asset('') }}assets/libs/apexcharts/apexcharts.min.js"></script>
     <!-- for basic area chart -->
-    <script src="https://img.themesbrand.com/velzon/apexchart-js/stock-prices.js"></script>
+    <script src="https://img.lionsinternational.com/lionsclubs/apexchart-js/stock-prices.js"></script>
     <!-- for github style chart -->
-    <script src="https://img.themesbrand.com/velzon/apexchart-js/github-data.js"></script>
+    <script src="https://img.lionsinternational.com/lionsclubs/apexchart-js/github-data.js"></script>
     <!-- for irregular timeseries chart -->
-    <script src="https://img.themesbrand.com/velzon/apexchart-js/irregular-data-series.js"></script>
+    <script src="https://img.lionsinternational.com/lionsclubs/apexchart-js/irregular-data-series.js"></script>
     <script src="{{ asset('') }}assets/libs/moment/moment.js"></script>
 @endpush
 

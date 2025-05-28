@@ -36,7 +36,7 @@
                                 class="ri-map-pin-user-line me-1 text-white text-opacity-75 fs-16 align-middle"></i>California,
                             United States</div>
                         <div>
-                            <i class="ri-building-line me-1 text-white text-opacity-75 fs-16 align-middle"></i>Themesbrand
+                            <i class="ri-building-line me-1 text-white text-opacity-75 fs-16 align-middle"></i>lionsinternational
                         </div>
                     </div>
                 </div>
@@ -133,7 +133,7 @@
                                                     </tr>
                                                     <tr>
                                                         <th class="ps-0" scope="row">E-mail :</th>
-                                                        <td class="text-muted">daveadame@velzon.com</td>
+                                                        <td class="text-muted">daveadame@lionsclubs.com</td>
                                                     </tr>
                                                     <tr>
                                                         <th class="ps-0" scope="row">Location :</th>
@@ -388,7 +388,7 @@
                                                     </div>
                                                     <div class="flex-grow-1 overflow-hidden">
                                                         <p class="mb-1">Website :</p>
-                                                        <a href="#" class="fw-semibold">www.velzon.com</a>
+                                                        <a href="#" class="fw-semibold">www.lionsclubs.com</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -634,7 +634,7 @@
                                                                         data-bs-parent="#accordionExample">
                                                                         <div class="accordion-body ms-2 ps-5">
                                                                             <p class="text-muted mb-2"> Every team project
-                                                                                can have a velzon. Use the velzon to share
+                                                                                can have a lionsclubs. Use the lionsclubs to share
                                                                                 information with your team to understand and
                                                                                 contribute to your project.</p>
                                                                             <div class="avatar-group">
@@ -774,7 +774,7 @@
                                                                                 </div>
                                                                                 <div class="flex-grow-1 ms-3">
                                                                                     <h6 class="fs-14 mb-1">
-                                                                                        Velzon admin dashboard templates
+                                                                                        lionsclubs admin dashboard templates
                                                                                         layout upload
                                                                                     </h6>
                                                                                     <small class="text-muted">We talked
@@ -1134,8 +1134,8 @@
                                                                         <div class="accordion-body ms-2 ps-5">
                                                                             <p class="text-muted mb-2">
                                                                                 Every team project can
-                                                                                have a velzon. Use the
-                                                                                velzon to share
+                                                                                have a lionsclubs. Use the
+                                                                                lionsclubs to share
                                                                                 information with your
                                                                                 team to understand and
                                                                                 contribute to your
@@ -1611,7 +1611,7 @@
                                         </div>
                                         <div class="flex-grow-1 ms-3">
                                             <h6 class="mb-1">Bethany Johnson</h6>
-                                            <p class="text-muted mb-2">added a new member to velzon dashboard</p>
+                                            <p class="text-muted mb-2">added a new member to lionsclubs dashboard</p>
                                             <small class="mb-0 text-muted">19 Nov</small>
                                         </div>
                                     </div>
@@ -1865,7 +1865,7 @@
                                                 <div class="d-flex">
                                                     <div class="flex-grow-1 text-muted overflow-hidden">
                                                         <h5 class="fs-14 text-truncate"><a href="#"
-                                                                class="text-body">Velzon Project</a></h5>
+                                                                class="text-body">lionsclubs Project</a></h5>
                                                         <p class="text-muted text-truncate mb-0">Last Update : <span
                                                                 class="fw-semibold text-body">11 hr Ago</span></p>
                                                     </div>
@@ -2615,7 +2615,7 @@
                                                                 </div>
                                                                 <div class="ms-3 flex-grow-1">
                                                                     <h6 class="fs-15 mb-0">
-                                                                        <a href="javascript:void(0);">Velzon-logo.png</a>
+                                                                        <a href="javascript:void(0);">lionsclubs-logo.png</a>
                                                                     </h6>
                                                                 </div>
                                                             </div>

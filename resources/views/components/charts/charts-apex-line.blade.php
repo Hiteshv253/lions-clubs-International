@@ -4,7 +4,7 @@
     <!-- apexcharts -->
     <script src="{{ asset('') }}assets/libs/apexcharts/apexcharts.min.js"></script>
 
-    <script src="https://img.themesbrand.com/velzon/apexchart-js/stock-prices.js"></script>
+    <script src="https://img.lionsinternational.com/lionsclubs/apexchart-js/stock-prices.js"></script>
 @endpush
 
 @push('page-script')
