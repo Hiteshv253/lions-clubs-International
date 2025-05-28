@@ -13,7 +13,19 @@ use Illuminate\Support\Str;
 
 class HomePageController extends Controller {
 
-      public function home() {
-            return view('frontend.home-page.index');
+      public function home1() {
+            return view('frontend.home_page.index');
+      }
+
+      public function about() {
+            return view('frontend.about_page.index');
+      }
+
+      public function service() {
+            return view('frontend.service_page.index');
+      }
+
+      public function contact() {
+            return view('frontend.contact_page.index');
       }
 }

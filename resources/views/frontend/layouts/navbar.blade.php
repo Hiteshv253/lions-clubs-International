@@ -59,9 +59,10 @@
                   </button>
                   <div class="collapse navbar-collapse" id="navbarCollapse">
                         <div class="navbar-nav mx-0 mx-lg-auto">
-                              <a href="index-2.html" class="nav-item nav-link active">Home</a>
-                              <a href="about.html" class="nav-item nav-link">About</a>
-                              <a href="service.html" class="nav-item nav-link">Services</a>
+                              <a href="/home" class="nav-item nav-link active">Home</a>
+                              <a href="/about" class="nav-item nav-link">About</a>
+                              <a href="/service" class="nav-item nav-link">Services</a>
+                              <a href="/contact" class="nav-item nav-link">Contact</a>
                               <a href="blog.html" class="nav-item nav-link">Blog</a>
                               <div class="nav-item dropdown">
                                     <a href="#" class="nav-link" data-bs-toggle="dropdown">
@@ -75,11 +76,10 @@
                                           <a href="404.html" class="dropdown-item">404 Page</a>
                                     </div>
                               </div>
-                              <a href="contact.html" class="nav-item nav-link">Contact</a>
-                              <div class="nav-btn px-3">
+<!--                              <div class="nav-btn px-3">
                                     <button class="btn-search btn btn-primary btn-md-square rounded-circle flex-shrink-0" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search"></i></button>
                                     <a href="#" class="btn btn-primary rounded-pill py-2 px-4 ms-3 flex-shrink-0"> Get a Quote</a>
-                              </div>
+                              </div>-->
                         </div>
                   </div>
                   <div class="d-none d-xl-flex flex-shrink-0 ps-4">
@@ -100,7 +100,7 @@
 <!-- Navbar & Hero End -->
 
 <!-- Modal Search Start -->
-<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!--<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-fullscreen">
             <div class="modal-content rounded-0">
                   <div class="modal-header">
@@ -115,5 +115,5 @@
                   </div>
             </div>
       </div>
-</div>
+</div>-->
 <!-- Modal Search End -->

@@ -3,7 +3,7 @@
 
 
 @section('content')
-@include('frontend.home-page.banner')
+@include('frontend.home_page.banner')
 
 
 
@@ -65,8 +65,6 @@
       </div>
 </div>
 
-@include('frontend.about-us.index')
-@include('frontend.contact-us.index')
 
 <!-- Feature End -->
 <!-- auth page content -->
