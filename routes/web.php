@@ -6,7 +6,18 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Frontend\HomePageController;
+//
+//
+//
+use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Admin\UserController;
 
+Route::middleware(['auth'])->prefix('admin')->group(function () {
+      Route::resource('roles', RoleController::class);
+      Route::resource('permissions', PermissionController::class);
+      Route::resource('users', UserController::class);
+});
 /*
   |--------------------------------------------------------------------------
   | Web Routes

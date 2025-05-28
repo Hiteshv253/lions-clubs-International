@@ -14,6 +14,6 @@ use Illuminate\Support\Str;
 class HomePageController extends Controller {
 
       public function home() {
-            return view('frontend.home.index');
+            return view('frontend.home-page.index');
       }
 }

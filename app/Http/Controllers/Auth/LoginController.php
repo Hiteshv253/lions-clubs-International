@@ -27,11 +27,11 @@ class LoginController extends Controller {
             if (Auth::attempt($credentials, $remember)) {
                   $request->session()->regenerate();
 
-                  return redirect()->intended('dashboard-ecommerce');
+                  return redirect()->intended('/lions/dashboard-ecommerce');
             }
 
             if (Auth::viaRemember()) {
-                  return redirect()->intended('dashboard-ecommerce');
+                  return redirect()->intended('/lions/dashboard-ecommerce');
             }
 
             return back()->with('error', 'The provided credentials do not match our records.');
