@@ -39,50 +39,49 @@
                                           <p class="text-muted">Get your free lionsclubs account now</p>
                                     </div>
                                     <div class="p-2 mt-4">
-                                          <form action="{{ route('users.store') }}" class="needs-validation" novalidate  method="POST">
+                                          <form  method="POST" action="{{ route('registration') }}" class="needs-validation" novalidate >
                                                 @csrf
+                                                <div class="mb-3">
+                                                      <label for="first_name" class="form-label">First Name <span class="text-danger">*</span></label>
+                                                      <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter first name" required value="{{ old('first_name') }}">
+                                                      @error('first_name')
+                                                      <div class="text-danger">{{ $message }}</div>
+                                                      @enderror
+                                                      <div class="invalid-feedback"> Please first name </div>
+                                                </div>
+                                                <div class="mb-3">
+                                                      <label for="last_name" class="form-label">Last Name <span class="text-danger">*</span></label>
+                                                      <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter last name" required value="{{ old('last_name') }}">
+                                                      @error('last_name')
+                                                      <div class="text-danger">{{ $message }}</div>
+                                                      @enderror
+                                                      <div class="invalid-feedback"> Please last name</div>
+                                                </div>
+                                                <div class="mb-3">
+                                                      <label for="email" class="form-label">Email ID <span class="text-danger">*</span></label>
+                                                      <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address" required value="{{ old('email') }}">
+                                                      @error('email')
+                                                      <div class="text-danger">{{ $message }}</div>
+                                                      @enderror
+                                                      <div class="invalid-feedback">Please enter email ID</div>
+                                                </div>
 
-                                                <div class="mb-3">
-                                                      <label for="useremail" class="form-label">Email <span
-                                                                  class="text-danger">*</span></label>
-                                                      <input type="email" class="form-control" id="useremail"
-                                                             placeholder="Enter email address" required>
-                                                      <div class="invalid-feedback">
-                                                            Please enter email
-                                                      </div>
-                                                </div>
-                                                <div class="mb-3">
-                                                      <label for="username" class="form-label">Username <span
-                                                                  class="text-danger">*</span></label>
-                                                      <input type="text" class="form-control" id="username"
-                                                             placeholder="Enter username" required>
-                                                      <div class="invalid-feedback">
-                                                            Please enter username
-                                                      </div>
-                                                </div>
-
-                                                <div class="mb-3">
-                                                      <label class="form-label" for="password-input">Password</label>
-                                                      <div class="position-relative auth-pass-inputgroup">
-                                                            <input type="password" class="form-control pe-5 password-input"
-                                                                   onpaste="return false" placeholder="Enter password" id="password-input"
-                                                                   aria-describedby="passwordInput"
-                                                                   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
-                                                            <button
-                                                                  class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon"
-                                                                  type="button" id="password-addon"><i
-                                                                        class="ri-eye-fill align-middle"></i></button>
-                                                            <div class="invalid-feedback">
-                                                                  Please enter password
-                                                            </div>
-                                                      </div>
-                                                </div>
+                                                <!--                                                <div class="mb-3">
+                                                                                                      <label class="form-label" for="password-input">Password</label>
+                                                                                                      <div class="position-relative auth-pass-inputgroup">
+                                                                                                            <input type="password" class="form-control pe-5 password-input"
+                                                                                                                   onpaste="return false" placeholder="Enter password" id="password-input" aria-describedby="passwordInput"
+                                                                                                                   pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                                                                                                            <button
+                                                                                                                  class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon"
+                                                                                                                  type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
+                                                                                                            <div class="invalid-feedback"> Please enter password </div>
+                                                                                                      </div>
+                                                                                                </div>-->
 
                                                 <div class="mb-4">
                                                       <p class="mb-0 fs-12 text-muted fst-italic">By registering you agree to the lionsclubs
-                                                            <a href="#"
-                                                               class="text-primary text-decoration-underline fst-normal fw-medium">Terms of
-                                                                  Use</a></p>
+                                                            <a href="#" class="text-primary text-decoration-underline fst-normal fw-medium">Terms of Use</a></p>
                                                 </div>
 
                                                 <div id="password-contain" class="p-3 bg-light mb-2 rounded">

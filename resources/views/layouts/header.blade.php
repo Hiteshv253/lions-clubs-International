@@ -151,7 +151,7 @@
                         </div>
 
 
-                        <div class="dropdown topbar-head-dropdown ms-1 header-item">
+<!--                        <div class="dropdown topbar-head-dropdown ms-1 header-item">
                               <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle"
                                       data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class='bx bx-category-alt fs-22'></i>
@@ -213,9 +213,9 @@
                                           </div>
                                     </div>
                               </div>
-                        </div>
+                        </div>-->
 
-                        <div class="dropdown topbar-head-dropdown ms-1 header-item">
+<!--                        <div class="dropdown topbar-head-dropdown ms-1 header-item">
                               <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle"
                                       id="page-header-cart-dropdown" data-bs-toggle="dropdown" data-bs-auto-close="outside"
                                       aria-haspopup="true" aria-expanded="false">
@@ -390,7 +390,7 @@
                                           </a>
                                     </div>
                               </div>
-                        </div>
+                        </div>-->
 
                         <div class="ms-1 header-item d-none d-sm-flex">
                               <button type="button" class="btn btn-icon btn-topbar btn-ghost-secondary rounded-circle"

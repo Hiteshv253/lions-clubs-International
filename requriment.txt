@@ -1,0 +1,35 @@
+1) Registration
+
+- Initial 4000-5000 days will be provided by Lions club team and we will help them to upload it in one go
+
+- After that any new user will be registered by Lions club members by putting First Name, Last Name & Email ID - All mandatory fields -- *done || UI*
+
+- Once user is registered, unique Lions club Member id will be generated -- *done || UI*
+
+- Membership id and auto generated password will be sent to user over an email
+
+- Users can’t register themselves (No self regulation is allowed by users)
+
+- We will not take mobile number as user data as sending OTP OR sms will require an extra cost
+
+- Once user is registered, S/he can login using Membership id and auto generated password 
+
+2) Once logged in then only users will be able to see directory data
+
+3) One user can login from one device only at a time
+
+4) Seasion timeout should be of 30mins
+
+5) E-club Website Login link should be provided
+
+6) Website cannot be linked with Lions International club website
+
+7) Hemal has provided test data of clubs
+
+8) After event registration, event registration card to be provided with unique QR code and user’s detail 
+
+9) Event registration history to be shown to user
+
+
+
+10) There will be an inquiry form at footer part (Name, Email Id and Mobile Number) to get users data who show an interest

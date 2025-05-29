@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
+
+
 
 class LoginController extends Controller {
 
@@ -25,6 +29,10 @@ class LoginController extends Controller {
             $remember = $request->input('remember_me');
 
             if (Auth::attempt($credentials, $remember)) {
+                  DB::table('sessions')
+                        ->where('user_id', Auth::id())
+                        ->delete();
+                  Session::put('user_id', Auth::id());
                   $request->session()->regenerate();
 
                   return redirect()->intended('/lions/dashboard-ecommerce');

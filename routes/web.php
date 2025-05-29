@@ -6,7 +6,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Frontend\HomePageController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\Frontend\UserRegistrationController;
 
 /*
   |--------------------------------------------------------------------------
@@ -20,7 +20,7 @@ use App\Http\Controllers\UserController;
  */
 
 //Route::resource('users', UserController::class);
-Route::post('/users/store', [UserController::class, 'store'])->name('users.store');
+Route::post('/registration', [UserRegistrationController::class, 'registration'])->name('registration');
 
 // Dashboard
 Route::get('/', [HomePageController::class, 'home'])->name('home');
