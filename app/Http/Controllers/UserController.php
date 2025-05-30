@@ -2,149 +2,87 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
-use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use App\Helpers\Helper;
+use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller {
 
       public function __construct() {
-//            $this->middleware('permission:Access User', ['only' => ['show', 'index']]);
-//            $this->middleware('permission:Create User', ['only' => ['create']]);
-//            $this->middleware('permission:Edit User', ['only' => ['edit']]);
+            $this->middleware('permission:view user', ['only' => ['index']]);
+            $this->middleware('permission:create user', ['only' => ['create', 'store']]);
+            $this->middleware('permission:update user', ['only' => ['update', 'edit']]);
+            $this->middleware('permission:delete user', ['only' => ['destroy']]);
       }
 
-      /**
-       * Display a listing of the resource.
-       *
-       * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-       */
       public function index() {
-
+            $users = User::get();
+            return view('role-permission.user.index', ['users' => $users]);
       }
 
-      /**
-       * Show the form for creating a new resource.
-       *
-       * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-       */
       public function create() {
-
+            $roles = Role::pluck('name', 'name')->all();
+            return view('role-permission.user.create', ['roles' => $roles]);
       }
 
-      /**
-       * Store a newly created resource in storage.
-       *
-       * @param \Illuminate\Http\Request $request
-       * @return \Illuminate\Http\Response
-       */
       public function store(Request $request) {
-            dd($request);
-            $this->validate($request, [
-                      'name' => 'bail|required|min:2',
-                      'email' => 'required|email|unique:users',
-                      'password' => 'required|min:8',
-                      'roles' => 'required|min:1'
+            $request->validate([
+                      'name' => 'required|string|max:255',
+                      'email' => 'required|email|max:255|unique:users,email',
+                      'password' => 'required|string|min:8|max:20',
+                      'roles' => 'required'
             ]);
 
-            // hash password
-            $request->merge(['password' => bcrypt($request->get('password'))]);
+            $user = User::create([
+                            'name' => $request->name,
+                            'email' => $request->email,
+                            'password' => Hash::make($request->password),
+            ]);
 
-            $DataUser = User::create($request->except('roles'));
+            $user->syncRoles($request->roles);
 
-            $lastId = $DataUser->id;
+            return redirect('/users')->with('status', 'User created successfully with roles');
+      }
 
-            $table_id = Employee::insertGetId([]);
-            Employee::where('id', $table_id)->update([
+      public function edit(User $user) {
+            $roles = Role::pluck('name', 'name')->all();
+            $userRoles = $user->roles->pluck('name', 'name')->all();
+            return view('role-permission.user.edit', [
+                      'user' => $user,
+                      'roles' => $roles,
+                      'userRoles' => $userRoles
+            ]);
+      }
+
+      public function update(Request $request, User $user) {
+            $request->validate([
+                      'name' => 'required|string|max:255',
+                      'password' => 'nullable|string|min:8|max:20',
+                      'roles' => 'required'
+            ]);
+
+            $data = [
                       'name' => $request->name,
-                      'user_id' => $lastId,
-                      'email' => $request->email
-            ]);
-            /* assgin default roles of 'employee' start */
-//        DB::table('model_has_roles')->insert(
-//                array(
-//                    'role_id' => '2',
-//                    'model_type' => 'App\User',
-//                    'model_id' => $table_id
-//                )
-//        );
-            /* assgin default roles of 'employee' end */
+                      'email' => $request->email,
+            ];
 
-
-//*color code genrate start*/
-            $colorUsers = UserColors::firstOrNew([
-                            'user_id' => $lastId,
-                            'menu_color' => 'gradient-45deg-purple-deep-purple',
-                            'navbar_color' => 'gradient-45deg-purple-deep-purple',
-                            'title_color' => 'black-text',
-                            'breadcrumb_color' => 'white-text',
-                            'button_color' => '#ff4081',
-                            'dark_menu' => '0',
-                            'menu_selection' => 'sidenav-active-square',
-                            'font_family' => 'Muli',
-                            'menu_size' => '14px',
-                            'breadcrumb_size' => '14px',
-                            'title_size' => '22px',
-                            'table_size' => '15px',
-                            'label_size' => '8px',
-            ]);
-            $colorUsers->save();
-
-//*color code genrate end*/
-//
-//
-            // Create the user
-            if ($user = $DataUser) {
-
-                  $user->syncRoles($request->roles);
-
-                  return redirect()->route('users.index')->with('success', 'User has been created.');
-            } else {
-                  return redirect()->back();
+            if (!empty($request->password)) {
+                  $data += [
+                            'password' => Hash::make($request->password),
+                  ];
             }
+
+            $user->update($data);
+            $user->syncRoles($request->roles);
+
+            return redirect('/users')->with('status', 'User Updated Successfully with roles');
       }
 
-      /**
-       * Display the specified resource.
-       *
-       * @param int $id
-       * @return \Illuminate\Http\Response
-       */
-      public function show($id) {
-            //
-      }
+      public function destroy($userId) {
+            $user = User::findOrFail($userId);
+            $user->delete();
 
-      /**
-       * Show the form for editing the specified resource.
-       *
-       * @param int $id
-       * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-       */
-      public function edit($id) {
-
-      }
-
-      /**
-       * Update the specified resource in storage.
-       *
-       * @param \Illuminate\Http\Request $request
-       * @param int $id
-       * @return \Illuminate\Http\RedirectResponse
-       */
-      public function update(Request $request, $id) {
-
-      }
-
-      /**
-       * Remove the specified resource from storage.
-       *
-       * @param int $id
-       * @return \Illuminate\Http\JsonResponse
-       */
-      public function destroy($id) {
-
+            return redirect('/users')->with('status', 'User Delete Successfully');
       }
 }

@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Frontend\HomePageController;
 use App\Http\Controllers\Frontend\UserRegistrationController;
+use App\Http\Controllers\UserController;
 
 /*
   |--------------------------------------------------------------------------
@@ -18,6 +19,22 @@ use App\Http\Controllers\Frontend\UserRegistrationController;
   | be assigned to the "web" middleware group. Make something great!
   |
  */
+Route::group(['middleware' => ['role:super-admin|admin']], function () {
+
+      Route::resource('permissions', App\Http\Controllers\PermissionController::class);
+      Route::get('permissions/{permissionId}/delete', [App\Http\Controllers\PermissionController::class, 'destroy']);
+
+      Route::resource('roles', App\Http\Controllers\RoleController::class);
+      Route::get('roles/{roleId}/delete', [App\Http\Controllers\RoleController::class, 'destroy']);
+      Route::get('roles/{roleId}/give-permissions', [App\Http\Controllers\RoleController::class, 'addPermissionToRole']);
+      Route::put('roles/{roleId}/give-permissions', [App\Http\Controllers\RoleController::class, 'givePermissionToRole']);
+
+      Route::resource('users', App\Http\Controllers\UserController::class);
+      Route::get('users/{userId}/delete', [App\Http\Controllers\UserController::class, 'destroy']);
+});
+
+
+
 
 //Route::resource('users', UserController::class);
 Route::post('/registration', [UserRegistrationController::class, 'registration'])->name('registration');
@@ -40,8 +57,7 @@ Route::view('/auth-signin-basic', 'pages.auth.auth-signin-basic');
 Route::view('/auth-signin-cover', 'pages.auth.auth-signin-cover');
 Route::view('/auth-signup-basic', 'pages.auth.auth-signup-basic');
 Route::view('/auth-signup-cover', 'pages.auth.auth-signup-cover');
-Route::resource('users', 'UserController');
-
+ 
 Route::prefix('lions')->middleware(['auth'])->group(function () {
 
 
