@@ -48,4 +48,10 @@ class User extends Authenticatable {
                 'email_verified_at' => 'datetime',
                 'password' => 'hashed',
       ];
+
+      public function registeredEvents() {
+            return $this->belongsToMany(EventMaster::class, 'event_registrations')
+                        ->withTimestamps()
+                        ->withPivot('registered_at');
+      }
 }

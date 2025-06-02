@@ -13,7 +13,11 @@ class DatabaseSeeder extends Seeder {
       public function run(): void {
             \App\Models\User::factory(10)->create();
 
-            $this->call(ClubMemberMasters::class);
+            $this->call([
+                      ClubMemberMasters::class,
+                      UserRolePermissionSeeder::class,
+                      EventMasterSeeder::class,
+            ]);
 
 //            \App\Models\User::factory()->create([
 //                      'first_name' => 'Hitesh',

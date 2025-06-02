@@ -10,6 +10,7 @@ use App\Http\Controllers\Frontend\UserRegistrationController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Backend\MemberRegistrationController;
 use App\Http\Controllers\EventMasterController;
+use App\Http\Controllers\MemberController;
 
 /*
   |--------------------------------------------------------------------------
@@ -59,11 +60,23 @@ Route::view('/auth-signup-cover', 'pages.auth.auth-signup-cover');
 
 Route::prefix('lions')->middleware(['auth'])->group(function () {
 
+      Route::get('/my-registrations', [EventController::class, 'registrationHistory'])->name('events.history');
 
       Route::view('/dashboard', 'backend.dashboard.index');
-      
-      Route::resource('events', EventMasterController::class);
 
+      Route::resource('events', EventMasterController::class);
+      Route::resource('members', MemberController::class);
+
+      Route::get('/event/registration-card/{event}', [EventController::class, 'showRegistrationCard'])
+            ->name('event.registration.card');
+
+//      Route::get('/members', [MemberController::class, 'index'])->name('members.index');
+//      Route::get('/members/list', [MemberController::class, 'list'])->name('members.list');
+//      Route::post('/members/store', [MemberController::class, 'store'])->name('members.store');
+//      Route::get('/members/{id}/edit', [MemberController::class, 'edit'])->name('members.edit');
+//      Route::put('/members/{id}', [MemberController::class, 'update'])->name('members.update');
+//      Route::delete('/members/{id}', [MemberController::class, 'destroy'])->name('members.destroy');
+//      ==========================
 //      Route::get('/events', [EventMasterController::class, 'index'])->name('events.index');
 
 

@@ -25,4 +25,9 @@ class MemberMaster extends Model {
                 'is_active',
                 'is_create_by',
       ];
+      protected $casts = [
+                'birthday' => 'date',
+                'is_active' => 'boolean',
+                'is_create_by' => 'boolean',
+      ];
 }

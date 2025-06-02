@@ -24,4 +24,10 @@ class EventMaster extends Model {
       public function creator() {
             return $this->belongsTo(User::class, 'is_create_by');
       }
+
+      public function registrants() {
+            return $this->belongsToMany(User::class, 'event_registrations')
+                        ->withTimestamps()
+                        ->withPivot('registered_at');
+      }
 }

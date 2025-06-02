@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Yajra\DataTables\Facades\DataTables;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use PDF;
+use App\Models\User;
 
 class EventMasterController extends Controller {
 
@@ -21,6 +24,25 @@ class EventMasterController extends Controller {
 //
 //            return view('events.index', compact('events'));
 //      }
+
+      public function registrationHistory() {
+            $user = auth()->user();
+            $events = $user->registeredEvents()->orderBy('pivot_registered_at', 'desc')->get();
+
+            return view('events.history', compact('events'));
+      }
+
+      public function generatePdfCard($userId) {
+            $user = User::findOrFail($userId);
+
+            $qrData = route('event.registration.card', ['user' => $user->id]);
+            $qrCode = QrCode::size(200)->format('png')->generate($qrData);
+            $qrCodeBase64 = base64_encode($qrCode);
+
+            $pdf = PDF::loadView('event.registration_card_pdf', compact('user', 'qrCodeBase64'));
+
+            return $pdf->download('registration_card_' . $user->id . '.pdf');
+      }
 
       public function index(Request $request) {
             if ($request->ajax()) {
@@ -73,8 +95,19 @@ class EventMasterController extends Controller {
             // Assume currently authenticated user creates:
             $data['is_create_by'] = auth()->id();
 
-            EventMaster::create($data);
+            // Create event record and get the created event model
+            $event = EventMaster::create($data);
 
+            // Generate unique QR code data for this event's registration card URL
+//            $qrData = route('event.registration.card', ['event' => $event->id]);
+//
+//
+//            // Generate QR code as PNG base64 string
+//            $qrCode = QrCode::size(200)->format('png')->generate($qrData);
+//            $qrCodeBase64 = base64_encode($qrCode);
+            // Optionally: You can save $qrCodeBase64 in DB or pass it to a view here
+            // For example: $event->qr_code = $qrCodeBase64; $event->save();
+            // For now, just redirect back with success message
             return redirect()->route('events.index')
                         ->with('success', 'Event created successfully.');
       }

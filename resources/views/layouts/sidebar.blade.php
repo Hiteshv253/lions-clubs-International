@@ -68,7 +68,7 @@
                               <div class="collapse menu-dropdown" id="sidebarEvent">
                                     <ul class="nav nav-sm flex-column">
                                           <li class="nav-item">
-                                                <a href="/events" class="nav-link" data-key="t-crm">Events</a>
+                                                <a href="/lions/events" class="nav-link" data-key="t-crm">Events</a>
                                           </li>
 
                                     </ul>
@@ -82,7 +82,7 @@
                               <div class="collapse menu-dropdown" id="sidebarMembership">
                                     <ul class="nav nav-sm flex-column">
                                           <li class="nav-item">
-                                                <a href="" class="nav-link" data-key="t-crm">My Membership</a>
+                                                <a href="/lions/members" class="nav-link" data-key="t-crm">My Membership</a>
                                           </li>
                                           <li class="nav-item">
                                                 <a href="dashboard-crm" class="nav-link" data-key="t-crm">My Officer Titles</a>
