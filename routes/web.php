@@ -8,6 +8,8 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Frontend\HomePageController;
 use App\Http\Controllers\Frontend\UserRegistrationController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Backend\MemberRegistrationController;
+use App\Http\Controllers\EventMasterController;
 
 /*
   |--------------------------------------------------------------------------
@@ -33,9 +35,6 @@ Route::group(['middleware' => ['role:super-admin|admin']], function () {
       Route::get('users/{userId}/delete', [App\Http\Controllers\UserController::class, 'destroy']);
 });
 
-
-
-
 //Route::resource('users', UserController::class);
 Route::post('/registration', [UserRegistrationController::class, 'registration'])->name('registration');
 
@@ -57,17 +56,21 @@ Route::view('/auth-signin-basic', 'pages.auth.auth-signin-basic');
 Route::view('/auth-signin-cover', 'pages.auth.auth-signin-cover');
 Route::view('/auth-signup-basic', 'pages.auth.auth-signup-basic');
 Route::view('/auth-signup-cover', 'pages.auth.auth-signup-cover');
- 
+
 Route::prefix('lions')->middleware(['auth'])->group(function () {
 
 
-      Route::view('/dashboard-analytics', 'menu.dashboards.dashboard-analytics');
-      Route::view('/dashboard-crm', 'menu.dashboards.dashboard-crm');
-      Route::view('/dashboard-ecommerce', 'menu.dashboards.dashboard-ecommerce')->middleware('auth');
-      Route::view('/dashboard-crypto', 'menu.dashboards.dashboard-crypto');
-      Route::view('/dashboard-job', 'menu.dashboards.dashboard-job');
-      Route::view('/dashboard-nft', 'menu.dashboards.dashboard-nft');
-      Route::view('/dashboard-projects', 'menu.dashboards.dashboard-projects');
+      Route::view('/dashboard', 'backend.dashboard.index');
+      
+      Route::resource('events', EventMasterController::class);
+
+      Route::get('/registration', [MemberRegistrationController::class, 'index'])->name('index');
+      Route::get('/registration/create', [MemberRegistrationController::class, 'index'])->name('create');
+      Route::get('/registration/edit/{id}', [MemberRegistrationController::class, 'edit'])->name('edit');
+      Route::post('/registration/update/{id}', [MemberRegistrationController::class, 'update'])->name('update');
+      Route::post('/registration/update/{id}', [MemberRegistrationController::class, 'update'])->name('update');
+      Route::post('/registration/store', [MemberRegistrationController::class, 'store'])->name('store');
+      Route::get('/registration/delete', [MemberRegistrationController::class, 'delete'])->name('delete');
 
 // Apps
       Route::view('/apps-calendar', 'menu.apps.apps-calendar');

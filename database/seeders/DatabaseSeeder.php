@@ -11,13 +11,9 @@ class DatabaseSeeder extends Seeder {
        * Seed the application's database.
        */
       public function run(): void {
-             \App\Models\User::factory(10)->create();
+            \App\Models\User::factory(10)->create();
 
-
-
-
-
-
+            $this->call(ClubMemberMasters::class);
 
 //            \App\Models\User::factory()->create([
 //                      'first_name' => 'Hitesh',
