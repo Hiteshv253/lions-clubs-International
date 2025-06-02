@@ -61,6 +61,20 @@
                   <ul class="navbar-nav" id="navbar-nav">
                         <!--<li class="menu-title"><span data-key="t-menu">Membership</span></li>-->
                         <li class="nav-item">
+                              <a class="nav-link menu-link" href="#sidebarEvent" data-bs-toggle="collapse" role="button"
+                                 aria-expanded="false" aria-controls="sidebarEvent">
+                                    <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Events</span>
+                              </a>
+                              <div class="collapse menu-dropdown" id="sidebarEvent">
+                                    <ul class="nav nav-sm flex-column">
+                                          <li class="nav-item">
+                                                <a href="/events" class="nav-link" data-key="t-crm">Events</a>
+                                          </li>
+
+                                    </ul>
+                              </div>
+                        </li>  <!--end Dashboard Menu -->
+                        <li class="nav-item">
                               <a class="nav-link menu-link" href="#sidebarMembership" data-bs-toggle="collapse" role="button"
                                  aria-expanded="false" aria-controls="sidebarMembership">
                                     <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Membership</span>

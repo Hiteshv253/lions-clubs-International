@@ -6,16 +6,37 @@ use App\Models\EventMaster;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Yajra\DataTables\Facades\DataTables;
 
 class EventMasterController extends Controller {
 
       /**
        * Display a listing of events.
        */
-      public function index() {
-            // Paginate or get all
-            $events = EventMaster::orderBy('date_time', 'desc')->paginate(10);
-            return view('events.index', compact('events'));
+//      public function index() {
+//            // Paginate or get all
+//            $events = EventMaster::select('id', 'event_name', 'date_time', 'is_active')
+//                  ->orderByDesc('date_time')
+//                  ->paginate(10); // or 25 for faster page loads
+//
+//            return view('events.index', compact('events'));
+//      }
+
+      public function index(Request $request) {
+            if ($request->ajax()) {
+                  $data = EventMaster::select('id', 'event_name', 'date_time', 'is_active');
+                  return DataTables::of($data)
+                              ->addColumn('actions', function ($row) {
+                                    return view('events.partials.actions', compact('row'))->render();
+                              })
+                              ->editColumn('is_active', function ($row) {
+                                    return $row->is_active ? 'Yes' : 'No';
+                              })
+                              ->rawColumns(['actions']) // To render HTML
+                              ->make(true);
+            }
+
+            return view('events.index');
       }
 
       /**

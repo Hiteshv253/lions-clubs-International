@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="container">
+<div class=" ">
       <h1>{{ $event->event_name }}</h1>
       <p><strong>Date &amp; Time:</strong> {{ $event->date_time }}</p>
       <p><strong>Description:</strong></p>

@@ -64,6 +64,9 @@ Route::prefix('lions')->middleware(['auth'])->group(function () {
       
       Route::resource('events', EventMasterController::class);
 
+//      Route::get('/events', [EventMasterController::class, 'index'])->name('events.index');
+
+
       Route::get('/registration', [MemberRegistrationController::class, 'index'])->name('index');
       Route::get('/registration/create', [MemberRegistrationController::class, 'index'])->name('create');
       Route::get('/registration/edit/{id}', [MemberRegistrationController::class, 'edit'])->name('edit');

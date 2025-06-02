@@ -1,46 +1,47 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="container">
-    <h1>All Events</h1>
+<div class=" ">
+      <h1>All Events</h1>
 
-    @if(session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
-    @endif
+      @if(session('success'))
+      <div class="alert alert-success">{{ session('success') }}</div>
+      @endif
 
-    <a href="{{ route('events.create') }}" class="btn btn-primary mb-3">Create New Event</a>
+      <a href="{{ route('events.create') }}" class="btn btn-primary mb-3 pull-right">Create New Event</a>
 
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Date &amp; Time</th>
-                <th>Active?</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($events as $event)
-            <tr>
-                <td>{{ $event->event_name }}</td>
-                <td>{{ $event->date_time }}</td>
-                <td>{{ $event->is_active ? 'Yes' : 'No' }}</td>
-                <td>
-                    <a href="{{ route('events.show', $event) }}" class="btn btn-sm btn-info">View</a>
-                    <a href="{{ route('events.edit', $event) }}" class="btn btn-sm btn-warning">Edit</a>
-                    <form action="{{ route('events.destroy', $event) }}" method="POST" style="display:inline">
-                        @csrf
-                        @method('DELETE')
-                        <button onclick="return confirm('Delete this event?')" class="btn btn-sm btn-danger">
-                            Delete
-                        </button>
-                    </form>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
+      <table id="events-table" class="table">
+            <thead>
+                  <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Date & Time</th>
+                        <th>Active?</th>
+                        <th>Actions</th>
+                  </tr>
+            </thead>
+      </table>
 
-    {{ $events->links() }}
 </div>
+
+
+
+<script>
+$(function () {
+  $('#events-table').DataTable({
+//        processing: true,
+//        serverSide: true,
+        ajax: '{{ route('events.index') }}',
+        columns: [
+              {data: 'id', name: 'id'},
+              {data: 'event_name', name: 'event_name'},
+              {data: 'date_time', name: 'date_time'},
+              {data: 'is_active', name: 'is_active'},
+              {data: 'actions', name: 'actions', orderable: false, searchable: false},
+        ]
+  });
+});
+</script>
+
+
 @endsection
