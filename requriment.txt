@@ -62,3 +62,7 @@ Password@1234
 
 
 10) There will be an inquiry form at footer part (Name, Email Id and Mobile Number) to get users data who show an interest
+
+
+
+composer install --optimize-autoloader --no-dev
