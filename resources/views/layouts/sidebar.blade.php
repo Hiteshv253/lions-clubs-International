@@ -94,7 +94,7 @@
                                                 <a href="/lions/members" class="nav-link" data-key="t-crm">My Membership</a>
                                           </li>
                                           <li class="nav-item">
-                                                <a href="/occupations" class="nav-link" data-key="t-crm">Occupations</a>
+                                                <a href="/lions/occupations" class="nav-link" data-key="t-crm">Occupations</a>
                                           </li>
                                     </ul>
                               </div>
