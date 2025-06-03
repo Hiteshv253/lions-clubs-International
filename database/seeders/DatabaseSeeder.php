@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder {
                       ClubMemberMasters::class,
                       UserRolePermissionSeeder::class,
                       EventMasterSeeder::class,
+                      OccupationSeeder::class,
             ]);
 
 //            \App\Models\User::factory()->create([

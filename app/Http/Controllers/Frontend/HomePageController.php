@@ -10,11 +10,29 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Http;  // <--- THIS LINE IS REQUIRED
+use GuzzleHttp\Client;
 
 class HomePageController extends Controller {
 
+      public function fetchEvents() {
+            $client = new Client();
+            try {
+                  $res = $client->request('GET', 'http://127.0.0.1:9090/api/events');
+                  if ($res->getStatusCode() == 200) {
+                        $events = json_decode($res->getBody()->getContents(), true);
+                        return view('events.index', ['events' => $events]);
+                  } else {
+                        abort(500, 'Failed to fetch events.');
+                  }
+            } catch (\Exception $e) {
+                  abort(500, 'Error: ' . $e->getMessage());
+            }
+      }
+
       public function home() {
-            return view('frontend.home_page.index');
+
+            return view('frontend.home_page.index', ['events' => $this->fetchEvents()]);
       }
 
       public function about() {

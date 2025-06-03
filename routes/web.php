@@ -11,6 +11,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\Backend\MemberRegistrationController;
 use App\Http\Controllers\EventMasterController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\OccupationController;
+use App\Http\Controllers\DistrictController;
 
 /*
   |--------------------------------------------------------------------------
@@ -66,6 +68,12 @@ Route::prefix('lions')->middleware(['auth'])->group(function () {
 
       Route::resource('events', EventMasterController::class);
       Route::resource('members', MemberController::class);
+      Route::resource('occupations', OccupationController::class);
+      Route::resource('districts', DistrictController::class);
+      Route::get('/districts', [DistrictController::class, 'index']);
+      Route::post('/districts', [DistrictController::class, 'store']);
+      Route::get('/states', [DistrictController::class, 'getStates']);
+      Route::get('/districts/list', [DistrictController::class, 'list']);
 
       Route::get('/event/registration-card/{event}', [EventController::class, 'showRegistrationCard'])
             ->name('event.registration.card');

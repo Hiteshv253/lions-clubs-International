@@ -59,7 +59,16 @@
                   <div id="two-column-menu">
                   </div>
                   <ul class="navbar-nav" id="navbar-nav">
-                        <!--<li class="menu-title"><span data-key="t-menu">Membership</span></li>-->
+                        <li class="nav-item">
+                              <a class="nav-link menu-link" href="dashboard-crm" data-bs-toggle="collapse" role="button"
+                                 aria-expanded="false" aria-controls="sidebarDashboards">
+                                    <i class="ri-dashboard-2-line"></i>  Dashboards</span>
+                              </a>
+
+                        </li> <!-- end Dashboard Menu -->
+
+
+<!--<li class="menu-title"><span data-key="t-menu">Membership</span></li>-->
                         <li class="nav-item">
                               <a class="nav-link menu-link" href="#sidebarEvent" data-bs-toggle="collapse" role="button"
                                  aria-expanded="false" aria-controls="sidebarEvent">
@@ -105,44 +114,31 @@
                               </div>
                         </li> <!-- end Dashboard Menu -->
                         <!--<li class="menu-title"><span data-key="t-menu">More</span></li>-->
-<!--                        <li class="nav-item">
-                              <a class="nav-link menu-link" href="#sidebarMore" data-bs-toggle="collapse" role="button"
-                                 aria-expanded="false" aria-controls="sidebarMore">
-                                    <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">More</span>
-                              </a>
-                              <div class="collapse menu-dropdown" id="sidebarMore">
-                                    <ul class="nav nav-sm flex-column">
-                                          <li class="nav-item">
-                                                <a href="dashboard-crm" class="nav-link" data-key="t-crm">My Club</a>
-                                          </li>
-                                          <li class="nav-item">
-                                                <a href="dashboard-crm" class="nav-link" data-key="t-crm">My District/MD/CA</a>
-                                          </li>
-                                          <li class="nav-item">
-                                                <a href="dashboard-crm" class="nav-link" data-key="t-crm">My Association</a>
-                                          </li>
-                                          <li class="nav-item">
-                                                <a href="dashboard-crm" class="nav-link" data-key="t-crm">Online Directory</a>
-                                          </li>
-                                          <li class="nav-item">
-                                                <a href="dashboard-crm" class="nav-link" data-key="t-crm">Donate</a>
-                                          </li>
-                                    </ul>
-                              </div>
-                        </li>  end Dashboard Menu -->
-                        <li class="nav-item">
-                              <a class="nav-link menu-link" href="#sidebarDashboards" data-bs-toggle="collapse" role="button"
-                                 aria-expanded="false" aria-controls="sidebarDashboards">
-                                    <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Dashboards</span>
-                              </a>
-                              <div class="collapse menu-dropdown" id="sidebarDashboards">
-                                    <ul class="nav nav-sm flex-column">
-                                          <li class="nav-item">
-                                                <a href="dashboard-crm" class="nav-link" data-key="t-crm"> Dashboards </a>
-                                          </li>
-                                    </ul>
-                              </div>
-                        </li> <!-- end Dashboard Menu -->
+                        <!--                        <li class="nav-item">
+                                                      <a class="nav-link menu-link" href="#sidebarMore" data-bs-toggle="collapse" role="button"
+                                                         aria-expanded="false" aria-controls="sidebarMore">
+                                                            <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">More</span>
+                                                      </a>
+                                                      <div class="collapse menu-dropdown" id="sidebarMore">
+                                                            <ul class="nav nav-sm flex-column">
+                                                                  <li class="nav-item">
+                                                                        <a href="dashboard-crm" class="nav-link" data-key="t-crm">My Club</a>
+                                                                  </li>
+                                                                  <li class="nav-item">
+                                                                        <a href="dashboard-crm" class="nav-link" data-key="t-crm">My District/MD/CA</a>
+                                                                  </li>
+                                                                  <li class="nav-item">
+                                                                        <a href="dashboard-crm" class="nav-link" data-key="t-crm">My Association</a>
+                                                                  </li>
+                                                                  <li class="nav-item">
+                                                                        <a href="dashboard-crm" class="nav-link" data-key="t-crm">Online Directory</a>
+                                                                  </li>
+                                                                  <li class="nav-item">
+                                                                        <a href="dashboard-crm" class="nav-link" data-key="t-crm">Donate</a>
+                                                                  </li>
+                                                            </ul>
+                                                      </div>
+                                                </li>  end Dashboard Menu -->
 
 
                         <!-- end Dashboard Menu -->

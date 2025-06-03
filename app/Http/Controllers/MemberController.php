@@ -60,17 +60,18 @@ class MemberController extends Controller {
       }
 
       // Show single member
-      public function show(Member $member) {
+      public function show(MemberMaster $member) {
             return view('members.show', compact('member'));
       }
 
       // Show form to edit member
-      public function edit(Member $member) {
+      public function edit(MemberMaster $member) {
             return view('members.edit', compact('member'));
       }
 
       // Update member
-      public function update(Request $request, Member $member) {
+      public function update(Request $request, MemberMaster $member) {
+
             $request->validate([
                       'first_name' => 'required|string|max:255',
                       'last_name' => 'required|string|max:255',
