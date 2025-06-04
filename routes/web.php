@@ -13,6 +13,11 @@ use App\Http\Controllers\EventMasterController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\OccupationController;
 use App\Http\Controllers\DistrictController;
+use App\Http\Controllers\DGTeamController;
+use App\Http\Controllers\StateController;
+use App\Http\Controllers\CityController;
+use App\Http\Controllers\ZipCodeController;
+use App\Http\Controllers\LocationController;
 
 /*
   |--------------------------------------------------------------------------
@@ -60,32 +65,62 @@ Route::view('/auth-signin-cover', 'pages.auth.auth-signin-cover');
 Route::view('/auth-signup-basic', 'pages.auth.auth-signup-basic');
 Route::view('/auth-signup-cover', 'pages.auth.auth-signup-cover');
 
+Route::get('/get-cities/{state_id}', [LocationController::class, 'getCities']);
+Route::get('/get-zipcodes/{city_id}', [LocationController::class, 'getZipCodes']);
+
 Route::prefix('lions')->middleware(['auth'])->group(function () {
+
+
+
 
       Route::get('/my-registrations', [EventController::class, 'registrationHistory'])->name('events.history');
 
       Route::view('/dashboard', 'backend.dashboard.index');
-
+      //
+      //
+      //
+      //
+      //events
       Route::resource('events', EventMasterController::class);
+
+//      Route::resources([
+//                'states' => StateController::class,
+//                'cities' => CityController::class,
+//                'zip-codes' => ZipCodeController::class,
+//      ]);
+
+      Route::resource('states', StateController::class);
+      Route::resource('cities', CityController::class);
+      Route::resource('zip-codes', ZipCodeController::class);
+
+      
+      Route::get('/location', [LocationController::class, 'showForm'])->name('location.form');
+
+      Route::resource('dg-teams', DGTeamController::class);
+      //MemberController
+
+      Route::get('members/bulk-upload', [MemberController::class, 'showBulkUploadForm'])->name('members.bulk-upload-form');
+      Route::post('members/bulk-upload', [MemberController::class, 'importMembers'])->name('members.bulk-upload');
       Route::resource('members', MemberController::class);
+      //MemberController
+      //
+      //
+      //
+      //
+      //occupations
       Route::resource('occupations', OccupationController::class);
+      Route::post('/occupations/bulk-delete', [OccupationController::class, 'bulkDelete'])->name('occupations.bulkDelete');
+
       Route::resource('districts', DistrictController::class);
       Route::get('/districts', [DistrictController::class, 'index']);
       Route::post('/districts', [DistrictController::class, 'store']);
-      Route::get('/states', [DistrictController::class, 'getStates']);
+//      Route::get('/states', [DistrictController::class, 'getStates']);
       Route::get('/districts/list', [DistrictController::class, 'list']);
 
       Route::get('/event/registration-card/{event}', [EventController::class, 'showRegistrationCard'])
             ->name('event.registration.card');
 
-//      Route::get('/members', [MemberController::class, 'index'])->name('members.index');
-//      Route::get('/members/list', [MemberController::class, 'list'])->name('members.list');
-//      Route::post('/members/store', [MemberController::class, 'store'])->name('members.store');
-//      Route::get('/members/{id}/edit', [MemberController::class, 'edit'])->name('members.edit');
-//      Route::put('/members/{id}', [MemberController::class, 'update'])->name('members.update');
-//      Route::delete('/members/{id}', [MemberController::class, 'destroy'])->name('members.destroy');
-//      ==========================
-//      Route::get('/events', [EventMasterController::class, 'index'])->name('events.index');
+//  MemberRegistrationController    ==========================
 
 
       Route::get('/registration', [MemberRegistrationController::class, 'index'])->name('index');

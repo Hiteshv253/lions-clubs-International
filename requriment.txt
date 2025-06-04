@@ -35,7 +35,7 @@ Password@1234
 
 - Once user is registered, unique Lions club Member id will be generated -- *done || UI*
 
-- Membership id and auto generated password will be sent to user over an email
+- Membership id and auto generated password will be sent to user over an email  -- *done || UI*
 
 - Users can’t register themselves (No self regulation is allowed by users)
 
@@ -45,9 +45,9 @@ Password@1234
 
 2) Once logged in then only users will be able to see directory data
 
-3) One user can login from one device only at a time
+3) One user can login from one device only at a time -- *done || UI*
 
-4) Seasion timeout should be of 30mins
+4) Seasion timeout should be of 30mins -- *done || UI*
 
 5) E-club Website Login link should be provided
 
@@ -55,7 +55,7 @@ Password@1234
 
 7) Hemal has provided test data of clubs
 
-8) After event registration, event registration card to be provided with unique QR code and user’s detail 
+8) After event registration, event registration card to be provided with unique QR code and user’s detail
 
 9) Event registration history to be shown to user
 

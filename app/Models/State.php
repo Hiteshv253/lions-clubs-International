@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\City;
 
 class State extends Model {
 
@@ -11,7 +12,7 @@ class State extends Model {
 
       protected $fillable = ['name'];
 
-      public function districts() {
-            return $this->hasMany(District::class);
+      public function cities() {
+            return $this->hasMany(City::class);
       }
 }

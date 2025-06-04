@@ -4,12 +4,30 @@ namespace App\Http\Controllers;
 
 use App\Models\Occupation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
+use Yajra\DataTables\Facades\DataTables;
 
 class OccupationController extends Controller {
 
-      public function index() {
-            $occupations = Occupation::all();
-            return view('occupations.index', compact('occupations'));
+      public function index(Request $request) {
+//            $occupations = Occupation::all();
+//            return view('occupations.index', compact('occupations'));
+
+            if ($request->ajax()) {
+                  $data = Occupation::select('id', 'name');
+                  return DataTables::of($data)
+                              ->addColumn('actions', function ($row) {
+                                    return view('occupations.partials.actions', compact('row'))->render();
+                              })
+                              ->editColumn('is_active', function ($row) {
+                                    return $row->is_active ? 'Yes' : 'No';
+                              })
+                              ->rawColumns(['actions']) // To render HTML
+                              ->make(true);
+            }
+
+            return view('occupations.index');
       }
 
       public function create() {
@@ -45,5 +63,15 @@ class OccupationController extends Controller {
       public function destroy(Occupation $occupation) {
             $occupation->delete();
             return redirect()->route('occupations.index')->with('success', 'Occupation deleted successfully.');
+      }
+
+      public function bulkDelete(Request $request) {
+            $ids = $request->input('ids', []);
+            if (!empty($ids)) {
+                  Occupation::whereIn('id', $ids)->delete();
+                  return response()->json(['message' => 'Selected occupations deleted successfully.']);
+            }
+
+            return response()->json(['message' => 'No IDs provided.'], 400);
       }
 }

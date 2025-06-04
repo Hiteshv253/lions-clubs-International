@@ -1,28 +1,58 @@
 @extends('layouts.master')
 
 @section('content')
-<div class=" ">
-    <h1>Member Details</h1>
+<div class="container py-4">
+    <div class="card shadow-sm rounded-4">
+        <div class="card-header bg-primary text-white rounded-top-4">
+            <h5 class="mb-0">Member Details</h5>
+        </div>
 
-    <a href="{{ route('members.index') }}" class="btn btn-secondary mb-3">Back to List</a>
+        <div class="card-body">
+            <div class="row mb-3">
+                <div class="col-md-4"><strong>Account Name:</strong> {{ $member->account_name }}</div>
+                <div class="col-md-4"><strong>Parent Region:</strong> {{ $member->parent_region }}</div>
+                <div class="col-md-4"><strong>Parent Zone:</strong> {{ $member->parent_zone }}</div>
+            </div>
 
-    <table class="table table-bordered">
-        <tr><th>ID</th><td>{{ $member->id }}</td></tr>
-        <tr><th>First Name</th><td>{{ $member->first_name }}</td></tr>
-        <tr><th>Last Name</th><td>{{ $member->last_name }}</td></tr>
-        <tr><th>Birthday</th><td>{{ $member->birthday?->format('Y-m-d') }}</td></tr>
-        <tr><th>Gender</th><td>{{ $member->gender }}</td></tr>
-        <tr><th>Occupation</th><td>{{ $member->occupation }}</td></tr>
-        <tr><th>Mobile</th><td>{{ $member->mobile }}</td></tr>
-        <tr><th>Work Email</th><td>{{ $member->work_email }}</td></tr>
-        <tr><th>Membership Club ID</th><td>{{ $member->membership_club_id }}</td></tr>
-        <tr><th>Zone ID</th><td>{{ $member->zone_id }}</td></tr>
-        <tr><th>District ID</th><td>{{ $member->district_id }}</td></tr>
-        <tr><th>Region ID</th><td>{{ $member->region_id }}</td></tr>
-        <tr><th>Is Active</th><td>{{ $member->is_active ? 'Yes' : 'No' }}</td></tr>
-        <tr><th>Is Created By</th><td>{{ $member->is_create_by ? 'Yes' : 'No' }}</td></tr>
-        <tr><th>Created At</th><td>{{ $member->created_at->format('Y-m-d H:i') }}</td></tr>
-        <tr><th>Updated At</th><td>{{ $member->updated_at->format('Y-m-d H:i') }}</td></tr>
-    </table>
+            <div class="row mb-3">
+                <div class="col-md-4"><strong>Member ID:</strong> {{ $member->member_id }}</div>
+                <div class="col-md-4"><strong>First Name:</strong> {{ $member->first_name }}</div>
+                <div class="col-md-4"><strong>Last Name:</strong> {{ $member->last_name }}</div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-4"><strong>Address Line 1:</strong> {{ $member->address_line1 }}</div>
+                <div class="col-md-4"><strong>Address Line 2:</strong> {{ $member->address_line2 }}</div>
+                <div class="col-md-4"><strong>Address Line 3:</strong> {{ $member->address_line3 }}</div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-3"><strong>City:</strong> {{ $member->city }}</div>
+                <div class="col-md-3"><strong>State/Province:</strong> {{ $member->state }}</div>
+                <div class="col-md-3"><strong>Zip/Postal Code:</strong> {{ $member->zip }}</div>
+                <div class="col-md-3"><strong>Birthdate:</strong> {{ $member->birthdate ? \Carbon\Carbon::parse($member->birthdate)->format('d M, Y') : '' }}</div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-4"><strong>Email:</strong> {{ $member->email }}</div>
+                <div class="col-md-4"><strong>Mobile:</strong> {{ $member->mobile }}</div>
+                <div class="col-md-4"><strong>Home Phone:</strong> {{ $member->home_phone }}</div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6"><strong>Gender:</strong> {{ $member->gender }}</div>
+                <div class="col-md-6"><strong>Occupation:</strong> {{ $member->occupation }}</div>
+            </div>
+
+            <div class="mb-3">
+                <strong>Lion Join Date:</strong> {{ $member->join_date ? \Carbon\Carbon::parse($member->join_date)->format('d M, Y') : '' }}
+            </div>
+
+            <div class="text-end">
+                <a href="{{ route('members.index') }}" class="btn btn-secondary">Back to List</a>
+                <a href="{{ route('members.edit', $member->id) }}" class="btn btn-primary">Edit Member</a>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection

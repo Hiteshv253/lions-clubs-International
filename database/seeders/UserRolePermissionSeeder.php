@@ -37,10 +37,10 @@ class UserRolePermissionSeeder extends Seeder {
             Permission::firstOrCreate(['name' => 'delete product', 'guard_name' => 'web']);
 
             // Create Roles
-            $superAdminRole = Role::create(['name' => 'super-admin']); //as super-admin
-            $adminRole = Role::create(['name' => 'admin']);
-            $staffRole = Role::create(['name' => 'staff']);
-            $userRole = Role::create(['name' => 'user']);
+            $superAdminRole = Role::firstOrCreate(['name' => 'super-admin'], ['guard_name' => 'web']);
+            $adminRole = Role::firstOrCreate(['name' => 'admin'], ['guard_name' => 'web']);
+            $staffRole = Role::firstOrCreate(['name' => 'staff'], ['guard_name' => 'web']);
+            $userRole = Role::firstOrCreate(['name' => 'user'], ['guard_name' => 'web']);
 
             // Lets give all permission to super-admin role.
             $allPermissionNames = Permission::pluck('name')->toArray();

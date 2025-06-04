@@ -13,4 +13,5 @@ Route::get('/about', [HomePageController::class, 'about'])->name('about');
 Route::get('/service', [HomePageController::class, 'service'])->name('service');
 Route::get('/contact', [HomePageController::class, 'contact'])->name('contact');
 
- 
+Route::post('/submit-inquiry', [HomePageController::class, 'submit'])->name('inquiry.submit');;
+Route::view('/thank-you', 'thank-you')->name('thank.you');

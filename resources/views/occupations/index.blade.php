@@ -1,46 +1,79 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="container mt-4">
-    <div class="card shadow-sm">
-        <div class="card-header d-flex justify-content-between align-items-center bg-primary text-white">
-            <h4 class="mb-0">Occupations</h4>
-            <a href="{{ route('occupations.create') }}" class="btn btn-light btn-sm">Add New</a>
-        </div>
+<div class=" ">
+      <h1>Occupations List</h1>
+      <a href="{{ route('occupations.create') }}" class="btn btn-primary mb-3">Add New Occupations</a>
+      <button id="delete-selected" class="btn btn-danger mb-3">Delete Selected</button>
 
-        <div class="card-body">
-            @if(session('success'))
-                <div class="alert alert-success">{{ session('success') }}</div>
-            @endif
+      @if(session('success'))
+      <div class="alert alert-success">{{ session('success') }}</div>
+      @endif
 
-            @if($occupations->isEmpty())
-                <p class="text-muted">No occupations found.</p>
-            @else
-                <table class="table table-striped table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th style="width: 150px;">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($occupations as $occupation)
-                            <tr>
-                                <td>{{ $occupation->name }}</td>
-                                <td>
-                                    <a href="{{ route('occupations.edit', $occupation->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                                    <form action="{{ route('occupations.destroy', $occupation->id) }}" method="POST" class="d-inline">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            @endif
-        </div>
-    </div>
+      <table id="occupations-table" class="table table-bordered">
+            <thead>
+                  <tr>
+                        <th><input type="checkbox" id="select-all"></th>
+
+                        <th>ID</th>
+                        <th>Name Name</th>
+                        <th>Actions</th>
+                  </tr>
+            </thead>
+            <tbody>
+            </tbody>
+      </table>
 </div>
+
+<script>
+      $(function () {
+      $('#occupations-table').DataTable({
+      ajax: '{{ route('occupations.index') }}',
+              columns: [
+              {
+              data: 'id',
+                      render: function (data) {
+                      return '<input type="checkbox" class="row-checkbox" value="' + data + '">';
+                      },
+                      orderable: false,
+                      searchable: false
+              },
+              {data: 'id', name: 'id'},
+              {data: 'name', name: 'name'},
+              {data: 'actions', name: 'actions', orderable: false, searchable: false},
+              ]
+      });
+      });
+      // Handle "select all" checkbox
+      $('#select-all').on('click', function () {
+      $('.row-checkbox').prop('checked', this.checked);
+      });
+// Handle delete
+      $('#delete-selected').on('click', function () {
+      let selectedIds = $('.row-checkbox:checked').map(function () {
+      return $(this).val();
+      }).get();
+      if (selectedIds.length === 0) {
+      alert('No records selected.');
+      return;
+      }
+
+      if (!confirm('Are you sure you want to delete selected records?')) return;
+      $.ajax({
+      url: '{{ route('occupations.bulkDelete') }}',
+              method: 'POST',
+              data: {
+              _token: '{{ csrf_token() }}',
+                      ids: selectedIds
+              },
+              success: function (response) {
+              $('#occupations-table').DataTable().ajax.reload();
+              alert(response.message);
+              }
+      });
+      });
+
+</script>
+
+
 @endsection

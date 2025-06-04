@@ -12,20 +12,28 @@ return new class extends Migration {
       public function up(): void {
             Schema::create('club_member_masters', function (Blueprint $table) {
                   $table->id();
-                  $table->timestamps();
+                  $table->string('account_name')->nullable();
+                  $table->string('parent_region')->nullable();
+                  $table->string('parent_zone')->nullable();
+                  $table->string('member_id')->nullable();
                   $table->string('first_name');
                   $table->string('last_name');
-                  $table->date('birthday');
-                  $table->string('occupation');
-                  $table->string('gender');
-                  $table->string('mobile');
-                  $table->string('work_email');
-                  $table->integer('membership_club_id');
-                  $table->integer('zone_id');
-                  $table->integer('district_id');
-                  $table->integer('region_id');
-                  $table->integer('is_active');
-                  $table->integer('is_create_by');
+                  $table->string('address_line1')->nullable();
+                  $table->string('address_line2')->nullable();
+                  $table->string('address_line3')->nullable();
+                  $table->string('city')->nullable();
+                  $table->string('state')->nullable();
+                  $table->string('zip')->nullable();
+                  $table->date('birthdate')->nullable();
+                  $table->string('email')->nullable();
+                  $table->string('mobile')->nullable();
+                  $table->string('home_phone')->nullable();
+                  $table->string('gender')->nullable();
+                  $table->string('occupation')->nullable();
+                  $table->date('join_date')->nullable();
+                  $table->boolean('is_active')->default(true);
+                  $table->unsignedBigInteger('is_create_by')->nullable();
+                  $table->timestamps();
             });
       }
 

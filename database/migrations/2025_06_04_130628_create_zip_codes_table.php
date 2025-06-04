@@ -10,9 +10,12 @@ return new class extends Migration {
        * Run the migrations.
        */
       public function up(): void {
-            Schema::create('occupations', function (Blueprint $table) {
+            Schema::create('zip_codes', function (Blueprint $table) {
                   $table->id();
-                  $table->string('name');
+                  $table->foreignId('city_id')->constrained()->onDelete('cascade');
+                  $table->string('zip_code');
+                  $table->boolean('is_active')->default(true);
+                  $table->unsignedBigInteger('is_create_by'); // user ID who created
                   $table->timestamps();
             });
       }
@@ -21,6 +24,6 @@ return new class extends Migration {
        * Reverse the migrations.
        */
       public function down(): void {
-            Schema::dropIfExists('occupations');
+            Schema::dropIfExists('zip_codes');
       }
 };

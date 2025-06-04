@@ -96,6 +96,18 @@
                                           <li class="nav-item">
                                                 <a href="/lions/occupations" class="nav-link" data-key="t-crm">Occupations</a>
                                           </li>
+                                          <li class="nav-item">
+                                                <a href="/lions/dg-teams" class="nav-link" data-key="t-crm">DG Teams</a>
+                                          </li>
+                                          <li class="nav-item">
+                                                <a href="/lions/location" class="nav-link" data-key="t-crm">location</a>
+                                          </li>
+                                          <li class="nav-item">
+                                                <a href="/lions/cities" class="nav-link" data-key="t-crm">cities</a>
+                                          </li>
+                                          <li class="nav-item">
+                                                <a href="/lions/cities" class="nav-link" data-key="t-crm">states</a>
+                                          </li>
                                     </ul>
                               </div>
                         </li>  <!--end Dashboard Menu -->

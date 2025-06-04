@@ -14,10 +14,8 @@ return new class extends Migration {
                   $table->id();
                   $table->string('name');
                   $table->unsignedBigInteger('state_id')->nullable(); // if you relate to states
-                  $table->foreign('state_id')->references('id')->on('states')->onDelete('set null');
+//                  $table->foreign('state_id')->references('id')->on('states')->onDelete('set null');
                   $table->timestamps();
-
-                  
             });
       }
 

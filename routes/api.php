@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventMasterController;
-use App\Models\EventMaster;
+//use App\Models\EventMaster;
 
 /*
   |--------------------------------------------------------------------------
@@ -19,7 +19,7 @@ use App\Models\EventMaster;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
       return $request->user();
 });
-
-Route::get('/events', function () {
-      return EventMaster::all();
-});
+//
+//Route::get('/events', function () {
+//      return EventMaster::all();
+//});

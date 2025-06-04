@@ -11,19 +11,26 @@ class MemberMaster extends Model {
 
       protected $table = 'club_member_masters';
       protected $fillable = [
+                'account_name',
+                'parent_region',
+                'parent_zone',
+                'member_id',
                 'first_name',
                 'last_name',
-                'birthday',
+                'address_line1',
+                'address_line2',
+                'address_line3',
+                'city', 'state',
+                'zip',
+                'birthdate',
+                'email',
+                'mobile',
+                'home_phone',
                 'gender',
                 'occupation',
-                'mobile',
-                'work_email',
-                'membership_club_id',
-                'zone_id',
-                'district_id',
-                'region_id',
+                'join_date',
                 'is_active',
-                'is_create_by',
+                'is_create_by'
       ];
       protected $casts = [
                 'birthday' => 'date',

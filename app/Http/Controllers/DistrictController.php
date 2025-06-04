@@ -23,13 +23,13 @@ class DistrictController extends Controller {
             return response()->json(['message' => 'District added successfully', 'district' => $district]);
       }
 
-      public function list() {
-            $data = District::with('state')->select('districts.*');
-
-            return datatables()->of($data)
-                        ->addColumn('state_name', fn($row) => $row->state->name)
-                        ->make(true);
-      }
+//      public function list() {
+//            $data = District::with('state')->select('districts.*');
+//
+//            return datatables()->of($data)
+//                        ->addColumn('state_name', fn($row) => $row->state->name)
+//                        ->make(true);
+//      }
 
       public function getStates() {
             return response()->json(State::all());

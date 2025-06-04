@@ -21,13 +21,13 @@ class EventMaster extends Model {
       ];
 
       // Optionally, if you want to access the user who created:
-      public function creator() {
-            return $this->belongsTo(User::class, 'is_create_by');
-      }
-
-      public function registrants() {
-            return $this->belongsToMany(User::class, 'event_registrations')
-                        ->withTimestamps()
-                        ->withPivot('registered_at');
-      }
+//      public function creator() {
+//            return $this->belongsTo(User::class, 'is_create_by');
+//      }
+//
+//      public function registrants() {
+//            return $this->belongsToMany(User::class, 'event_registrations')
+//                        ->withTimestamps()
+//                        ->withPivot('registered_at');
+//      }
 }

@@ -54,14 +54,4 @@
             </div>
       </div>
 </div>
-
-
-@if(!empty($events) && count($events) > 0)
-    @foreach($events as $event)
-        <h3>{{ $event['event_name'] }}</h3>
-        <p>{{ $event['date_time'] }}</p>
-        <p>{{ $event['description'] }}</p>
-    @endforeach
-@else
-    <p>No events found.</p>
-@endif
+ 

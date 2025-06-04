@@ -22,9 +22,9 @@ return new class extends Migration {
                   $table->timestamps();
 
                   // If you have a users table:
-                  $table->foreign('is_create_by')
-                        ->references('id')->on('users')
-                        ->onDelete('cascade');
+//                  $table->foreign('is_create_by')
+//                        ->references('id')->on('users')
+//                        ->onDelete('cascade');
             });
       }
 
