@@ -11,7 +11,7 @@ class ClubMemberMasters extends Seeder {
        * Run the database seeds.
        */
       public function run(): void {
-            MemberMaster::factory(50)->create();
+            MemberMaster::factory(500)->create();
 
       }
 }
