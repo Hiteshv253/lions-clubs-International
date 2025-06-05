@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class DGTeam extends Model {
+class DgTeam extends Model {
 
       use HasFactory;
 

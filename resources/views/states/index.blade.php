@@ -1,18 +1,35 @@
 @extends('layouts.master')
 @section('content')
-<div class="container">
-      <h2>States List</h2>
-      <a href="{{ route('states.create') }}" class="btn btn-primary mb-2">Add State</a>
-      <table class="table table-bordered" id="states-table">
-            <thead>
-                  <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Created</th>
-                        <th>Actions</th>
-                  </tr>
-            </thead>
-      </table>
+
+
+<nav aria-label="breadcrumb" class="sticky-top bg-white border-bottom" style="z-index: 1030;">
+  <ol class="breadcrumb mb-0 p-3">
+    <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page">States</li>
+  </ol>
+</nav>
+
+<div class="  my-4">
+  <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3">
+    <h2 class="mb-3 mb-md-0">States List</h2>
+    <a href="{{ route('states.create') }}" class="btn btn-primary">Add State</a>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover" id="states-table">
+      <thead class="table-light">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Created</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{-- Data will be filled by DataTables --}}
+      </tbody>
+    </table>
+  </div>
 </div>
 
 

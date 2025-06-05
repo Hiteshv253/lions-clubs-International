@@ -12,7 +12,6 @@ class DatabaseSeeder extends Seeder {
        */
       public function run(): void {
             \App\Models\User::factory(50)->create();
-
             $this->call([
                       ClubMemberMasters::class,
                       UserRolePermissionSeeder::class,
@@ -22,6 +21,8 @@ class DatabaseSeeder extends Seeder {
                       StateSeeder::class,
                       CitySeeder::class,
                       ZipCodeSeeder::class,
+                      ClubSeeder::class,
+                      ServiceSeeder::class,
             ]);
 
 //            \App\Models\User::factory()->create([

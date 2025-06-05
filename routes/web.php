@@ -18,6 +18,8 @@ use App\Http\Controllers\StateController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\ZipCodeController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\ClubController;
+use App\Http\Controllers\ServiceController;
 
 /*
   |--------------------------------------------------------------------------
@@ -72,6 +74,13 @@ Route::prefix('lions')->middleware(['auth'])->group(function () {
 
 
 
+      Route::get('services-export-pdf', [ServiceController::class, 'exportPDF'])->name('services.export.pdf');
+      Route::delete('/services/{id}', [ServiceController::class, 'destroy'])->name('services.destroy');
+      Route::post('/services/bulk-delete', [ServiceController::class, 'bulkDelete'])->name('services.bulk-delete');
+      Route::resource('services', ServiceController::class);
+
+      Route::resource('clubs', ClubController::class);
+      Route::get('/clubs/export-pdf', [ClubController::class, 'exportPdf'])->name('clubs.exportPdf');
 
       Route::get('/my-registrations', [EventController::class, 'registrationHistory'])->name('events.history');
 
@@ -93,7 +102,6 @@ Route::prefix('lions')->middleware(['auth'])->group(function () {
       Route::resource('cities', CityController::class);
       Route::resource('zip-codes', ZipCodeController::class);
 
-      
       Route::get('/location', [LocationController::class, 'showForm'])->name('location.form');
 
       Route::resource('dg-teams', DGTeamController::class);

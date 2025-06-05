@@ -83,34 +83,57 @@
                                     </ul>
                               </div>
                         </li>  <!--end Dashboard Menu -->
-                        <li class="nav-item">
-                              <a class="nav-link menu-link" href="#sidebarMembership" data-bs-toggle="collapse" role="button"
-                                 aria-expanded="false" aria-controls="sidebarMembership">
-                                    <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Membership</span>
-                              </a>
-                              <div class="collapse menu-dropdown" id="sidebarMembership">
-                                    <ul class="nav nav-sm flex-column">
-                                          <li class="nav-item">
-                                                <a href="/lions/members" class="nav-link" data-key="t-crm">My Membership</a>
-                                          </li>
-                                          <li class="nav-item">
-                                                <a href="/lions/occupations" class="nav-link" data-key="t-crm">Occupations</a>
-                                          </li>
-                                          <li class="nav-item">
-                                                <a href="/lions/dg-teams" class="nav-link" data-key="t-crm">DG Teams</a>
-                                          </li>
-                                          <li class="nav-item">
-                                                <a href="/lions/location" class="nav-link" data-key="t-crm">location</a>
-                                          </li>
-                                          <li class="nav-item">
-                                                <a href="/lions/cities" class="nav-link" data-key="t-crm">cities</a>
-                                          </li>
-                                          <li class="nav-item">
-                                                <a href="/lions/cities" class="nav-link" data-key="t-crm">states</a>
-                                          </li>
-                                    </ul>
-                              </div>
-                        </li>  <!--end Dashboard Menu -->
+
+
+
+                        @php
+  // Check if current URL starts with /lions/members or any other membership-related routes
+  $membershipActive = request()->is('lions/members*') ||
+                      request()->is('lions/occupations*') ||
+                      request()->is('lions/dg-teams*') ||
+                      request()->is('lions/location*') ||
+                      request()->is('lions/cities*') ||
+                      request()->is('lions/states*') ||
+                      request()->is('lions/clubs*') ||
+                      request()->is('lions/services*');
+@endphp
+
+<li class="nav-item">
+  <a class="nav-link menu-link {{ $membershipActive ? 'active' : '' }}" href="#sidebarMembership" data-bs-toggle="collapse" role="button"
+     aria-expanded="{{ $membershipActive ? 'true' : 'false' }}" aria-controls="sidebarMembership">
+        <i class="ri-dashboard-2-line"></i>
+        <span data-key="t-dashboards">Membership</span>
+  </a>
+  <div class="collapse menu-dropdown {{ $membershipActive ? 'show' : '' }}" id="sidebarMembership">
+    <ul class="nav nav-sm flex-column">
+      <li class="nav-item">
+        <a href="/lions/members" class="nav-link {{ request()->is('lions/members*') ? 'active' : '' }}" data-key="t-membership">My Membership</a>
+      </li>
+      <li class="nav-item">
+        <a href="/lions/occupations" class="nav-link {{ request()->is('lions/occupations*') ? 'active' : '' }}" data-key="t-occupations">Occupations</a>
+      </li>
+      <li class="nav-item">
+        <a href="/lions/dg-teams" class="nav-link {{ request()->is('lions/dg-teams*') ? 'active' : '' }}" data-key="t-dg_teams">DG Teams</a>
+      </li>
+      <li class="nav-item">
+        <a href="/lions/location" class="nav-link {{ request()->is('lions/location*') ? 'active' : '' }}" data-key="t-location">Location</a>
+      </li>
+      <li class="nav-item">
+        <a href="/lions/cities" class="nav-link {{ request()->is('lions/cities*') ? 'active' : '' }}" data-key="t-cities">Cities</a>
+      </li>
+      <li class="nav-item">
+        <a href="/lions/states" class="nav-link {{ request()->is('lions/states*') ? 'active' : '' }}" data-key="t-states">States</a>
+      </li>
+      <li class="nav-item">
+        <a href="/lions/clubs" class="nav-link {{ request()->is('lions/clubs*') ? 'active' : '' }}" data-key="t-clubs">Clubs</a>
+      </li>
+      <li class="nav-item">
+        <a href="/lions/services" class="nav-link {{ request()->is('lions/services*') ? 'active' : '' }}" data-key="t-services">Services</a>
+      </li>
+    </ul>
+  </div>
+</li>
+
                         <!--<li class="menu-title"><span data-key="t-menu">Service</span></li>-->
                         <li class="nav-item">
                               <a class="nav-link menu-link" href="#sidebarService" data-bs-toggle="collapse" role="button"

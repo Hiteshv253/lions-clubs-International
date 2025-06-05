@@ -2,16 +2,17 @@
 
 namespace Database\Seeders;
 
-use App\Models\State;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Club;
 
-class StateSeeder extends Seeder {
+class ClubSeeder extends Seeder {
 
       /**
        * Run the database seeds.
        */
-      public function run() {
-            \App\Models\State::factory()->count(10)->create();
+      public function run(): void {
+            //
+            \App\Models\Club::factory()->count(50)->create();
       }
 }
