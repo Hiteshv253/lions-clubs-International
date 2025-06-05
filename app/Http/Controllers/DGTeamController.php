@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DGTeam;
+use App\Models\DgTeam;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -12,7 +12,7 @@ class DGTeamController extends Controller {
 
       public function index(Request $request) {
             if ($request->ajax()) {
-                  $members = DGTeam::select(['name', 'email', 'designation', 'phone', 'address', 'is_active']);
+                  $members = DgTeam::select(['name', 'email', 'designation', 'phone', 'address', 'is_active']);
 
                   return DataTables::of($members)
                               ->addColumn('actions', function ($row) {
@@ -29,7 +29,7 @@ class DGTeamController extends Controller {
       }
 
 //      public function index() {
-//            $teams = DGTeam::latest()->paginate(10);
+//            $teams = DgTeam::latest()->paginate(10);
 //            return view('dg-teams.index', compact('teams'));
 //      }
 
@@ -46,7 +46,7 @@ class DGTeamController extends Controller {
                       'address' => 'required|string|max:255',
             ]);
 
-            DGTeam::create($request->all());
+            DgTeam::create($request->all());
 
             return redirect()->route('dg-teams.index')
                         ->with('success', 'DG Team member created successfully.');
