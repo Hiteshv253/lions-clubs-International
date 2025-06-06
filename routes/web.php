@@ -34,8 +34,10 @@ Route::post('/registration', [UserRegistrationController::class, 'registration']
 
 Route::get('/', [HomePageController::class, 'home'])->name('home');
 
+
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
-Route::post('/login', [LoginController::class, 'authenticate'])->name('login')->middleware('guest');
+//Route::post('/login', [LoginController::class, 'authenticate'])->name('login')->middleware('guest');
+Route::post('/login', [LoginController::class, 'authenticate'])->name('login');
 Route::get('/logout', [LogoutController::class, 'logout'])->name('logout')->middleware('auth');
 
 Route::get('/auth-pass-reset-basic', [ForgotPasswordController::class, 'index'])->name('password.forgot')->middleware('guest');
