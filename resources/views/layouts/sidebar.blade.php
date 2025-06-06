@@ -95,6 +95,7 @@
                       request()->is('lions/cities*') ||
                       request()->is('lions/states*') ||
                       request()->is('lions/clubs*') ||
+                      request()->is('lions/regions*') ||
                       request()->is('lions/services*');
 @endphp
 
@@ -129,6 +130,9 @@
       </li>
       <li class="nav-item">
         <a href="/lions/services" class="nav-link {{ request()->is('lions/services*') ? 'active' : '' }}" data-key="t-services">Services</a>
+      </li>
+      <li class="nav-item">
+        <a href="/lions/regions" class="nav-link {{ request()->is('lions/regions*') ? 'active' : '' }}" data-key="t-services">Regions</a>
       </li>
     </ul>
   </div>

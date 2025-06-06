@@ -67,6 +67,8 @@
             <!-- apexcharts -->
             <script src="{{ asset('') }}assets/libs/apexcharts/apexcharts.min.js"></script>
 
+
+
             @stack('vendor-script')
             @stack('page-script')
 
@@ -77,6 +79,7 @@
 
             <!-- App js -->
             <script src="{{ asset('') }}assets/js/app.js"></script>
+
       </body>
 
 </html>

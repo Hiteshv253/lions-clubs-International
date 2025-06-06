@@ -36,10 +36,11 @@
                         <form class="app-search d-none d-md-block">
                               <div class="position-relative">
                                     <input type="text" class="form-control" placeholder="Search..." autocomplete="off"
-                                           id="search-options" value="">
+                                           id="globalSearch" value="">
                                     <span class="mdi mdi-magnify search-widget-icon"></span>
                                     <span class="mdi mdi-close-circle search-widget-icon search-widget-icon-close d-none"
                                           id="search-close-options"></span>
+                                    <div id="searchResults" class="mt-3"></div>
                               </div>
                               <div class="dropdown-menu dropdown-menu-lg" id="search-dropdown">
                                     <div data-simplebar style="max-height: 320px;">

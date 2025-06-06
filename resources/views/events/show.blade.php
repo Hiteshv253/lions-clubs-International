@@ -1,9 +1,19 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="container my-4">
-    <div class="card shadow-sm">
-        <div class="card-header">
+<nav aria-label="breadcrumb" class="sticky-top bg-white border-bottom" style="z-index: 1030;">
+      <ol class="breadcrumb mb-0 p-3">
+            <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('events.index') }}">Events</a></li>
+            <li class="breadcrumb-item active" aria-current="page">View</li>
+      </ol>
+</nav>
+
+
+
+<div class="  my-4">
+      <div class="card shadow-sm">
+            <div class="card-header text-white">
             <h2 class="mb-0">{{ $event->event_name }}</h2>
         </div>
         <div class="card-body">

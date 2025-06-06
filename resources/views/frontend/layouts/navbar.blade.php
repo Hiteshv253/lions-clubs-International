@@ -64,8 +64,8 @@
                               <a href="/service" class="nav-item nav-link">Services</a>
                               <a href="/contact" class="nav-item nav-link">Contact</a>
                               <a href="/login" class="nav-item nav-link">Login</a>
-                              <a href="blog.html" class="nav-item nav-link">Blog</a>
-                              <div class="nav-item dropdown">
+                              <!--<a href="blog.html" class="nav-item nav-link">Blog</a>-->
+<!--                              <div class="nav-item dropdown">
                                     <a href="#" class="nav-link" data-bs-toggle="dropdown">
                                           <span class="dropdown-toggle">Pages</span>
                                     </a>
@@ -76,7 +76,7 @@
                                           <a href="FAQ.html" class="dropdown-item">FAQs</a>
                                           <a href="404.html" class="dropdown-item">404 Page</a>
                                     </div>
-                              </div>
+                              </div>-->
                               <!--                              <div class="nav-btn px-3">
                                                                   <button class="btn-search btn btn-primary btn-md-square rounded-circle flex-shrink-0" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search"></i></button>
                                                                   <a href="#" class="btn btn-primary rounded-pill py-2 px-4 ms-3 flex-shrink-0"> Get a Quote</a>

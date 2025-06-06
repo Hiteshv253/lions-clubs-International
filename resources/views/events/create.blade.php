@@ -1,9 +1,22 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="container mt-4">
+
+
+
+<nav aria-label="breadcrumb" class="sticky-top bg-white border-bottom" style="z-index: 1030;">
+      <ol class="breadcrumb mb-0 p-3">
+            <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('events.index') }}">Events</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Create</li>
+      </ol>
+</nav>
+
+
+
+<div class="  my-4">
       <div class="card shadow-sm">
-            <div class="card-header bg-primary text-white">
+            <div class="card-header text-white">
                   <h4 class="mb-0">Create Event</h4>
             </div>
 

@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder {
                       ZipCodeSeeder::class,
                       ClubSeeder::class,
                       ServiceSeeder::class,
+                      RegionSeeder::class
             ]);
 
 //            \App\Models\User::factory()->create([

@@ -1,13 +1,16 @@
 @extends('layouts.master')
 @section('content')
 
-<nav aria-label="breadcrumb" class="sticky-top bg-white" style="z-index: 1030;">
+
+<nav aria-label="breadcrumb" class="sticky-top bg-white border-bottom" style="z-index: 1030;">
       <ol class="breadcrumb mb-0 p-3">
             <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('services.index') }}">Services</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Edit</li>
+            <li class="breadcrumb-item"><a href="{{ route('events.index') }}">Events</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Create</li>
       </ol>
 </nav>
+
+
 
 <div class="  my-4">
       <div class="card shadow-sm">

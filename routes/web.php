@@ -20,6 +20,7 @@ use App\Http\Controllers\ZipCodeController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ClubController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\RegionController;
 
 /*
   |--------------------------------------------------------------------------
@@ -31,6 +32,8 @@ use App\Http\Controllers\ServiceController;
   | be assigned to the "web" middleware group. Make something great!
   |
  */
+
+
 Route::group(['middleware' => ['role:super-admin|admin']], function () {
 
       Route::resource('permissions', App\Http\Controllers\PermissionController::class);
@@ -73,7 +76,8 @@ Route::get('/get-zipcodes/{city_id}', [LocationController::class, 'getZipCodes']
 Route::prefix('lions')->middleware(['auth'])->group(function () {
 
 
-
+      Route::resource('regions', RegionController::class);
+ 
       Route::get('services-export-pdf', [ServiceController::class, 'exportPDF'])->name('services.export.pdf');
       Route::delete('/services/{id}', [ServiceController::class, 'destroy'])->name('services.destroy');
       Route::post('/services/bulk-delete', [ServiceController::class, 'bulkDelete'])->name('services.bulk-delete');
