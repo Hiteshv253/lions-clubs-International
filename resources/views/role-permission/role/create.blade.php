@@ -1,40 +1,57 @@
-@extends('layouts.auth.master-cover')
+@extends('layouts.master')
 
 @section('content')
+<div class="container-fluid mt-4">
 
-      <div class="container mt-5">
-            <div class="row">
-                  <div class="col-md-12">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb bg-white px-3 py-2 rounded shadow-sm">
+            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('roles.index') }}">Roles</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Create Role</li>
+        </ol>
+    </nav>
 
-                        @if ($errors->any())
-                        <ul class="alert alert-warning">
-                              @foreach ($errors->all() as $error)
-                              <li>{{$error}}</li>
-                              @endforeach
-                        </ul>
-                        @endif
+    <!-- Validation Errors -->
+    @if ($errors->any())
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <ul class="mb-0">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
 
-                        <div class="card">
-                              <div class="card-header">
-                                    <h4>Create Role
-                                          <a href="{{ url('roles') }}" class="btn btn-danger float-end">Back</a>
-                                    </h4>
-                              </div>
-                              <div class="card-body">
-                                    <form action="{{ url('roles') }}" method="POST">
-                                          @csrf
+    <!-- Create Role Card -->
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">Create Role</h5>
+            <a href="{{ route('roles.index') }}" class="btn btn-light btn-sm">Back</a>
+        </div>
 
-                                          <div class="mb-3">
-                                                <label for="">Role Name</label>
-                                                <input type="text" name="name" class="form-control" />
-                                          </div>
-                                          <div class="mb-3">
-                                                <button type="submit" class="btn btn-primary">Save</button>
-                                          </div>
-                                    </form>
-                              </div>
-                        </div>
-                  </div>
-            </div>
-      </div>
+        <div class="card-body">
+            <form action="{{ route('roles.store') }}" method="POST">
+                @csrf
+
+                <div class="mb-3">
+                    <label for="roleName" class="form-label">Role Name</label>
+                    <input
+                        type="text"
+                        name="name"
+                        id="roleName"
+                        class="form-control"
+                        value="{{ old('name') }}"
+                        required
+                    />
+                </div>
+
+                <div class="text-end">
+                    <button type="submit" class="btn btn-primary">Save Role</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 @endsection

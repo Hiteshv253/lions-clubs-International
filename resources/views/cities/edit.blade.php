@@ -1,7 +1,16 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="container mt-4">
+<div class="mt-4">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-3">
+      <ol class="breadcrumb bg-light p-2 rounded">
+        <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('cities.index') }}">Cities</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Edit City</li>
+      </ol>
+    </nav>
+
     <h2>Edit City</h2>
 
     @if ($errors->any())

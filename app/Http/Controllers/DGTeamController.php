@@ -12,11 +12,18 @@ class DGTeamController extends Controller {
 
       public function index(Request $request) {
             if ($request->ajax()) {
-                  $members = DgTeam::select(['name', 'email', 'designation', 'phone', 'address', 'is_active']);
+                  $query = DgTeam::query();
 
-                  return DataTables::of($members)
+                  // Apply designation filter if provided
+                  if ($request->has('designation') && $request->designation != '') {
+                        $query->where('designation', $request->designation);
+                  }
+
+                  return DataTables::of($query)
                               ->addColumn('actions', function ($row) {
-//                                    return view('dg-teams.partials.actions', compact('row'))->render();
+                                    return '<a href="#" class="btn btn-sm btn-primary">Edit</a>';
+                                    // Or use a view partial like:
+                                    // return view('dg-teams.partials.actions', compact('row'))->render();
                               })
                               ->editColumn('is_active', function ($row) {
                                     return $row->is_active ? 'Yes' : 'No';
@@ -25,7 +32,13 @@ class DGTeamController extends Controller {
                               ->make(true);
             }
 
-            return view('dg-teams.index');
+            // Get distinct designations to populate the dropdown
+            $designations = DgTeam::select('designation')
+                  ->distinct()
+                  ->orderBy('designation')
+                  ->pluck('designation');
+
+            return view('dg-teams.index', compact('designations'));
       }
 
 //      public function index() {

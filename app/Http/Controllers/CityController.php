@@ -10,9 +10,35 @@ use Yajra\DataTables\Facades\DataTables;
 
 class CityController extends Controller {
 
-      public function index() {
-            $cities = City::with('state')->paginate(10);
-            return view('cities.index', compact('cities'));
+      public function index(Request $request) {
+            if ($request->ajax()) {
+                  $cities = City::with('state')->select('cities.*');
+
+                  return DataTables::of($cities)
+                              ->addIndexColumn() // This adds DT_RowIndex for serial numbers
+                              ->addColumn('state_name', function ($city) {
+                                    return $city->state->name ?? '';
+                              })
+                              ->addColumn('actions', function ($city) {
+                                    $editUrl = route('cities.edit', $city->id);
+                                    $deleteUrl = route('cities.destroy', $city->id);
+
+                                    $csrf = csrf_field();
+                                    $method = method_field('DELETE');
+
+                                    return '
+                    <a href="' . $editUrl . '" class="btn btn-warning btn-sm">Edit</a>
+                    <form action="' . $deleteUrl . '" method="POST" class="d-inline" onsubmit="return confirm(\'Are you sure?\');">
+                        ' . $csrf . $method . '
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                ';
+                              })
+                              ->rawColumns(['actions'])
+                              ->make(true);
+            }
+
+            return view('cities.index');
       }
 
       public function create() {

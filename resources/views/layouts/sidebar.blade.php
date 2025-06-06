@@ -87,56 +87,73 @@
 
 
                         @php
-  // Check if current URL starts with /lions/members or any other membership-related routes
-  $membershipActive = request()->is('lions/members*') ||
-                      request()->is('lions/occupations*') ||
-                      request()->is('lions/dg-teams*') ||
-                      request()->is('lions/location*') ||
-                      request()->is('lions/cities*') ||
-                      request()->is('lions/states*') ||
-                      request()->is('lions/clubs*') ||
-                      request()->is('lions/regions*') ||
-                      request()->is('lions/services*');
-@endphp
+                        // Check if current URL starts with /lions/members or any other membership-related routes
+                        $membershipActive = request()->is('lions/members*') ||
+                        request()->is('lions/occupations*') ||
+                        request()->is('lions/dg-teams*') ||
+                        request()->is('lions/location*') ||
+                        request()->is('lions/cities*') ||
+                        request()->is('lions/states*') ||
+                        request()->is('lions/clubs*') ||
+                        request()->is('lions/regions*') ||
+                        request()->is('lions/accounts*') ||
+                        request()->is('lions/users*') ||
+                        request()->is('lions/permissions*') ||
+                        request()->is('lions/roles*') ||
+                        request()->is('lions/services*');
+                        @endphp
 
-<li class="nav-item">
-  <a class="nav-link menu-link {{ $membershipActive ? 'active' : '' }}" href="#sidebarMembership" data-bs-toggle="collapse" role="button"
-     aria-expanded="{{ $membershipActive ? 'true' : 'false' }}" aria-controls="sidebarMembership">
-        <i class="ri-dashboard-2-line"></i>
-        <span data-key="t-dashboards">Membership</span>
-  </a>
-  <div class="collapse menu-dropdown {{ $membershipActive ? 'show' : '' }}" id="sidebarMembership">
-    <ul class="nav nav-sm flex-column">
-      <li class="nav-item">
-        <a href="/lions/members" class="nav-link {{ request()->is('lions/members*') ? 'active' : '' }}" data-key="t-membership">My Membership</a>
-      </li>
-      <li class="nav-item">
-        <a href="/lions/occupations" class="nav-link {{ request()->is('lions/occupations*') ? 'active' : '' }}" data-key="t-occupations">Occupations</a>
-      </li>
-      <li class="nav-item">
-        <a href="/lions/dg-teams" class="nav-link {{ request()->is('lions/dg-teams*') ? 'active' : '' }}" data-key="t-dg_teams">DG Teams</a>
-      </li>
-      <li class="nav-item">
-        <a href="/lions/location" class="nav-link {{ request()->is('lions/location*') ? 'active' : '' }}" data-key="t-location">Location</a>
-      </li>
-      <li class="nav-item">
-        <a href="/lions/cities" class="nav-link {{ request()->is('lions/cities*') ? 'active' : '' }}" data-key="t-cities">Cities</a>
-      </li>
-      <li class="nav-item">
-        <a href="/lions/states" class="nav-link {{ request()->is('lions/states*') ? 'active' : '' }}" data-key="t-states">States</a>
-      </li>
-      <li class="nav-item">
-        <a href="/lions/clubs" class="nav-link {{ request()->is('lions/clubs*') ? 'active' : '' }}" data-key="t-clubs">Clubs</a>
-      </li>
-      <li class="nav-item">
-        <a href="/lions/services" class="nav-link {{ request()->is('lions/services*') ? 'active' : '' }}" data-key="t-services">Services</a>
-      </li>
-      <li class="nav-item">
-        <a href="/lions/regions" class="nav-link {{ request()->is('lions/regions*') ? 'active' : '' }}" data-key="t-services">Regions</a>
-      </li>
-    </ul>
-  </div>
-</li>
+                        <li class="nav-item">
+                              <a class="nav-link menu-link {{ $membershipActive ? 'active' : '' }}" href="#sidebarMembership" data-bs-toggle="collapse" role="button"
+                                 aria-expanded="{{ $membershipActive ? 'true' : 'false' }}" aria-controls="sidebarMembership">
+                                    <i class="ri-dashboard-2-line"></i>
+                                    <span data-key="t-dashboards">Membership</span>
+                              </a>
+                              <div class="collapse menu-dropdown {{ $membershipActive ? 'show' : '' }}" id="sidebarMembership">
+                                    <ul class="nav nav-sm flex-column">
+                                          <li class="nav-item">
+                                                <a href="{{ route('members.index') }}" class="nav-link {{ request()->is('lions/members*') ? 'active' : '' }}" data-key="t-membership">My Membership</a>
+                                          </li>
+                                          <li class="nav-item">
+                                                <a href="{{ route('occupations.index') }}" class="nav-link {{ request()->is('lions/occupations*') ? 'active' : '' }}" data-key="t-occupations">Occupations</a>
+                                          </li>
+                                          <li class="nav-item">
+                                                <a href="{{ route('dg-teams.index') }}" class="nav-link {{ request()->is('lions/dg-teams*') ? 'active' : '' }}" data-key="t-dg_teams">DG Teams</a>
+                                          </li>
+                                          <li class="nav-item">
+                                                <a href="{{ route('location.form') }}" class="nav-link {{ request()->is('lions/location*') ? 'active' : '' }}" data-key="t-location">Location</a>
+                                          </li>
+                                          <li class="nav-item">
+                                                <a href="{{ route('cities.index') }}" class="nav-link {{ request()->is('lions/cities*') ? 'active' : '' }}" data-key="t-cities">Cities</a>
+                                          </li>
+                                          <li class="nav-item">
+                                                <a href="{{ route('states.index') }}" class="nav-link {{ request()->is('lions/states*') ? 'active' : '' }}" data-key="t-states">States</a>
+                                          </li>
+                                          <li class="nav-item">
+                                                <a href="{{ route('clubs.index') }}" class="nav-link {{ request()->is('lions/clubs*') ? 'active' : '' }}" data-key="t-clubs">Clubs</a>
+                                          </li>
+                                          <li class="nav-item">
+                                                <a href="{{ route('services.index') }}" class="nav-link {{ request()->is('lions/services*') ? 'active' : '' }}" data-key="t-services">Services</a>
+                                          </li>
+                                          <li class="nav-item">
+                                                <a href="{{ route('regions.index') }}" class="nav-link {{ request()->is('lions/regions*') ? 'active' : '' }}" data-key="t-services">Regions</a>
+                                          </li>
+                                          <li class="nav-item">
+                                                <a href="{{ route('accounts.index') }}" class="nav-link {{ request()->is('lions/accounts*') ? 'active' : '' }}" data-key="t-services">Accounts</a>
+                                          </li>
+                                          <li class="nav-item">
+                                                <a href="{{ route('users.index') }}" class="nav-link {{ request()->is('lions/users*') ? 'active' : '' }}" data-key="t-services">Users</a>
+                                          </li>
+                                          <li class="nav-item">
+                                                <a href="{{ route('permissions.index') }}" class="nav-link {{ request()->is('lions/permissions*') ? 'active' : '' }}" data-key="t-services">Permissions</a>
+                                          </li>
+                                          <li class="nav-item">
+                                                <a href="{{ route('roles.index') }}" class="nav-link {{ request()->is('lions/roles*') ? 'active' : '' }}" data-key="t-services">Roles</a>
+                                          </li>
+
+                                    </ul>
+                              </div>
+                        </li>
 
                         <!--<li class="menu-title"><span data-key="t-menu">Service</span></li>-->
                         <li class="nav-item">

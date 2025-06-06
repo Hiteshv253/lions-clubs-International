@@ -14,7 +14,7 @@
 
 <div class="  my-4">
       <div class="card shadow-sm">
-            <div class="card-header text-white">
+            <div class="card-header">
                   <h2 class="mb-4">Create New Service</h2>
 
                   @if ($errors->any())

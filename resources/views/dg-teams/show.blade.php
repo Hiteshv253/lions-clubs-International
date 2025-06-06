@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="container">
+<div class="">
       <h2>DG Team Member Details</h2>
       <ul class="list-group">
             <li class="list-group-item"><strong>Name:</strong> {{ $dgTeam->name }}</li>

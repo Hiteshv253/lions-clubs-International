@@ -1,9 +1,18 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="container mt-5">
+<div class="mt-5">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-light px-3 py-2 rounded">
+            <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('regions.index') }}">Regions</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Create Region</li>
+        </ol>
+    </nav>
+
     <div class="card shadow-sm">
-        <div class="card-header bg-primary text-white">
+        <div class="card-header">
             <h4 class="mb-0">Create Region</h4>
         </div>
         <div class="card-body">
@@ -40,7 +49,7 @@
 
                 {{-- Submit --}}
                 <button type="submit" class="btn btn-success">Create</button>
-                <a href="{{ route('regions.index') }}" class="btn btn-secondary">Cancel</a>
+                <a href="{{ route('regions.index') }}" class="btn btn-secondary ms-2">Cancel</a>
             </form>
         </div>
     </div>

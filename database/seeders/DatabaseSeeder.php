@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder {
                       ZipCodeSeeder::class,
                       ClubSeeder::class,
                       ServiceSeeder::class,
+                      AccountSeeder::class,
                       RegionSeeder::class
             ]);
 

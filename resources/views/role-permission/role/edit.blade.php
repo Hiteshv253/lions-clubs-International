@@ -1,41 +1,59 @@
-@extends('layouts.auth.master-cover')
+@extends('layouts.master')
 
 @section('content')
+<div class="container-fluid mt-4">
 
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-12">
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-3">
+        <ol class="breadcrumb bg-white px-3 py-2 rounded shadow-sm">
+            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('roles.index') }}">Roles</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Edit Role</li>
+        </ol>
+    </nav>
 
-                @if ($errors->any())
-                <ul class="alert alert-warning">
-                    @foreach ($errors->all() as $error)
-                        <li>{{$error}}</li>
-                    @endforeach
-                </ul>
-                @endif
+    <!-- Error Alert -->
+    @if ($errors->any())
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <ul class="mb-0">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
 
-                <div class="card">
-                    <div class="card-header">
-                        <h4>Edit Role
-                            <a href="{{ url('roles') }}" class="btn btn-danger float-end">Back</a>
-                        </h4>
-                    </div>
-                    <div class="card-body">
-                        <form action="{{ url('roles/'.$role->id) }}" method="POST">
-                            @csrf
-                            @method('PUT')
+    <!-- Edit Role Card -->
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">Edit Role</h5>
+            <a href="{{ route('roles.index') }}" class="btn btn-light btn-sm">Back</a>
+        </div>
 
-                            <div class="mb-3">
-                                <label for="">Role Name</label>
-                                <input type="text" name="name" value="{{ $role->name }}" class="form-control" />
-                            </div>
-                            <div class="mb-3">
-                                <button type="submit" class="btn btn-primary">Update</button>
-                            </div>
-                        </form>
-                    </div>
+        <div class="card-body">
+            <form action="{{ route('roles.update', $role->id) }}" method="POST">
+                @csrf
+                @method('PUT')
+
+                <div class="mb-3">
+                    <label for="roleName" class="form-label">Role Name</label>
+                    <input
+                        type="text"
+                        name="name"
+                        id="roleName"
+                        class="form-control"
+                        value="{{ old('name', $role->name) }}"
+                        required
+                    />
                 </div>
-            </div>
+
+                <div class="text-end">
+                    <button type="submit" class="btn btn-primary">Update Role</button>
+                </div>
+
+            </form>
         </div>
     </div>
+</div>
 @endsection

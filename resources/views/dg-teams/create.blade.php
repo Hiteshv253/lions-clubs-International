@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="container py-4">
+<div class="py-4">
       <div class="card shadow-sm rounded-4">
             <div class="card-header bg-primary text-white rounded-top-4">
                   <h4 class="mb-0">{{ isset($team) ? 'Edit DG Team Member' : 'Create DG Team Member' }}</h4>

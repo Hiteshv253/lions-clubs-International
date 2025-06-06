@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
-@section('content')<nav aria-label="breadcrumb" class="sticky-top bg-white border-bottom" style="z-index: 1030;">
+@section('content')
+<nav aria-label="breadcrumb" class="sticky-top bg-white border-bottom" style="z-index: 1030;">
       <ol class="breadcrumb mb-0 p-3">
             <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
             <li class="breadcrumb-item active" aria-current="page">Clubs</li>
@@ -20,6 +21,7 @@
                         <option value="South">South</option>
                   </select>
             </div>
+
             <div class="col-md-2">
                   <select id="filterDistrict" class="form-select">
                         <option value="">Select District</option>
@@ -27,6 +29,7 @@
                         <option value="District 2">District 2</option>
                   </select>
             </div>
+
             <div class="col-md-2">
                   <select id="filterType" class="form-select">
                         <option value="">Select Type</option>
@@ -34,19 +37,21 @@
                         <option value="Type B">Type B</option>
                   </select>
             </div>
-            <div class="col-md-6 d-flex">
+
+            <div class="col-md-6 d-flex gap-2">
                   <button id="btnSearch" class="btn btn-primary">Search</button>
                   <button id="btnReset" class="btn btn-secondary">Reset</button>
                   <a href="{{ route('clubs.create') }}" class="btn btn-success">Add New Club</a>
                   <a href="{{ route('clubs.exportPdf') }}" class="btn btn-danger">Export to PDF</a>
-
             </div>
       </div>
+
 
 
       <table id="clubs-table" class="table table-striped table-bordered" style="width:100%">
             <thead>
                   <tr>
+                        <th>#</th>
                         <th>Account Name</th>
                         <th>Type</th>
                         <th>District</th>
@@ -75,6 +80,7 @@
                         }
                   },
                   columns: [
+                        {data: 'id', name: 'id'},
                         {data: 'account_name', name: 'account_name'},
                         {data: 'type', name: 'type'},
                         {data: 'district', name: 'district'},

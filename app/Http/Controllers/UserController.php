@@ -6,7 +6,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
-
+use DataTables;
+ 
 class UserController extends Controller {
 
       public function __construct() {
@@ -16,9 +17,41 @@ class UserController extends Controller {
             $this->middleware('permission:delete user', ['only' => ['destroy']]);
       }
 
+      public function ajaxUsers(Request $request) {
+            $query = User::with('roles');
+
+            if ($request->has('role') && $request->role != '') {
+                  $role = $request->role;
+                  $query->whereHas('roles', function ($q) use ($role) {
+                        $q->where('name', $role);
+                  });
+            }
+
+            return DataTables::of($query)
+                        ->addColumn('roles', function ($user) {
+                              return $user->roles->map(fn($role) => '<span class="badge bg-primary mx-1">' . ucfirst($role->name) . '</span>')->implode(' ');
+                        })
+                        ->addColumn('action', function ($user) {
+                              $editBtn = auth()->user()->can('update user') ?
+                                    '<a href="' . url("users/{$user->id}/edit") . '" class="btn btn-success btn-sm">Edit</a>' : '';
+
+                              $deleteBtn = auth()->user()->can('delete user') ?
+                                    '<form method="POST" action="' . url("users/{$user->id}") . '" style="display:inline-block;" onsubmit="return confirm(\'Are you sure?\');">' .
+                                    csrf_field() .
+                                    method_field('DELETE') .
+                                    '<button type="submit" class="btn btn-danger btn-sm ms-1">Delete</button></form>' : '';
+
+                              return $editBtn . $deleteBtn;
+                        })
+                        ->rawColumns(['roles', 'action'])
+                        ->make(true);
+      }
+
       public function index() {
             $users = User::get();
-            return view('role-permission.user.index', ['users' => $users]);
+            $roles = Role::all();  // fetch all roles
+
+            return view('role-permission.user.index', ['users' => $users, 'roles' => $roles]);
       }
 
       public function create() {
@@ -45,6 +78,15 @@ class UserController extends Controller {
             return redirect('/users')->with('status', 'User created successfully with roles');
       }
 
+      public function show(User $user) {
+            $roles = Role::pluck('name', 'name')->all();
+            $userRoles = $user->roles->pluck('name', 'name')->all();
+            return view('role-permission.user.show', [
+                      'user' => $user,
+                      'roles' => $roles,
+                      'userRoles' => $userRoles
+            ]);
+      }
       public function edit(User $user) {
             $roles = Role::pluck('name', 'name')->all();
             $userRoles = $user->roles->pluck('name', 'name')->all();
