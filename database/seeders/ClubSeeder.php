@@ -13,6 +13,6 @@ class ClubSeeder extends Seeder {
        */
       public function run(): void {
             //
-            \App\Models\Club::factory()->count(500)->create();
+            \App\Models\Club::factory()->count(1000)->create();
       }
 }

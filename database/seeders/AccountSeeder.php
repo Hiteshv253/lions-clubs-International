@@ -14,7 +14,7 @@ class AccountSeeder extends Seeder {
        */
       public function run(): void {
             $faker = Faker::create();
-            foreach (range(1, 30) as $i) {
+            foreach (range(1, 300) as $i) {
                   Account::create([
                             'name' => $faker->company,
                             'code' => strtoupper($faker->bothify('ACC-###')),
