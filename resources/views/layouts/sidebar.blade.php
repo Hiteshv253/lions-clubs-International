@@ -100,6 +100,8 @@
                         request()->is('lions/users*') ||
                         request()->is('lions/permissions*') ||
                         request()->is('lions/roles*') ||
+                        request()->is('lions/sponsors*');
+                        request()->is('lions/service-activity-types*');
                         request()->is('lions/services*');
                         @endphp
 
@@ -149,6 +151,12 @@
                                           </li>
                                           <li class="nav-item">
                                                 <a href="{{ route('roles.index') }}" class="nav-link {{ request()->is('lions/roles*') ? 'active' : '' }}" data-key="t-services">Roles</a>
+                                          </li>
+                                          <li class="nav-item">
+                                                <a href="{{ route('sponsors.index') }}" class="nav-link {{ request()->is('lions/sponsors*') ? 'active' : '' }}" data-key="t-services">Sponsors</a>
+                                          </li>
+                                          <li class="nav-item">
+                                                <a href="{{ route('service-activity-types.index') }}" class="nav-link {{ request()->is('lions/service-activity-types*') ? 'active' : '' }}" data-key="t-services">service-activity-types</a>
                                           </li>
 
                                     </ul>

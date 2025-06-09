@@ -18,7 +18,7 @@ class AccountSeeder extends Seeder {
                   Account::create([
                             'name' => $faker->company,
                             'code' => strtoupper($faker->bothify('ACC-###')),
-                            'account_no' => $faker->unique()->numberBetween(100000, 999999),
+                            'account_no' => $faker->unique()->numberBetween(10000000, 999888999),
                             'type' => $faker->randomElement(['Asset', 'Liability', 'Equity', 'Income', 'Expense']),
                             'is_active' => $faker->boolean,
                   ]);

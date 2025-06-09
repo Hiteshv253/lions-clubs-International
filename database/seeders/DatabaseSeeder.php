@@ -24,7 +24,9 @@ class DatabaseSeeder extends Seeder {
                       ClubSeeder::class,
                       ServiceSeeder::class,
                       AccountSeeder::class,
-                      RegionSeeder::class
+                      RegionSeeder::class,
+                      SponsorSeeder::class,
+                      ServiceActivityTypeSeeder::class,
             ]);
 
 //            \App\Models\User::factory()->create([

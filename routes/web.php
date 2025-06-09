@@ -22,6 +22,8 @@ use App\Http\Controllers\ClubController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\RegionController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\SponsorController;
+use App\Http\Controllers\ServiceActivityTypeController;
 
 /*
   |--------------------------------------------------------------------------
@@ -33,7 +35,6 @@ use App\Http\Controllers\AccountController;
 Route::post('/registration', [UserRegistrationController::class, 'registration'])->name('registration');
 
 Route::get('/', [HomePageController::class, 'home'])->name('home');
-
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 //Route::post('/login', [LoginController::class, 'authenticate'])->name('login')->middleware('guest');
@@ -104,6 +105,9 @@ Route::prefix('lions')->middleware(['auth'])->group(function () {
 
       // Dashboard view
       Route::view('dashboard', 'backend.dashboard.index')->name('dashboard');
+
+      Route::resource('sponsors', SponsorController::class);
+      Route::resource('service-activity-types', ServiceActivityTypeController::class);
 
       // States, Cities, ZipCodes
       Route::resource('states', StateController::class);
