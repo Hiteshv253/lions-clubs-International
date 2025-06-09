@@ -15,6 +15,14 @@
                         <h4 class="card-title mb-0">Members List</h4>
                         <a href="{{ route('members.create') }}" class="btn btn-primary">Add New Member</a>
                   </div>
+
+                  @if(session('success'))
+                  <div class="alert alert-success">{{ session('success') }}</div>
+                  @endif
+
+                  @if(session('error'))
+                  <div class="alert alert-danger">{{ session('error') }}</div>
+                  @endif
                   <div class="card-body">
                         {{-- Filters --}}
                         <div class="row gy-2 gx-3 mb-3">
@@ -55,6 +63,7 @@
                         <div class="mb-3">
                               <button id="btn-filter" class="btn btn-sm btn-primary">Search</button>
                               <button id="btn-reset" class="btn btn-sm btn-secondary">Reset</button>
+                              <a href="{{ route('members.bulk-upload') }}" class="btn btn-sm btn-secondary">Bulk Upload</a>
                               <button id="btn-delete-selected" class="btn btn-danger btn-sm" disabled>Delete Selected</button>
 
                         </div>

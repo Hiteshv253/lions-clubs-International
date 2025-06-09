@@ -14,6 +14,7 @@ class AccountFactory extends Factory {
             return [
                       'name' => $this->faker->company(), // Fake company name
                       'code' => 'ACC-' . $this->faker->unique()->numberBetween(1000, 9999),
+                      'account_no' => $this->faker->unique()->numberBetween(1000, 9999),
                       'type' => $this->faker->randomElement($types),
                       'is_active' => $this->faker->boolean(80), // 80% chance active
                       'created_at' => now(),

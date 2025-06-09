@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\State;
 use App\Models\District;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class DistrictController extends Controller {
 

@@ -12,21 +12,24 @@ use App\Models\User;
 use App\Models\Region;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\MembersImport;
+use Illuminate\Support\Facades\Validator;
 
 class MemberController extends Controller {
 
       public function showBulkUploadForm() {
+
             return view('members.bulk-upload');
       }
 
       public function importMembers(Request $request) {
+
             $request->validate([
                       'file' => 'required|file|mimes:xlsx,xls,csv',
             ]);
 
             try {
                   Excel::import(new MembersImport, $request->file('file'));
-                  return redirect()->route('members.bulk-upload-form')->with('success', 'Members imported successfully.');
+                  return redirect()->route('members.index')->with('success', 'Members imported successfully.');
             } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
                   $failures = $e->failures();
 

@@ -46,7 +46,7 @@
             <div id="layout-wrapper">
                   <div class="main-content">
                         <div class="page-content">
-                              <div class="container-fluid">
+                              <div class="container-fluid1">
                                     @yield('content')
                               </div>
                         </div>

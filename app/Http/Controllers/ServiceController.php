@@ -6,6 +6,7 @@ use App\Models\Service;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\Validator;
 
 class ServiceController extends Controller {
 
@@ -65,7 +66,7 @@ class ServiceController extends Controller {
 
       public function edit(Service $service) {
             return view('services.edit', compact('service'));
-     }
+      }
 
       public function show(Service $service) {
             return view('services.show', compact('service'));

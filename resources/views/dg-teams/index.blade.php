@@ -1,9 +1,12 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="">
-  <h2 class="mb-3">DG Team List</h2>
-
+     <div class="mt-1">
+            <div class="card shadow-sm">
+                  <div class="card-header">
+                        <h5 class="mb-0">DG Team List</h5>
+                  </div>
+                  <div class="card-header">
   @if (session('success'))
   <div class="alert alert-success">{{ session('success') }}</div>
   @endif
@@ -38,6 +41,9 @@
             </thead>
       </table>
 </div>
+</div>
+</div>
+
 
 <script>$(document).ready(function () {
     var table = $('#dgTeamTable-table').DataTable({

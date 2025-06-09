@@ -117,11 +117,11 @@ Route::prefix('lions')->middleware(['auth'])->group(function () {
       Route::resource('dg-teams', DGTeamController::class);
 
       // Members
-      Route::resource('members', MemberController::class);
       Route::get('members/bulk-upload', [MemberController::class, 'showBulkUploadForm'])->name('members.bulk-upload-form');
       Route::post('members/bulk-upload', [MemberController::class, 'importMembers'])->name('members.bulk-upload');
       Route::delete('members/{member}', [MemberController::class, 'destroy'])->name('members.destroy');
       Route::post('members/bulk-delete', [MemberController::class, 'bulkDelete'])->name('members.bulkDelete');
+      Route::resource('members', MemberController::class);
 
       // Occupations
       Route::resource('occupations', OccupationController::class);

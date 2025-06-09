@@ -1,17 +1,22 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="mt-4">
+<!--<div class="mt-4">-->
 
       <!-- Breadcrumb -->
-      <nav aria-label="breadcrumb" class="mb-3">
+<!--      <nav aria-label="breadcrumb" class="mb-3">
             <ol class="breadcrumb bg-light p-2 rounded">
                   <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
                   <li class="breadcrumb-item active" aria-current="page">Cities</li>
             </ol>
-      </nav>
+      </nav>-->
 
-      <h2>City List</h2>
+    <div class="mt-1">
+            <div class="card shadow-sm">
+                  <div class="card-header">
+                        <h5 class="mb-0">City List</h5>
+                  </div>
+                  <div class="card-header">
       <a href="{{ route('cities.create') }}" class="btn btn-primary mb-3">Add City</a>
 
       @if(session('success'))
@@ -30,6 +35,9 @@
       </table>
 
 </div>
+</div>
+</div>
+
 <script>
       $(document).ready(function () {
             $('#citiesTable').DataTable({

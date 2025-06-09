@@ -13,11 +13,11 @@ class RegionSeeder extends Seeder {
        */
       public function run(): void {
             //
-            $parents = Region::factory()->count(100)->create();
+            $parents = Region::factory()->count(10)->create();
 
             // Create child regions for each parent
             foreach ($parents as $parent) {
-                  Region::factory()->count(3)->create([
+                  Region::factory()->count(10)->create([
                             'name' => $parent->name,
                             'parent_id' => $parent->id
                   ]);

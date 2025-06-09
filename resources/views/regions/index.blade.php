@@ -1,17 +1,21 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="mt-4">
-    <!-- Breadcrumb -->
+<!--<div class="mt-4">
+     Breadcrumb 
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
         <li class="breadcrumb-item active" aria-current="page">Regions</li>
       </ol>
-    </nav>
+    </nav>-->
 
-    <h2>Regions</h2>
-
+  <div class="mt-1">
+            <div class="card shadow-sm">
+                  <div class="card-header">
+                        <h5 class="mb-0">Regions Master</h5>
+                  </div>
+                  <div class="card-header">
     <!-- Search filter -->
     <div class="mb-3 d-flex flex-column flex-md-row align-items-start align-items-md-center gap-2">
         <select id="filter-name" class="form-select" style="max-width: 300px;">
@@ -39,6 +43,9 @@
         </thead>
     </table>
 </div>
+</div>
+</div>
+
 
 <script>
     $(function () {

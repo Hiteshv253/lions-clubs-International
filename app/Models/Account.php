@@ -9,5 +9,6 @@ class Account extends Model {
 
       use HasFactory;
 
-      protected $fillable = ['name', 'code', 'type', 'is_active'];
+      protected $table = 'tbl_accounts_master';
+      protected $fillable = ['name', 'code', 'account_no', 'type', 'is_active'];
 }

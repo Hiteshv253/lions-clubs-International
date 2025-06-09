@@ -17,7 +17,7 @@ use Illuminate\Support\Str;
 class HomePageController extends Controller {
 
       public function submit(Request $request) {
-         
+
             $data = $request->validate([
                       'name' => 'required|string|max:255',
                       'email' => 'required|email',

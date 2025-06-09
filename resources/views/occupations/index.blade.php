@@ -1,28 +1,41 @@
 @extends('layouts.master')
 
 @section('content')
-<div class=" ">
-      <h1>Occupations List</h1>
-      <a href="{{ route('occupations.create') }}" class="btn btn-primary mb-3">Add New Occupations</a>
-      <button id="delete-selected" class="btn btn-danger mb-3">Delete Selected</button>
+<div class="mt-1">
+      <div class="card shadow-sm">
+            <div class="card-header">
+                  <h5 class="mb-0">Occupations List</h5>
+            </div>
+            <div class="card-header">
+                  <!-- Flash Message -->
+                  @if(session('success'))
+                  <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('success') }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+                  @endif
+                  <a href="{{ route('occupations.create') }}" class="btn btn-primary mb-3">Add New Occupations</a>
+                  <button id="delete-selected" class="btn btn-danger mb-3">Delete Selected</button>
 
-      @if(session('success'))
-      <div class="alert alert-success">{{ session('success') }}</div>
-      @endif
+                  @if(session('success'))
+                  <div class="alert alert-success">{{ session('success') }}</div>
+                  @endif
 
-      <table id="occupations-table" class="table table-bordered">
-            <thead>
-                  <tr>
-                        <th><input type="checkbox" id="select-all"></th>
+                  <table id="occupations-table" class="table table-bordered">
+                        <thead>
+                              <tr>
+                                    <th><input type="checkbox" id="select-all"></th>
 
-                        <th>ID</th>
-                        <th>Name Name</th>
-                        <th>Actions</th>
-                  </tr>
-            </thead>
-            <tbody>
-            </tbody>
-      </table>
+                                    <th>ID</th>
+                                    <th>Name Name</th>
+                                    <th>Actions</th>
+                              </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                  </table>
+            </div>
+      </div>
 </div>
 
 <script>
@@ -48,7 +61,7 @@
       $('#select-all').on('click', function () {
       $('.row-checkbox').prop('checked', this.checked);
       });
-// Handle delete
+      // Handle delete
       $('#delete-selected').on('click', function () {
       let selectedIds = $('.row-checkbox:checked').map(function () {
       return $(this).val();

@@ -6,6 +6,7 @@ use App\Models\Club;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 use PDF; // Alias for Barryvdh\DomPDF\Facade
+use Illuminate\Support\Facades\Validator;
 
 class ClubController extends Controller {
 

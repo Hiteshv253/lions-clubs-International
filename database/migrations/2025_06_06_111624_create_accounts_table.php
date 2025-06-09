@@ -10,10 +10,11 @@ return new class extends Migration {
        * Run the migrations.
        */
       public function up(): void {
-            Schema::create('accounts', function (Blueprint $table) {
+            Schema::create('tbl_accounts_master', function (Blueprint $table) {
                   $table->id();
                   $table->string('name');
                   $table->string('code')->unique();
+                  $table->string('account_no', 18)->nullable(); // adjust type if needed
                   $table->string('type');
                   $table->boolean('is_active')->default(true);
                   $table->timestamps();
@@ -24,6 +25,6 @@ return new class extends Migration {
        * Reverse the migrations.
        */
       public function down(): void {
-            Schema::dropIfExists('accounts');
+            Schema::dropIfExists('tbl_accounts_master');
       }
 };

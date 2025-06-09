@@ -2,20 +2,20 @@
 
 namespace App\Imports;
 
-use App\Models\Member;
-use Illuminate\Validation\Rule;
+ use Illuminate\Validation\Rule;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow; // To use header row for mapping columns
 use Maatwebsite\Excel\Concerns\WithValidation; // Optional for validation
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Models\MemberMaster;
 
 class MembersImport implements ToModel, WithHeadingRow, WithValidation {
 
       use Importable;
 
       public function model(array $row) {
-            return new Member([
+            return new MemberMaster([
                       'account_name' => $row['account_name'] ?? null,
                       'parent_region' => $row['parent_region'] ?? null,
                       'parent_zone' => $row['parent_zone'] ?? null,

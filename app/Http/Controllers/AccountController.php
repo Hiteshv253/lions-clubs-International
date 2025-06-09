@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Account;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\Validator;
 
 class AccountController extends Controller {
 
@@ -47,8 +48,10 @@ class AccountController extends Controller {
       public function store(Request $request) {
             $request->validate([
                       'name' => 'required|string|max:255',
-                      'code' => 'required|unique:accounts',
-                      'type' => 'required|string',
+                      'code' => 'required|string|max:100|unique:accounts,code',
+                      'account_no' => 'required|string|max:100|unique:accounts,account_no',
+                      'type' => 'required|in:Asset,Liability,Equity,Income,Expense',
+                      'is_active' => 'required|boolean',
             ]);
 
             Account::create($request->all());
@@ -63,6 +66,7 @@ class AccountController extends Controller {
             $request->validate([
                       'name' => 'required|string|max:255',
                       'code' => 'required|unique:accounts,code,' . $account->id,
+                      'account_no' => 'required|unique:accounts,code,' . $account->id,
                       'type' => 'required|string',
             ]);
 

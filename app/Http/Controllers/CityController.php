@@ -7,6 +7,7 @@ use App\Models\State;
 use App\Models\City;
 use App\Models\ZipCode;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\Validator;
 
 class CityController extends Controller {
 

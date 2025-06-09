@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use DataTables;
- 
+use Illuminate\Support\Facades\Validator;
+
 class UserController extends Controller {
 
       public function __construct() {
@@ -87,6 +88,7 @@ class UserController extends Controller {
                       'userRoles' => $userRoles
             ]);
       }
+
       public function edit(User $user) {
             $roles = Role::pluck('name', 'name')->all();
             $userRoles = $user->roles->pluck('name', 'name')->all();

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\State;
 use App\Models\City;
 use App\Models\ZipCode;
+use Illuminate\Support\Facades\Validator;
 
 class LocationController extends Controller {
 

@@ -2,13 +2,18 @@
 @section('content')
 
 
-<nav aria-label="breadcrumb" class="sticky-top bg-white border-bottom" style="z-index: 1030;">
+<!--<nav aria-label="breadcrumb" class="sticky-top bg-white border-bottom" style="z-index: 1030;">
   <ol class="breadcrumb mb-0 p-3">
     <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
     <li class="breadcrumb-item active" aria-current="page">States</li>
   </ol>
-</nav>
-
+</nav>-->
+    <div class="mt-1">
+            <div class="card shadow-sm">
+                  <div class="card-header">
+                        <h5 class="mb-0">States Master</h5>
+                  </div>
+                  <div class="card-header">
 <div class="  my-4">
   <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3">
     <h2 class="mb-3 mb-md-0">States List</h2>
@@ -30,6 +35,9 @@
       </tbody>
     </table>
   </div>
+</div>
+</div>
+</div>
 </div>
 
 

@@ -24,6 +24,9 @@
 
                         <dt class="col-sm-4">Code</dt>
                         <dd class="col-sm-8">{{ $account->code }}</dd>
+                        
+                        <dt class="col-sm-4">acoount_no</dt>
+                        <dd class="col-sm-8">{{ $account->acoount_no }}</dd>
 
                         <dt class="col-sm-4">Type</dt>
                         <dd class="col-sm-8">{{ $account->type }}</dd>

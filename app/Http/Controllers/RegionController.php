@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Region;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\Validator;
 
 class RegionController extends Controller {
 
@@ -49,6 +50,7 @@ class RegionController extends Controller {
             $parents = Region::where('id', '!=', $region->id)->get(); // avoid circular ref
             return view('regions.edit', compact('region', 'parents'));
       }
+
       public function show(Region $region) {
             $parents = Region::where('id', '!=', $region->id)->get(); // avoid circular ref
             return view('regions.show', compact('region', 'parents'));

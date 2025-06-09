@@ -10,6 +10,7 @@ use Yajra\DataTables\Facades\DataTables;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use PDF;
 use App\Models\User;
+use Illuminate\Support\Facades\Validator;
 
 class EventMasterController extends Controller {
 

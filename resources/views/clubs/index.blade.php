@@ -1,17 +1,19 @@
 @extends('layouts.master')
 
 @section('content')
-<nav aria-label="breadcrumb" class="sticky-top bg-white border-bottom" style="z-index: 1030;">
+<!--<nav aria-label="breadcrumb" class="sticky-top bg-white border-bottom" style="z-index: 1030;">
       <ol class="breadcrumb mb-0 p-3">
             <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
             <li class="breadcrumb-item active" aria-current="page">Clubs</li>
       </ol>
-</nav>
+</nav>-->
 
-<div class="  mt-4">
-
-      <h2 class="mb-4">Club List</h2>
-
+ <div class="mt-1">
+            <div class="card shadow-sm">
+                  <div class="card-header">
+                        <h5 class="mb-0">Club List</h5>
+                  </div>
+                  <div class="card-header">
 
       <div class="row mb-3 align-items-center">
             <div class="col-md-2">
@@ -64,6 +66,9 @@
             </thead>
       </table>
 </div>
+</div>
+</div>
+
 
 
 <script>
