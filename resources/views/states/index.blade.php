@@ -2,45 +2,52 @@
 @section('content')
 
 
-<!--<nav aria-label="breadcrumb" class="sticky-top bg-white border-bottom" style="z-index: 1030;">
-  <ol class="breadcrumb mb-0 p-3">
-    <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-    <li class="breadcrumb-item active" aria-current="page">States</li>
-  </ol>
-</nav>-->
-<div class="mt-1">
-      <div class="card shadow-sm">
-            <div class="card-header">
-                  <h5 class="mb-0">States Master</h5>
-            </div>
-            <div class="card-header">
-                  <div class="  my-4">
-                        <div class="d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center mb-3">
-                              <h2 class="mb-3 mb-md-0">States List</h2>
-                              <a href="{{ route('states.create') }}" class="btn btn-primary">Add State</a>
-                        </div>
+<nav aria-label="breadcrumb">
+      <ol class="breadcrumb bg-light p-2 rounded shadow-sm">
+            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('states.index') }}">States Master</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Add New</li>
+      </ol>
+</nav>
 
+<div class="row mt-3">
+      <div class="col-xl-12">
+            <div class="card">
+                  <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
+                        <h4 class="card-title mb-0">States List</h4>
+                        <a href="{{ route('states.create') }}" class="btn btn-primary">Add New States</a>
+                  </div>
+                  @if(session('success'))
+                  <div class="alert alert-success">{{ session('success') }}</div>
+                  @endif
+                  @if(session('error'))
+                  <div class="alert alert-danger">{{ session('error') }}</div>
+                  @endif
+                  <div class="card-body">
+                        @if(session('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                              {{ session('success') }}
+                              <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                        @endif
                         <div class="table-responsive">
-                              <table class="table table-bordered table-hover" id="states-table">
-                                    <thead class="table-light">
-                                          <tr>
-                                                <th>ID</th>
-                                                <th>Name</th>
-                                                <th>Created</th>
-                                                <th>Actions</th>
-                                          </tr>
-                                    </thead>
-                                    <tbody>
-                                          {{-- Data will be filled by DataTables --}}
-                                    </tbody>
-                              </table>
+                              <div class="table-responsive">
+                                    <table class="table table-bordered table-hover" id="states-table">
+                                          <thead class="table-light">
+                                                <tr>
+                                                      <th>ID</th>
+                                                      <th>Name</th>
+                                                      <th>Created</th>
+                                                      <th>Actions</th>
+                                                </tr>
+                                          </thead>
+                                    </table>
+                              </div>
                         </div>
                   </div>
             </div>
       </div>
 </div>
-
-
 
 <script>
       $(function () {

@@ -5,7 +5,7 @@
       <ol class="breadcrumb bg-light p-2 rounded shadow-sm">
             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
             <li class="breadcrumb-item"><a href="{{ route('dg-teams.index') }}">DG Team List</a></li>
-       </ol>
+      </ol>
 </nav>
 
 
@@ -32,23 +32,25 @@
             </div>
 
 
-
-            <table id="dgTeamTable-table" class="table table-striped table-bordered" style="width:100%">
-                  <thead>
-                        <tr>
-                              <th>#</th>
-                              <th>Name</th>
-                              <th>Email</th>
-                              <th>Designation</th>
-                              <th>Phone</th>
-                              <th>Address</th>
-                              <th>Active</th>
-                              <th>Actions</th>
-                        </tr>
-                  </thead>
-            </table>
+            <div class="card ">
+                  <div class="table-responsive">
+                        <table id="dgTeamTable-table" class="table table-bordered table-striped w-100">
+                              <thead class="table-light">
+                                    <tr>
+                                          <th>#</th>
+                                          <th>Name</th>
+                                          <th>Email</th>
+                                          <th>Designation</th>
+                                          <th>Phone</th>
+                                          <th>Address</th>
+                                          <th>Active</th>
+                                          <th>Actions</th>
+                                    </tr>
+                              </thead>
+                        </table>
+                  </div>
+            </div>
       </div>
-</div>
 </div>
 
 
@@ -69,7 +71,13 @@
                         {data: 'designation', name: 'designation'},
                         {data: 'phone', name: 'phone'},
                         {data: 'address', name: 'address'},
-                        {data: 'is_active', name: 'is_active'},
+                        {
+                              data: 'is_active',
+                              name: 'is_active',
+                              render: function (data) {
+                                    return data == 1 ? '<span class="badge bg-success">Active</span>' : '<span class="badge bg-secondary">Inactive</span>';
+                              }
+                        },
                         {data: 'actions', name: 'actions', orderable: false, searchable: false}
                   ]
             });

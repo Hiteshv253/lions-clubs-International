@@ -15,7 +15,6 @@
                         <h4 class="card-title mb-0">Members List</h4>
                         <a href="{{ route('members.create') }}" class="btn btn-primary">Add New Member</a>
                   </div>
-
                   @if(session('success'))
                   <div class="alert alert-success">{{ session('success') }}</div>
                   @endif
@@ -38,7 +37,12 @@
                                     <input id="filter-member-id" class="form-control form-control-sm" placeholder="Member ID">
                               </div>
                               <div class="col-sm-6 col-md-2">
-                                    <input id="filter-account-name" class="form-control form-control-sm" placeholder="Account Name">
+                                    <select id="filter-account-name" class="form-select form-select-sm">
+                                          <option value="">All Accounts</option>
+                                          @foreach($accounts as $account)
+                                          <option value="{{ $account->name }}">{{ $account->name }} - ({{ $account->code }})</option>
+                                          @endforeach
+                                    </select>
                               </div>
                               <div class="col-sm-6 col-md-2">
                                     <select id="filter-occupation" class="form-select form-select-sm">
@@ -75,38 +79,39 @@
                         </div>
                         @endif
 
-                        <div class="table-responsive">
-                              <table id="members-table" class="table table-bordered table-sm w-100">
-                                    <thead class="table-light">
-                                          <tr>
-                                                <th><input type="checkbox" id="select-all"></th> <!-- checkbox column -->
-                                                <th>Account Name</th>
-                                                <th>Parent Region</th>
-                                                <th>Parent Zone</th>
-                                                <th>Member ID</th>
-                                                <th>First Name</th>
-                                                <th>Last Name</th>
-                                                <th>Address Line 1</th>
-                                                <th>Address Line 2</th>
-                                                <th>Address Line 3</th>
-                                                <th>City</th>
-                                                <th>State</th>
-                                                <th>Zip</th>
-                                                <th>Birthdate</th>
-                                                <th>Email</th>
-                                                <th>Mobile</th>
-                                                <th>Home Phone</th>
-                                                <th>Gender</th>
-                                                <th>Occupation</th>
-                                                <th>Join Date</th>
-                                                <th>Is Active</th>
-                                                <th>Actions</th>
-                                          </tr>
-                                    </thead>
-                                    <tbody></tbody>
-                              </table>
-                        </div>
+                        <div class="">
+                              <div class="table-responsive">
+                                    <table id="members-table" class="table table-bordered table-striped w-100">
+                                          <thead class="table-light">
+                                                <tr>
+                                                      <th><input type="checkbox" id="select-all"></th> <!-- checkbox column -->
+                                                      <th>#</th>
+                                                      <th>Account Name</th>
+                                                      <th>Parent Region</th>
+                                                      <th>Parent Zone</th>
+                                                      <th>Member ID</th>
+                                                      <th>First Name</th>
+                                                      <th>Last Name</th>
+                                                      <th>Address Line</th>
+                                                      <th>City</th>
+                                                      <th>State</th>
+                                                      <th>Zip</th>
+                                                      <th>Birthdate</th>
+                                                      <th>Email</th>
+                                                      <th>Mobile</th>
+                                                      <th>Home Phone</th>
+                                                      <th>Gender</th>
+                                                      <th>Occupation</th>
+                                                      <th>Join Date</th>
+                                                      <th>Is Active</th>
+                                                      <th>Actions</th>
+                                                </tr>
+                                          </thead>
+                                          <tbody></tbody>
+                                    </table>
+                              </div>
 
+                        </div>
                   </div>
             </div>
       </div>
@@ -138,6 +143,7 @@
                                     return `<input type="checkbox" class="row-checkbox" value="${data}">`;
                               }
                         },
+                        {data: 'id', name: 'id'},
                         {data: 'account_name', name: 'account_name'},
                         {data: 'parent_region', name: 'parent_region'},
                         {data: 'parent_zone', name: 'parent_zone'},
@@ -145,8 +151,6 @@
                         {data: 'first_name', name: 'first_name'},
                         {data: 'last_name', name: 'last_name'},
                         {data: 'address_line1', name: 'address_line1'},
-                        {data: 'address_line2', name: 'address_line2'},
-                        {data: 'address_line3', name: 'address_line3'},
                         {data: 'city', name: 'city'},
                         {data: 'state', name: 'state'},
                         {data: 'zip', name: 'zip'},
@@ -161,7 +165,7 @@
                               data: 'is_active',
                               name: 'is_active',
                               render: function (data) {
-                                    return data ? 'Yes' : 'No';
+                                    return data == 1 ? '<span class="badge bg-success">Active</span>' : '<span class="badge bg-secondary">Inactive</span>';
                               }
                         },
                         {data: 'actions', name: 'actions', orderable: false, searchable: false},

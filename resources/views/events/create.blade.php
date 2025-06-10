@@ -1,9 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-
-
-
 <nav aria-label="breadcrumb">
       <ol class="breadcrumb bg-light p-2 rounded shadow-sm">
             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
@@ -11,10 +8,6 @@
             <li class="breadcrumb-item active" aria-current="page">Create</li>
       </ol>
 </nav>
-
-
-
-
 <div class="card shadow-sm">
       <div class="card-header">
             <h5 class="mb-0">Create Event</h5>

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\State;
+use App\Models\City;
 use App\Models\MemberMaster;
 use App\Models\Occupation;
 use Illuminate\Http\Request;
@@ -13,34 +15,9 @@ use App\Models\Region;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\MembersImport;
 use Illuminate\Support\Facades\Validator;
+use App\Models\Account;
 
 class MemberController extends Controller {
-
-      public function showBulkUploadForm() {
-
-            return view('members.bulk-upload');
-      }
-
-      public function importMembers(Request $request) {
-
-            $request->validate([
-                      'file' => 'required|file|mimes:xlsx,xls,csv',
-            ]);
-
-            try {
-                  Excel::import(new MembersImport, $request->file('file'));
-                  return redirect()->route('members.index')->with('success', 'Members imported successfully.');
-            } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
-                  $failures = $e->failures();
-
-                  $errorMessages = [];
-                  foreach ($failures as $failure) {
-                        $errorMessages[] = 'Row ' . $failure->row() . ': ' . implode(', ', $failure->errors());
-                  }
-
-                  return redirect()->back()->withErrors($errorMessages);
-            }
-      }
 
       // Show list of members
 
@@ -71,17 +48,37 @@ class MemberController extends Controller {
             }
 
             $regions = Region::select('name')->distinct()->get();
+            $accounts = Account::select('name', 'code')->distinct()->get();
             $occupations = Occupation::select('name')->distinct()->get();
-            return view('members.index', compact('regions', 'occupations'));
+            $citys = City::select('name')->distinct()->get();
+            return view('members.index', compact('regions', 'occupations', 'accounts', 'citys'));
       }
 
       // Show form to create a member
       public function create() {
-            return view('members.create');
+            $regions = Region::select('name')->distinct()->get();
+            $accounts = Account::select('name', 'code')->distinct()->get();
+            $citys = City::select('name')->distinct()->get();
+            $states = State::select('name', 'id')->distinct()->get();
+            $occupations = Occupation::select('name', 'id')->distinct()->get();
+
+            return view('members.create', compact('regions', 'occupations', 'accounts', 'citys', 'states', 'occupations'));
+      }
+
+// Show form to edit member
+
+      public function edit(MemberMaster $member) {
+            $regions = Region::select('name')->distinct()->get();
+            $accounts = Account::select('name', 'code')->distinct()->get();
+            $citys = City::select('name')->distinct()->get();
+            $states = State::select('name', 'id')->distinct()->get();
+            $occupation = Occupation::select('name', 'id')->distinct()->get();
+            return view('members.edit', compact('member', 'regions', 'occupations', 'accounts', 'citys', 'states', 'occupations'));
       }
 
       // Store new member
       public function store(Request $request) {
+
             $validated = $request->validate([
                       'account_name' => 'required|string|max:255',
                       'parent_region' => 'nullable|string|max:255',
@@ -103,9 +100,10 @@ class MemberController extends Controller {
                       'occupation' => 'nullable|string|max:100',
                       'join_date' => 'nullable|date|before_or_equal:today',
             ]);
+        
 
             // Save the validated data
-            Member::create($validated);
+            MemberMaster::create($validated);
 
             return redirect()->route('members.index')->with('success', 'Member added successfully.');
       }
@@ -113,11 +111,6 @@ class MemberController extends Controller {
       // Show single member
       public function show(MemberMaster $member) {
             return view('members.show', compact('member'));
-      }
-
-      // Show form to edit member
-      public function edit(MemberMaster $member) {
-            return view('members.edit', compact('member'));
       }
 
       // Update member
@@ -168,8 +161,34 @@ class MemberController extends Controller {
                   return response()->json(['message' => 'No member IDs provided.'], 422);
             }
 
-            Member::whereIn('id', $ids)->delete();
+            MemberMaster::whereIn('id', $ids)->delete();
 
             return response()->json(['message' => count($ids) . ' member(s) deleted successfully.']);
+      }
+
+      public function showBulkUploadForm() {
+
+            return view('members.bulk-upload');
+      }
+
+      public function importMembers(Request $request) {
+
+            $request->validate([
+                      'file' => 'required|file|mimes:xlsx,xls,csv',
+            ]);
+
+            try {
+                  Excel::import(new MembersImport, $request->file('file'));
+                  return redirect()->route('members.index')->with('success', 'Members imported successfully.');
+            } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
+                  $failures = $e->failures();
+
+                  $errorMessages = [];
+                  foreach ($failures as $failure) {
+                        $errorMessages[] = 'Row ' . $failure->row() . ': ' . implode(', ', $failure->errors());
+                  }
+
+                  return redirect()->back()->withErrors($errorMessages);
+            }
       }
 }

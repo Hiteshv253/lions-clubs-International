@@ -37,23 +37,24 @@
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                   </div>
                   @endif
-
                   <!-- Table -->
-                  <div class="table-responsive shadow-sm rounded">
-                        <table id="accounts-table" class="table table-bordered table-striped align-middle mb-0">
-                              <thead class="table-light">
-                                    <tr>
-                                          <th>Name</th>
-                                          <th>Code</th>
-                                          <th>Account No</th>
-                                          <th>Type</th>
-                                          <th>Status</th>
-                                          <th class="text-center" style="width: 120px;">Actions</th>
-                                    </tr>
-                              </thead>
-                        </table>
-                  </div>
+                  <div class="card ">
+                        <div class="table-responsive">
+                              <table id="accounts-table" class="table table-bordered table-striped w-100">
+                                    <thead class="table-light">
+                                          <tr>
+                                                <th>Name</th>
+                                                <th>Code</th>
+                                                <th>Account No</th>
+                                                <th>Type</th>
+                                                <th>Status</th>
+                                                <th class="text-center" style="width: 120px;">Actions</th>
+                                          </tr>
+                                    </thead>
+                              </table>
+                        </div>
 
+                  </div>
             </div>
       </div>
 </div>

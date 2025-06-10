@@ -28,51 +28,57 @@
 
                   <a href="{{ route('regions.create') }}" class="btn btn-success ms-auto">+ Add New</a>
             </div>
-
-
-
-            <div class="table-responsive">
-                  <table id="regions-table" class="table table-bordered table-sm w-100">
-                        <thead class="table-light">
-                              <tr>
-
-
-                                    <th>Name</th>
-                                    <th>Parent</th>
-                                    <th style="width: 120px;">Actions</th>
-                              </tr>
-                        </thead>
-                  </table>
+            <div class="card p-3 shadow-sm">
+                  <div class="table-responsive">
+                        <table id="regions-table" class="table table-bordered table-striped w-100">
+                              <thead class="table-light">
+                                    <tr>
+                                          <th>#</th>
+                                          <th>Name</th>
+                                          <th>Parent</th>
+                                          <th>Status</th>
+                                          <th style="width: 120px;">Actions</th>
+                                    </tr>
+                              </thead>
+                        </table>
+                  </div>
             </div>
       </div>
-</div>
 
 
-<script>
-      $(function () {
-            var table = $('#regions-table').DataTable({
-                  processing: true,
-                  serverSide: true,
-                  ajax: {
-                        url: '{{ route('regions.index') }}',
-                        data: function (d) {
-                              d.name = $('#filter-name').val();
-                        }
-                  },
-                  columns: [
-                        {data: 'name', name: 'name'},
-                        {data: 'parent', name: 'parent.name', orderable: false, searchable: false},
-                        {data: 'actions', name: 'actions', orderable: false, searchable: false}
-                  ],
-                  order: [[0, 'asc']]
+      <script>
+            $(function () {
+                  var table = $('#regions-table').DataTable({
+                        processing: true,
+                        serverSide: true,
+                        ajax: {
+                              url: '{{ route('regions.index') }}',
+                              data: function (d) {
+                                    d.name = $('#filter-name').val();
+                              }
+                        },
+                        columns: [
+                              {data: 'id', name: 'id'},
+                              {data: 'name', name: 'name'},
+                              {data: 'parent', name: 'parent.name', orderable: false, searchable: false},
+                              {
+                                    data: 'is_active',
+                                    name: 'is_active',
+                                    render: function (data) {
+                                          return data == 1 ? '<span class="badge bg-success">Active</span>' : '<span class="badge bg-secondary">Inactive</span>';
+                                    }
+                              },
+                              {data: 'actions', name: 'actions', orderable: false, searchable: false}
+                        ],
+                        order: [[0, 'asc']]
+                  });
+
+                  $('#btn-search').click(() => table.draw());
+
+                  $('#btn-reset').click(() => {
+                        $('#filter-name').val('');
+                        table.draw();
+                  });
             });
-
-            $('#btn-search').click(() => table.draw());
-
-            $('#btn-reset').click(() => {
-                  $('#filter-name').val('');
-                  table.draw();
-            });
-      });
-</script>
-@endsection
+      </script>
+      @endsection

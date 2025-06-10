@@ -7,44 +7,65 @@
             <li class="breadcrumb-item"><a href="{{ route('cities.index') }}">Cities</a></li>
       </ol>
 </nav>
-<div class="card shadow-sm">
-      <div class="card-header">
-            <h5 class="mb-0">Cities List</h5>
-      </div>
-      <div class="card-body">
-            <a href="{{ route('cities.create') }}" class="btn btn-primary mb-3">Add City</a>
 
-            @if(session('success'))
-            <div class="alert alert-success">{{ session('success') }}</div>
-            @endif
+<div class="row mt-3">
+      <div class="col-xl-12">
+            <div class="card">
+                  <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
+                        <h4 class="card-title mb-0">Cities List</h4>
+                        <a href="{{ route('cities.create') }}" class="btn btn-primary">Add New Cities</a>
+                  </div>
+                  @if(session('success'))
+                  <div class="alert alert-success">{{ session('success') }}</div>
+                  @endif
+                  @if(session('error'))
+                  <div class="alert alert-danger">{{ session('error') }}</div>
+                  @endif
+                  <div class="card-body">
+                        @if(session('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                              {{ session('success') }}
+                              <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                        @endif
+                        <div class="table-responsive">
+                              <table id="citiesTable-table" class="table table-bordered table-striped w-100">
+                                    <thead class="table-light">
+                                          <tr>
+                                                <th>#</th>
+                                                <th>City Name</th>
+                                                <th>State Name</th>
+                                                <th>Status</th>
+                                                <th>Actions</th>
+                                          </tr>
+                                    </thead>
+                              </table>
 
-            <table id="citiesTable" class="table table-bordered table-striped">
-                  <thead>
-                        <tr>
-                              <th>#</th>
-                              <th>Name</th>
-                              <th>State</th>
-                              <th>Actions</th>
-                        </tr>
-                  </thead>
-            </table>
-
+                        </div>
+                  </div>
+            </div>
       </div>
 </div>
 
 
-
-
 <script>
       $(document).ready(function () {
-            $('#citiesTable').DataTable({
+            $('#citiesTable-table').DataTable({
                   processing: true,
                   serverSide: true,
                   ajax: '{{ route('cities.index') }}', // Make sure this route returns JSON for DataTables
                   columns: [
-                        {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
+                        
+                        {data: 'id', name: 'id'},
                         {data: 'name', name: 'name'},
                         {data: 'state_name', name: 'state.name'},
+                        {
+                              data: 'is_active',
+                              name: 'is_active',
+                              render: function (data) {
+                                    return data == 1 ? '<span class="badge bg-success">Active</span>' : '<span class="badge bg-secondary">Inactive</span>';
+                              }
+                        },
                         {data: 'actions', name: 'actions', orderable: false, searchable: false}
                   ],
                   order: [[1, 'asc']],

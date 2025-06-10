@@ -1,5 +1,4 @@
 @extends('layouts.master')
-
 @section('content')
 <nav aria-label="breadcrumb">
       <ol class="breadcrumb bg-light p-2 rounded shadow-sm">
@@ -8,10 +7,6 @@
             <li class="breadcrumb-item active" aria-current="page">Edit</li>
       </ol>
 </nav>
-
-
-
-<div class="  my-4">
       <div class="card shadow-sm">
             <div class="card-header text-white">
             <h5 class="mb-0">Edit Member</h5>
@@ -23,7 +18,7 @@
                 @method('PUT')
 
                 <div class="row mb-3">
-                    <div class="col-md-4">
+                    <div class="col-sm-6 col-md-3">
                         <label for="account_name" class="form-label">Account Name</label>
                         <input type="text" name="account_name" id="account_name" class="form-control @error('account_name') is-invalid @enderror" value="{{ old('account_name', $member->account_name) }}" required>
                         @error('account_name')
@@ -31,24 +26,24 @@
                         @enderror
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-sm-6 col-md-3">
                         <label for="parent_region" class="form-label">Parent Region</label>
                         <input type="text" name="parent_region" id="parent_region" class="form-control" value="{{ old('parent_region', $member->parent_region) }}">
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-sm-6 col-md-3">
                         <label for="parent_zone" class="form-label">Parent Zone</label>
                         <input type="text" name="parent_zone" id="parent_zone" class="form-control" value="{{ old('parent_zone', $member->parent_zone) }}">
                     </div>
                 </div>
 
                 <div class="row mb-3">
-                    <div class="col-md-4">
+                    <div class="col-sm-6 col-md-3">
                         <label for="member_id" class="form-label">Member ID</label>
                         <input type="text" name="member_id" id="member_id" class="form-control" value="{{ old('member_id', $member->member_id) }}">
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-sm-6 col-md-3">
                         <label for="first_name" class="form-label">First Name</label>
                         <input type="text" name="first_name" id="first_name" class="form-control @error('first_name') is-invalid @enderror" value="{{ old('first_name', $member->first_name) }}" required>
                         @error('first_name')
@@ -56,7 +51,7 @@
                         @enderror
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-sm-6 col-md-3">
                         <label for="last_name" class="form-label">Last Name</label>
                         <input type="text" name="last_name" id="last_name" class="form-control @error('last_name') is-invalid @enderror" value="{{ old('last_name', $member->last_name) }}" required>
                         @error('last_name')
@@ -66,15 +61,15 @@
                 </div>
 
                 <div class="row mb-3">
-                    <div class="col-md-4">
+                    <div class="col-sm-6 col-md-3">
                         <label for="address_line1" class="form-label">Address Line 1</label>
                         <input type="text" name="address_line1" id="address_line1" class="form-control" value="{{ old('address_line1', $member->address_line1) }}">
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-sm-6 col-md-3">
                         <label for="address_line2" class="form-label">Address Line 2</label>
                         <input type="text" name="address_line2" id="address_line2" class="form-control" value="{{ old('address_line2', $member->address_line2) }}">
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-sm-6 col-md-3">
                         <label for="address_line3" class="form-label">Address Line 3</label>
                         <input type="text" name="address_line3" id="address_line3" class="form-control" value="{{ old('address_line3', $member->address_line3) }}">
                     </div>
@@ -100,7 +95,7 @@
                 </div>
 
                 <div class="row mb-3">
-                    <div class="col-md-4">
+                    <div class="col-sm-6 col-md-3">
                         <label for="email" class="form-label">Personal Email</label>
                         <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email', $member->email) }}">
                         @error('email')
@@ -108,12 +103,12 @@
                         @enderror
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-sm-6 col-md-3">
                         <label for="mobile" class="form-label">Mobile</label>
                         <input type="text" name="mobile" id="mobile" class="form-control" value="{{ old('mobile', $member->mobile) }}">
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-sm-6 col-md-3">
                         <label for="home_phone" class="form-label">Home Phone</label>
                         <input type="text" name="home_phone" id="home_phone" class="form-control" value="{{ old('home_phone', $member->home_phone) }}">
                     </div>

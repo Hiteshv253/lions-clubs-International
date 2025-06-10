@@ -50,72 +50,84 @@
 
 
 
-                  <table id="clubs-table" class="table table-striped table-bordered" style="width:100%">
-                        <thead>
-                              <tr>
-                                    <th>#</th>
-                                    <th>Account Name</th>
-                                    <th>Type</th>
-                                    <th>District</th>
-                                    <th>Region</th>
-                                    <th>Lion ID</th>
-                                    <th>Active Members</th>
-                                    <th>Website</th>
-                                    <th>Actions</th>
-                              </tr>
-                        </thead>
-                  </table>
+
+                  <div class="card p-3 shadow-sm">
+                        <div class="table-responsive">
+                              <table id="clubs-table" class="table table-bordered table-striped w-100">
+                                     <thead class="table-light">
+                                          <tr>
+                                                <th>#</th>
+                                                <th>Account Name</th>
+                                                <th>Type</th>
+                                                <th>District</th>
+                                                <th>Region</th>
+                                                <th>Lion ID</th>
+                                                <th>Active Members</th>
+                                                <th>Website</th>
+                                                <th>Status</th>
+                                                <th>Actions</th>
+                                          </tr>
+                                    </thead>
+                              </table>
+                        </div>
+                  </div>
             </div>
       </div>
-</div>
 
 
 
-<script>
-      $(document).ready(function () {
-            var table = $('#clubs-table').DataTable({
-                  processing: true,
-                  serverSide: true,
-                  ajax: {
-                        url: "{{ route('clubs.index') }}",
-                        data: function (d) {
-                              d.region_zone = $('#filterRegion').val();
-                              d.district = $('#filterDistrict').val();
-                              d.type = $('#filterType').val();
-                        }
-                  },
-                  columns: [
-                        {data: 'id', name: 'id'},
-                        {data: 'account_name', name: 'account_name'},
-                        {data: 'type', name: 'type'},
-                        {data: 'district', name: 'district'},
-                        {data: 'region_zone', name: 'region_zone'},
-                        {data: 'lion_id', name: 'lion_id'},
-                        {data: 'active_member_count', name: 'active_member_count'},
-                        {data: 'website', name: 'website'},
-                        {
-                              data: 'actions',
-                              name: 'actions',
-                              orderable: false,
-                              searchable: false
-                        }
-                  ]
+      <script>
+            $(document).ready(function () {
+                  var table = $('#clubs-table').DataTable({
+                        processing: true,
+                        serverSide: true,
+                        ajax: {
+                              url: "{{ route('clubs.index') }}",
+                              data: function (d) {
+                                    d.region_zone = $('#filterRegion').val();
+                                    d.district = $('#filterDistrict').val();
+                                    d.type = $('#filterType').val();
+                              }
+                        },
+                        columns: [
+                              {data: 'id', name: 'id'},
+                              {data: 'account_name', name: 'account_name'},
+                              {data: 'type', name: 'type'},
+                              {data: 'district', name: 'district'},
+                              {data: 'region_zone', name: 'region_zone'},
+                              {data: 'lion_id', name: 'lion_id'},
+                              {data: 'active_member_count', name: 'active_member_count'},
+                              {data: 'website', name: 'website'},
+                              {
+                                    data: 'is_active',
+                                    name: 'is_active',
+                                    render: function (data) {
+                                          return data == 1 ? '<span class="badge bg-success">Active</span>' : '<span class="badge bg-secondary">Inactive</span>';
+                                    }
+                              },
+                              {
+                                    data: 'actions',
+                                    name: 'actions',
+                                    orderable: false,
+                                    searchable: false
+                              }
+                        ]
+                  });
+
+                  // Search button click - reload table with filters
+                  $('#btnSearch').click(function () {
+                        table.ajax.reload();
+                  });
+
+                  // Reset button click - clear filters and reload table
+                  $('#btnReset').click(function () {
+                        $('#filterRegion').val('');
+                        $('#filterDistrict').val('');
+                        $('#filterType').val('');
+                        table.ajax.reload();
+                  });
             });
-
-            // Search button click - reload table with filters
-            $('#btnSearch').click(function () {
-                  table.ajax.reload();
-            });
-
-            // Reset button click - clear filters and reload table
-            $('#btnReset').click(function () {
-                  $('#filterRegion').val('');
-                  $('#filterDistrict').val('');
-                  $('#filterType').val('');
-                  table.ajax.reload();
-            });
-      });
-</script>
+      </script>
 
 
-@endsection
+      @endsection

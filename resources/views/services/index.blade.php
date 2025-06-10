@@ -3,60 +3,60 @@
 @section('content')
 
 <nav aria-label="breadcrumb" class="sticky-top bg-white border-bottom" style="z-index: 1030;">
-  <ol class="breadcrumb mb-0 p-3">
-    <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-    <li class="breadcrumb-item active" aria-current="page">Services</li>
-  </ol>
+      <ol class="breadcrumb mb-0 p-3">
+            <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Services</li>
+      </ol>
 </nav>
 
 <div class="  my-4">
-  <div class="card shadow-sm">
-    <div class="card-header">
-      <h2>Service List</h2>
-    </div>
+      <div class="card shadow-sm">
+            <div class="card-header">
+                  <h2>Service List</h2>
+            </div>
 
-    <div class="card-body">
-      <!-- Filters -->
-      <form id="filter-form" class="row gy-2 gx-3 align-items-end mb-3">
-        <div class="col-6 col-md-2">
-          <label for="start_date" class="form-label d-none d-md-block">Start Date</label>
-          <input type="date" id="start_date" class="form-control" placeholder="Start Date">
-        </div>
-        <div class="col-6 col-md-2">
-          <label for="end_date" class="form-label d-none d-md-block">End Date</label>
-          <input type="date" id="end_date" class="form-control" placeholder="End Date">
-        </div>
-        <div class="col-12 col-md-3 d-flex gap-2">
-          <button type="button" id="filter" class="btn btn-primary flex-grow-1">Filter</button>
-          <button type="button" id="reset" class="btn btn-secondary flex-grow-1">Reset</button>
-        </div>
-        <div class="col-12 col-md-5 d-flex justify-content-md-end gap-2 flex-wrap">
-          <a href="{{ route('services.create') }}" class="btn btn-success flex-grow-1 flex-md-grow-0">+ Add New</a>
-          <a id="delete-selected" class="btn btn-danger flex-grow-1 flex-md-grow-0">- Delete Selected</a>
-          <a href="{{ route('services.export.pdf') }}" class="btn btn-danger flex-grow-1 flex-md-grow-0">Export PDF</a>
-        </div>
-      </form>
+            <div class="card-body">
+                  <!-- Filters -->
+                  <form id="filter-form" class="row gy-2 gx-3 align-items-end mb-3">
+                        <div class="col-6 col-md-2">
+                              <label for="start_date" class="form-label d-none d-md-block">Start Date</label>
+                              <input type="date" id="start_date" class="form-control" placeholder="Start Date">
+                        </div>
+                        <div class="col-6 col-md-2">
+                              <label for="end_date" class="form-label d-none d-md-block">End Date</label>
+                              <input type="date" id="end_date" class="form-control" placeholder="End Date">
+                        </div>
+                        <div class="col-12 col-md-3 d-flex gap-2">
+                              <button type="button" id="filter" class="btn btn-primary flex-grow-1">Filter</button>
+                              <button type="button" id="reset" class="btn btn-secondary flex-grow-1">Reset</button>
+                        </div>
+                        <div class="col-12 col-md-5 d-flex justify-content-md-end gap-2 flex-wrap">
+                              <a href="{{ route('services.create') }}" class="btn btn-success flex-grow-1 flex-md-grow-0">+ Add New</a>
+                              <a id="delete-selected" class="btn btn-danger flex-grow-1 flex-md-grow-0">- Delete Selected</a>
+                              <a href="{{ route('services.export.pdf') }}" class="btn btn-danger flex-grow-1 flex-md-grow-0">Export PDF</a>
+                        </div>
+                  </form>
 
-      <!-- Responsive Table Wrapper -->
-      <div class="table-responsive">
-        <table class="table table-bordered mb-0" id="services-table">
-          <thead>
-            <tr>
-              <th><input type="checkbox" id="select-all"></th>
-              <th>ID</th>
-              <th>Title</th>
-              <th>Sponsor</th>
-              <th>Start Date</th>
-              <th>End Date</th>
-              <th>Club</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <!-- tbody will be filled by DataTables -->
-        </table>
+                  <!-- Responsive Table Wrapper -->
+                  <div class="table-responsive">
+                        <table class="table table-bordered mb-0" id="services-table">
+                             <thead class="table-light">
+                                    <tr>
+                                          <th><input type="checkbox" id="select-all"></th>
+                                          <th>ID</th>
+                                          <th>Title</th>
+                                          <th>Sponsor</th>
+                                          <th>Start Date</th>
+                                          <th>End Date</th>
+                                          <th>Club</th>
+                                          <th>Actions</th>
+                                    </tr>
+                              </thead>
+                              <!-- tbody will be filled by DataTables -->
+                        </table>
+                  </div>
+            </div>
       </div>
-    </div>
-  </div>
 </div>
 
 
@@ -95,6 +95,13 @@
                         {data: 'start_date', name: 'start_date'},
                         {data: 'end_date', name: 'end_date'},
                         {data: 'club_name', name: 'club_name'},
+                        {
+                              data: 'is_active',
+                              name: 'is_active',
+                              render: function (data) {
+                                    return data == 1 ? '<span class="badge bg-success">Active</span>' : '<span class="badge bg-secondary">Inactive</span>';
+                              }
+                        },
                         {
                               data: 'id',
                               orderable: false,
