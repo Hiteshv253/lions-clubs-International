@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\Auth\ForgotPasswordController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\LogoutController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Frontend\HomePageController;
 use App\Http\Controllers\Frontend\UserRegistrationController;
@@ -24,122 +24,162 @@ use App\Http\Controllers\RegionController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\ServiceActivityTypeController;
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\RoleController;
 
 /*
   |--------------------------------------------------------------------------
-  | Web Routes
+  | Public Routes
   |--------------------------------------------------------------------------
  */
 
-// Public routes
+Route::get('/', [HomePageController::class, 'home'])->name('home');
 Route::post('/registration', [UserRegistrationController::class, 'registration'])->name('registration');
 
-Route::get('/', [HomePageController::class, 'home'])->name('home');
+Route::middleware('guest')->group(function () {
+      Route::get('/login', [LoginController::class, 'index'])->name('login');
+      Route::post('/login', [LoginController::class, 'authenticate']);
 
-Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
-//Route::post('/login', [LoginController::class, 'authenticate'])->name('login')->middleware('guest');
-Route::post('/login', [LoginController::class, 'authenticate'])->name('login');
+      Route::get('/auth-pass-reset-basic', [ForgotPasswordController::class, 'index'])->name('password.forgot');
+      Route::post('/auth-pass-reset-basic', [ForgotPasswordController::class, 'forgot']);
+
+      Route::get('/auth-pass-change-basic', [ResetPasswordController::class, 'index'])->name('password.reset');
+      Route::post('/auth-pass-change-basic', [ResetPasswordController::class, 'reset']);
+});
+
 Route::get('/logout', [LogoutController::class, 'logout'])->name('logout')->middleware('auth');
 
-Route::get('/auth-pass-reset-basic', [ForgotPasswordController::class, 'index'])->name('password.forgot')->middleware('guest');
-Route::post('/auth-pass-reset-basic', [ForgotPasswordController::class, 'forgot'])->middleware('guest');
-
-Route::get('/auth-pass-change-basic', [ResetPasswordController::class, 'index'])->name('password.reset')->middleware('guest');
-Route::post('/auth-pass-change-basic', [ResetPasswordController::class, 'reset'])->middleware('guest');
-
+// Static auth views (could be removed if unused)
 Route::view('/auth-signin-basic', 'pages.auth.auth-signin-basic');
 Route::view('/auth-signin-cover', 'pages.auth.auth-signin-cover');
 Route::view('/auth-signup-basic', 'pages.auth.auth-signup-basic');
 Route::view('/auth-signup-cover', 'pages.auth.auth-signup-cover');
 
+// Location (AJAX endpoints)
 Route::get('/get-cities/{state_id}', [LocationController::class, 'getCities']);
 Route::get('/get-zipcodes/{city_id}', [LocationController::class, 'getZipCodes']);
-Route::get('users/ajax', [UserController::class, 'ajaxUsers'])->name('users.ajax');
+Route::get('/users/ajax', [UserController::class, 'ajaxUsers'])->name('users.ajax');
 
-// Group routes that require authentication and prefix 'lions'
-Route::prefix('lions')->middleware(['auth'])->group(function () {
+/*
+  |--------------------------------------------------------------------------
+  | Authenticated Lions Routes (Prefix: lions)
+  |--------------------------------------------------------------------------
+ */
 
-      // Routes only accessible by super-admin or admin roles
+Route::prefix('lions')->middleware('auth')->group(function () {
+
+      // Dashboard
+      Route::view('dashboard', 'backend.dashboard.index')->name('dashboard');
+
+      /*
+        |--------------------------------------------------------------------------
+        | Admin/Super-Admin Only
+        |--------------------------------------------------------------------------
+       */
       Route::middleware(['role:super-admin|admin'])->group(function () {
-            // Permissions routes
-            Route::resource('permissions', App\Http\Controllers\PermissionController::class);
-            Route::delete('permissions/{permission}', [App\Http\Controllers\PermissionController::class, 'destroy'])->name('permissions.destroy');
+            Route::resource('permissions', PermissionController::class)->except(['destroy']);
+            Route::delete('permissions/{permission}', [PermissionController::class, 'destroy'])->name('permissions.destroy');
 
-            // Roles routes
-            Route::resource('roles', App\Http\Controllers\RoleController::class);
-            Route::delete('roles/{role}', [App\Http\Controllers\RoleController::class, 'destroy'])->name('roles.destroy');
-            Route::get('roles/{role}/give-permissions', [App\Http\Controllers\RoleController::class, 'addPermissionToRole'])->name('roles.give-permissions.form');
-            Route::put('roles/{role}/give-permissions', [App\Http\Controllers\RoleController::class, 'givePermissionToRole'])->name('roles.give-permissions');
+            Route::resource('roles', RoleController::class)->except(['destroy']);
+            Route::delete('roles/{role}', [RoleController::class, 'destroy'])->name('roles.destroy');
+            Route::get('roles/{role}/give-permissions', [RoleController::class, 'addPermissionToRole'])->name('roles.give-permissions.form');
+            Route::put('roles/{role}/give-permissions', [RoleController::class, 'givePermissionToRole'])->name('roles.give-permissions');
 
-            // Users routes with AJAX (only for admins)
-            Route::resource('users', UserController::class);
-            Route::delete('users/{user}', [App\Http\Controllers\UserController::class, 'destroy'])->name('users.destroy');
+            Route::resource('users', UserController::class)->except(['destroy']);
+            Route::delete('users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
       });
 
-      // Users routes accessible for all authenticated lions users
+      // Shared user routes
       Route::get('users/ajax', [UserController::class, 'ajaxUsers'])->name('lions.users.ajax');
-      Route::resource('users', UserController::class)->except(['destroy']);
-      Route::delete('users/{user}', [UserController::class, 'destroy'])->name('lions.users.destroy');
 
-      // Accounts
-      Route::resource('accounts', AccountController::class);
-      Route::get('accounts-data', [AccountController::class, 'data'])->name('accounts.data');
+      /*
+        |--------------------------------------------------------------------------
+        | Resourceful Routes
+        |--------------------------------------------------------------------------
+       */
 
-      // Regions
-      Route::resource('regions', RegionController::class);
+      Route::resources([
+                'accounts' => AccountController::class,
+                'regions' => RegionController::class,
+                'services' => ServiceController::class,
+                'clubs' => ClubController::class,
+                'events' => EventMasterController::class,
+                'sponsors' => SponsorController::class,
+                'service-activity-types' => ServiceActivityTypeController::class,
+                'states' => StateController::class,
+                'cities' => CityController::class,
+                'zip-codes' => ZipCodeController::class,
+                'dg-teams' => DGTeamController::class,
+                'members' => MemberController::class,
+                'occupations' => OccupationController::class,
+                'districts' => DistrictController::class,
+      ]);
 
-      // Services
-      Route::resource('services', ServiceController::class);
+      /*
+        |--------------------------------------------------------------------------
+        | Services
+        |--------------------------------------------------------------------------
+       */
       Route::get('services-export-pdf', [ServiceController::class, 'exportPDF'])->name('services.export.pdf');
       Route::delete('services/{service}', [ServiceController::class, 'destroy'])->name('services.destroy');
       Route::post('services/bulk-delete', [ServiceController::class, 'bulkDelete'])->name('services.bulk-delete');
 
-      // Clubs
-      Route::resource('clubs', ClubController::class);
+      /*
+        |--------------------------------------------------------------------------
+        | Clubs
+        |--------------------------------------------------------------------------
+       */
       Route::get('clubs/export-pdf', [ClubController::class, 'exportPdf'])->name('clubs.exportPdf');
 
-      // Events
-      Route::resource('events', EventMasterController::class);
+      /*
+        |--------------------------------------------------------------------------
+        | Events
+        |--------------------------------------------------------------------------
+       */
       Route::get('my-registrations', [EventMasterController::class, 'registrationHistory'])->name('events.history');
       Route::get('event/registration-card/{event}', [EventMasterController::class, 'showRegistrationCard'])->name('event.registration.card');
 
-      // Dashboard view
-      Route::view('dashboard', 'backend.dashboard.index')->name('dashboard');
-
-      Route::resource('sponsors', SponsorController::class);
-      Route::resource('service-activity-types', ServiceActivityTypeController::class);
-
-      // States, Cities, ZipCodes
-      Route::resource('states', StateController::class);
-      Route::resource('cities', CityController::class);
-      Route::resource('zip-codes', ZipCodeController::class);
-
-      // Location form
+      /*
+        |--------------------------------------------------------------------------
+        | Location
+        |--------------------------------------------------------------------------
+       */
       Route::get('location', [LocationController::class, 'showForm'])->name('location.form');
 
-      // DG Teams
-      Route::resource('dg-teams', DGTeamController::class);
-
-      // Members
+      /*
+        |--------------------------------------------------------------------------
+        | Members
+        |--------------------------------------------------------------------------
+       */
       Route::get('members/bulk-upload', [MemberController::class, 'showBulkUploadForm'])->name('members.bulk-upload-form');
       Route::post('members/bulk-upload', [MemberController::class, 'importMembers'])->name('members.bulk-upload');
-      Route::delete('members/{member}', [MemberController::class, 'destroy'])->name('members.destroy');
       Route::post('members/bulk-delete', [MemberController::class, 'bulkDelete'])->name('members.bulkDelete');
-      Route::resource('members', MemberController::class);
 
-      // Occupations
-      Route::resource('occupations', OccupationController::class);
+      /*
+        |--------------------------------------------------------------------------
+        | Occupations
+        |--------------------------------------------------------------------------
+       */
       Route::post('occupations/bulk-delete', [OccupationController::class, 'bulkDelete'])->name('occupations.bulkDelete');
 
-      // Districts
-      Route::resource('districts', DistrictController::class);
+      /*
+        |--------------------------------------------------------------------------
+        | Districts
+        |--------------------------------------------------------------------------
+       */
       Route::get('districts/list', [DistrictController::class, 'list'])->name('districts.list');
 
-      // Member Registrations
-      Route::get('registration', [MemberRegistrationController::class, 'index'])->name('member.registration.index');
-      Route::get('registration/create', [MemberRegistrationController::class, 'create'])->name('member.registration.create');
-      Route::get('registration/edit/{id}', [MemberRegistrationController::class, 'edit'])->name('member.registration.edit');
-      Route::post('registration/update/{id}', [MemberRegistrationController::class, 'update'])->name('member.registration.update');
-      Route::post('registration/store', [MemberRegistrationController::class, 'store'])->name('member.registration.store');
-      Route::delete('registration/delete/{id}', [MemberRegistrationController::class, 'delete'])->name('member.registration.delete');
+      /*
+        |--------------------------------------------------------------------------
+        | Member Registration Management
+        |--------------------------------------------------------------------------
+       */
+      Route::prefix('registration')->name('member.registration.')->controller(MemberRegistrationController::class)->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('/create', 'create')->name('create');
+            Route::get('/edit/{id}', 'edit')->name('edit');
+            Route::post('/update/{id}', 'update')->name('update');
+            Route::post('/store', 'store')->name('store');
+            Route::delete('/delete/{id}', 'delete')->name('delete');
+      });
 });

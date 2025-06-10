@@ -1,9 +1,9 @@
 @extends('layouts.master')
 
 @section('content')
-<nav aria-label="breadcrumb" class="sticky-top bg-white border-bottom" style="z-index: 1030;">
-      <ol class="breadcrumb mb-0 p-3">
-            <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
+<nav aria-label="breadcrumb">
+      <ol class="breadcrumb bg-light p-2 rounded shadow-sm">
+            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
             <li class="breadcrumb-item"><a href="{{ route('members.index') }}">Members</a></li>
             <li class="breadcrumb-item active" aria-current="page">Create</li>
       </ol>
@@ -134,7 +134,7 @@
                               </div>
                         </div>
 
-                        <div class="text-end mt-4">
+                        <div class="text-end">
                               <button type="submit" class="btn btn-success">Submit</button>
                               <a href="{{ route('members.index') }}" class="btn btn-secondary">Cancel</a>
                         </div>

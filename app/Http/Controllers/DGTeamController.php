@@ -22,9 +22,9 @@ class DGTeamController extends Controller {
 
                   return DataTables::of($query)
                               ->addColumn('actions', function ($row) {
-                                    return '<a href="#" class="btn btn-sm btn-primary">Edit</a>';
+//                                    return '<a href="#" class="btn btn-sm btn-primary">Edit</a>';
                                     // Or use a view partial like:
-                                    // return view('dg-teams.partials.actions', compact('row'))->render();
+                                     return view('dg-teams.partials.actions', compact('row'))->render();
                               })
                               ->editColumn('is_active', function ($row) {
                                     return $row->is_active ? 'Yes' : 'No';

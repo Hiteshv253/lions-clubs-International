@@ -1,16 +1,18 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="container py-4">
-      <!-- Breadcrumb -->
-      <nav aria-label="breadcrumb">
-            <ol class="breadcrumb bg-light px-3 py-2 rounded">
-                  <li class="breadcrumb-item"><a href="{{ route('sponsors.index') }}">Sponsors</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Add New Sponsor</li>
-            </ol>
-      </nav>
+<nav aria-label="breadcrumb">
+      <ol class="breadcrumb bg-light p-2 rounded shadow-sm">
+            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('sponsors.index') }}">Sponsors</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Create</li>
+      </ol>
+</nav>
 
-      <h2 class="mb-4">Add New Sponsor</h2>
+<div class="card shadow-sm">
+      <div class="card-header">
+            <h5 class="mb-0">Add New Sponsor</h5>
+      </div>
 
       <!-- Sponsor Form -->
       <form action="{{ route('sponsors.store') }}" method="POST" enctype="multipart/form-data" class="card shadow-sm p-4">
@@ -40,5 +42,6 @@
                   <a href="{{ route('sponsors.index') }}" class="btn btn-secondary">Cancel</a>
             </div>
       </form>
+</div>
 </div>
 @endsection

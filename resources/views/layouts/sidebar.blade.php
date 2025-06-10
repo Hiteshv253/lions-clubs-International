@@ -156,7 +156,7 @@
                                                 <a href="{{ route('sponsors.index') }}" class="nav-link {{ request()->is('lions/sponsors*') ? 'active' : '' }}" data-key="t-services">Sponsors</a>
                                           </li>
                                           <li class="nav-item">
-                                                <a href="{{ route('service-activity-types.index') }}" class="nav-link {{ request()->is('lions/service-activity-types*') ? 'active' : '' }}" data-key="t-services">service-activity-types</a>
+                                                <a href="{{ route('service-activity-types.index') }}" class="nav-link {{ request()->is('lions/service-activity-types*') ? 'active' : '' }}" data-key="t-services">Service Activity Types</a>
                                           </li>
 
                                     </ul>

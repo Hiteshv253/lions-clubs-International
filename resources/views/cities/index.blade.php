@@ -1,42 +1,39 @@
 @extends('layouts.master')
 
 @section('content')
-<!--<div class="mt-4">-->
+<nav aria-label="breadcrumb">
+      <ol class="breadcrumb bg-light p-2 rounded shadow-sm">
+            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('cities.index') }}">Cities</a></li>
+      </ol>
+</nav>
+<div class="card shadow-sm">
+      <div class="card-header">
+            <h5 class="mb-0">Cities List</h5>
+      </div>
+      <div class="card-body">
+            <a href="{{ route('cities.create') }}" class="btn btn-primary mb-3">Add City</a>
 
-      <!-- Breadcrumb -->
-<!--      <nav aria-label="breadcrumb" class="mb-3">
-            <ol class="breadcrumb bg-light p-2 rounded">
-                  <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Cities</li>
-            </ol>
-      </nav>-->
+            @if(session('success'))
+            <div class="alert alert-success">{{ session('success') }}</div>
+            @endif
 
-    <div class="mt-1">
-            <div class="card shadow-sm">
-                  <div class="card-header">
-                        <h5 class="mb-0">City List</h5>
-                  </div>
-                  <div class="card-header">
-      <a href="{{ route('cities.create') }}" class="btn btn-primary mb-3">Add City</a>
+            <table id="citiesTable" class="table table-bordered table-striped">
+                  <thead>
+                        <tr>
+                              <th>#</th>
+                              <th>Name</th>
+                              <th>State</th>
+                              <th>Actions</th>
+                        </tr>
+                  </thead>
+            </table>
 
-      @if(session('success'))
-      <div class="alert alert-success">{{ session('success') }}</div>
-      @endif
-
-      <table id="citiesTable" class="table table-bordered table-striped">
-            <thead>
-                  <tr>
-                        <th>#</th>
-                        <th>Name</th>
-                        <th>State</th>
-                        <th>Actions</th>
-                  </tr>
-            </thead>
-      </table>
-
+      </div>
 </div>
-</div>
-</div>
+
+
+
 
 <script>
       $(document).ready(function () {

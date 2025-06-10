@@ -1,28 +1,34 @@
 @extends('layouts.master')
 
 @section('content')
-<!-- 🧭 Breadcrumb -->
+<!-- Breadcrumb -->
 <nav aria-label="breadcrumb">
-      <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Service Activity Types</li>
+      <ol class="breadcrumb bg-light p-2 rounded shadow-sm">
+            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('service-activity-types.index') }}">Service Activity Types</a></li>
       </ol>
 </nav>
+<div class="card shadow-sm">
+      <div class="card-header">
+            <h5 class="mb-0">Service Activity Types Master</h5>
+      </div>
+      <div class="card-header">
 
-<h1>Service Activity Types</h1>
+            <a href="{{ route('service-activity-types.create') }}" class="btn btn-success mb-3">+ Add New</a>
 
-<a href="{{ route('service-activity-types.create') }}" class="btn btn-success mb-3">+ Add New</a>
+            <table id="activity-types-table" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
+                  <thead>
+                        <tr>
+                              <th>Name</th>
+                              <th>Description</th>
+                              <th>Status</th>
+                              <th>Actions</th>
+                        </tr>
+                  </thead>
+            </table>
 
-<table id="activity-types-table" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
-      <thead>
-            <tr>
-                  <th>Name</th>
-                  <th>Description</th>
-                  <th>Status</th>
-                  <th>Actions</th>
-            </tr>
-      </thead>
-</table>
+      </div>
+</div>
 
 <script>
       $(document).ready(function () {
