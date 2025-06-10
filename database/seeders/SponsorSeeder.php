@@ -12,6 +12,6 @@ class SponsorSeeder extends Seeder {
        * Run the database seeds.
        */
       public function run(): void {
-            Sponsor::factory()->count(20)->create();
+            Sponsor::factory()->count(100)->create();
       }
 }

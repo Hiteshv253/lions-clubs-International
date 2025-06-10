@@ -11,10 +11,10 @@ class ServiceSeeder extends Seeder {
       public function run(): void {
             $faker = Faker::create();
 
-            foreach (range(1, 10) as $index) {
+            foreach (range(1, 100) as $index) {
                   Service::create([
                             'report_type' => 'Donation',
-                            'title' => $faker->sentence(4),
+                            'title' => $faker->sentence(10),
                             'sponsor' => $faker->name,
                             'activity_level' => 'Club',
                             'club_name' => 'Lions Club',
