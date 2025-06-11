@@ -9,6 +9,6 @@ class DgTeamSeeder extends Seeder {
 
       public function run(): void {
 
-            DgTeam::factory(50)->create();
+            DgTeam::factory(10)->create();
       }
 }
