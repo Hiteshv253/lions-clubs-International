@@ -10,7 +10,7 @@
 
 <div class="card shadow-sm">
     <div class="card-header d-flex justify-content-between align-items-center">
-        <h5>Zone List</h5>
+        <h5>Zones List</h5>
         <a href="{{ route('zones.create') }}" class="btn btn-success">Add New Zone</a>
     </div>
     <div class="card-body">

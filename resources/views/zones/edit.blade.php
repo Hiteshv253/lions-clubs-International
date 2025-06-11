@@ -3,6 +3,8 @@
 @section('content')
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb bg-light p-2 rounded shadow-sm">
+                  <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+
         <li class="breadcrumb-item"><a href="{{ route('zones.index') }}">Zones</a></li>
         <li class="breadcrumb-item active" aria-current="page">Edit Zone</li>
     </ol>

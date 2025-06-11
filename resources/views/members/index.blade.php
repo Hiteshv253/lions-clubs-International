@@ -68,7 +68,7 @@
                               <button id="btn-filter" class="btn btn-sm btn-primary">Search</button>
                               <button id="btn-reset" class="btn btn-sm btn-secondary">Reset</button>
                               <a href="{{ route('members.bulk-upload') }}" class="btn btn-sm btn-secondary">Bulk Upload</a>
-                              <button id="btn-delete-selected" class="btn btn-danger btn-sm" disabled>Delete Selected</button>
+                              <!--<button id="btn-delete-selected" class="btn btn-danger btn-sm" disabled>Delete Selected</button>-->
                         </div>
                         <div class="table-responsive">
                               <table id="members-table" class="table table-bordered table-striped w-100">

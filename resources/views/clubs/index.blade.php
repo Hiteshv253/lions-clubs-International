@@ -11,7 +11,7 @@
 <div class="mt-1">
       <div class="card shadow-sm">
             <div class="card-header">
-                  <h5 class="mb-0">Club List</h5>
+                  <h5 class="mb-0">Clubs List</h5>
             </div>
             <div class="card-body">
                   <div class="row mb-3 align-items-center">
