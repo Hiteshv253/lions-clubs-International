@@ -215,8 +215,9 @@ class MemberController extends Controller {
       public function destroy($id) {
             $member = MemberMaster::findOrFail($id);
             $member->delete();
-
-            return response()->json(['message' => 'Member deleted successfully.']);
+            return redirect()->route('members.index')
+                        ->with('success', 'Member deleted successfully');
+//            return response()->json(['message' => 'Member deleted successfully.']);
       }
 
       public function bulkDelete(Request $request) {
@@ -227,8 +228,9 @@ class MemberController extends Controller {
             }
 
             MemberMaster::whereIn('id', $ids)->delete();
-
-            return response()->json(['message' => count($ids) . ' member(s) deleted successfully.']);
+            return redirect()->route('members.index')
+                        ->with('success', 'member(s) deleted successfully');
+//            return response()->json(['message' => count($ids) . ' member(s) deleted successfully.']);
       }
 
       public function showBulkUploadForm() {
