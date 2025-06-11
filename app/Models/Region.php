@@ -4,19 +4,21 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\District;
+use App\Models\Zone;
 
 class Region extends Model {
 
       use HasFactory;
 
       protected $table = 'regions';
-      protected $fillable = ['name', 'parent_id'];
+      protected $fillable = ['name', 'district_id'];
 
-      public function parent() {
-            return $this->belongsTo(Region::class, 'parent_id');
+      public function district() {
+            return $this->belongsTo(District::class);
       }
 
-      public function children() {
-            return $this->hasMany(Region::class, 'parent_id');
+      public function zones() {
+            return $this->hasMany(Zone::class);
       }
 }

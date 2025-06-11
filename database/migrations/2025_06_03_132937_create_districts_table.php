@@ -11,10 +11,11 @@ return new class extends Migration {
        */
       public function up(): void {
             Schema::create('districts', function (Blueprint $table) {
+                  $table->engine = 'InnoDB'; // Required for foreign keys
                   $table->id();
                   $table->string('name');
-                  $table->unsignedBigInteger('state_id')->nullable(); // if you relate to states
-//                  $table->foreign('state_id')->references('id')->on('states')->onDelete('set null');
+                  $table->foreignId('state_id')->constrained()->onDelete('cascade');
+                  $table->boolean('is_active')->default(true);
                   $table->timestamps();
             });
       }

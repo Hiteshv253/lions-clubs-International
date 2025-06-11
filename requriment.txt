@@ -66,3 +66,9 @@ Password@1234
 
 
 composer install --optimize-autoloader --no-dev
+
+
+
+
+distic
+

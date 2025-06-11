@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Region;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\District;
+use App\Models\Region;
 
 class RegionSeeder extends Seeder {
 
@@ -12,15 +13,10 @@ class RegionSeeder extends Seeder {
        * Run the database seeds.
        */
       public function run(): void {
-            //
-            $parents = Region::factory()->count(100)->create();
-
-            // Create child regions for each parent
-            foreach ($parents as $parent) {
-                  Region::factory()->count(100)->create([
-                            'name' => $parent->name,
-                            'parent_id' => $parent->id
+            District::all()->each(function ($district) {
+                  Region::factory(3)->create([
+                            'district_id' => $district->id,
                   ]);
-            }
+            });
       }
 }

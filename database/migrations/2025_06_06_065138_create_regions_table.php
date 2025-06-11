@@ -12,8 +12,9 @@ return new class extends Migration {
       public function up(): void {
             Schema::create('regions', function (Blueprint $table) {
                   $table->id();
-                  $table->string('name'); // ✅ Required for seeder
-                  $table->foreignId('parent_id')->nullable()->constrained('regions')->onDelete('set null');
+                  $table->foreignId('district_id')->constrained()->onDelete('cascade');
+                  $table->string('name');
+                  $table->boolean('is_active')->default(true);
                   $table->timestamps();
             });
       }

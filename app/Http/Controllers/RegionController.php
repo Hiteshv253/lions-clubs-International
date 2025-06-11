@@ -4,51 +4,55 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Region;
+use App\Models\District;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\View;
 
 class RegionController extends Controller {
 
+      public function getByDistrict($district_id) {
+            return response()->json(Region::where('district_id', $district_id)->get());
+      }
+
       public function index(Request $request) {
             if ($request->ajax()) {
-                  $query = Region::with('parent');
+                  $regions = Region::with('district')
+                        ->when($request->district_id, function ($query, $districtId) {
+                              $query->where('district_id', $districtId);
+                        })
+                        ->select('regions.*');
 
-                  if ($request->filled('name')) {
-                        $query->where('name', $request->name); // exact match for dropdown
-                  }
-
-                  return DataTables::of($query)
-                              ->addColumn('parent', fn($region) => $region->parent->name ?? '—')
-                              ->addColumn('actions', fn($region) => view('regions.partials.actions', compact('region'))->render())
+                  return DataTables::of($regions)
+                              ->addIndexColumn()
+                              ->addColumn('district_name', fn($row) => $row->district->name ?? '—')
+                              ->addColumn('actions', fn($row) => View::make('regions.partials.actions', ['region' => $row])->render())
                               ->rawColumns(['actions'])
                               ->make(true);
             }
 
-            // For dropdown filter
-            $allRegionNames = Region::pluck('name')->unique();
-
-            return view('regions.index', compact('allRegionNames'));
+            $districts = District::all();
+            return view('regions.index', compact('districts'));
       }
 
       public function create() {
-            $parents = Region::all();
-            return view('regions.create', compact('parents'));
+            $districts = District::all();
+            return view('regions.create', compact('districts'));
       }
 
       public function store(Request $request) {
             $request->validate([
                       'name' => 'required|string',
-                      'parent_id' => 'nullable|exists:regions,id'
             ]);
 
-            Region::create($request->only('name', 'parent_id'));
+            Region::create($request->only('name', 'district_id'));
             return redirect()->route('regions.index');
       }
 
       public function edit(Region $region) {
-            $parents = Region::where('id', '!=', $region->id)->get(); // avoid circular ref
-            return view('regions.edit', compact('region', 'parents'));
+            $districts = District::all();
+            return view('regions.edit', compact('region', 'districts'));
       }
 
       public function show(Region $region) {
@@ -59,10 +63,10 @@ class RegionController extends Controller {
       public function update(Request $request, Region $region) {
             $request->validate([
                       'name' => 'required|string',
-                      'parent_id' => 'nullable|exists:regions,id|not_in:' . $region->id
+//                      'parent_id' => 'nullable|exists:regions,id|not_in:' . $region->id
             ]);
 
-            $region->update($request->only('name', 'parent_id'));
+            $region->update($request->only('name', 'district_id'));
             return redirect()->route('regions.index');
       }
 

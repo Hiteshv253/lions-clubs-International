@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Club;
+use App\Models\Zone;
 
 class ClubSeeder extends Seeder {
 
@@ -13,6 +14,10 @@ class ClubSeeder extends Seeder {
        */
       public function run(): void {
             //
-            \App\Models\Club::factory()->count(100)->create();
+            Zone::all()->each(function ($zone) {
+                  Club::factory(4)->create([
+                            'zone_id' => $zone->id,
+                  ]);
+            });
       }
 }

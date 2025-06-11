@@ -12,6 +12,6 @@ class ServiceActivityTypeSeeder extends Seeder {
        * Run the database seeds.
        */
       public function run(): void {
-            ServiceActivityType::factory()->count(100)->create(); // Generates 20 fake records
+            ServiceActivityType::factory()->count(10)->create(); // Generates 20 fake records
       }
 }

@@ -69,7 +69,7 @@
 
 
 <!--<li class="menu-title"><span data-key="t-menu">Membership</span></li>-->
-                        <li class="nav-item">
+                        <li class="nav-item d-none">
                               <a class="nav-link menu-link" href="#sidebarEvent" data-bs-toggle="collapse" role="button"
                                  aria-expanded="false" aria-controls="sidebarEvent">
                                     <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Events</span>
@@ -93,8 +93,10 @@
                         request()->is('lions/dg-teams*') ||
                         request()->is('lions/location*') ||
                         request()->is('lions/cities*') ||
+                        request()->is('lions/zones*') ||
                         request()->is('lions/states*') ||
                         request()->is('lions/clubs*') ||
+                        request()->is('lions/districts*') ||
                         request()->is('lions/regions*') ||
                         request()->is('lions/accounts*') ||
                         request()->is('lions/users*') ||
@@ -117,45 +119,55 @@
                                                 <a href="{{ route('members.index') }}" class="nav-link {{ request()->is('lions/members*') ? 'active' : '' }}" data-key="t-membership">My Membership</a>
                                           </li>
                                           <li class="nav-item">
-                                                <a href="{{ route('occupations.index') }}" class="nav-link {{ request()->is('lions/occupations*') ? 'active' : '' }}" data-key="t-occupations">Occupations</a>
-                                          </li>
-                                          <li class="nav-item">
-                                                <a href="{{ route('dg-teams.index') }}" class="nav-link {{ request()->is('lions/dg-teams*') ? 'active' : '' }}" data-key="t-dg_teams">DG Teams</a>
-                                          </li>
-                                          <li class="nav-item">
-                                                <a href="{{ route('location.form') }}" class="nav-link {{ request()->is('lions/location*') ? 'active' : '' }}" data-key="t-location">Location</a>
-                                          </li>
-                                          <li class="nav-item">
-                                                <a href="{{ route('cities.index') }}" class="nav-link {{ request()->is('lions/cities*') ? 'active' : '' }}" data-key="t-cities">Cities</a>
-                                          </li>
-                                          <li class="nav-item">
-                                                <a href="{{ route('states.index') }}" class="nav-link {{ request()->is('lions/states*') ? 'active' : '' }}" data-key="t-states">States</a>
-                                          </li>
-                                          <li class="nav-item">
-                                                <a href="{{ route('clubs.index') }}" class="nav-link {{ request()->is('lions/clubs*') ? 'active' : '' }}" data-key="t-clubs">Clubs</a>
-                                          </li>
-                                          <li class="nav-item">
-                                                <a href="{{ route('services.index') }}" class="nav-link {{ request()->is('lions/services*') ? 'active' : '' }}" data-key="t-services">Services</a>
+                                                <a href="{{ route('districts.index') }}" class="nav-link {{ request()->is('lions/districts*') ? 'active' : '' }}" data-key="t-clubs">Districts</a>
                                           </li>
                                           <li class="nav-item">
                                                 <a href="{{ route('regions.index') }}" class="nav-link {{ request()->is('lions/regions*') ? 'active' : '' }}" data-key="t-services">Regions</a>
                                           </li>
                                           <li class="nav-item">
+                                                <a href="{{ route('zones.index') }}" class="nav-link {{ request()->is('lions/zones*') ? 'active' : '' }}" data-key="t-services">Zones</a>
+                                          </li>
+                                          
+                                          <li class="nav-item">
+                                                <a href="{{ route('clubs.index') }}" class="nav-link {{ request()->is('lions/clubs*') ? 'active' : '' }}" data-key="t-clubs">Clubs</a>
+                                          </li>
+
+                                          <li class="nav-item d-none">
+                                                <a href="{{ route('occupations.index') }}" class="nav-link {{ request()->is('lions/occupations*') ? 'active' : '' }}" data-key="t-occupations">Occupations</a>
+                                          </li>
+                                          <li class="nav-item d-none">
+                                                <a href="{{ route('dg-teams.index') }}" class="nav-link {{ request()->is('lions/dg-teams*') ? 'active' : '' }}" data-key="t-dg_teams">DG Teams</a>
+                                          </li>
+                                          <li class="nav-item d-none">
+                                                <a href="{{ route('location.form') }}" class="nav-link {{ request()->is('lions/location*') ? 'active' : '' }}" data-key="t-location">Location</a>
+                                          </li>
+                                          <li class="nav-item d-none">
+                                                <a href="{{ route('cities.index') }}" class="nav-link {{ request()->is('lions/cities*') ? 'active' : '' }}" data-key="t-cities">Cities</a>
+                                          </li>
+                                          <li class="nav-item d-none">
+                                                <a href="{{ route('states.index') }}" class="nav-link {{ request()->is('lions/states*') ? 'active' : '' }}" data-key="t-states">States</a>
+                                          </li>
+
+                                          <li class="nav-item d-none">
+                                                <a href="{{ route('services.index') }}" class="nav-link {{ request()->is('lions/services*') ? 'active' : '' }}" data-key="t-services">Services</a>
+                                          </li>
+
+                                          <li class="nav-item d-none">
                                                 <a href="{{ route('accounts.index') }}" class="nav-link {{ request()->is('lions/accounts*') ? 'active' : '' }}" data-key="t-services">Accounts</a>
                                           </li>
-                                          <li class="nav-item">
+                                          <li class="nav-item d-none">
                                                 <a href="{{ route('users.index') }}" class="nav-link {{ request()->is('lions/users*') ? 'active' : '' }}" data-key="t-services">Users</a>
                                           </li>
-                                          <li class="nav-item">
+                                          <li class="nav-item d-none">
                                                 <a href="{{ route('permissions.index') }}" class="nav-link {{ request()->is('lions/permissions*') ? 'active' : '' }}" data-key="t-services">Permissions</a>
                                           </li>
-                                          <li class="nav-item">
+                                          <li class="nav-item d-none">
                                                 <a href="{{ route('roles.index') }}" class="nav-link {{ request()->is('lions/roles*') ? 'active' : '' }}" data-key="t-services">Roles</a>
                                           </li>
-                                          <li class="nav-item">
+                                          <li class="nav-item d-none">
                                                 <a href="{{ route('sponsors.index') }}" class="nav-link {{ request()->is('lions/sponsors*') ? 'active' : '' }}" data-key="t-services">Sponsors</a>
                                           </li>
-                                          <li class="nav-item">
+                                          <li class="nav-item d-none">
                                                 <a href="{{ route('service-activity-types.index') }}" class="nav-link {{ request()->is('lions/service-activity-types*') ? 'active' : '' }}" data-key="t-services">Service Activity Types</a>
                                           </li>
 
@@ -164,7 +176,7 @@
                         </li>
 
                         <!--<li class="menu-title"><span data-key="t-menu">Service</span></li>-->
-                        <li class="nav-item">
+                        <li class="nav-item d-none">
                               <a class="nav-link menu-link" href="#sidebarService" data-bs-toggle="collapse" role="button"
                                  aria-expanded="false" aria-controls="sidebarService">
                                     <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Service</span>
@@ -212,7 +224,7 @@
                         <!--<li class="menu-title"><i class="ri-more-fill"></i> <span data-key="t-components">Settings</span>-->
                         </li>
 
-                        <li class="nav-item">
+                        <li class="nav-item d-none">
                               <a class="nav-link menu-link" href="#sidebarUI" data-bs-toggle="collapse" role="button"
                                  aria-expanded="false" aria-controls="sidebarUI">
                                     <i class="ri-pencil-ruler-2-line"></i> <span data-key="t-base-ui">Settings</span>

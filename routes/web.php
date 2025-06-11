@@ -12,7 +12,6 @@ use App\Http\Controllers\Backend\MemberRegistrationController;
 use App\Http\Controllers\EventMasterController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\OccupationController;
-use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\DGTeamController;
 use App\Http\Controllers\StateController;
 use App\Http\Controllers\CityController;
@@ -20,12 +19,15 @@ use App\Http\Controllers\ZipCodeController;
 use App\Http\Controllers\LocationController;
 use App\Http\Controllers\ClubController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\DistrictController;
 use App\Http\Controllers\RegionController;
+use App\Http\Controllers\ZoneController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\ServiceActivityTypeController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\AjaxController;
 
 /*
   |--------------------------------------------------------------------------
@@ -59,6 +61,15 @@ Route::view('/auth-signup-cover', 'pages.auth.auth-signup-cover');
 Route::get('/get-cities/{state_id}', [LocationController::class, 'getCities']);
 Route::get('/get-zipcodes/{city_id}', [LocationController::class, 'getZipCodes']);
 Route::get('/users/ajax', [UserController::class, 'ajaxUsers'])->name('users.ajax');
+
+Route::get('/regions-by-district/{district_id}', [RegionController::class, 'getByDistrict']);
+Route::get('/zones-by-region/{region_id}', [ZoneController::class, 'getByRegion']);
+Route::get('/clubs-by-zone/{zone_id}', [ClubController::class, 'getByZone']);
+
+Route::get('/get-zones/{region_id}', [App\Http\Controllers\AjaxController::class, 'getZones']);
+Route::get('/get-clubs/{zone_id}', [App\Http\Controllers\AjaxController::class, 'getClubs']);
+
+Route::post('/members/validate', [MemberController::class, 'validateField'])->name('members.validate');
 
 /*
   |--------------------------------------------------------------------------
@@ -100,9 +111,7 @@ Route::prefix('lions')->middleware('auth')->group(function () {
 
       Route::resources([
                 'accounts' => AccountController::class,
-                'regions' => RegionController::class,
                 'services' => ServiceController::class,
-                'clubs' => ClubController::class,
                 'events' => EventMasterController::class,
                 'sponsors' => SponsorController::class,
                 'service-activity-types' => ServiceActivityTypeController::class,
@@ -112,7 +121,10 @@ Route::prefix('lions')->middleware('auth')->group(function () {
                 'dg-teams' => DGTeamController::class,
                 'members' => MemberController::class,
                 'occupations' => OccupationController::class,
+                'regions' => RegionController::class,
                 'districts' => DistrictController::class,
+                'zones' => ZoneController::class,
+                'clubs' => ClubController::class,
       ]);
 
       /*

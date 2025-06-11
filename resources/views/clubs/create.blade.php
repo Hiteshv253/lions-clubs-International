@@ -1,57 +1,82 @@
 @extends('layouts.master')
 
 @section('content')
-<nav aria-label="breadcrumb">
+<nav>
       <ol class="breadcrumb bg-light p-2 rounded shadow-sm">
             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('clubs.index') }}">Clubs</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Create</li>
+            <li class="breadcrumb-item"><a href="{{ route('clubs.index') }}">clubs</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Add Clubs</li>
       </ol>
 </nav>
-
-
 <div class="card shadow-sm">
-      <div class="card-header">
-            <h5 class="mb-0">Create Club</h5>
-      </div>
+      <div class="card-header"><h5>Create Club</h5></div>
       <div class="card-body">
-            <form action="{{ route('clubs.store') }}" method="POST">
+            <form method="POST" action="{{ route('clubs.store') }}">
                   @csrf
 
-                  <div class="row">
-                        @php
-                        $fields = [
-                        'account_name', 'type', 'parent_account', 'district', 'region_zone', 'lion_id',
-                        'charter_established_date', 'active_member_count', 'club_specialty',
-                        'club_sub_specialty', 'specialty_description', 'description', 'website',
-                        'meeting_place', 'meeting_week', 'meeting_day', 'meeting_time', 'meeting_street',
-                        'meeting_city', 'meeting_state', 'meeting_zip', 'meeting_country',
-                        'meeting_local_place', 'meeting_local_street', 'meeting_local_city',
-                        'meeting_local_zip', 'meeting_local_state', 'meeting_local_country',
-                        'online_meeting_1', 'online_meeting_1_place', 'online_meeting_1_address',
-                        'meeting2_place', 'meeting2_week', 'meeting2_day', 'meeting2_time',
-                        'meeting2_street', 'meeting2_city', 'meeting2_state', 'meeting2_zip',
-                        'meeting2_country', 'meeting2_local_place', 'meeting2_local_street',
-                        'meeting2_local_city', 'meeting2_local_zip', 'meeting2_local_state',
-                        'meeting2_local_country', 'online_meeting_2', 'online_meeting_2_place'
-                        ];
-                        @endphp
-
-                        @foreach ($fields as $field)
-                        <div class="col-md-4 mb-3">
-                              <label for="{{ $field }}" class="form-label">{{ ucwords(str_replace('_', ' ', $field)) }}</label>
-                              <input type="text" name="{{ $field }}" class="form-control @error($field) is-invalid @enderror" value="{{ old($field) }}">
-                              @error($field) <div class="invalid-feedback">{{ $message }}</div> @enderror
+                  <div class="row g-3">
+                        <div class="col-sm-6 col-md-4">
+                              <label>District</label>
+                              <select id="district" class="form-select">
+                                    <option value="">Select District</option>
+                                    @foreach($districts as $district)
+                                    <option value="{{ $district->id }}">{{ $district->name }}</option>
+                                    @endforeach
+                              </select>
                         </div>
-                        @endforeach
+
+                        <div class="col-sm-6 col-md-4">
+                              <label>Region</label>
+                              <select id="region" class="form-select">
+                                    <option value="">Select Region</option>
+                              </select>
+                        </div>
+
+                        <div class="col-sm-6 col-md-4">
+                              <label>Zone</label>
+                              <select name="zone_id" id="zone" class="form-select">
+                                    <option value="">Select Zone</option>
+                              </select>
+                        </div>
+
+                        <div class="col-sm-6 col-md-4">
+                              <label>Club Name</label>
+                              <input type="text" name="name" class="form-control" required>
+                        </div>
                   </div>
                   <div class="text-end">
-                        <button type="submit" class="btn btn-primary">Create Club</button>
+                        <button class="btn btn-primary">Save</button>
                         <a href="{{ route('clubs.index') }}" class="btn btn-secondary">Cancel</a>
                   </div>
-
             </form>
       </div>
 </div>
 
+
+<script>
+      $('#district').on('change', function () {
+            let districtId = $(this).val();
+            $('#region').html('<option value="">Select Region</option>');
+            $('#zone').html('<option value="">Select Zone</option>');
+            if (districtId) {
+                  $.get('/regions-by-district/' + districtId, function (regions) {
+                        $.each(regions, function (key, region) {
+                              $('#region').append(`<option value="${region.id}">${region.name}</option>`);
+                        });
+                  });
+            }
+      });
+
+      $('#region').on('change', function () {
+            let regionId = $(this).val();
+            $('#zone').html('<option value="">Select Zone</option>');
+            if (regionId) {
+                  $.get('/zones-by-region/' + regionId, function (zones) {
+                        $.each(zones, function (key, zone) {
+                              $('#zone').append(`<option value="${zone.id}">${zone.name}</option>`);
+                        });
+                  });
+            }
+      });
+</script>
 @endsection

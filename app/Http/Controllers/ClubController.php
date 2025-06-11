@@ -3,128 +3,85 @@
 namespace App\Http\Controllers;
 
 use App\Models\Club;
+use App\Models\Region;
+use App\Models\District;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
-use PDF; // Alias for Barryvdh\DomPDF\Facade
 use Illuminate\Support\Facades\Validator;
 
 class ClubController extends Controller {
 
-      public function exportPdf() {
-            $clubs = Club::all();
-
-            $pdf = PDF::loadView('clubs.pdf', compact('clubs'));
-            return $pdf->download('clubs.pdf');
+      public function getByZone($zone_id) {
+            return response()->json(Club::where('zone_id', $zone_id)->get());
       }
 
       public function index(Request $request) {
             if ($request->ajax()) {
-                  $clubs = Club::select([
-                                  'id', 'account_name', 'type', 'district', 'region_zone',
-                                  'lion_id', 'active_member_count', 'website'
-                  ]);
+                  $clubs = Club::with('zone.region.district');
 
-                  // Apply filters if present
-                  if ($request->filled('region_zone')) {
-                        $clubs->where('region_zone', $request->region_zone);
+                  if ($request->region) {
+                        $clubs->whereHas('zone.region', function ($q) use ($request) {
+                              $q->where('name', $request->region);
+                        });
                   }
-                  if ($request->filled('district')) {
-                        $clubs->where('district', $request->district);
-                  }
-                  if ($request->filled('type')) {
-                        $clubs->where('type', $request->type);
+
+                  if ($request->district) {
+                        $clubs->whereHas('zone.region.district', function ($q) use ($request) {
+                              $q->where('name', $request->district);
+                        });
                   }
 
                   return DataTables::of($clubs)
+                              ->addColumn('zone_name', fn($club) => $club->zone->name ?? '—')
+                              ->addColumn('region_name', fn($club) => $club->zone->region->name ?? '—')
+                              ->addColumn('district_name', fn($club) => $club->zone->region->district->name ?? '—')
                               ->addColumn('actions', function ($club) {
                                     return view('clubs.partials.actions', compact('club'))->render();
                               })
                               ->rawColumns(['actions'])
                               ->make(true);
             }
-
-            return view('clubs.index');
+            $regions = Region::select('name')->distinct()->get();
+            $districts = District::select('name')->distinct()->get();
+            return view('clubs.index', compact('regions', 'districts'));
       }
 
       public function create() {
-            return view('clubs.create');
+            $districts = District::with('regions.zones')->get();
+            return view('clubs.create', compact('districts'));
       }
 
       public function store(Request $request) {
-            $validated = $this->validateData($request);
-            Club::create($validated);
-            return redirect()->route('clubs.index')->with('success', 'Club created successfully.');
-      }
+            $request->validate([
+                      'zone_id' => 'required|exists:zones,id',
+                      'name' => 'required|string|max:255',
+            ]);
 
-      public function show(Club $club) {
-            return view('clubs.show', compact('club'));
+            Club::create($request->all());
+            return redirect()->route('clubs.index');
       }
 
       public function edit(Club $club) {
-            return view('clubs.edit', compact('club'));
+            $districts = District::with('regions.zones')->get();
+            return view('clubs.edit', compact('club', 'districts'));
+      }
+      public function show (Club $club) {
+            $districts = District::with('regions.zones')->get();
+            return view('clubs.show', compact('club', 'districts'));
       }
 
       public function update(Request $request, Club $club) {
-            $validated = $this->validateData($request);
-            $club->update($validated);
-            return redirect()->route('clubs.index')->with('success', 'Club updated successfully.');
+            $request->validate([
+                      'zone_id' => 'required|exists:zones,id',
+                      'name' => 'required|string|max:255',
+            ]);
+
+            $club->update($request->all());
+            return redirect()->route('clubs.index');
       }
 
       public function destroy(Club $club) {
             $club->delete();
-            return redirect()->route('clubs.index')->with('success', 'Club deleted.');
-      }
-
-      private function validateData(Request $request) {
-            return $request->validate([
-                            'account_name' => 'required|string|max:255',
-                            'type' => 'nullable|string|max:100',
-                            'parent_account' => 'nullable|string|max:100',
-                            'district' => 'nullable|string|max:100',
-                            'region_zone' => 'nullable|string|max:100',
-                            'lion_id' => 'nullable|string|max:50',
-                            'charter_established_date' => 'nullable|date',
-                            'active_member_count' => 'nullable|integer',
-                            'club_specialty' => 'nullable|string|max:255',
-                            'club_sub_specialty' => 'nullable|string|max:255',
-                            'specialty_description' => 'nullable|string',
-                            'description' => 'nullable|string',
-                            'website' => 'nullable|url|max:255',
-                            'meeting_place' => 'nullable|string|max:255',
-                            'meeting_week' => 'nullable|string|max:100',
-                            'meeting_day' => 'nullable|string|max:50',
-                            'meeting_time' => 'nullable|string|max:50',
-                            'meeting_street' => 'nullable|string|max:255',
-                            'meeting_city' => 'nullable|string|max:100',
-                            'meeting_state' => 'nullable|string|max:100',
-                            'meeting_zip' => 'nullable|string|max:20',
-                            'meeting_country' => 'nullable|string|max:100',
-                            'meeting_local_place' => 'nullable|string|max:255',
-                            'meeting_local_street' => 'nullable|string|max:255',
-                            'meeting_local_city' => 'nullable|string|max:100',
-                            'meeting_local_zip' => 'nullable|string|max:20',
-                            'meeting_local_state' => 'nullable|string|max:100',
-                            'meeting_local_country' => 'nullable|string|max:100',
-                            'online_meeting_1' => 'nullable|url|max:255',
-                            'online_meeting_1_place' => 'nullable|string|max:255',
-                            'online_meeting_1_address' => 'nullable|string|max:255',
-                            'meeting2_place' => 'nullable|string|max:255',
-                            'meeting2_week' => 'nullable|string|max:100',
-                            'meeting2_day' => 'nullable|string|max:50',
-                            'meeting2_time' => 'nullable|string|max:50',
-                            'meeting2_street' => 'nullable|string|max:255',
-                            'meeting2_city' => 'nullable|string|max:100',
-                            'meeting2_state' => 'nullable|string|max:100',
-                            'meeting2_zip' => 'nullable|string|max:20',
-                            'meeting2_country' => 'nullable|string|max:100',
-                            'meeting2_local_place' => 'nullable|string|max:255',
-                            'meeting2_local_street' => 'nullable|string|max:255',
-                            'meeting2_local_city' => 'nullable|string|max:100',
-                            'meeting2_local_zip' => 'nullable|string|max:20',
-                            'meeting2_local_state' => 'nullable|string|max:100',
-                            'meeting2_local_country' => 'nullable|string|max:100',
-                            'online_meeting_2' => 'nullable|url|max:255',
-                            'online_meeting_2_place' => 'nullable|string|max:255',
-            ]);
+            return redirect()->route('clubs.index');
       }
 }

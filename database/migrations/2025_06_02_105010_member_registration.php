@@ -12,27 +12,28 @@ return new class extends Migration {
       public function up(): void {
             Schema::create('club_member_masters', function (Blueprint $table) {
                   $table->id();
+                  $table->string('member_id')->unique();
                   $table->string('account_name')->nullable();
-                  $table->string('parent_region')->nullable();
-                  $table->string('parent_zone')->nullable();
-                  $table->string('member_id')->nullable();
                   $table->string('first_name');
                   $table->string('last_name');
+                  $table->enum('gender', ['Male', 'Female', 'Other'])->nullable();
+                  $table->date('birthdate')->nullable();
                   $table->string('address_line1')->nullable();
                   $table->string('address_line2')->nullable();
                   $table->string('address_line3')->nullable();
-                  $table->string('city')->nullable();
-                  $table->string('state')->nullable();
-                  $table->string('zip')->nullable();
-                  $table->date('birthdate')->nullable();
-                  $table->string('email')->nullable();
+                  $table->string('email')->unique()->nullable();
                   $table->string('mobile')->nullable();
                   $table->string('home_phone')->nullable();
-                  $table->string('gender')->nullable();
-                  $table->string('occupation')->nullable();
+                  $table->string('city')->nullable();
+                  $table->string('zipcode')->nullable();
+                  $table->foreignId('occupation')->nullable();
                   $table->date('join_date')->nullable();
                   $table->boolean('is_active')->default(true);
-                  $table->unsignedBigInteger('is_create_by')->nullable();
+                  $table->foreignId('state')->nullable();
+
+                  $table->foreignId('region_id')->nullable();
+                  $table->foreignId('zone_id')->nullable();
+                  $table->foreignId('club_id')->nullable();
                   $table->timestamps();
             });
       }

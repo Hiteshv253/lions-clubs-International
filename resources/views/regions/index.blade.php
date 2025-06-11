@@ -1,84 +1,88 @@
 @extends('layouts.master')
 
 @section('content')
+
+
+
 <nav aria-label="breadcrumb">
       <ol class="breadcrumb bg-light p-2 rounded shadow-sm">
-            <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
             <li class="breadcrumb-item active" aria-current="page">Regions</li>
       </ol>
 </nav>
-<div class="card shadow-sm">
-      <div class="card-header">
-            <h5 class="mb-0">Regions Master</h5>
-      </div>
-      <div class="card-header">
-            <!-- Search filter -->
-            <div class="mb-3 d-flex flex-column flex-md-row align-items-start align-items-md-center gap-2">
-                  <select id="filter-name" class="form-select" style="max-width: 300px;">
-                        <option value="">-- Select Region Name --</option>
-                        @foreach($allRegionNames as $regionName)
-                        <option value="{{ $regionName }}">{{ $regionName }}</option>
-                        @endforeach
-                  </select>
 
-                  <div class="btn-group" role="group" aria-label="Filter buttons">
-                        <button id="btn-search" class="btn btn-primary">Search</button>
-                        <button id="btn-reset" class="btn btn-secondary">Reset</button>
-                  </div>
 
-                  <a href="{{ route('regions.create') }}" class="btn btn-success ms-auto">+ Add New</a>
+<div class="mt-1">
+      <div class="card shadow-sm">
+            <div class="card-header">
+                  <h5 class="mb-0">Regions List</h5>
             </div>
-            <div class="card p-3 shadow-sm">
+            <div class="card-body">
+                  <div class="row mb-3 align-items-center">
+                        <select id="filterDistrict" class="form-select w-auto">
+                              <option value="">All Districts</option>
+                              @foreach($districts as $district)
+                              <option value="{{ $district->id }}">{{ $district->name }}</option>
+                              @endforeach
+                        </select>
+
+                        <div class="col-md-6 d-flex gap-2">
+                              <button id="btnSearch" class="btn btn-primary">Search</button>
+                              <button id="btnReset" class="btn btn-secondary">Reset</button>
+                              <a href="{{ route('regions.create') }}" class="btn btn-success">Add Region</a>
+                              <!--<a href="{{ route('clubs.exportPdf') }}" class="btn btn-danger">Export to PDF</a>-->
+                        </div>
+                  </div>
                   <div class="table-responsive">
-                        <table id="regions-table" class="table table-bordered table-striped w-100">
+                        <table class="table table-bordered table-hover" id="region-table">
                               <thead class="table-light">
                                     <tr>
                                           <th>#</th>
-                                          <th>Name</th>
-                                          <th>Parent</th>
-                                          <th>Status</th>
-                                          <th style="width: 120px;">Actions</th>
+                                          <th>Region Name</th>
+                                          <th>District</th>
+                                          <th>Actions</th>
                                     </tr>
                               </thead>
                         </table>
                   </div>
             </div>
       </div>
+</div>
 
 
-      <script>
-            $(function () {
-                  var table = $('#regions-table').DataTable({
-                        processing: true,
-                        serverSide: true,
-                        ajax: {
-                              url: '{{ route('regions.index') }}',
-                              data: function (d) {
-                                    d.name = $('#filter-name').val();
-                              }
-                        },
-                        columns: [
-                              {data: 'id', name: 'id'},
-                              {data: 'name', name: 'name'},
-                              {data: 'parent', name: 'parent.name', orderable: false, searchable: false},
-                              {
-                                    data: 'is_active',
-                                    name: 'is_active',
-                                    render: function (data) {
-                                          return data == 1 ? '<span class="badge bg-success">Active</span>' : '<span class="badge bg-secondary">Inactive</span>';
-                                    }
-                              },
-                              {data: 'actions', name: 'actions', orderable: false, searchable: false}
-                        ],
-                        order: [[0, 'asc']]
-                  });
 
-                  $('#btn-search').click(() => table.draw());
-
-                  $('#btn-reset').click(() => {
-                        $('#filter-name').val('');
-                        table.draw();
-                  });
+<script>
+      $(function () {
+            let table = $('#region-table').DataTable({
+                  processing: true,
+                  serverSide: true,
+                  ajax: {
+                        url: '{{ route("regions.index") }}',
+                        data: function (d) {
+                              d.district_id = $('#filterDistrict').val();
+                        }
+                  },
+                  columns: [
+                        {data: 'id', name: 'id'},
+                        {data: 'name', name: 'name'},
+                        {data: 'district_name', name: 'district.name'},
+                        {data: 'actions', name: 'actions', orderable: false, searchable: false},
+                  ]
             });
-      </script>
-      @endsection
+
+//            $('#filterDistrict').change(function () {
+//                  table.ajax.reload();
+//            });
+            $('#btnSearch').click(function () {
+                  table.ajax.reload();
+            });
+
+            $('#btnReset').click(function () {
+                  $('#filterRegion').val('');
+                  $('#filterDistrict').val('');
+                  table.ajax.reload();
+            });
+      });
+</script>
+
+@endsection

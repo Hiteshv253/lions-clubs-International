@@ -3,53 +3,39 @@
 @section('content')
 <nav aria-label="breadcrumb">
       <ol class="breadcrumb bg-light p-2 rounded shadow-sm">
-            <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
             <li class="breadcrumb-item"><a href="{{ route('regions.index') }}">Regions</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Create Region</li>
+            <li class="breadcrumb-item active" aria-current="page">Add Region</li>
       </ol>
 </nav>
 
 <div class="card shadow-sm">
       <div class="card-header">
-            <h4 class="mb-0">Create Region</h4>
+            <h5>Add New Region</h5>
       </div>
       <div class="card-body">
-            <form method="POST" action="{{ route('regions.store') }}">
+            <form action="{{ route('regions.store') }}" method="POST">
                   @csrf
-
-                  {{-- Name --}}
-                  <div class="mb-3">
-                        <label for="name" class="form-label">Region Name</label>
-                        <input type="text" name="name" id="name"
-                               class="form-control @error('name') is-invalid @enderror"
-                               value="{{ old('name') }}" required>
-                        @error('name')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
+                  <div class="row g-3">
+                        <div class="col-sm-6 col-md-4">
+                              <label for="district_id" class="form-label">Select District</label>
+                              <select name="district_id" id="district_id" class="form-select" required>
+                                    <option value="">-- Select District --</option>
+                                    @foreach($districts as $district)
+                                    <option value="{{ $district->id }}">{{ $district->name }}</option>
+                                    @endforeach
+                              </select>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                              <label for="name" class="form-label">Region Name</label>
+                              <input type="text" name="name" id="name" class="form-control" required>
+                        </div>
                   </div>
-
-                  {{-- Parent Region --}}
-                  <div class="mb-3">
-                        <label for="parent_id" class="form-label">Parent Region</label>
-                        <select name="parent_id" id="parent_id"
-                                class="form-select @error('parent_id') is-invalid @enderror">
-                              <option value="">No Parent</option>
-                              @foreach($parents as $parent)
-                              <option value="{{ $parent->id }}" {{ old('parent_id') == $parent->id ? 'selected' : '' }}>
-                                    {{ $parent->name }}
-                              </option>
-                              @endforeach
-                        </select>
-                        @error('parent_id')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
+                  <div class="text-end">
+                        <button class="btn btn-primary">Save</button>
+                        <a href="{{ route('regions.index') }}" class="btn btn-secondary">Cancel</a>
                   </div>
-
-                  {{-- Submit --}}
-                  <button type="submit" class="btn btn-success">Create</button>
-                  <a href="{{ route('regions.index') }}" class="btn btn-secondary ms-2">Cancel</a>
             </form>
       </div>
-</div>
 </div>
 @endsection

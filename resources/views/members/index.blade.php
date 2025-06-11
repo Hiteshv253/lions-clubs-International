@@ -52,9 +52,9 @@
                                           @endforeach
                                     </select>
                               </div>
-                              <div class="col-sm-6 col-md-2">
-                                    <input id="filter-join-date" class="form-control form-control-sm" type="date">
-                              </div>
+                              <!--                              <div class="col-sm-6 col-md-2">
+                                                                  <input id="filter-join-date" class="form-control form-control-sm" type="date">
+                                                            </div>-->
                               <div class="col-sm-6 col-md-2">
                                     <select id="filter-is-active" class="form-select form-select-sm">
                                           <option value="">All</option>
@@ -69,48 +69,34 @@
                               <button id="btn-reset" class="btn btn-sm btn-secondary">Reset</button>
                               <a href="{{ route('members.bulk-upload') }}" class="btn btn-sm btn-secondary">Bulk Upload</a>
                               <button id="btn-delete-selected" class="btn btn-danger btn-sm" disabled>Delete Selected</button>
-
                         </div>
-
-                        @if(session('success'))
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                              {{ session('success') }}
-                              <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                        </div>
-                        @endif
-
-                        <div class="">
-                              <div class="table-responsive">
-                                    <table id="members-table" class="table table-bordered table-striped w-100">
-                                          <thead class="table-light">
-                                                <tr>
-                                                      <th><input type="checkbox" id="select-all"></th> <!-- checkbox column -->
-                                                      <th>#</th>
-                                                      <th>Account Name</th>
-                                                      <th>Parent Region</th>
-                                                      <th>Parent Zone</th>
-                                                      <th>Member ID</th>
-                                                      <th>First Name</th>
-                                                      <th>Last Name</th>
-                                                      <th>Address Line</th>
-                                                      <th>City</th>
-                                                      <th>State</th>
-                                                      <th>Zip</th>
-                                                      <th>Birthdate</th>
-                                                      <th>Email</th>
-                                                      <th>Mobile</th>
-                                                      <th>Home Phone</th>
-                                                      <th>Gender</th>
-                                                      <th>Occupation</th>
-                                                      <th>Join Date</th>
-                                                      <th>Is Active</th>
-                                                      <th>Actions</th>
-                                                </tr>
-                                          </thead>
-                                          <tbody></tbody>
-                                    </table>
-                              </div>
-
+                        <div class="table-responsive">
+                              <table id="members-table" class="table table-bordered table-striped w-100">
+                                    <thead class="table-light">
+                                          <tr>
+                                                <!--<th><input type="checkbox" id="select-all"></th>  checkbox column -->
+                                                <th>#</th>
+                                                <th>Account Name</th>
+                                                <th>Member ID</th>
+                                                <th>First Name</th>
+                                                <th>Last Name</th>
+                                                <th>Address Line</th>
+                                                <th>City</th>
+                                                <th>State</th>
+                                                <th>Birthdate</th>
+                                                <th>Email</th>
+                                                <th>Mobile</th>
+                                                <th>Home Phone</th>
+                                                <th>Gender</th>
+                                                <th>Occupation</th>
+                                                <th>Region</th>
+                                                <th>Join Date</th>
+                                                <th>Is Active</th>
+                                                <th>Actions</th>
+                                          </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                              </table>
                         </div>
                   </div>
             </div>
@@ -125,35 +111,33 @@
                   ajax: {
                         url: '{{ route('members.index') }}',
                         data: function (d) {
-                              d.parent_region = $('#filter-parent-region').val();
+                              d.region_id = $('#filter-parent-region').val();
                               d.member_id = $('#filter-member-id').val();
                               d.account_name = $('#filter-account-name').val();
                               d.occupation = $('#filter-occupation').val();
-                              d.join_date = $('#filter-join-date').val();
+//                              d.join_date = $('#filter-join-date').val();
                               d.is_active = $('#filter-is-active').val();
                         }
                   },
                   columns: [
-                        {
-                              data: 'id',
-                              name: 'id',
-                              orderable: false,
-                              searchable: false,
-                              render: function (data, type, row) {
-                                    return `<input type="checkbox" class="row-checkbox" value="${data}">`;
-                              }
-                        },
+//                        {
+//                              data: 'id',
+//                              name: 'id',
+//                              orderable: false,
+//                              searchable: false,
+//                              render: function (data, type, row) {
+//                                    return `<input type="checkbox" class="row-checkbox" value="${data}">`;
+//                              }
+//                        },
                         {data: 'id', name: 'id'},
                         {data: 'account_name', name: 'account_name'},
-                        {data: 'parent_region', name: 'parent_region'},
-                        {data: 'parent_zone', name: 'parent_zone'},
                         {data: 'member_id', name: 'member_id'},
                         {data: 'first_name', name: 'first_name'},
                         {data: 'last_name', name: 'last_name'},
                         {data: 'address_line1', name: 'address_line1'},
-                        {data: 'city', name: 'city'},
                         {data: 'state', name: 'state'},
-                        {data: 'zip', name: 'zip'},
+                        {data: 'city', name: 'city'},
+                        {data: 'region', name: 'region'},
                         {data: 'birthdate', name: 'birthdate'},
                         {data: 'email', name: 'email'},
                         {data: 'mobile', name: 'mobile'},
@@ -171,93 +155,89 @@
                         {data: 'actions', name: 'actions', orderable: false, searchable: false},
                   ]
             });
-
             $('#btn-filter').click(function () {
                   table.draw();
             });
-
             $('#btn-reset').click(function () {
                   $('#filter-parent-region, #filter-member-id, #filter-account-name, #filter-occupation, #filter-join-date, #filter-is-active').val('');
                   table.draw();
             });
       });
-
-
-      $(function () {
-            // DataTable initialization code as before...
-
-            const table = $('#members-table').DataTable({
-                  // ... your existing DataTable options ...
-            });
-
-            // Select/deselect all checkboxes
-            $('#select-all').on('click', function () {
-                  const checked = $(this).is(':checked');
-                  $('.row-checkbox').prop('checked', checked);
-                  toggleDeleteSelectedBtn();
-            });
-
-            // Toggle "Delete Selected" button
-            $('#members-table tbody').on('change', '.row-checkbox', function () {
-                  // If any checkbox is unchecked, uncheck "select all"
-                  if (!this.checked) {
-                        $('#select-all').prop('checked', false);
-                  }
-                  toggleDeleteSelectedBtn();
-            });
-
-            function toggleDeleteSelectedBtn() {
-                  const selectedCount = $('.row-checkbox:checked').length;
-                  $('#btn-delete-selected').prop('disabled', selectedCount === 0);
-            }
-
-            // Single delete with confirmation
-            $('#members-table tbody').on('click', '.btn-delete', function () {
-                  const memberId = $(this).data('id');
-                  if (confirm('Are you sure you want to delete this member?')) {
-                        deleteMembers([memberId]);
-                  }
-            });
-
-            // Bulk delete button click
-            $('#btn-delete-selected').on('click', function () {
-                  const selectedIds = $('.row-checkbox:checked').map(function () {
-                        return $(this).val();
-                  }).get();
-
-                  if (selectedIds.length === 0) {
-                        alert('Please select at least one member to delete.');
-                        return;
-                  }
-
-                  if (confirm(`Are you sure you want to delete ${selectedIds.length} selected member(s)?`)) {
-                        deleteMembers(selectedIds);
-                  }
-            });
-
-            // AJAX delete function
-            function deleteMembers(ids) {
-                  $.ajax({
-                        url: '{{ route("members.bulkDelete") }}', // create this route in Laravel
-                        type: 'POST',
-                        data: {
-                              _token: '{{ csrf_token() }}',
-                              ids: ids
-                        },
-                        success: function (response) {
-                              alert(response.message || 'Deleted successfully');
-                              table.ajax.reload(null, false); // reload table without resetting pagination
-                              $('#select-all').prop('checked', false);
-                              toggleDeleteSelectedBtn();
-                        },
-                        error: function (xhr) {
-                              alert('An error occurred while deleting members.');
-                        }
-                  });
-            }
-
-            // Your existing filter button handlers...
-      });
+//      $(function () {
+//            // DataTable initialization code as before...
+//
+//            const table = $('#members-table').DataTable({
+//                  // ... your existing DataTable options ...
+//            });
+//
+//            // Select/deselect all checkboxes
+//            $('#select-all').on('click', function () {
+//                  const checked = $(this).is(':checked');
+//                  $('.row-checkbox').prop('checked', checked);
+//                  toggleDeleteSelectedBtn();
+//            });
+//
+//            // Toggle "Delete Selected" button
+//            $('#members-table tbody').on('change', '.row-checkbox', function () {
+//                  // If any checkbox is unchecked, uncheck "select all"
+//                  if (!this.checked) {
+//                        $('#select-all').prop('checked', false);
+//                  }
+//                  toggleDeleteSelectedBtn();
+//            });
+//
+//            function toggleDeleteSelectedBtn() {
+//                  const selectedCount = $('.row-checkbox:checked').length;
+//                  $('#btn-delete-selected').prop('disabled', selectedCount === 0);
+//            }
+//
+//            // Single delete with confirmation
+//            $('#members-table tbody').on('click', '.btn-delete', function () {
+//                  const memberId = $(this).data('id');
+//                  if (confirm('Are you sure you want to delete this member?')) {
+//                        deleteMembers([memberId]);
+//                  }
+//            });
+//
+//            // Bulk delete button click
+//            $('#btn-delete-selected').on('click', function () {
+//                  const selectedIds = $('.row-checkbox:checked').map(function () {
+//                        return $(this).val();
+//                  }).get();
+//
+//                  if (selectedIds.length === 0) {
+//                        alert('Please select at least one member to delete.');
+//                        return;
+//                  }
+//
+//                  if (confirm(`Are you sure you want to delete ${selectedIds.length} selected member(s)?`)) {
+//                        deleteMembers(selectedIds);
+//                  }
+//            });
+//
+//            // AJAX delete function
+//            function deleteMembers(ids) {
+//                  $.ajax({
+//                        url: '{{ route("members.bulkDelete") }}', // create this route in Laravel
+//                        type: 'POST',
+//                        data: {
+//                              _token: '{{ csrf_token() }}',
+//                              ids: ids
+//                        },
+//                        success: function (response) {
+//                              alert(response.message || 'Deleted successfully');
+//                              table.ajax.reload(null, false); // reload table without resetting pagination
+//                              $('#select-all').prop('checked', false);
+//                              toggleDeleteSelectedBtn();
+//                        },
+//                        error: function (xhr) {
+//                              alert('An error occurred while deleting members.');
+//                        }
+//                  });
+//            }
+//
+//            // Your existing filter button handlers...
+//      });
 
 </script>
 @endsection

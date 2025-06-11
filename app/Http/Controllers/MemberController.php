@@ -16,6 +16,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Imports\MembersImport;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Account;
+use App\Models\Club;
 
 class MemberController extends Controller {
 
@@ -23,10 +24,10 @@ class MemberController extends Controller {
 
       public function index(Request $request) {
             if ($request->ajax()) {
-                  $query = MemberMaster::query();
+                  $query = MemberMaster::with(['state', 'city', 'region'])->select('club_member_masters.*');
 
-                  $query->when($request->filled('parent_region'), fn($q) =>
-                        $q->where('parent_region', $request->parent_region)
+                  $query->when($request->filled('region_id'), fn($q) =>
+                        $q->where('region_id', $request->region_id)
                   )->when($request->filled('member_id'), fn($q) =>
                         $q->where('member_id', 'like', '%' . $request->member_id . '%')
                   )->when($request->filled('account_name'), fn($q) =>
@@ -40,6 +41,9 @@ class MemberController extends Controller {
                   );
 
                   return DataTables::of($query)
+                              ->addColumn('state', fn($query) => $query->state->name ?? '—')
+                              ->addColumn('city', fn($query) => $query->city->name ?? '—')
+                              ->addColumn('region', fn($query) => $query->region->name ?? '—')
                               ->addColumn('actions', function ($member) {
                                     return view('members.partials.actions', compact('member'))->render();
                               })
@@ -47,65 +51,126 @@ class MemberController extends Controller {
                               ->make(true);
             }
 
-            $regions = Region::select('name')->distinct()->get();
-            $accounts = Account::select('name', 'code')->distinct()->get();
-            $occupations = Occupation::select('name')->distinct()->get();
-            $citys = City::select('name')->distinct()->get();
+            $regions = Region::select('name', 'id')->distinct()->get();
+            $accounts = Account::select('name', 'code', 'id')->distinct()->get();
+            $occupations = Occupation::select('name', 'id')->distinct()->get();
+            $citys = City::select('name', 'id')->distinct()->get();
             return view('members.index', compact('regions', 'occupations', 'accounts', 'citys'));
       }
 
       // Show form to create a member
       public function create() {
-            $regions = Region::select('name')->distinct()->get();
-            $accounts = Account::select('name', 'code')->distinct()->get();
-            $citys = City::select('name')->distinct()->get();
+
+            $lastMember = \App\Models\MemberMaster::orderBy('id', 'desc')->first();
+            $nextId = $lastMember ? $lastMember->id + 1 : 1;
+            $member_id = 'MEM' . str_pad($nextId, 4, '0', STR_PAD_LEFT);
+
+            $regions = Region::select('name', 'id')->distinct()->get();
+            $accounts = Account::select('name', 'code', 'id')->distinct()->get();
+            $citys = City::select('name', 'id')->distinct()->get();
             $states = State::select('name', 'id')->distinct()->get();
             $occupations = Occupation::select('name', 'id')->distinct()->get();
+            $clubs = Club::select('name', 'id')->distinct()->get();
 
-            return view('members.create', compact('regions', 'occupations', 'accounts', 'citys', 'states', 'occupations'));
+            return view('members.create', compact('member_id', 'regions', 'accounts', 'citys', 'states', 'occupations', 'clubs'));
       }
 
 // Show form to edit member
 
       public function edit(MemberMaster $member) {
-            $regions = Region::select('name')->distinct()->get();
-            $accounts = Account::select('name', 'code')->distinct()->get();
-            $citys = City::select('name')->distinct()->get();
+            $regions = Region::select('name', 'id')->distinct()->get();
+            $accounts = Account::select('name', 'code', 'id')->distinct()->get();
+            $citys = City::select('name', 'id')->distinct()->get();
             $states = State::select('name', 'id')->distinct()->get();
-            $occupation = Occupation::select('name', 'id')->distinct()->get();
-            return view('members.edit', compact('member', 'regions', 'occupations', 'accounts', 'citys', 'states', 'occupations'));
+            $occupations = Occupation::select('name', 'id')->distinct()->get();
+            return view('members.edit', compact('member', 'regions', 'accounts', 'citys', 'states', 'occupations'));
       }
 
       // Store new member
       public function store(Request $request) {
+            // Auto-generate Member ID
+            $lastMember = \App\Models\MemberMaster::orderBy('id', 'desc')->first();
+            $nextId = $lastMember ? $lastMember->id + 1 : 1;
+            $member_id = 'MEM' . str_pad($nextId, 4, '0', STR_PAD_LEFT);
 
-            $validated = $request->validate([
-                      'account_name' => 'required|string|max:255',
-                      'parent_region' => 'nullable|string|max:255',
-                      'parent_zone' => 'nullable|string|max:255',
-                      'member_id' => 'nullable|string|max:100|unique:members,member_id',
-                      'first_name' => 'required|string|max:100',
-                      'last_name' => 'required|string|max:100',
-                      'address_line1' => 'nullable|string|max:255',
-                      'address_line2' => 'nullable|string|max:255',
-                      'address_line3' => 'nullable|string|max:255',
-                      'city' => 'nullable|string|max:100',
-                      'state' => 'nullable|string|max:100',
-                      'zip' => 'nullable|string|max:20',
-                      'birthdate' => 'nullable|date|before:today',
-                      'email' => 'nullable|email|max:255|unique:members,email',
-                      'mobile' => 'nullable|string|max:20',
-                      'home_phone' => 'nullable|string|max:20',
-                      'gender' => 'nullable|in:Male,Female,Other',
-                      'occupation' => 'nullable|string|max:100',
-                      'join_date' => 'nullable|date|before_or_equal:today',
+            // Validation
+//            $request->validate([
+//                      'account_name' => 'nullable|string|max:255',
+//                      'first_name' => 'required|string|max:255',
+//                      'last_name' => 'required|string|max:255',
+//                      'gender' => 'nullable|in:Male,Female,Other',
+//                      'birthdate' => 'nullable|date',
+//                      'address_line1' => 'nullable|string|max:255',
+//                      'address_line2' => 'nullable|string|max:255',
+//                      'address_line3' => 'nullable|string|max:255',
+//                      'email' => 'nullable|email|unique:club_member_masters,email',
+//                      'mobile' => 'nullable|string|max:20',
+//                      'home_phone' => 'nullable|string|max:20',
+//                      'state' => 'nullable|integer|exists:states,id',
+//                      'city' => 'nullable|string|max:255',
+//                      'zipcode' => 'nullable|string|max:20',
+//                      'occupation' => 'nullable|integer|exists:occupations,id',
+//                      'join_date' => 'nullable|date',
+//                      'is_active' => 'required|boolean',
+//                      // Add region/zone/club if required:
+//                      'region_id' => 'nullable|exists:regions,id',
+//                      'zone_id' => 'nullable|exists:zones,id',
+//                      'club_id' => 'nullable|exists:clubs,id',
+//            ]);
+            // Merge generated member_id
+//            $validated['member_id'] = $member_id;
+            // Create new member
+//            $validator = $request->validate([
+//                      'account_name' => 'nullable|string|max:255',
+//                      'first_name' => 'required|string|max:255',
+//                      'email' => 'nullable|email|unique:club_member_masters,email',
+//                      'mobile' => 'nullable|string|max:20',
+//            ]);
+//            if ($validator->fails()) {
+//                  return redirect()->back()->withErrors($validator)->withInput();
+//            }
+            $memberData = [
+                      'member_id' => $member_id,
+                      'account_name' => $request->account_name,
+                      'first_name' => $request->first_name,
+                      'last_name' => $request->last_name,
+                      'gender' => $request->gender,
+                      'birthdate' => $request->birthdate,
+                      'address_line1' => $request->address_line1,
+                      'address_line2' => $request->address_line2,
+                      'address_line3' => $request->address_line3,
+                      'email' => $request->email,
+                      'mobile' => $request->mobile,
+                      'home_phone' => $request->home_phone,
+                      'state' => $request->state_id,
+                      'city' => $request->city,
+                      'zipcode' => $request->zipcode,
+                      'occupation' => $request->occupation,
+                      'join_date' => $request->join_date,
+                      'is_active' => $request->is_active,
+                      'region_id' => $request->region_id,
+                      'zone_id' => $request->zone_id,
+                      'club_id' => $request->club_id,
+            ];
+
+            MemberMaster::create($memberData);
+
+            return redirect()->route('members.index')->with('success', 'Member created successfully.');
+      }
+
+      public function validateField(Request $request) {
+            $validator = Validator::make($request->all(), [
+                            'email' => 'nullable|email|unique:club_member_masters,email'
             ]);
-        
 
-            // Save the validated data
-            MemberMaster::create($validated);
+            if ($validator->fails()) {
+                  return response()->json([
+                                  'valid' => false,
+                                  'message' => $validator->errors()->first('email')
+                  ]);
+            }
 
-            return redirect()->route('members.index')->with('success', 'Member added successfully.');
+            return response()->json(['valid' => true]);
       }
 
       // Show single member
@@ -118,7 +183,7 @@ class MemberController extends Controller {
 
             $request->validate([
                       'account_name' => 'nullable|string|max:255',
-                      'parent_region' => 'nullable|string|max:255',
+                      'region_id' => 'nullable|string|max:255',
                       'parent_zone' => 'nullable|string|max:255',
                       'member_id' => 'nullable|string|max:255',
                       'first_name' => 'nullable|string|max:255',
@@ -148,7 +213,7 @@ class MemberController extends Controller {
 
 // Delete member
       public function destroy($id) {
-            $member = Member::findOrFail($id);
+            $member = MemberMaster::findOrFail($id);
             $member->delete();
 
             return response()->json(['message' => 'Member deleted successfully.']);
