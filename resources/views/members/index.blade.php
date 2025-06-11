@@ -81,11 +81,11 @@
                                                 <th>First Name</th>
                                                 <th>Last Name</th>
                                                 <th>Address Line</th>
-                                                <th>City</th>
                                                 <th>State</th>
+                                                <th>City</th>
                                                 <th>Birthdate</th>
-                                                <th>Email</th>
                                                 <th>Mobile</th>
+                                                <th>Email ID</th>
                                                 <th>Home Phone</th>
                                                 <th>Gender</th>
                                                 <th>Occupation</th>
@@ -137,13 +137,13 @@
                         {data: 'address_line1', name: 'address_line1'},
                         {data: 'state', name: 'state'},
                         {data: 'city', name: 'city'},
-                        {data: 'region', name: 'region'},
                         {data: 'birthdate', name: 'birthdate'},
-                        {data: 'email', name: 'email'},
                         {data: 'mobile', name: 'mobile'},
+                        {data: 'email', name: 'email'},
                         {data: 'home_phone', name: 'home_phone'},
                         {data: 'gender', name: 'gender'},
                         {data: 'occupation', name: 'occupation'},
+                        {data: 'region', name: 'region'},
                         {data: 'join_date', name: 'join_date'},
                         {
                               data: 'is_active',

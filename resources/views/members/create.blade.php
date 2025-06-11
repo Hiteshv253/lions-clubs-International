@@ -106,7 +106,7 @@
                         </div>
 
                         <div class="col-sm-6 col-md-3">
-                              <label class="form-label">Personal Email</label>
+                              <label class="form-label">Personal Email ID</label>
                               <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}">
                               @error('email')
                               <input type="text" class="form-control is-invalid">
@@ -116,7 +116,7 @@
 
                         <div class="col-sm-6 col-md-3">
                               <label class="form-label">Mobile</label>
-                              <input type="text" name="mobile" id="mobile" class="form-control" value="{{ old('mobile') }}">
+                              <input type="number" name="mobile" id="mobile" class="form-control" value="{{ old('mobile') }}">
                         </div>
 
                         <div class="col-sm-6 col-md-3">
