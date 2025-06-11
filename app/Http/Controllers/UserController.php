@@ -8,6 +8,7 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Hash;
 use DataTables;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller {
 
@@ -16,6 +17,20 @@ class UserController extends Controller {
             $this->middleware('permission:create user', ['only' => ['create', 'store']]);
             $this->middleware('permission:update user', ['only' => ['update', 'edit']]);
             $this->middleware('permission:delete user', ['only' => ['destroy']]);
+      }
+
+      public function profile_update() {
+            
+      }
+
+      public function profile_edit() {
+            $user = Auth::user(); // get the currently logged-in user
+            return view('role-permission.user.profile.edit', compact('user'));
+      }
+
+      public function profile() {
+            $user = Auth::user(); // get the currently logged-in user
+            return view('role-permission.user.profile.index', compact('user'));
       }
 
       public function ajaxUsers(Request $request) {

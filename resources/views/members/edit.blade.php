@@ -60,7 +60,7 @@
                               </select>
                         </div>
                         <div class="col-sm-6 col-md-3">
-                              <label class="form-label">Member ID</label>
+                              <label class="form-label">Lion ID & Member ID</label>
                               <input type="text" name="member_id" id="member_id" class="form-control" value="{{ $member->member_id }}" readonly>
                         </div>
                         <div class="col-sm-6 col-md-3">

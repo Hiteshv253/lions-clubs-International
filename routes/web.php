@@ -102,6 +102,10 @@ Route::prefix('lions')->middleware('auth')->group(function () {
 
       // Shared user routes
       Route::get('users/ajax', [UserController::class, 'ajaxUsers'])->name('lions.users.ajax');
+      Route::get('/profile', [UserController::class, 'profile'])->name('profile')->middleware('auth');
+
+      Route::get('/profile/edit', [UserController::class, 'profile_edit'])->name('profile.edit');
+      Route::post('/profile/update', [UserController::class, 'profile_update'])->name('profile.update');
 
       /*
         |--------------------------------------------------------------------------

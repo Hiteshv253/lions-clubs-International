@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Auth;
 use App\Models\State;
 use App\Models\City;
 use App\Models\MemberMaster;
 use App\Models\Occupation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Yajra\DataTables\Facades\DataTables;
 use App\Models\User;
@@ -17,6 +19,7 @@ use App\Imports\MembersImport;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Account;
 use App\Models\Club;
+use Illuminate\Support\Facades\Mail;
 
 class MemberController extends Controller {
 
@@ -154,8 +157,28 @@ class MemberController extends Controller {
                       'zone_id' => $request->zone_id,
                       'club_id' => $request->club_id,
             ];
-
             MemberMaster::create($memberData);
+
+            // ✅ Step 3: Generate password
+            $passwordPlain = Str::random(10);
+            $passwordHashed = Hash::make($passwordPlain);
+
+            // ✅ Step 4: Create user
+            $user = User::create([
+                            'first_name' => $request->first_name,
+                            'last_name' => $request->last_name,
+                            'email' => $request->email,
+                            'membership_id' => $member_id,
+                            'password' => $passwordHashed,
+            ]);
+            $login = route('login');
+            Mail::raw("Dear {$user->first_name}"
+                  . ",\n\nYour Email ID: {$request->email}\n"
+                  . "\nYour Membership ID: {$member_id}\nPassword: {$passwordPlain}"
+                  . "\nPlease login with this URL {$login}",
+                  function ($message) use ($user) {
+                        $message->to($user->email)->subject('Lions Club Membership Details###');
+                  });
 
             return redirect()->route('members.index')->with('success', 'Member created successfully.');
       }
