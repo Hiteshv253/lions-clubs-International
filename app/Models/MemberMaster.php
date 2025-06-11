@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use App\Models\State;
 use App\Models\City;
 use App\Models\Region;
+use App\Models\Occupation;
+use App\Models\Account;
 
 class MemberMaster extends Model {
 
@@ -15,7 +17,6 @@ class MemberMaster extends Model {
       protected $table = 'club_member_masters';
       protected $fillable = [
                 'member_id',
-                'account_name',
                 'first_name',
                 'last_name',
                 'gender',
@@ -26,12 +27,13 @@ class MemberMaster extends Model {
                 'email',
                 'mobile',
                 'home_phone',
-                'state_id', // changed from 'state'
-                'city_id', // changed from 'city'
                 'zipcode',
-                'occupation',
                 'join_date',
                 'is_active',
+                'account_id',
+                'state_id', // changed from 'state'
+                'city_id', // changed from 'city'
+                'occupation_id',
                 'region_id',
                 'zone_id',
                 'club_id',

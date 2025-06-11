@@ -16,7 +16,7 @@ class State extends Model {
             return $this->hasMany(City::class);
       }
 
-      public function members() {
-            return $this->hasMany(MemberMaster::class, 'state_id');
-      }
+//      public function members() {
+//            return $this->hasMany(MemberMaster::class, 'state');
+//      }
 }

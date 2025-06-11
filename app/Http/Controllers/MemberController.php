@@ -24,7 +24,7 @@ class MemberController extends Controller {
 
       public function index(Request $request) {
             if ($request->ajax()) {
-                  $query = MemberMaster::with(['state', 'city', 'region'])->select('club_member_masters.*');
+                  $query = MemberMaster::with(['state', 'city', 'region', 'occupation', 'account'])->select('club_member_masters.*');
 
                   $query->when($request->filled('region_id'), fn($q) =>
                         $q->where('region_id', $request->region_id)
@@ -44,6 +44,8 @@ class MemberController extends Controller {
                               ->addColumn('state', fn($query) => $query->state->name ?? '—')
                               ->addColumn('city', fn($query) => $query->city->name ?? '—')
                               ->addColumn('region', fn($query) => $query->region->name ?? '—')
+                              ->addColumn('occupation', fn($query) => $query->occupation->name ?? '—')
+                              ->addColumn('account_name', fn($query) => $query->account->name ?? '—')
                               ->addColumn('actions', function ($member) {
                                     return view('members.partials.actions', compact('member'))->render();
                               })
@@ -131,7 +133,7 @@ class MemberController extends Controller {
 //            }
             $memberData = [
                       'member_id' => $member_id,
-                      'account_name' => $request->account_name,
+                      'account_id' => $request->account_id,
                       'first_name' => $request->first_name,
                       'last_name' => $request->last_name,
                       'gender' => $request->gender,
@@ -142,10 +144,10 @@ class MemberController extends Controller {
                       'email' => $request->email,
                       'mobile' => $request->mobile,
                       'home_phone' => $request->home_phone,
-                      'state' => $request->state_id,
-                      'city' => $request->city,
+                      'state_id' => $request->state_id,
+                      'city_id' => $request->city,
                       'zipcode' => $request->zipcode,
-                      'occupation' => $request->occupation,
+                      'occupation_id' => $request->occupation_id,
                       'join_date' => $request->join_date,
                       'is_active' => $request->is_active,
                       'region_id' => $request->region_id,

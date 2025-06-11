@@ -35,9 +35,9 @@
                   </div>
 
                   <div class="row mb-3">
-                        <div class="col-md-4"><strong>City:</strong> {{ $member->city }}</div>
-                        <div class="col-md-4"><strong>State/Province:</strong> {{ $member->state }}</div>
-                        <div class="col-md-4"><strong>Zip/Postal Code:</strong> {{ $member->zip }}</div>
+                        <div class="col-md-4"><strong>City:</strong> {{ $member->city->name }}</div>
+                        <div class="col-md-4"><strong>State/Province:</strong> {{ $member->state->name }}</div>
+                        <div class="col-md-4"><strong>Zip/Postal Code:</strong> {{ $member->zipcode }}</div>
                   </div>
 
                   <div class="row mb-3">
@@ -48,7 +48,7 @@
 
                   <div class="row mb-3">
                         <div class="col-md-4"><strong>Gender:</strong> {{ $member->gender }}</div>
-                        <div class="col-md-4"><strong>Occupation:</strong> {{ $member->occupation }}</div>
+                        <div class="col-md-4"><strong>Occupation:</strong> {{ $member->occupation->name }}</div>
                         <div class="col-md-4"><strong>Birthdate:</strong> {{ $member->birthdate ? \Carbon\Carbon::parse($member->birthdate)->format('d M, Y') : '' }}</div>
                   </div>
 

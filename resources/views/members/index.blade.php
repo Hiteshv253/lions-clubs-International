@@ -11,10 +11,7 @@
 <div class="row mt-3">
       <div class="col-xl-12">
             <div class="card">
-                  <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
-                        <h4 class="card-title mb-0">Members List</h4>
-                        <a href="{{ route('members.create') }}" class="btn btn-primary">Add New Member</a>
-                  </div>
+
                   @if(session('success'))
                   <div class="alert alert-success">{{ session('success') }}</div>
                   @endif
@@ -22,6 +19,13 @@
                   @if(session('error'))
                   <div class="alert alert-danger">{{ session('error') }}</div>
                   @endif
+
+                  
+                  <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
+                        <h4 class="card-title mb-0">Members List</h4>
+                        <a href="{{ route('members.create') }}" class="btn btn-primary">Add New Member</a>
+                  </div>
+
                   <div class="card-body">
                         {{-- Filters --}}
                         <div class="row gy-2 gx-3 mb-3">
@@ -29,7 +33,7 @@
                                     <select id="filter-parent-region" class="form-select form-select-sm">
                                           <option value="">All Regions</option>
                                           @foreach($regions as $region)
-                                          <option value="{{ $region->name }}">{{ $region->name }}</option>
+                                          <option value="{{ $region->id }}">{{ $region->name }}</option>
                                           @endforeach
                                     </select>
                               </div>
@@ -40,7 +44,7 @@
                                     <select id="filter-account-name" class="form-select form-select-sm">
                                           <option value="">All Accounts</option>
                                           @foreach($accounts as $account)
-                                          <option value="{{ $account->name }}">{{ $account->name }} - ({{ $account->code }})</option>
+                                          <option value="{{ $account->id }}">{{ $account->name }} - ({{ $account->code }})</option>
                                           @endforeach
                                     </select>
                               </div>
@@ -48,7 +52,7 @@
                                     <select id="filter-occupation" class="form-select form-select-sm">
                                           <option value="">All Occupation</option>
                                           @foreach($occupations as $occupation)
-                                          <option value="{{ $occupation->name }}">{{ $occupation->name }}</option>
+                                          <option value="{{ $occupation->id }}">{{ $occupation->name }}</option>
                                           @endforeach
                                     </select>
                               </div>

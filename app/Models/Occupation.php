@@ -9,5 +9,6 @@ class Occupation extends Model {
 
       use HasFactory;
 
-      protected $fillable = ['name'];
+      protected $table = 'occupations';
+      protected $fillable = ['name', 'is_active'];
 }

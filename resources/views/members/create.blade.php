@@ -29,10 +29,10 @@
                   <div class="row g-3">
                         <div class="col-sm-6 col-md-3">
                               <label class="form-label">Accounts</label>
-                              <select id="account_name" name="account_name" class="form-control" value="{{ old('account_name') }}">
+                              <select id="account_id" name="account_id" class="form-control" value="{{ old('account_id') }}">
                                     <option value="">All Accounts</option>
                                     @foreach($accounts as $account)
-                                    <option value="{{ $account->name }}">{{ $account->name }} - ({{ $account->code }})</option>
+                                    <option value="{{ $account->id }}">{{ $account->name }} - ({{ $account->code }})</option>
                                     @endforeach
                               </select>
                               @error('account_name') <div class="invalid-feedback">{{ $message }}</div> @enderror
@@ -121,7 +121,7 @@
 
                         <div class="col-sm-6 col-md-3">
                               <label class="form-label">Home Phone</label>
-                              <input type="text" name="home_phone" id="home_phone" class="form-control" value="{{ old('home_phone') }}">
+                              <input type="number" name="home_phone" id="home_phone" class="form-control" value="{{ old('home_phone') }}">
                         </div>
                         <div class="col-sm-6 col-md-3">
                               <label class="form-label">State</label>
@@ -148,7 +148,7 @@
 
                         <div class="col-sm-6 col-md-3">
                               <label class="form-label">Occupation</label>
-                              <select id="occupation" name="occupation" class="form-control">
+                              <select id="occupation_id" name="occupation_id" class="form-control">
                                     <option value="">-- Select Occupation --</option>
                                     @foreach($occupations as $occupation)
                                     <option value="{{ $occupation->id }}">{{ $occupation->name }}</option>
