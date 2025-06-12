@@ -50,6 +50,9 @@
                                           <th>Zone</th>
                                           <th>Region</th>
                                           <th>District</th>
+                                          <th>Club Number</th>
+                                          <th>Inauguration Date</th>
+                                          <th>Charter Date</th>
                                           <th>Actions</th>
                                     </tr>
                               </thead>
@@ -79,6 +82,9 @@
                         {data: 'zone_name', name: 'zone.name'},
                         {data: 'region_name', name: 'zone.region.name'},
                         {data: 'district_name', name: 'zone.region.district.name'},
+                        {data: 'club_number', name: 'club_number'},
+                        {data: 'inauguration_date_club', name: 'inauguration_date_club'},
+                        {data: 'charter_date', name: 'charter_date'},
                         {data: 'actions', name: 'actions', orderable: false, searchable: false},
                   ]
             });

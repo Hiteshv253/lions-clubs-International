@@ -23,6 +23,15 @@
 
                   <dt class="col-sm-3">Club Name</dt>
                   <dd class="col-sm-9">{{ $club->name }}</dd>
+
+                  <dt class="col-sm-3">club_number</dt>
+                  <dd class="col-sm-9">{{ $club->club_number }}</dd>
+
+                  <dt class="col-sm-3">Charter Date</dt>
+                  <dd class="col-sm-9">{{ $club->charter_date }}</dd>
+                  
+                  <dt class="col-sm-3">Inauguration Date of Club</dt>
+                  <dd class="col-sm-9">{{ $club->inauguration_date_club }}</dd>
             </dl>
             <div class="text-end">
                   <a href="{{ route('clubs.index') }}" class="btn btn-secondary">Back</a>

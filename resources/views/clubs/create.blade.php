@@ -16,7 +16,7 @@
 
                   <div class="row g-3">
                         <div class="col-sm-6 col-md-4">
-                              <label>District</label>
+                              <label class="form-label">District</label>
                               <select id="district" class="form-select">
                                     <option value="">Select District</option>
                                     @foreach($districts as $district)
@@ -26,22 +26,34 @@
                         </div>
 
                         <div class="col-sm-6 col-md-4">
-                              <label>Region</label>
-                              <select id="region" class="form-select">
+                              <label class="form-label">Region</label>
+                              <select id="region" name="region" class="form-select">
                                     <option value="">Select Region</option>
                               </select>
                         </div>
 
                         <div class="col-sm-6 col-md-4">
-                              <label>Zone</label>
+                              <label class="form-label">Zone</label>
                               <select name="zone_id" id="zone" class="form-select">
                                     <option value="">Select Zone</option>
                               </select>
                         </div>
 
                         <div class="col-sm-6 col-md-4">
-                              <label>Club Name</label>
-                              <input type="text" name="name" class="form-control" required>
+                              <label class="form-label">Club Name</label>
+                              <input type="text" name="name" id="name" class="form-control" required>
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                              <label class="form-label">Club Number</label>
+                              <input type="number" id="club_number" name="club_number" class="form-control" required value="{{ old('club_number') }}">
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                              <label class="form-label">Charter Date</label>
+                              <input type="date" name="charter_date" id="charter_date" class="form-control" value="{{ old('charter_date') }}">
+                        </div>
+                        <div class="col-sm-6 col-md-4">
+                              <label class="form-label">Inauguration Date Of Club</label>
+                              <input type="date" name="inauguration_date_club" id="inauguration_date_club" class="form-control" value="{{ old('inauguration_date_club') }}">
                         </div>
                   </div>
                   <div class="text-end">

@@ -14,6 +14,9 @@ return new class extends Migration {
                   $table->id();
                   $table->foreignId('zone_id')->constrained()->onDelete('cascade');
                   $table->string('name');
+                  $table->string('club_number');
+                  $table->date('charter_date')->nullable();
+                  $table->date('inauguration_date_club')->nullable();
                   $table->boolean('is_active')->default(true);
                   $table->timestamps();
             });
