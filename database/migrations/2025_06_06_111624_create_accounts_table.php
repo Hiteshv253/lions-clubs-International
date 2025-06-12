@@ -17,6 +17,7 @@ return new class extends Migration {
                   $table->string('account_no', 18)->nullable(); // adjust type if needed
                   $table->string('type');
                   $table->boolean('is_active')->default(true);
+                  $table->unsignedBigInteger('is_create_by')->default(true); // user ID who created
                   $table->timestamps();
             });
       }

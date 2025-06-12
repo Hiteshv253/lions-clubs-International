@@ -17,7 +17,7 @@ class StateFactory extends Factory {
       public function definition(): array {
             return [
                       'name' => $this->faker->state,
-                      'is_active' => $this->faker->boolean(90),
+                      'is_active' => $this->faker->numberBetween(0, 1),
                       'is_create_by' => $this->faker->numberBetween(1, 5),
             ];
       }

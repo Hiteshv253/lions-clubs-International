@@ -67,22 +67,28 @@
 
                         </li> <!-- end Dashboard Menu -->
 
+                        @php
+                        $eventActive = request()->is('lions/events*') ||
+                        request()->is('lions/event_user_registration*');
+                        @endphp
+                        <a class="nav-link menu-link {{ $eventActive ? 'active' : '' }}" href="#sidebarEventship" data-bs-toggle="collapse" role="button"
+                           aria-expanded="{{ $eventActive ? 'true' : 'false' }}" aria-controls="sidebarEventship">
+                              <i class="ri-dashboard-2-line"></i>
+                              <span data-key="t-dashboards">Events Master</span>
+                        </a>
+                        <div class="collapse menu-dropdown {{ $eventActive ? 'show' : '' }}" id="sidebarEventship">
+                              <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                          <a href="{{ route('events.index') }}" class="nav-link {{ request()->is('lions/events*') ? 'active' : '' }}" data-key="t-crm">Events</a>
+                                    </li>
+                                    <li class="nav-item">
+                                          <a href="{{ route('event_user_registration.index') }}" class="nav-link {{ request()->is('lions/event_user_registration*') ? 'active' : '' }}" data-key="t-crm">Events Registration</a>
+                                    </li>
 
-<!--<li class="menu-title"><span data-key="t-menu">Membership</span></li>-->
-                        <li class="nav-item d-none">
-                              <a class="nav-link menu-link" href="#sidebarEvent" data-bs-toggle="collapse" role="button"
-                                 aria-expanded="false" aria-controls="sidebarEvent">
-                                    <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Events</span>
-                              </a>
-                              <div class="collapse menu-dropdown" id="sidebarEvent">
-                                    <ul class="nav nav-sm flex-column">
-                                          <li class="nav-item">
-                                                <a href="/lions/events" class="nav-link" data-key="t-crm">Events</a>
-                                          </li>
-
-                                    </ul>
-                              </div>
+                              </ul>
+                        </div>
                         </li>  <!--end Dashboard Menu -->
+
 
 
 
@@ -106,7 +112,6 @@
                         request()->is('lions/service-activity-types*');
                         request()->is('lions/services*');
                         @endphp
-
                         <li class="nav-item">
                               <a class="nav-link menu-link {{ $membershipActive ? 'active' : '' }}" href="#sidebarMembership" data-bs-toggle="collapse" role="button"
                                  aria-expanded="{{ $membershipActive ? 'true' : 'false' }}" aria-controls="sidebarMembership">
@@ -115,6 +120,7 @@
                               </a>
                               <div class="collapse menu-dropdown {{ $membershipActive ? 'show' : '' }}" id="sidebarMembership">
                                     <ul class="nav nav-sm flex-column">
+
                                           <li class="nav-item">
                                                 <a href="{{ route('members.index') }}" class="nav-link {{ request()->is('lions/members*') ? 'active' : '' }}" data-key="t-membership">My Membership</a>
                                           </li>
@@ -127,7 +133,7 @@
                                           <li class="nav-item">
                                                 <a href="{{ route('zones.index') }}" class="nav-link {{ request()->is('lions/zones*') ? 'active' : '' }}" data-key="t-services">Zones</a>
                                           </li>
-                                          
+
                                           <li class="nav-item">
                                                 <a href="{{ route('clubs.index') }}" class="nav-link {{ request()->is('lions/clubs*') ? 'active' : '' }}" data-key="t-clubs">Clubs</a>
                                           </li>

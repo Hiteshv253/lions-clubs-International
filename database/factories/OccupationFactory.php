@@ -20,6 +20,8 @@ class OccupationFactory extends Factory {
       public function definition(): array {
             return [
                       'name' => fake()->name(),
+                      'is_active' => $this->faker->numberBetween(0, 1),
+                      'is_create_by' => $this->faker->numberBetween(1, 5),
             ];
       }
 }

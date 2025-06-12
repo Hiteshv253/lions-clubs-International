@@ -17,10 +17,10 @@ class AccountSeeder extends Seeder {
             foreach (range(1, 10) as $i) {
                   Account::create([
                             'name' => $faker->company,
-                            'code' => strtoupper($faker->bothify('ACC-###')),
+                            'code' => strtoupper($faker->unique()->bothify('ACC-###')),
                             'account_no' => $faker->unique()->numberBetween(10000000, 999888999),
                             'type' => $faker->randomElement(['Asset', 'Liability', 'Equity', 'Income', 'Expense']),
-                            'is_active' => $faker->boolean,
+                            'is_active' => rand(0, 1),
                   ]);
             }
       }

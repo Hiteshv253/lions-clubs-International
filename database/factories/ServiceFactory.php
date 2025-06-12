@@ -45,6 +45,8 @@ class ServiceFactory extends Factory {
                       // Sponsor Details
                       'sponsor_club' => 'India, South Asia and the Middle East',
                       'sponsor_district' => 'District 323-M',
+                      'is_active' => $this->faker->numberBetween(0, 1),
+                      'is_create_by' => $this->faker->numberBetween(1, 5),
             ];
       }
 }

@@ -9,7 +9,10 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use App\Models\EventMaster;
+use App\Models\EventRegistration;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Validator;
 
 //use Illuminate\Support\Facades\Http;  // <--- THIS LINE IS REQUIRED
 //use GuzzleHttp\Client;
@@ -36,21 +39,6 @@ class HomePageController extends Controller {
             return response()->json(['message' => 'Inquiry submitted successfully!']);
       }
 
-//      public function fetchEvents() {
-//            $client = new Client();
-//            try {
-//                  $res = $client->request('GET', 'http://127.0.0.1:9090/api/events');
-//                  if ($res->getStatusCode() == 200) {
-//                        $events = json_decode($res->getBody()->getContents(), true);
-//                        return view('events.index', ['events' => $events]);
-//                  } else {
-//                        abort(500, 'Failed to fetch events.');
-//                  }
-//            } catch (\Exception $e) {
-//                  abort(500, 'Error: ' . $e->getMessage());
-//            }
-//      }
-
       public function home() {
 
 //            return view('frontend.home_page.index', ['events' => $this->fetchEvents()]);
@@ -67,5 +55,59 @@ class HomePageController extends Controller {
 
       public function contact() {
             return view('frontend.contact_page.index');
+      }
+
+      public function event() {
+            $fetchEvents = EventMaster::where('is_active', '=', '0')->get();
+
+            return view('frontend.event.index', ['fetchEvents' => $fetchEvents]);
+      }
+
+      public function show_event($id) {
+            $event = EventMaster::findOrFail($id);
+            return view('frontend.event.event-details', compact('event'));
+      }
+
+      public function register(Request $request) {
+//            dd($request->all());
+//            $data = $request->validate([
+//                      'name' => 'required|string',
+//                      'email' => 'required|email',
+//                      'event_id' => 'required|exists:events,id'
+//            ]);
+            $data = [
+                      'name' => $request->name,
+                      'email' => $request->email,
+                      'event_id' => $request->event_id,
+            ];
+
+            EventRegistration::create([
+                      'name' => $request->name,
+                      'email' => $request->email,
+                      'event_id' => $request->event_id,
+            ]);
+
+            $event = EventMaster::find($request->event_id);
+            $eventName = $event->event_name;
+            $eventDateTime = $event->date_time;
+
+            $messageBody = "Dear {$request->name},\n\n" .
+                  "You have successfully registered for the event:\n" .
+                  "{$eventName}\nDate & Time: {$eventDateTime}";
+
+            Mail::raw($messageBody, function ($message) use ($request) {
+                  $message->to($request->email)
+                        ->subject('You have successfully registered for the event');
+            });
+
+            // ✅ Step 8: Return response
+
+            return view('pages.auth.event-success')->with([
+                            'message' => 'You have successfully registered for the event . Redirecting to event page...'
+            ]);
+
+            // Send mail
+//            Mail::to($request->email)->send(new \App\Mail\EventRegistrationConfirmation($data));
+//            return back()->with('success', 'Registered successfully! Check your email.');
       }
 }

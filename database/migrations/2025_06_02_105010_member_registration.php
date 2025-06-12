@@ -13,7 +13,7 @@ return new class extends Migration {
             Schema::create('club_member_masters', function (Blueprint $table) {
                   $table->id();
                   $table->string('member_id')->unique();
-                   $table->string('first_name');
+                  $table->string('first_name');
                   $table->string('last_name');
                   $table->enum('gender', ['Male', 'Female', 'Other'])->nullable();
                   $table->date('birthdate')->nullable();
@@ -36,6 +36,7 @@ return new class extends Migration {
                   $table->foreignId('zone_id')->nullable();
                   $table->foreignId('club_id')->nullable();
                   $table->boolean('is_active')->default(true);
+                  $table->unsignedBigInteger('is_create_by')->default(true); // user ID who created
                   $table->timestamps();
             });
       }

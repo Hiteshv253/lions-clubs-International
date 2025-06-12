@@ -18,7 +18,7 @@ return new class extends Migration {
                   $table->string('phone');
                   $table->text('address');
                   $table->boolean('is_active')->default(true);
-                  $table->unsignedBigInteger('is_create_by')->nullable();
+                  $table->unsignedBigInteger('is_create_by')->default(true); // user ID who created
                   $table->timestamps();
             });
       }

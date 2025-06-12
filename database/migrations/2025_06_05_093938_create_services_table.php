@@ -50,7 +50,8 @@ return new class extends Migration {
                   // Sponsor Details
                   $table->string('sponsor_club')->nullable();
                   $table->string('sponsor_district')->nullable();
-
+                $table->boolean('is_active')->default(true);
+                  $table->unsignedBigInteger('is_create_by')->default(true); // user ID who created
                   $table->timestamps();
             });
       }

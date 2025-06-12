@@ -15,7 +15,8 @@ return new class extends Migration {
                   $table->id();
                   $table->string('name');
                   $table->foreignId('state_id')->constrained()->onDelete('cascade');
-                  $table->boolean('is_active')->default(true);
+                 $table->boolean('is_active')->default(true);
+                  $table->unsignedBigInteger('is_create_by')->default(true); // user ID who created
                   $table->timestamps();
             });
       }

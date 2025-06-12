@@ -17,6 +17,8 @@ class ClubFactory extends Factory {
                       'inauguration_date_club' => $this->faker->date('Y-m-d', '2000-01-01'),
                       'charter_date' => $this->faker->date('Y-m-d', '2000-01-01'),
                       'zone_id' => \App\Models\Zone::factory(), // ❗ auto-create
+                      'is_active' => $this->faker->numberBetween(0, 1),
+                      'is_create_by' => $this->faker->numberBetween(1, 5),
             ];
       }
 }

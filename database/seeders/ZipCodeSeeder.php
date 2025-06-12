@@ -16,7 +16,8 @@ class ZipCodeSeeder extends Seeder {
             City::all()->each(function ($city) {
                   ZipCode::factory()->count(10)->create([
                             'city_id' => $city->id,
-                            'zip_code' => fake()->postcode
+                            'zip_code' => fake()->postcode,
+                            'is_active' => rand(0, 1),
                   ]);
             });
       }

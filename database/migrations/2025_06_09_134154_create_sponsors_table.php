@@ -16,7 +16,7 @@ return new class extends Migration {
                   $table->string('logo')->nullable(); // If you want to store logo paths
                   $table->string('website')->nullable();
                   $table->boolean('is_active')->default(true);
-                  $table->unsignedBigInteger('is_create_by'); // user ID who created
+                  $table->unsignedBigInteger('is_create_by')->default(true); // user ID who created
 
                   $table->timestamps();
             });

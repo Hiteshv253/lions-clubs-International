@@ -14,10 +14,10 @@ class EventMasterFactory extends Factory {
                       'event_name' => $this->faker->sentence,
                       'date_time' => $this->faker->dateTime,
                       'description' => $this->faker->paragraph,
-                      'image' => $this->faker->imageUrl(),
-                      'banner_image' => $this->faker->imageUrl(),
-                      'is_active' => true,
-                      'is_create_by' => 1,
+                      'image' => 'https://picsum.photos/640/480?random=' . rand(1, 1000),
+                      'banner_image' => 'https://picsum.photos/1280/400?random=' . rand(1, 1000),
+                      'is_active' => $this->faker->numberBetween(0, 1),
+                      'is_create_by' => $this->faker->numberBetween(1, 5),
             ];
       }
 }

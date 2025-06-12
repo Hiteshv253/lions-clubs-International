@@ -42,6 +42,7 @@ class ServiceSeeder extends Seeder {
                             'venue_timezone' => 'Asia/Kolkata',
                             'sponsor_club' => 'India, South Asia and the Middle East',
                             'sponsor_district' => 'District 323-M',
+                            'is_active' => rand(0, 1),
                   ]);
             }
       }

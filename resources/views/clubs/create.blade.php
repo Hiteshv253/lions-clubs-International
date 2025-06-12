@@ -44,7 +44,7 @@
                               <input type="text" name="name" id="name" class="form-control" required>
                         </div>
                         <div class="col-sm-6 col-md-4">
-                              <label class="form-label">Club Number</label>
+                              <label class="form-label">Club Number/Club ID</label>
                               <input type="number" id="club_number" name="club_number" class="form-control" required value="{{ old('club_number') }}">
                         </div>
                         <div class="col-sm-6 col-md-4">

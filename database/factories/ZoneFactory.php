@@ -12,6 +12,8 @@ class ZoneFactory extends Factory {
       public function definition(): array {
             return [
                       'name' => 'Zone ' . $this->faker->unique()->numberBetween(1, 999),
+                      'is_active' => $this->faker->numberBetween(0, 1),
+                      'is_create_by' => $this->faker->numberBetween(1, 5),
             ];
       }
 }

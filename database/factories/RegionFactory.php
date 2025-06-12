@@ -11,6 +11,8 @@ class RegionFactory extends Factory {
       public function definition(): array {
             return [
                       'name' => $this->faker->streetName,
+                      'is_active' => $this->faker->numberBetween(0, 1),
+                      'is_create_by' => $this->faker->numberBetween(1, 5),
             ];
       }
 }

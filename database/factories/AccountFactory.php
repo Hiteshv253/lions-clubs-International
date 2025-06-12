@@ -16,9 +16,8 @@ class AccountFactory extends Factory {
                       'code' => 'ACC-' . $this->faker->unique()->numberBetween(1000, 9999),
                       'account_no' => $this->faker->unique()->numberBetween(1000, 9999),
                       'type' => $this->faker->randomElement($types),
-                      'is_active' => $this->faker->boolean(80), // 80% chance active
-                      'created_at' => now(),
-                      'updated_at' => now(),
+                      'is_active' => $this->faker->numberBetween(0, 1),
+                      'is_create_by' => $this->faker->numberBetween(1, 5),
             ];
       }
 }

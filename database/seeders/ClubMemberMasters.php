@@ -26,7 +26,6 @@ class ClubMemberMasters extends Seeder {
                             'home_phone' => $faker->phoneNumber,
                             'zipcode' => $faker->postcode,
                             'join_date' => $faker->date(),
-                            'is_active' => $faker->boolean,
                             'state_id' => rand(1, 5), // Update with actual state IDs
                             'city_id' => rand(1, 5), // Update with actual state IDs
                             'region_id' => rand(1, 5),
@@ -34,6 +33,7 @@ class ClubMemberMasters extends Seeder {
                             'account_id' => rand(1, 5),
                             'zone_id' => rand(1, 10),
                             'club_id' => rand(1, 15),
+                            'is_active' => rand(0, 1),
                   ]);
             }
       }

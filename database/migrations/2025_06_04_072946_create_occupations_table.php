@@ -14,6 +14,7 @@ return new class extends Migration {
                   $table->id();
                   $table->string('name');
                   $table->boolean('is_active')->default(true);
+                  $table->unsignedBigInteger('is_create_by')->default(true); // user ID who created
                   $table->timestamps();
             });
       }

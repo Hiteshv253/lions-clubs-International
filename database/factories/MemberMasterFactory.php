@@ -29,8 +29,8 @@ class MemberMasterFactory extends Factory {
                       'occupation_id' => $this->faker->numberBetween(1, 500),
                       'account_id' => $this->faker->numberBetween(1, 500),
                       'join_date' => $this->faker->date(),
-                      'is_active' => $this->faker->boolean(90),
-                      'is_create_by' => $this->faker->numberBetween(1, 500),
+                      'is_active' => $this->faker->numberBetween(0, 1),
+                      'is_create_by' => $this->faker->numberBetween(1, 5),
             ];
       }
 }

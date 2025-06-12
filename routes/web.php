@@ -27,6 +27,7 @@ use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\ServiceActivityTypeController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\EventUserRegistrationController;
 use App\Http\Controllers\AjaxController;
 
 /*
@@ -129,7 +130,12 @@ Route::prefix('lions')->middleware('auth')->group(function () {
                 'districts' => DistrictController::class,
                 'zones' => ZoneController::class,
                 'clubs' => ClubController::class,
+                'event_user_registration' => EventUserRegistrationController::class,
       ]);
+
+      Route::get('/event_user_registration/{id}/registrations', [EventUserRegistrationController::class, 'showRegistrations'])->name('event_user_registration.showRegistrations');
+      // web.php
+      Route::get('/event_user_registration/{event}/registrations/data', [EventUserRegistrationController::class, 'getRegistrations'])->name('event_user_registration.data');
 
       /*
         |--------------------------------------------------------------------------
