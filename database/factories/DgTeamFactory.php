@@ -16,8 +16,8 @@ class DgTeamFactory extends Factory {
                       'designation' => $this->faker->jobTitle,
                       'phone' => $this->faker->phoneNumber,
                       'address' => $this->faker->address,
-                      'is_active' => true,
-                      'is_create_by' => 1,
+                      'is_active' => $this->faker->numberBetween(0, 1),
+                      'is_create_by' => $this->faker->numberBetween(1, 5),
             ];
       }
 }
