@@ -18,7 +18,7 @@ class ServiceActivityTypeController extends Controller {
                   }
 
                   return DataTables::of($query)
-                              ->addColumn('is_active', fn($row) => $row->is_active ? 'Yes' : 'No')
+                              ->addColumn('is_active', fn($row) => $row->is_active ? '1' : '0')
                               ->addColumn('actions', function ($row) {
                                     return view('service_activity_types.partials.actions', compact('row'))->render();
                               })

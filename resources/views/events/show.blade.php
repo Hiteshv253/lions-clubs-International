@@ -41,5 +41,8 @@
             <a href="{{ route('events.index') }}" class="btn btn-secondary">Back to List</a>
       </div>
 </div>
-
+<script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
+<script>
+CKEDITOR.replace('description');
+</script>
 @endsection

@@ -27,7 +27,7 @@ class DGTeamController extends Controller {
                                      return view('dg-teams.partials.actions', compact('row'))->render();
                               })
                               ->editColumn('is_active', function ($row) {
-                                    return $row->is_active ? 'Yes' : 'No';
+                                    return $row->is_active ? '1' : '0';
                               })
                               ->rawColumns(['actions'])
                               ->make(true);

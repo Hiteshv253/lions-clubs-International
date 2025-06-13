@@ -23,10 +23,11 @@
                   @endif
                   <div class="card-body">
                         @if(session('success'))
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                              {{ session('success') }}
-                              <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                        </div>
+                        <div class="alert alert-success">{{ session('success') }}</div>
+                        @endif
+
+                        @if(session('error'))
+                        <div class="alert alert-danger">{{ session('error') }}</div>
                         @endif
                         <div class="table-responsive">
                               <table id="citiesTable-table" class="table table-bordered table-striped w-100">
@@ -55,7 +56,6 @@
                   serverSide: true,
                   ajax: '{{ route('cities.index') }}', // Make sure this route returns JSON for DataTables
                   columns: [
-                        
                         {data: 'id', name: 'id'},
                         {data: 'name', name: 'name'},
                         {data: 'state_name', name: 'state.name'},
@@ -63,12 +63,12 @@
                               data: 'is_active',
                               name: 'is_active',
                               render: function (data) {
-                                    return data == 1 ? '<span class="badge bg-success">Active</span>' : '<span class="badge bg-secondary">Inactive</span>';
+                                    return data == 0 ? '<span class="badge bg-success">Active</span>' : '<span class="badge bg-secondary">Inactive</span>';
                               }
                         },
                         {data: 'actions', name: 'actions', orderable: false, searchable: false}
                   ],
-                  order: [[1, 'asc']],
+                  order: [[0, 'desc']], // 👈 Sort by first column (id) in descending order
                   lengthMenu: [5, 10, 25, 50],
                   pageLength: 10,
             });

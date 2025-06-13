@@ -12,15 +12,8 @@
       <div class="col-xl-12">
             <div class="card">
 
-                  @if(session('success'))
-                  <div class="alert alert-success">{{ session('success') }}</div>
-                  @endif
 
-                  @if(session('error'))
-                  <div class="alert alert-danger">{{ session('error') }}</div>
-                  @endif
 
-                  
                   <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
                         <h4 class="card-title mb-0">Members List</h4>
                         <a href="{{ route('members.create') }}" class="btn btn-primary">Add New Member</a>
@@ -74,6 +67,13 @@
                               <a href="{{ route('members.bulk-upload') }}" class="btn btn-sm btn-secondary">Bulk Upload</a>
                               <!--<button id="btn-delete-selected" class="btn btn-danger btn-sm" disabled>Delete Selected</button>-->
                         </div>
+                        @if(session('success'))
+                        <div class="alert alert-success">{{ session('success') }}</div>
+                        @endif
+
+                        @if(session('error'))
+                        <div class="alert alert-danger">{{ session('error') }}</div>
+                        @endif
                         <div class="table-responsive">
                               <table id="members-table" class="table table-bordered table-striped w-100">
                                     <thead class="table-light">
@@ -112,6 +112,7 @@
             const table = $('#members-table').DataTable({
                   processing: true,
                   serverSide: true,
+                  order: [[0, 'desc']], // 👈 Sort by first column (id) in descending order
                   ajax: {
                         url: '{{ route('members.index') }}',
                         data: function (d) {

@@ -15,7 +15,13 @@
       <div class="card-header">
 
             <a href="{{ route('service-activity-types.create') }}" class="btn btn-success mb-3">+ Add New</a>
+            @if(session('success'))
+            <div class="alert alert-success">{{ session('success') }}</div>
+            @endif
 
+            @if(session('error'))
+            <div class="alert alert-danger">{{ session('error') }}</div>
+            @endif
             <table id="activity-types-table" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
                   <thead>
                         <tr>
@@ -36,6 +42,7 @@
                   processing: true,
                   serverSide: true,
                   responsive: true,
+                  order: [[0, 'desc']], // 👈 Sort by first column (id) in descending order
                   ajax: "{{ route('service-activity-types.index') }}",
                   columns: [
                         {data: 'name', name: 'name'},

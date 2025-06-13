@@ -38,9 +38,16 @@
                   </form>
 
                   <!-- Responsive Table Wrapper -->
+                  @if(session('success'))
+                  <div class="alert alert-success">{{ session('success') }}</div>
+                  @endif
+
+                  @if(session('error'))
+                  <div class="alert alert-danger">{{ session('error') }}</div>
+                  @endif
                   <div class="table-responsive">
                         <table class="table table-bordered mb-0" id="services-table">
-                             <thead class="table-light">
+                              <thead class="table-light">
                                     <tr>
                                           <th><input type="checkbox" id="select-all"></th>
                                           <th>ID</th>
@@ -73,6 +80,7 @@
             $('#services-table').DataTable({
                   processing: true,
                   serverSide: true,
+                  order: [[0, 'desc']], // 👈 Sort by first column (id) in descending order
                   ajax: {
                         url: "{{ route('services.index') }}",
                         data: function (d) {

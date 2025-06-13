@@ -14,10 +14,6 @@
             <h5 class="mb-0">DG Team List</h5>
       </div>
       <div class="card-body">
-            @if (session('success'))
-            <div class="alert alert-success">{{ session('success') }}</div>
-            @endif
-
             <div class="d-flex align-items-center mb-3">
                   <select id="designationFilter" class="form-select me-2" style="width: 250px;">
                         <option value="">-- All Designations --</option>
@@ -30,9 +26,14 @@
                   <button id="resetBtn" class="btn btn-secondary me-2">Reset</button>
                   <a href="{{ route('dg-teams.create') }}" class="btn btn-success">Add DG Team </a>
             </div>
-
-
             <div class="card ">
+                  @if(session('success'))
+                  <div class="alert alert-success">{{ session('success') }}</div>
+                  @endif
+
+                  @if(session('error'))
+                  <div class="alert alert-danger">{{ session('error') }}</div>
+                  @endif
                   <div class="table-responsive">
                         <table id="dgTeamTable-table" class="table table-bordered table-striped w-100">
                               <thead class="table-light">
@@ -58,8 +59,9 @@
             var table = $('#dgTeamTable-table').DataTable({
                   processing: true,
                   serverSide: true,
+                  order: [[0, 'desc']], // 👈 Sort by first column (id) in descending order
                   ajax: {
-                        url: '{{ route('dg-teams.index') }}',
+                        url: '{{ route('dg - teams.index') }}',
                         data: function (d) {
                               d.designation = $('#designationFilter').val();
                         }

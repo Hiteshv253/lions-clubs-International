@@ -42,6 +42,30 @@
                         @enderror
                   </div>
 
+
+                  
+                  <div class="mb-3">
+                         <label for="event_start_date" class="form-label">Event Start</label>
+                        <input type="datetime-local" name="event_start_date" id="event_start_date"
+                               class="form-control @error('event_start_date') is-invalid @enderror"
+                               value="{{ old('event_start_date', \Carbon\Carbon::parse($event->event_start_date)->format('Y-m-d\TH:i')) }}"
+                               required>
+                        @error('event_start_date')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                  </div>
+                  <div class="mb-3">
+                            <label for="event_end_date" class="form-label">Event End</label>
+                        <input type="datetime-local" name="event_end_date" id="event_end_date"
+                               class="form-control @error('event_end_date') is-invalid @enderror"
+                               value="{{ old('event_end_date', \Carbon\Carbon::parse($event->event_end_date)->format('Y-m-d\TH:i')) }}"
+                               required>
+                        @error('event_end_date')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                  </div>
+
+
                   <div class="mb-3">
                         <label for="description" class="form-label">Description</label>
                         <textarea name="description" id="description"
@@ -85,14 +109,13 @@
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                   </div>
-
-                  <div class="mb-3 form-check">
-                        <input type="hidden" name="is_active" value="0">
-                        <input type="checkbox" name="is_active" id="is_active" value="1"
-                               class="form-check-input" {{ $event->is_active ? 'checked' : '' }}>
-                        <label for="is_active" class="form-check-label">Active?</label>
+                  <div class="col-sm-6 col-md-3">
+                        <label class="form-label">Status</label>
+                        <select name="is_active" id="is_active" class="form-select">
+                              <option value="0" {{ old('is_active', $event->is_active) == 0 ? 'selected' : '' }}>Active</option>
+                              <option value="1" {{ old('is_active', $event->is_active) == 1 ? 'selected' : '' }}>Inactive</option>
+                        </select>
                   </div>
-
                   <div class="text-end">
                         <button type="submit" class="btn btn-success">Update</button>
                         <a href="{{ route('events.index') }}" class="btn btn-secondary">Cancel</a>
@@ -101,5 +124,8 @@
       </div>
 </div>
 
-
+<script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('description');
+</script>
 @endsection

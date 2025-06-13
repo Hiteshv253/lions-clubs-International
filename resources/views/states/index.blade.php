@@ -17,18 +17,14 @@
                         <h4 class="card-title mb-0">States List</h4>
                         <a href="{{ route('states.create') }}" class="btn btn-primary">Add New States</a>
                   </div>
-                  @if(session('success'))
-                  <div class="alert alert-success">{{ session('success') }}</div>
-                  @endif
-                  @if(session('error'))
-                  <div class="alert alert-danger">{{ session('error') }}</div>
-                  @endif
+
                   <div class="card-body">
                         @if(session('success'))
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                              {{ session('success') }}
-                              <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                        </div>
+                        <div class="alert alert-success">{{ session('success') }}</div>
+                        @endif
+
+                        @if(session('error'))
+                        <div class="alert alert-danger">{{ session('error') }}</div>
                         @endif
                         <div class="table-responsive">
                               <div class="table-responsive">
@@ -55,6 +51,7 @@
                   processing: true,
                   serverSide: true,
                   ajax: '{{ route("states.index") }}',
+                  order: [[0, 'desc']], // 👈 Sort by first column (id) in descending order
                   columns: [
                         {data: 'id', name: 'id'},
                         {data: 'name', name: 'name'},

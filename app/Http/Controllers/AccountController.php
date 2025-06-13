@@ -30,7 +30,7 @@ class AccountController extends Controller {
                   }
 
                   return DataTables::of($query)
-                              ->addColumn('is_active', fn($row) => $row->is_active ? 'Yes' : 'No')
+                              ->addColumn('is_active', fn($row) => $row->is_active ? '1' : '0')
                               ->addColumn('actions', function ($row) {
                                     return view('accounts.partials.actions', compact('row'))->render();
                               })

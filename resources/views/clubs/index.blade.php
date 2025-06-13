@@ -40,7 +40,13 @@
                               <!--<a href="{{ route('clubs.exportPdf') }}" class="btn btn-danger">Export to PDF</a>-->
                         </div>
                   </div>
+                  @if(session('success'))
+                  <div class="alert alert-success">{{ session('success') }}</div>
+                  @endif
 
+                  @if(session('error'))
+                  <div class="alert alert-danger">{{ session('error') }}</div>
+                  @endif
                   <div class="table-responsive">
                         <table class="table table-bordered table-hover" id="clubs-table" style="width:100%">
                               <thead class="table-light">
@@ -69,6 +75,7 @@
             var table = $('#clubs-table').DataTable({
                   processing: true,
                   serverSide: true,
+                  order: [[0, 'desc']], // 👈 Sort by first column (id) in descending order
                   ajax: {
                         url: "{{ route('clubs.index') }}",
                         data: function (d) {

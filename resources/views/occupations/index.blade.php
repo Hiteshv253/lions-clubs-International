@@ -14,51 +14,28 @@
                         <h4 class="card-title mb-0">Occupations List</h4>
                         <a href="{{ route('occupations.create') }}" class="btn btn-primary">Add New Occupations</a>
                   </div>
-                  @if(session('success'))
-                  <div class="alert alert-success">{{ session('success') }}</div>
-                  @endif
 
-                  @if(session('error'))
-                  <div class="alert alert-danger">{{ session('error') }}</div>
-                  @endif
                   <div class="card-body">
-                    
-<!--                        <div class="row gy-2 gx-3 mb-3">
-                              <div class="col-sm-6 col-md-2">
-                                    <select id="filter-is-active" class="form-select form-select-sm">
-                                          <option value="">All</option>
-                                          <option value="1">Active</option>
-                                          <option value="0">Inactive</option>
-                                    </select>
-                              </div>
-                        </div>-->
-                        <div class="mb-3">
-                              <!--<button id="btn-filter" class="btn btn-sm btn-primary">Search</button>-->
-                              <!--<button id="btn-reset" class="btn btn-sm btn-secondary">Reset</button>-->
-                              <!--<button id="btn-delete-selected" class="btn btn-danger btn-sm" disabled>Delete Selected</button>-->
-                        </div>
+
                         @if(session('success'))
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                              {{ session('success') }}
-                              <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                        </div>
+                        <div class="alert alert-success">{{ session('success') }}</div>
                         @endif
 
-                        <div class="">
-                              <div class="table-responsive">
-                                    <table id="occupations-table" class="table table-bordered table-striped w-100">
-                                          <thead class="table-light">
-                                                <tr>
-                                                      <th><input type="checkbox" id="select-all"></th>
-                                                      <th>#</th>
-                                                      <th>Name Name</th>
-                                                      <th>Actions</th>
-                                                </tr>
-                                          </thead>
-                                          <tbody></tbody>
-                                    </table>
-                              </div>
-
+                        @if(session('error'))
+                        <div class="alert alert-danger">{{ session('error') }}</div>
+                        @endif
+                        <div class="table-responsive">
+                              <table id="occupations-table" class="table table-bordered table-striped w-100">
+                                    <thead class="table-light">
+                                          <tr>
+                                                <th><input type="checkbox" id="select-all"></th>
+                                                <th>#</th>
+                                                <th>Name Name</th>
+                                                <th>Actions</th>
+                                          </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                              </table>
                         </div>
                   </div>
             </div>

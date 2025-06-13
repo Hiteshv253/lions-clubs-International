@@ -39,21 +39,29 @@
                   @endif
                   <!-- Table -->
                   <div class="card ">
-                        <div class="table-responsive">
-                              <table id="accounts-table" class="table table-bordered table-striped w-100">
-                                    <thead class="table-light">
-                                          <tr>
-                                                <th>Name</th>
-                                                <th>Code</th>
-                                                <th>Account No</th>
-                                                <th>Type</th>
-                                                <th>Status</th>
-                                                <th class="text-center" style="width: 120px;">Actions</th>
-                                          </tr>
-                                    </thead>
-                              </table>
-                        </div>
+                        <div class="p-3 shadow-sm">
+                              @if(session('success'))
+                              <div class="alert alert-success">{{ session('success') }}</div>
+                              @endif
 
+                              @if(session('error'))
+                              <div class="alert alert-danger">{{ session('error') }}</div>
+                              @endif
+                              <div class="events-responsive">
+                                    <table id="accounts-table" class="table table-bordered table-striped w-100">
+                                          <thead class="table-light">
+                                                <tr>
+                                                      <th>Name</th>
+                                                      <th>Code</th>
+                                                      <th>Account No</th>
+                                                      <th>Type</th>
+                                                      <th>Status</th>
+                                                      <th class="text-center" style="width: 120px;">Actions</th>
+                                                </tr>
+                                          </thead>
+                                    </table>
+                              </div>
+                        </div>
                   </div>
             </div>
       </div>
@@ -65,6 +73,9 @@
             var table = $('#accounts-table').DataTable({
                   processing: true,
                   serverSide: true,
+                  order: [[0, 'desc']], // 👈 Sort by first column (id) in descending order
+                  lengthMenu: [5, 10, 25, 50],
+                  pageLength: 10,
                   ajax: {
                         url: '{{ route('accounts.index') }}',
                         data: function (d) {
@@ -80,12 +91,11 @@
                               data: 'is_active',
                               name: 'is_active',
                               render: function (data) {
-                                    return data == 1 ? '<span class="badge bg-success">Active</span>' : '<span class="badge bg-secondary">Inactive</span>';
+                                    return data == 0 ? '<span class="badge bg-success">Active</span>' : '<span class="badge bg-secondary">Inactive</span>';
                               }
                         },
                         {data: 'actions', name: 'actions', orderable: false, searchable: false}
                   ],
-                  order: [[0, 'asc']]
             });
 
             $('#filter-type').on('change', function () {

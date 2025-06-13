@@ -19,15 +19,16 @@
                   <a href="{{ route('sponsors.create') }}" class="btn btn-primary">+ Add Sponsor</a>
             </div>
 
-            <!-- Flash Message -->
-            @if(session('success'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                  {{ session('success') }}
-                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-            @endif
+
 
             <div class="card p-3 shadow-sm">
+                  @if(session('success'))
+                  <div class="alert alert-success">{{ session('success') }}</div>
+                  @endif
+
+                  @if(session('error'))
+                  <div class="alert alert-danger">{{ session('error') }}</div>
+                  @endif
                   <div class="table-responsive">
                         <table id="sponsor-table" class="table table-bordered table-striped w-100">
                               <thead class="table-light">
@@ -53,6 +54,7 @@
             let table = $('#sponsor-table').DataTable({
                   processing: true,
                   serverSide: true,
+                  order: [[0, 'desc']], // 👈 Sort by first column (id) in descending order
                   ajax: "{{ route('sponsors.index') }}",
                   columns: [
                         {data: 'name', name: 'name'},

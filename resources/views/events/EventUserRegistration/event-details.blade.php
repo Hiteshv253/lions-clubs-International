@@ -6,7 +6,7 @@
 <nav aria-label="breadcrumb">
       <ol class="breadcrumb bg-light p-2 rounded shadow-sm">
             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-            
+
             <li class="breadcrumb-item" aria-current="page"><a href="{{ route('event_user_registration.index') }}">Event</a></li>
             <li class="breadcrumb-item" aria-current="page">{{ $event->event_name }}</li>
             <li class="breadcrumb-item active" aria-current="page">Registrations</li>
@@ -21,7 +21,10 @@
                         <h4 class="card-title mb-0">{{ $event->event_name }} - Registrations</h4>
                   </div>
                   <div class="card-body">
-                        <p><strong>Date & Time:</strong> {{ \Carbon\Carbon::parse($event->date_time)->format('M d, Y h:i A') }}</p>
+                        <p><strong>Date & Time:</strong>
+                              {{ \Carbon\Carbon::parse($event->event_start_date)->format('M d, Y h:i A') }}
+                              - {{ \Carbon\Carbon::parse($event->event_end_date)->format('M d, Y h:i A') }}
+                        </p>
 
                         @if($event->registrations->isEmpty())
                         <div class="alert alert-warning mb-0">No registrations yet.</div>
@@ -50,6 +53,7 @@
             $('#registrations-table').DataTable({
                   processing: true,
                   serverSide: true,
+                  order: [[0, 'desc']], // 👈 Sort by first column (id) in descending order
                   ajax: '{{ route("event_user_registration.data", $event->id) }}',
                   columns: [
                         {data: 'id', name: 'id'},

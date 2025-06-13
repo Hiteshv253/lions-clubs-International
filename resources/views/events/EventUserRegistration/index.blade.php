@@ -119,7 +119,11 @@
                                                 <div class="flex-grow-1">
                                                       <!--<h6 class="mb-0">4.9 <i class="ri-star-fill align-bottom text-warning"></i></h6>-->
                                                 </div>
-                                                <h6 class="flex-shrink-0 text-warning mb-0"><i class="ri-time-line align-bottom"></i> {{ $event_registration['date_time'] }}</h6>
+                                                <h6 class="flex-shrink-0 text-warning mb-0"><i class="ri-time-line align-bottom"></i>
+                                                      {{ \Carbon\Carbon::parse($event_registration['event_start_date'])->format('M d, Y ') }} -
+                                                      {{ \Carbon\Carbon::parse($event_registration['event_end_date'])->format('M d, Y ') }}
+
+                                                </h6>
                                           </div>
                                     </div>
                               </div>

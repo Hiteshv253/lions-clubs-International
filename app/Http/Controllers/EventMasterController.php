@@ -48,13 +48,13 @@ class EventMasterController extends Controller {
 
       public function index(Request $request) {
             if ($request->ajax()) {
-                  $data = EventMaster::select('id', 'event_name', 'date_time', 'is_active');
+                  $data = EventMaster::select('id', 'event_name', 'date_time', 'is_active','event_start_date','event_end_date');
                   return DataTables::of($data)
                               ->addColumn('actions', function ($row) {
                                     return view('events.partials.actions', compact('row'))->render();
                               })
                               ->editColumn('is_active', function ($row) {
-                                    return $row->is_active ? 'Yes' : 'No';
+                                    return $row->is_active ? '1' : '0';
                               })
                               ->rawColumns(['actions']) // To render HTML
                               ->make(true);

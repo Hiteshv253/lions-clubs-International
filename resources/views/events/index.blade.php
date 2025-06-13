@@ -13,14 +13,15 @@
                         <h4 class="card-title mb-0">Events Master</h4>
                         <a href="{{ route('events.create') }}" class="btn btn-primary">Add New Events</a>
                   </div>
-                  @if(session('success'))
-                  <div class="alert alert-success">{{ session('success') }}</div>
-                  @endif
 
-                  @if(session('error'))
-                  <div class="alert alert-danger">{{ session('error') }}</div>
-                  @endif
                   <div class="p-3 shadow-sm">
+                        @if(session('success'))
+                        <div class="alert alert-success">{{ session('success') }}</div>
+                        @endif
+
+                        @if(session('error'))
+                        <div class="alert alert-danger">{{ session('error') }}</div>
+                        @endif
                         <div class="events-responsive">
                               <table id="events-table" class="table table-bordered table-striped w-100">
                                     <thead class="table-light">
@@ -28,7 +29,9 @@
                                                 <th>Id</th>
                                                 <th>Name</th>
                                                 <th>Date & Time</th>
-                                                <th>Active?</th>
+                                                <th>Start Date</th>
+                                                <th>End Date</th>
+                                                <th>Status</th>
                                                 <th>Actions</th>
                                           </tr>
                                     </thead>
@@ -46,11 +49,22 @@
                   processing: true,
                   serverSide: true,
                   ajax: '{{ route('events.index') }}',
+                  order: [[0, 'desc']], // 👈 Sort by first column (id) in descending order
                   columns: [
                         {data: 'id', name: 'id'},
                         {data: 'event_name', name: 'event_name'},
                         {data: 'date_time', name: 'date_time'},
-                        {data: 'is_active', name: 'is_active'},
+                        {data: 'event_start_date', name: 'event_start_date'},
+                        {data: 'event_end_date', name: 'event_end_date'},
+                        {
+                              data: 'is_active',
+                              name: 'is_active',
+                              render: function (data) {
+                                    return data == 0
+                                            ? '<span class="badge bg-success">Active</span>'
+                                            : '<span class="badge bg-secondary">Inactive</span>';
+                              }
+                        },
                         {data: 'actions', name: 'actions', orderable: false, searchable: false},
                   ]
             });
