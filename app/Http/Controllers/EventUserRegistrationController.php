@@ -25,10 +25,19 @@ class EventUserRegistrationController extends Controller {
                   $query->where('event_name', 'LIKE', '%' . $request->search . '%');
             }
 
-            $event_registrations = $query->get();
+
+
+
+            $event_registrations = EventMaster::withCount('registrations')
+                  ->has('registrations') // only fetch events that have registrations
+                  ->orderBy('id', 'desc')
+                  ->get();
+
             $totalActiveEvents = EventMaster::where('is_active', 0)->count();
+            $totalInActiveEvents = EventMaster::where('is_active', 1)->count();
+            $totalEvents = EventMaster::count();
             $totalRegisteredUsers = \App\Models\EventRegistration::count();
-            return view('events.EventUserRegistration.index', compact('event_registrations', 'totalActiveEvents', 'totalRegisteredUsers'));
+            return view('events.EventUserRegistration.index', compact('totalEvents', 'totalInActiveEvents', 'event_registrations', 'totalActiveEvents', 'totalRegisteredUsers'));
       }
 
 //            $event_registrations = EventMaster::withCount('registrations')->get();
@@ -42,7 +51,7 @@ class EventUserRegistrationController extends Controller {
       }
 
       public function getRegistrations($eventId) {
-            $data = EventRegistration::where('event_id', $eventId)->select(['id', 'name', 'email', 'created_at']);
+            $data = EventRegistration::where('event_id', $eventId)->select(['id', 'name', 'email', 'created_at', 'contact_number']);
             return DataTables::of($data)
                         ->editColumn('created_at', function ($row) {
                               return $row->created_at->format('M d, Y h:i A');

@@ -16,6 +16,7 @@ class EventRegistrationSeeder extends Seeder {
                             'name' => $faker->name,
                             'email' => $faker->unique()->safeEmail,
                             'event_id' => rand(1, 5), // assuming event IDs from 1 to 5 exist
+                            'contact_number' => $faker->phoneNumber,
                   ]);
             }
       }

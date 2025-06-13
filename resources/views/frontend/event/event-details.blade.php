@@ -35,17 +35,36 @@
                               <input type="hidden" name="event_id" value="{{ $event->id }}">
                               <h5 class="mb-3">Register for this event</h5>
                               <div class="mb-3">
-                                    <label for="name">Your Name</label>
-                                    <input name="name" type="text" class="form-control" required>
+                                    <label>Name</label>
+                                    <input name="name" id="name" type="text" class="form-control" required>
                               </div>
                               <div class="mb-3">
-                                    <label for="email">Your Email</label>
-                                    <input name="email" type="email" class="form-control" required>
+                                    <label>Contact Number</label>
+                                    <input name="contact_number" id="contact_number" type="number" class="form-control" required>
                               </div>
-                              <button type="submit" class="btn btn-primary">Register Now</button>
+                              <div class="mb-3">
+                                    <label>Email ID</label>
+                                    <input name="email" type="email" id="email" class="form-control" required>
+                              </div>
+                              <button type="submit" class="btn btn-success" id="submitBtn{{ $event->id }}">
+                                    <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                                    <span class="btn-text">Register Now</span>
+                              </button>
                         </form>
                   </div>
             </div>
       </div>
 </section>
+
+<script>
+      $(document).ready(function () {
+            $('form').on('submit', function () {
+                  const btn = $(this).find('button[type="submit"]');
+                  btn.prop('disabled', true);
+                  btn.find('.spinner-border').removeClass('d-none');
+                  btn.find('.btn-text').text('Submitting...');
+            });
+      });
+</script>
+
 @endsection

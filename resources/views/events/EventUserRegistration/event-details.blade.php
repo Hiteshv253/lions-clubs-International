@@ -7,6 +7,8 @@
       <ol class="breadcrumb bg-light p-2 rounded shadow-sm">
             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
             
+            <li class="breadcrumb-item" aria-current="page"><a href="{{ route('event_user_registration.index') }}">Event</a></li>
+            <li class="breadcrumb-item" aria-current="page">{{ $event->event_name }}</li>
             <li class="breadcrumb-item active" aria-current="page">Registrations</li>
       </ol>
 </nav>
@@ -31,6 +33,7 @@
                                                 <th>#</th>
                                                 <th>Name</th>
                                                 <th>Email</th>
+                                                <th>Contact Number</th>
                                                 <th>Registered At</th>
                                           </tr>
                                     </thead>
@@ -52,6 +55,7 @@
                         {data: 'id', name: 'id'},
                         {data: 'name', name: 'name'},
                         {data: 'email', name: 'email'},
+                        {data: 'contact_number', name: 'contact_number'},
                         {data: 'created_at', name: 'created_at'}
                   ]
             });

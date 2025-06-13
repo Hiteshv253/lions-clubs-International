@@ -57,8 +57,46 @@ class HomePageController extends Controller {
             return view('frontend.contact_page.index');
       }
 
-      public function event() {
-            $fetchEvents = EventMaster::where('is_active', '=', '0')->get();
+      public function loadMore(Request $request) {
+
+            $offset = $request->get('offset', 0);
+            $limit = 8;
+
+            $events = EventMaster::latest()->skip($offset)->take($limit)->get();
+
+            $html = '';
+            foreach ($events as $event) {
+                  $html .= view('frontend.event.partials.event_card', ['event' => $event])->render();
+            }
+
+            return response()->json([
+                            'html' => $html,
+                            'count' => $events->count()
+            ]);
+      }
+
+      public function event(Request $request) {
+
+            if ($request->ajax()) {
+                  $offset = $request->get('offset', 0);
+                  $events = EventMaster::orderBy('date_time', 'desc')
+                        ->skip($offset)
+                        ->take(8)
+                        ->get();
+
+                  $html = '';
+                  foreach ($events as $event) {
+                        $html .= view('frontend.event.partials.event_card', compact('event'))->render();
+                  }
+
+                  return response()->json([
+                                  'html' => $html,
+                                  'count' => $events->count()
+                  ]);
+            }
+
+            // Initial 10
+            $fetchEvents = EventMaster::orderBy('date_time', 'desc')->take(8)->get();
 
             return view('frontend.event.index', ['fetchEvents' => $fetchEvents]);
       }
@@ -79,12 +117,14 @@ class HomePageController extends Controller {
                       'name' => $request->name,
                       'email' => $request->email,
                       'event_id' => $request->event_id,
+                      'contact_number' => $request->contact_number,
             ];
 
             EventRegistration::create([
                       'name' => $request->name,
                       'email' => $request->email,
                       'event_id' => $request->event_id,
+                      'contact_number' => $request->contact_number,
             ]);
 
             $event = EventMaster::find($request->event_id);

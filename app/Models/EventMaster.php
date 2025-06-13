@@ -25,7 +25,7 @@ class EventMaster extends Model {
             return $this->hasMany(EventRegistration::class, 'event_id');
       }
 
-// Optionally, if you want to access the user who created:
+    // Optionally, if you want to access the user who created:
 //      public function creator() {
 //            return $this->belongsTo(User::class, 'is_create_by');
 //      }

@@ -16,6 +16,12 @@ Route::get('/contact', [HomePageController::class, 'contact'])->name('contact');
 Route::get('/event', [HomePageController::class, 'event'])->name('event');
 Route::get('/events/{id}', [HomePageController::class, 'show_event'])->name('events.show_event');
 
+
+Route::get('/load-more-events', [HomePageController::class, 'loadMore'])->name('events_frnt.load_more');
+
+
+
+
 Route::post('/submit-inquiry', [HomePageController::class, 'submit'])->name('inquiry.submit');
 ;
 Route::view('/thank-you', 'thank-you')->name('thank.you');
