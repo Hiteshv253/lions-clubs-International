@@ -49,3 +49,42 @@ class LoginController extends Controller {
             return back()->with('error', 'The provided credentials do not match our records.');
       }
 }
+//
+//public function authenticate(Request $request): RedirectResponse
+//{
+//    $request->validate([
+//        'login' => ['required'], // could be email or membership_id
+//        'password' => ['required'],
+//    ]);
+//
+//    $loginInput = $request->input('login');
+//    $remember = $request->boolean('remember_me');
+//
+//    // Determine if the input is an email
+//    $fieldType = filter_var($loginInput, FILTER_VALIDATE_EMAIL) ? 'email' : 'membership_id';
+//
+//    $credentials = [
+//        $fieldType => $loginInput,
+//        'password' => $request->input('password'),
+//    ];
+//
+//    if (Auth::attempt($credentials, $remember)) {
+//        $request->session()->regenerate();
+//
+//        $userId = Auth::id();
+//        $currentSessionId = Session::getId();
+//
+//        DB::table('sessions')
+//            ->where('user_id', $userId)
+//            ->where('id', '!=', $currentSessionId)
+//            ->delete();
+//
+//        DB::table('sessions')
+//            ->where('id', $currentSessionId)
+//            ->update(['user_id' => $userId]);
+//
+//        return redirect()->intended('/lions/dashboard');
+//    }
+//
+//    return back()->with('error', 'The provided credentials do not match our records.');
+//}

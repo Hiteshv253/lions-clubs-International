@@ -87,7 +87,7 @@ done- ⁠Region Crud District wise
 done- ⁠Zone Crud Region wise
 done- ⁠Lion Crud Zone wise
 - Admin will be adding members by putting First Name, Last Name & Email ID , Lion ID & Member ID- All mandatory fields
-- ⁠Once user is added, Membership id and auto generated password will be sent to user over an email
+done- ⁠Once user is added, Membership id and auto generated password will be sent to user over an email
 - ⁠Users can’t register themselves (No self regulation is allowed by users)
 
 Members Details
@@ -110,15 +110,15 @@ Post Login - Data Dictionary
 
 Footer
 - E-club Website Login link should be provided
-- ⁠There will be an inquiry form at footer part (Name, Email Id and Mobile Number) to get users data who show an interest
+done- ⁠There will be an inquiry form at footer part (Name, Email Id and Mobile Number) to get users data who show an interest
 
 Event
 Admin side
-- Add/Edit/Delete Event with Start and End Date
+done- Add/Edit/Delete Event with Start and End Date
 - ⁠Users wise event history to be shown
 
 User side
-- Users can register for events
+done- Users can register for events
 - ⁠After event registration, event registration card to be provided with unique QR code and user’s detail
 - ⁠Event registration history to be shown to user
 

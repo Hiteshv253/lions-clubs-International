@@ -14,6 +14,7 @@ use App\Models\EventRegistration;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
 use App\Models\FooterMessage;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 //use Illuminate\Support\Facades\Http;  // <--- THIS LINE IS REQUIRED
 //use GuzzleHttp\Client;
@@ -136,6 +137,11 @@ class HomePageController extends Controller {
             return response()->json(['success' => true, 'message' => 'Thank you! Message sent.']);
       }
 
+      public function event_card($id) {
+            $event = Event::findOrFail($id);
+            return view('events.card', compact('event'));
+      }
+
       public function register(Request $request) {
 //            dd($request->all());
 //            $data = $request->validate([
@@ -170,6 +176,22 @@ class HomePageController extends Controller {
                         ->subject('You have successfully registered for the event');
             });
 
+//            //QR CODE
+//            // Generate QR code content (e.g., event ID URL)
+//            $qrData = route('events.show', $event->id);
+//
+//            // Define filename and store QR image
+//            $filename = 'qr/event-' . $event->id . '.png';
+//            $qrImage = QrCode::format('png')->size(300)->generate($qrData);
+//            Storage::disk('public')->put($filename, $qrImage);
+//
+//            $registration = new EventRegistration();
+//            $registration->name = $request->name;
+//            $registration->email = $request->email;
+//            $registration->contact_number = $request->contact_number;
+//            $registration->event_id = $request->event_id;
+//            $registration->event_qr_code = Str::uuid(); // or generate QR and store string
+//            $registration->save();
             // ✅ Step 8: Return response
 
             return view('pages.auth.event-success')->with([

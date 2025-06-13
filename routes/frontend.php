@@ -16,6 +16,9 @@ Route::get('/contact', [HomePageController::class, 'contact'])->name('contact');
 Route::get('/event', [HomePageController::class, 'event'])->name('event');
 Route::get('/show_event/{id}', [HomePageController::class, 'show_event'])->name('show_event');
 
+
+Route::get('/events/event_card/{id}', [HomePageController::class, 'event_card'])->name('events.event_card');
+
 Route::post('/footer-contact', [HomePageController::class, 'footer_store'])->name('footer.contact');
 Route::post('/inquiry-contact', [HomePageController::class, 'inquiry_store'])->name('inquiry.contact');
 
