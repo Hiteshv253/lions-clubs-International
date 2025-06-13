@@ -16,6 +16,7 @@ return new class extends Migration {
                   $table->string('email');
                   $table->string('contact_number')->nullable();
                   $table->unsignedBigInteger('event_id');
+                  $table->boolean('is_active')->default(true)->comment('0: active | 1: in-active');
                   $table->timestamps();
             });
       }

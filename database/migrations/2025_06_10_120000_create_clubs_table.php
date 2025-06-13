@@ -17,7 +17,7 @@ return new class extends Migration {
                   $table->string('club_number');
                   $table->date('charter_date')->nullable();
                   $table->date('inauguration_date_club')->nullable();
-                  $table->boolean('is_active')->default(true);
+                  $table->boolean('is_active')->default(true)->comment('0: active | 1: in-active');
                   $table->unsignedBigInteger('is_create_by')->default(true); // user ID who createdreated
                   $table->timestamps();
             });

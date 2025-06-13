@@ -10,12 +10,14 @@ return new class extends Migration {
        * Run the migrations.
        */
       public function up(): void {
-            Schema::create('regions', function (Blueprint $table) {
+            Schema::create('footer_contact_us', function (Blueprint $table) {
                   $table->id();
-                  $table->foreignId('district_id')->constrained()->onDelete('cascade');
                   $table->string('name');
+                  $table->string('email');
+                  $table->text('message');
+                  $table->text('contact_no');
                   $table->boolean('is_active')->default(true)->comment('0: active | 1: in-active');
-                  $table->unsignedBigInteger('is_create_by')->default(true); // user ID who created
+                  $table->string('inquery_from')->default(true)->comment('0: footer | 1: contat');
                   $table->timestamps();
             });
       }
@@ -24,6 +26,6 @@ return new class extends Migration {
        * Reverse the migrations.
        */
       public function down(): void {
-            Schema::dropIfExists('regions');
+            Schema::dropIfExists('footer_contact_us');
       }
 };

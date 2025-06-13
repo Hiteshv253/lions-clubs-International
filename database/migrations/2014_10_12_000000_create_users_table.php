@@ -18,7 +18,7 @@ return new class extends Migration {
                   $table->string('membership_id')->unique()->nullable();
                   $table->timestamp('email_verified_at')->nullable();
                   $table->string('password');
-                  $table->boolean('is_active')->default(true);
+                  $table->boolean('is_active')->default(true)->comment('0: active | 1: in-active');
                   $table->unsignedBigInteger('is_create_by')->default(true); // user ID who created
                   $table->rememberToken();
                   $table->timestamps();

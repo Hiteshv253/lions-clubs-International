@@ -77,6 +77,8 @@ class EventMasterController extends Controller {
             $data = $request->validate([
                       'event_name' => 'required|string|max:255',
                       'date_time' => 'required|date',
+                      'event_end_date' => 'required|date',
+                      'event_start_date' => 'required|date',
                       'description' => 'nullable|string',
                       'image' => 'nullable|image|max:2048',
                       'banner_image' => 'nullable|image|max:4096',
@@ -135,6 +137,8 @@ class EventMasterController extends Controller {
             $data = $request->validate([
                       'event_name' => 'required|string|max:255',
                       'date_time' => 'required|date',
+                      'event_end_date' => 'required|date',
+                      'event_start_date' => 'required|date',
                       'description' => 'nullable|string',
                       'image' => 'nullable|image|max:2048',
                       'banner_image' => 'nullable|image|max:4096',

@@ -13,7 +13,7 @@ return new class extends Migration {
             Schema::create('states', function (Blueprint $table) {
                   $table->id();
                   $table->string('name');
-                  $table->boolean('is_active')->default(true);
+                  $table->boolean('is_active')->default(true)->comment('0: active | 1: in-active');
                   $table->unsignedBigInteger('is_create_by')->default(true); // user ID who created
                   $table->timestamps();
             });

@@ -4,11 +4,11 @@
 <div class="container-fluid bg-breadcrumb">
       <div class="container text-center py-5" style="max-width: 900px;">
             <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">Contact Us</h4>
-<!--            <ol class="breadcrumb d-flex justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
-                  <li class="breadcrumb-item"><a href="index-2.html">Home</a></li>
-                  <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                  <li class="breadcrumb-item active text-primary">Contact</li>
-            </ol>-->
+            <!--            <ol class="breadcrumb d-flex justify-content-center mb-0 wow fadeInDown" data-wow-delay="0.3s">
+                              <li class="breadcrumb-item"><a href="index-2.html">Home</a></li>
+                              <li class="breadcrumb-item"><a href="#">Pages</a></li>
+                              <li class="breadcrumb-item active text-primary">Contact</li>
+                        </ol>-->
       </div>
 </div>
 <!-- Header End -->
@@ -48,22 +48,10 @@
                                                       <label for="email">Email ID</label>
                                                 </div>
                                           </div>
-                                          <div class="col-lg-12 col-xl-6">
+                                          <div class="col-lg-12 col-xl-12">
                                                 <div class="form-floating">
                                                       <input type="phone" class="form-control border-0" id="phone" name="phone" placeholder="Phone">
                                                       <label for="phone">Contact Number</label>
-                                                </div>
-                                          </div>
-                                          <div class="col-lg-12 col-xl-6">
-                                                <div class="form-floating">
-                                                      <input type="text" class="form-control border-0" id="project" name="project" placeholder="Project">
-                                                      <label for="project">Your Project</label>
-                                                </div>
-                                          </div>
-                                          <div class="col-12">
-                                                <div class="form-floating">
-                                                      <input type="text" class="form-control border-0" id="subject" name="subject" placeholder="Subject">
-                                                      <label for="subject">Subject</label>
                                                 </div>
                                           </div>
                                           <div class="col-12">
@@ -194,53 +182,52 @@
 <!-- Contact End -->
 
 <script>
-$(document).ready(function () {
-    $('#inquiryForm').on('submit', function (e) {
-        e.preventDefault();
+      $(document).ready(function () {
+            $('#inquiryForm').on('submit', function (e) {
+                  e.preventDefault();
 
-        let $button = $(this).find('button[type="submit"]');
-        $button.prop('disabled', true).text('Sending...');
+                  const $form = $(this);
+                  const $button = $form.find('button[type="submit"]');
+                  const originalText = $button.text();
 
-        let formData = {
-            name: $('#name').val(),
-            email: $('#email').val(),
-            phone: $('#phone').val(),
-            project: $('#project').val(),
-            subject: $('#subject').val(),
-            message: $('#message').val(),
-            _token: '{{ csrf_token() }}'
-        };
+                  $button.prop('disabled', true).html('<span class="spinner-border spinner-border-sm me-2"></span> Sending...');
 
-        if (!formData.name || !formData.email || !formData.message) {
-            alert("Name, Email, and Message are required.");
-            $button.prop('disabled', false).text('Send Message');
-            return;
-        }
+                  const formData = {
+                        name: $('#name').val(),
+                        email: $('#email').val(),
+                        phone: $('#phone').val(),
+                        message: $('#message').val(),
+                        _token: '{{ csrf_token() }}'
+                  };
 
-        $.ajax({
-            url: '{{ route("inquiry.submit") }}',
-            type: 'POST',
-            data: formData,
-            success: function () {
-                window.location.href = '{{ route("thank.you") }}';
-            },
-            error: function (xhr) {
-                $button.prop('disabled', false).text('Send Message');
+                  if (!formData.name || !formData.email || !formData.message) {
+                        alert("Name, Email, and Message are required.");
+                        $button.prop('disabled', false).text(originalText);
+                        return;
+                  }
 
-                if (xhr.status === 422) {
-                    let errors = xhr.responseJSON.errors;
-                    let msg = '';
-                    $.each(errors, function (key, value) {
-                        msg += value + '\n';
-                    });
-                    alert(msg);
-                } else {
-                    alert('Something went wrong. Please try again.');
-                }
-            }
-        });
-    });
-});
+                  $.ajax({
+                        url: '{{ route("inquiry.contact") }}',
+                        type: 'POST',
+                        data: formData,
+                        success: function () {
+                              window.location.href = '{{ route("thank.you") }}';
+                        },
+                        error: function (xhr) {
+                              $button.prop('disabled', false).text(originalText);
+
+                              if (xhr.status === 422) {
+                                    let errors = xhr.responseJSON.errors;
+                                    let msg = Object.values(errors).map(v => v[0]).join('\n');
+                                    alert(msg);
+                              } else {
+                                    alert('Something went wrong. Please try again.');
+                              }
+                        }
+                  });
+            });
+      });
+
 </script>
 
 

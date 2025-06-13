@@ -1,26 +1,48 @@
+<style>
+    .event-card {
+        transition: all 0.3s ease-in-out;
+        border-radius: 1rem;
+        overflow: hidden;
+    }
+    .event-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    .event-image {
+        height: 180px;
+        object-fit: cover;
+    }
+</style>
+
 <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.4s">
-      <div class="service-item">
-            <div class="service-img">
-                  <img src="{{ $event->image }}" class="img-fluid rounded-top w-100" alt="">
-                  <div class="service-icon p-3">
-                        <i class="fa fa-hospital fa-2x"></i>
-                  </div>
+    <div class="card event-card h-100 shadow-sm border-0">
+        <div class="position-relative">
+            <img src="{{ $event->image }}" alt="Event Image" class="w-100 event-image">
+            <div class="position-absolute top-0 start-0 p-2 bg-primary text-white rounded-bottom-end">
+                <i class="fa fa-calendar fa-sm me-1"></i>
+                {{ \Carbon\Carbon::parse($event->start_date)->format('M d') }} to
+                {{ \Carbon\Carbon::parse($event->end_date)->format('M d') }}
             </div>
-            <div class="service-content p-4">
-                  <div class="service-content-inner">
-                        <h5 class="card-title text-truncate">{{ $event->event_name }}</h5>
-                        <p class="card-text small text-muted mb-2">
-                              <i class="fa fa-calendar me-2"></i> {{ \Carbon\Carbon::parse($event->date_time)->format('M d, Y h:i A') }}
-                        </p>
-                        <p class="card-text mb-4">{{ \Illuminate\Support\Str::limit($event->description, 100) }}</p>
-                        <div class="mt-auto d-flex justify-content-between">
-                              <a href="{{ route('events.show_event', $event->id) }}" class="btn btn-outline-primary btn-sm rounded-pill px-3">Read More</a>
-                              <a href="#" class="btn btn-primary btn-sm rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#registerModal{{ $event->id }}">Register</a>
-                        </div>
-                  </div>
+        </div>
+        <div class="card-body d-flex flex-column">
+            <h5 class="card-title text-truncate">{{ $event->event_name }}</h5>
+            <p class="small text-muted mb-2">
+                <i class="fa fa-clock me-2 text-primary"></i>
+                {{ \Carbon\Carbon::parse($event->date_time)->format('M d, Y h:i A') }}
+            </p>
+            <p class="card-text small text-muted mb-3">{{ \Illuminate\Support\Str::limit($event->description, 90) }}</p>
+            <div class="mt-auto d-flex justify-content-between">
+                <a href="{{ route('show_event', $event->id) }}" class="btn btn-outline-primary btn-sm rounded-pill px-3">
+                    Read More
+                </a>
+                <a href="#" class="btn btn-primary btn-sm rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#registerModal{{ $event->id }}">
+                    Register
+                </a>
             </div>
-      </div>
+        </div>
+    </div>
 </div>
+
 
 
 <!-- Registration Modal -->

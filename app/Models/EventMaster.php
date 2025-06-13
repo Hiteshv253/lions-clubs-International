@@ -17,6 +17,8 @@ class EventMaster extends Model {
                 'description',
                 'image',
                 'banner_image',
+                'event_start_date',
+                'event_end_date',
                 'is_active',
                 'is_create_by',
       ];
@@ -25,7 +27,7 @@ class EventMaster extends Model {
             return $this->hasMany(EventRegistration::class, 'event_id');
       }
 
-    // Optionally, if you want to access the user who created:
+      // Optionally, if you want to access the user who created:
 //      public function creator() {
 //            return $this->belongsTo(User::class, 'is_create_by');
 //      }

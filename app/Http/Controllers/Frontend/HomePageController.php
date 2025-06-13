@@ -13,31 +13,12 @@ use App\Models\EventMaster;
 use App\Models\EventRegistration;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
+use App\Models\FooterMessage;
 
 //use Illuminate\Support\Facades\Http;  // <--- THIS LINE IS REQUIRED
 //use GuzzleHttp\Client;
 
 class HomePageController extends Controller {
-
-      public function submit(Request $request) {
-
-            $data = $request->validate([
-                      'name' => 'required|string|max:255',
-                      'email' => 'required|email',
-                      'phone' => 'nullable|string',
-                      'project' => 'nullable|string',
-                      'subject' => 'nullable|string',
-                      'message' => 'required|string|max:2000',
-            ]);
-
-            // Send email
-            Mail::raw("Name: {$data['name']}\nEmail: {$data['email']}\nPhone: {$data['phone']}\nProject: {$data['project']}\nMessage: {$data['message']}", function ($message) use ($data) {
-                  $message->to('your@example.com')
-                        ->subject($data['subject'] ?? 'New Inquiry');
-            });
-
-            return response()->json(['message' => 'Inquiry submitted successfully!']);
-      }
 
       public function home() {
 
@@ -81,6 +62,7 @@ class HomePageController extends Controller {
                   $offset = $request->get('offset', 0);
                   $events = EventMaster::orderBy('date_time', 'desc')
                         ->skip($offset)
+                        ->where('is_active', 0)
                         ->take(8)
                         ->get();
 
@@ -104,6 +86,54 @@ class HomePageController extends Controller {
       public function show_event($id) {
             $event = EventMaster::findOrFail($id);
             return view('frontend.event.event-details', compact('event'));
+      }
+
+      public function inquiry_store(Request $request) {
+
+            $data = $request->validate([
+                      'name' => 'required|string|max:255',
+                      'email' => 'required|email',
+                      'phone' => 'nullable|string',
+                      'message' => 'required|string|max:2000',
+            ]);
+
+            FooterMessage::create([
+                      'name' => $request->name,
+                      'email' => $request->email,
+                      'message' => $request->message,
+                      'inquery_from' => 2,
+                      'contact_no' => $request->phone, // <-- this must be present
+            ]);
+
+            // Send email
+            Mail::raw("Name: {$data['name']}\nEmail: {$data['email']}\nPhone: {$data['phone']}\nMessage: {$data['message']}", function ($message) use ($data) {
+                  $message->to('your@example.com')
+                        ->subject($data['subject'] ?? 'New Inquiry');
+            });
+
+            return response()->json(['message' => 'Inquiry submitted successfully!']);
+      }
+
+      public function footer_store(Request $request) {
+//            dd($request->all());
+//            $request->validate([
+//                      'name' => 'required|string|max:255',
+//                      'email' => 'required|email',
+//                      'message' => 'required|string|max:1000',
+//            ]);
+//            'name', 'email', 'message', 'contact_no', 'inquery_from', 'is_active'
+            // Example: save to DB (you can adjust this)
+
+
+            FooterMessage::create([
+                      'name' => $request->name,
+                      'email' => $request->email,
+                      'message' => $request->message,
+                      'inquery_from' => 1,
+                      'contact_no' => $request->contact_no, // <-- this must be present
+            ]);
+
+            return response()->json(['success' => true, 'message' => 'Thank you! Message sent.']);
       }
 
       public function register(Request $request) {

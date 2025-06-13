@@ -42,58 +42,30 @@
                                     </div>
                                     <div class="col-md-6 col-lg-6 col-xl-4">
                                           <div class="footer-item">
-                                                <h4 class="mb-4 text-white">Instagram</h4>
-                                                <div class="row g-3">
-                                                      <div class="col-4">
-                                                            <div class="footer-instagram rounded">
-                                                                  <img src="{{ asset('frontend-assets') }}/img/instagram-footer-1.jpg" class="img-fluid w-100" alt="">
-                                                                  <div class="footer-search-icon">
-                                                                        <a href="{{ asset('frontend-assets') }}/img/instagram-footer-1.jpg" data-lightbox="footerInstagram-1" class="my-auto"><i class="fas fa-link text-white"></i></a>
-                                                                  </div>
-                                                            </div>
+                                               <h4 class="text-white">Contact Us</h4>
+                                                <form id="footer-contact-form" class="bg-dark p-3 rounded shadow-sm">
+                                                      @csrf
+                                                      <div class="mb-3">
+                                                            <input type="text" name="name" class="form-control rounded-3" placeholder="Your Name" required>
                                                       </div>
-                                                      <div class="col-4">
-                                                            <div class="footer-instagram rounded">
-                                                                  <img src="{{ asset('frontend-assets') }}/img/instagram-footer-2.jpg" class="img-fluid w-100" alt="">
-                                                                  <div class="footer-search-icon">
-                                                                        <a href="{{ asset('frontend-assets') }}/img/instagram-footer-2.jpg" data-lightbox="footerInstagram-2" class="my-auto"><i class="fas fa-link text-white"></i></a>
-                                                                  </div>
-                                                            </div>
+                                                      <div class="mb-3">
+                                                            <input type="email" name="email" class="form-control rounded-3" placeholder="Your Email" required>
                                                       </div>
-                                                      <div class="col-4">
-                                                            <div class="footer-instagram rounded">
-                                                                  <img src="{{ asset('frontend-assets') }}/img/instagram-footer-3.jpg" class="img-fluid w-100" alt="">
-                                                                  <div class="footer-search-icon">
-                                                                        <a href="{{ asset('frontend-assets') }}/img/instagram-footer-3.jpg" data-lightbox="footerInstagram-3" class="my-auto"><i class="fas fa-link text-white"></i></a>
-                                                                  </div>
-                                                            </div>
+                                                      <div class="mb-3">
+                                                            <input type="number" name="contact_no" class="form-control rounded-3" placeholder="Your Contact No" required>
                                                       </div>
-                                                      <div class="col-4">
-                                                            <div class="footer-instagram rounded">
-                                                                  <img src="{{ asset('frontend-assets') }}/img/instagram-footer-4.jpg" class="img-fluid w-100" alt="">
-                                                                  <div class="footer-search-icon">
-                                                                        <a href="{{ asset('frontend-assets') }}/img/instagram-footer-4.jpg" data-lightbox="footerInstagram-4" class="my-auto"><i class="fas fa-link text-white"></i></a>
-                                                                  </div>
-                                                            </div>
+                                                      <div class="mb-3">
+                                                            <textarea name="message" class="form-control rounded-3" rows="2" placeholder="Your Message" required></textarea>
                                                       </div>
-                                                      <div class="col-4">
-                                                            <div class="footer-instagram rounded">
-                                                                  <img src="{{ asset('frontend-assets') }}/img/instagram-footer-5.jpg" class="img-fluid w-100" alt="">
-                                                                  <div class="footer-search-icon">
-                                                                        <a href="{{ asset('frontend-assets') }}/img/instagram-footer-5.jpg" data-lightbox="footerInstagram-5" class="my-auto"><i class="fas fa-link text-white"></i></a>
-                                                                  </div>
-                                                            </div>
-                                                      </div>
-                                                      <div class="col-4">
-                                                            <div class="footer-instagram rounded">
-                                                                  <img src="{{ asset('frontend-assets') }}/img/instagram-footer-6.jpg" class="img-fluid w-100" alt="">
-                                                                  <div class="footer-search-icon">
-                                                                        <a href="{{ asset('frontend-assets') }}/img/instagram-footer-6.jpg" data-lightbox="footerInstagram-6" class="my-auto"><i class="fas fa-link text-white"></i></a>
-                                                                  </div>
-                                                            </div>
-                                                      </div>
-                                                </div>
+                                                      <button type="submit" class="btn btn-outline-light w-100">
+                                                            <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                                                            <span class="btn-text">Send Message</span>
+                                                      </button>
+                                                      <div id="footer-form-alert" class="mt-2 text-white small d-none"></div>
+                                                </form>
                                           </div>
+
+
                                     </div>
                               </div>
                         </div>
@@ -132,10 +104,6 @@
                                           <p class="mb-0">(+012) 3456 7890</p>
                                     </div>
                               </div>
-
-
-
-
                         </div>
                   </div>
             </div>
@@ -154,19 +122,42 @@
                         <!--/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/-->
                         <!--/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/-->
                         <!--/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/-->
-                        Designed By <a class="border-bottom text-white" href="https://htmlcodex.com/">HTML Codex</a> Distributed By <a class="border-bottom text-white" href="https://themewagon.com/">ThemeWagon</a>
+                        Designed By <a class="border-bottom text-white" href="https://htmlcodex.com/">AW</a> Distributed By <a class="border-bottom text-white" href="https://themewagon.com/">ThemeWagon</a>
                   </div>
             </div>
       </div>
 </div>
-<!-- Copyright End -->
 
 
-<!-- Back to Top -->
-<a href="#" class="btn btn-primary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
-<!-- Template Javascript -->
 </body>
+<script>
+      document.getElementById('footer-contact-form').addEventListener('submit', function (e) {
+            e.preventDefault();
 
+            const form = this;
+            const alertBox = document.getElementById('footer-form-alert');
+            const formData = new FormData(form);
 
-<!-- Mirrored from themewagon.github.io/LifeSure/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 28 May 2025 08:55:41 GMT -->
+            fetch("{{ route('footer.contact') }}", {
+                  method: 'POST',
+                  headers: {
+                        'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value
+                  },
+                  body: formData
+            })
+                    .then(response => response.json())
+                    .then(data => {
+                          alertBox.textContent = data.message;
+                          alertBox.classList.remove('d-none');
+                          alertBox.classList.add('text-success');
+                          form.reset();
+                    })
+                    .catch(error => {
+                          alertBox.textContent = 'Something went wrong. Try again.';
+                          alertBox.classList.remove('d-none');
+                          alertBox.classList.add('text-danger');
+                    });
+      });
+</script>
+
 </html>

@@ -19,24 +19,22 @@ class EventUserRegistrationController extends Controller {
        * Display a listing of events.
        */
       public function index(Request $request) {
-            $query = EventMaster::withCount('registrations');
+            $query = EventMaster::withCount('registrations')
+                  ->where('is_active', 0)
+                  ->has('registrations'); // fetch only events with at least one registration
 
             if ($request->has('search') && $request->search) {
                   $query->where('event_name', 'LIKE', '%' . $request->search . '%');
             }
 
+            $event_registrations = $query->orderBy('id', 'desc')->get();
 
-
-
-            $event_registrations = EventMaster::withCount('registrations')
-                  ->has('registrations') // only fetch events that have registrations
-                  ->orderBy('id', 'desc')
-                  ->get();
-
-            $totalActiveEvents = EventMaster::where('is_active', 0)->count();
-            $totalInActiveEvents = EventMaster::where('is_active', 1)->count();
+// Summary stats
+            $totalActiveEvents = EventMaster::where('is_active', 1)->count(); // assuming 1 = active
+            $totalInActiveEvents = EventMaster::where('is_active', 0)->count();
             $totalEvents = EventMaster::count();
             $totalRegisteredUsers = \App\Models\EventRegistration::count();
+
             return view('events.EventUserRegistration.index', compact('totalEvents', 'totalInActiveEvents', 'event_registrations', 'totalActiveEvents', 'totalRegisteredUsers'));
       }
 

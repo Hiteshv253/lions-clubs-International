@@ -81,11 +81,11 @@ Data Upload
 - Initial 4000-5000 data will be provided by Lions club team and we will help them to upload it in one go
 
 Registration
-- Hierarchy is District -> Region -> Zone -> Club
-- District Crud
-- ⁠Region Crud District wise
-- ⁠Zone Crud Region wise
-- ⁠Lion Crud Zone wise
+done- Hierarchy is District -> Region -> Zone -> Club
+done- District Crud
+done- ⁠Region Crud District wise
+done- ⁠Zone Crud Region wise
+done- ⁠Lion Crud Zone wise
 - Admin will be adding members by putting First Name, Last Name & Email ID , Lion ID & Member ID- All mandatory fields
 - ⁠Once user is added, Membership id and auto generated password will be sent to user over an email
 - ⁠Users can’t register themselves (No self regulation is allowed by users)

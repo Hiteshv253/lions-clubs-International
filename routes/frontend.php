@@ -14,15 +14,13 @@ Route::get('/about', [HomePageController::class, 'about'])->name('about');
 Route::get('/service', [HomePageController::class, 'service'])->name('service');
 Route::get('/contact', [HomePageController::class, 'contact'])->name('contact');
 Route::get('/event', [HomePageController::class, 'event'])->name('event');
-Route::get('/events/{id}', [HomePageController::class, 'show_event'])->name('events.show_event');
+Route::get('/show_event/{id}', [HomePageController::class, 'show_event'])->name('show_event');
 
+Route::post('/footer-contact', [HomePageController::class, 'footer_store'])->name('footer.contact');
+Route::post('/inquiry-contact', [HomePageController::class, 'inquiry_store'])->name('inquiry.contact');
 
 Route::get('/load-more-events', [HomePageController::class, 'loadMore'])->name('events_frnt.load_more');
 
-
-
-
-Route::post('/submit-inquiry', [HomePageController::class, 'submit'])->name('inquiry.submit');
 ;
 Route::view('/thank-you', 'thank-you')->name('thank.you');
 Route::post('/event-register', [HomePageController::class, 'register'])->name('event.register');
