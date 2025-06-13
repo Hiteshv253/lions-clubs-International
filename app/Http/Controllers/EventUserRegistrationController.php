@@ -33,7 +33,7 @@ class EventUserRegistrationController extends Controller {
             $totalActiveEvents = EventMaster::where('is_active', 1)->count(); // assuming 1 = active
             $totalInActiveEvents = EventMaster::where('is_active', 0)->count();
             $totalEvents = EventMaster::count();
-            $totalRegisteredUsers = \App\Models\EventRegistration::count();
+            $totalRegisteredUsers = \App\Models\EventRegistration::where('is_active', 0)->count();
 
             return view('events.EventUserRegistration.index', compact('totalEvents', 'totalInActiveEvents', 'event_registrations', 'totalActiveEvents', 'totalRegisteredUsers'));
       }
