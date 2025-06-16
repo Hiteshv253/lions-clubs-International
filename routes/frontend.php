@@ -27,3 +27,7 @@ Route::get('/load-more-events', [HomePageController::class, 'loadMore'])->name('
 ;
 Route::view('/thank-you', 'thank-you')->name('thank.you');
 Route::post('/event-register', [HomePageController::class, 'register'])->name('event.register');
+
+Route::get('/members-ui', [HomePageController::class, 'members_ui'])->name('members-ui');
+
+Route::get('/members/ajax', [HomePageController::class, 'ajax'])->name('frontend.members.ajax');

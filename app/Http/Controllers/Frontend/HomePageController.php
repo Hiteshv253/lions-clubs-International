@@ -15,11 +15,55 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Validator;
 use App\Models\FooterMessage;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
-
-//use Illuminate\Support\Facades\Http;  // <--- THIS LINE IS REQUIRED
-//use GuzzleHttp\Client;
+use App\Models\MemberMaster;
+use App\Models\Region;
+use App\Models\Zone;
+use App\Models\Club;
 
 class HomePageController extends Controller {
+
+      public function members_ui() {
+            $members = \App\Models\MemberMaster::orderBy('id', 'desc')->get();
+
+            return view('frontend.members-ui.index', [
+                      'members' => MemberMaster::with(['region', 'zone', 'club', 'city', 'state', 'occupation'])->paginate(5),
+                      'regions' => Region::all(),
+                      'zones' => Zone::all(),
+                      'clubs' => Club::all(),
+            ]);
+      }
+
+      public function ajax(Request $request) {
+            $query = MemberMaster::with(['region', 'zone', 'club', 'state', 'city', 'occupation']);
+
+            // Search filter
+            if ($request->filled('search')) {
+                  $search = $request->search;
+                  $query->where(function ($q) use ($search) {
+                        $q->where('first_name', 'like', "%$search%")
+                              ->orWhere('last_name', 'like', "%$search%")
+                              ->orWhere('mobile', 'like', "%$search%");
+                  });
+            }
+
+            // Dropdown filters
+            if ($request->filled('region_id')) {
+                  $query->where('region_id', $request->region_id);
+            }
+            if ($request->filled('zone_id')) {
+                  $query->where('zone_id', $request->zone_id);
+            }
+            if ($request->filled('club_id')) {
+                  $query->where('club_id', $request->club_id);
+            }
+
+            $members = $query->paginate(10);
+
+            return response()->json([
+                            'html' => view('frontend.members-ui.partials.members', ['members' => $members])->render(),
+                            'hasMore' => $members->hasMorePages()
+            ]);
+      }
 
       public function home() {
 
@@ -78,7 +122,7 @@ class HomePageController extends Controller {
                   ]);
             }
 
-            // Initial 10
+// Initial 10
             $fetchEvents = EventMaster::orderBy('date_time', 'desc')->take(8)->get();
 
             return view('frontend.event.index', ['fetchEvents' => $fetchEvents]);
@@ -106,7 +150,7 @@ class HomePageController extends Controller {
                       'contact_no' => $request->phone, // <-- this must be present
             ]);
 
-            // Send email
+// Send email
             Mail::raw("Name: {$data['name']}\nEmail: {$data['email']}\nPhone: {$data['phone']}\nMessage: {$data['message']}", function ($message) use ($data) {
                   $message->to('your@example.com')
                         ->subject($data['subject'] ?? 'New Inquiry');
@@ -123,7 +167,7 @@ class HomePageController extends Controller {
 //                      'message' => 'required|string|max:1000',
 //            ]);
 //            'name', 'email', 'message', 'contact_no', 'inquery_from', 'is_active'
-            // Example: save to DB (you can adjust this)
+// Example: save to DB (you can adjust this)
 
 
             FooterMessage::create([
@@ -192,13 +236,13 @@ class HomePageController extends Controller {
 //            $registration->event_id = $request->event_id;
 //            $registration->event_qr_code = Str::uuid(); // or generate QR and store string
 //            $registration->save();
-            // ✅ Step 8: Return response
+// ✅ Step 8: Return response
 
             return view('pages.auth.event-success')->with([
                             'message' => 'You have successfully registered for the event . Redirecting to event page...'
             ]);
 
-            // Send mail
+// Send mail
 //            Mail::to($request->email)->send(new \App\Mail\EventRegistrationConfirmation($data));
 //            return back()->with('success', 'Registered successfully! Check your email.');
       }

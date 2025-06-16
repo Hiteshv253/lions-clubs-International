@@ -33,7 +33,7 @@
 
       <body>
 
-            @include('frontend.layouts.header')
+
             @include('frontend.layouts.navbar')
 
 

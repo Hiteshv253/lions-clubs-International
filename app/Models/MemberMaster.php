@@ -58,4 +58,12 @@ class MemberMaster extends Model {
       public function occupation() {
             return $this->belongsTo(Occupation::class, 'occupation_id');
       }
+
+      public function zone() {
+            return $this->belongsTo(Zone::class, 'zone_id');
+      }
+
+      public function club() {
+            return $this->belongsTo(Club::class, 'club_id');
+      }
 }
