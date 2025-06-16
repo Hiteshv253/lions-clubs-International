@@ -52,13 +52,18 @@ Route::middleware('guest')->group(function () {
 
 Route::get('/logout', [LogoutController::class, 'logout'])->name('logout')->middleware('auth');
 
-// Static auth views (could be removed if unused)
+// Static views (optional)
 Route::view('/auth-signin-basic', 'pages.auth.auth-signin-basic');
 Route::view('/auth-signin-cover', 'pages.auth.auth-signin-cover');
 Route::view('/auth-signup-basic', 'pages.auth.auth-signup-basic');
 Route::view('/auth-signup-cover', 'pages.auth.auth-signup-cover');
 
-// Location (AJAX endpoints)
+/*
+  |--------------------------------------------------------------------------
+  | AJAX Routes (Public)
+  |--------------------------------------------------------------------------
+ */
+
 Route::get('/get-cities/{state_id}', [LocationController::class, 'getCities']);
 Route::get('/get-zipcodes/{city_id}', [LocationController::class, 'getZipCodes']);
 Route::get('/users/ajax', [UserController::class, 'ajaxUsers'])->name('users.ajax');
@@ -67,27 +72,20 @@ Route::get('/regions-by-district/{district_id}', [RegionController::class, 'getB
 Route::get('/zones-by-region/{region_id}', [ZoneController::class, 'getByRegion']);
 Route::get('/clubs-by-zone/{zone_id}', [ClubController::class, 'getByZone']);
 
-Route::get('/get-zones/{region_id}', [App\Http\Controllers\AjaxController::class, 'getZones']);
-Route::get('/get-clubs/{zone_id}', [App\Http\Controllers\AjaxController::class, 'getClubs']);
+Route::get('/get-zones/{region_id}', [AjaxController::class, 'getZones']);
+Route::get('/get-clubs/{zone_id}', [AjaxController::class, 'getClubs']);
 
 Route::post('/members/validate', [MemberController::class, 'validateField'])->name('members.validate');
 
 /*
   |--------------------------------------------------------------------------
-  | Authenticated Lions Routes (Prefix: lions)
+  | Authenticated Routes (Prefix: lions)
   |--------------------------------------------------------------------------
  */
 
 Route::prefix('lions')->middleware('auth')->group(function () {
-
-      // Dashboard
       Route::view('dashboard', 'backend.dashboard.index')->name('dashboard');
 
-      /*
-        |--------------------------------------------------------------------------
-        | Admin/Super-Admin Only
-        |--------------------------------------------------------------------------
-       */
       Route::middleware(['role:super-admin|admin'])->group(function () {
             Route::resource('permissions', PermissionController::class)->except(['destroy']);
             Route::delete('permissions/{permission}', [PermissionController::class, 'destroy'])->name('permissions.destroy');
@@ -96,15 +94,13 @@ Route::prefix('lions')->middleware('auth')->group(function () {
             Route::delete('roles/{role}', [RoleController::class, 'destroy'])->name('roles.destroy');
             Route::get('roles/{role}/give-permissions', [RoleController::class, 'addPermissionToRole'])->name('roles.give-permissions.form');
             Route::put('roles/{role}/give-permissions', [RoleController::class, 'givePermissionToRole'])->name('roles.give-permissions');
-
-            Route::resource('users', UserController::class)->except(['destroy']);
-            Route::delete('users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
       });
 
-      // Shared user routes
+      Route::resource('users', UserController::class)->except(['destroy']);
+      Route::delete('users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
       Route::get('users/ajax', [UserController::class, 'ajaxUsers'])->name('lions.users.ajax');
-      Route::get('/profile', [UserController::class, 'profile'])->name('profile')->middleware('auth');
 
+      Route::get('/profile', [UserController::class, 'profile'])->name('profile');
       Route::get('/profile/edit', [UserController::class, 'profile_edit'])->name('profile.edit');
       Route::post('/profile/update', [UserController::class, 'profile_update'])->name('profile.update');
 
@@ -116,9 +112,10 @@ Route::prefix('lions')->middleware('auth')->group(function () {
       Route::get('members/bulk-upload-form', [MemberController::class, 'showBulkUploadForm'])->name('members.bulk-upload-form');
       Route::post('members/bulk-upload', [MemberController::class, 'importMembers'])->name('members.bulk-upload');
       Route::post('members/bulk-delete', [MemberController::class, 'bulkDelete'])->name('members.bulkDelete');
+
       /*
         |--------------------------------------------------------------------------
-        | Resourceful Routes
+        | Resource Routes
         |--------------------------------------------------------------------------
        */
       Route::resources([
@@ -140,13 +137,20 @@ Route::prefix('lions')->middleware('auth')->group(function () {
                 'event_user_registration' => EventUserRegistrationController::class,
       ]);
 
+      /*
+        |--------------------------------------------------------------------------
+        | Event Registration
+        |--------------------------------------------------------------------------
+       */
       Route::get('/event_user_registration/{id}/registrations', [EventUserRegistrationController::class, 'showRegistrations'])->name('event_user_registration.showRegistrations');
-      // web.php
       Route::get('/event_user_registration/{event}/registrations/data', [EventUserRegistrationController::class, 'getRegistrations'])->name('event_user_registration.data');
+
+      Route::get('my-registrations', [EventMasterController::class, 'registrationHistory'])->name('events.history');
+      Route::get('event/registration-card/{event}', [EventMasterController::class, 'showRegistrationCard'])->name('event.registration.card');
 
       /*
         |--------------------------------------------------------------------------
-        | Services
+        | Service Export
         |--------------------------------------------------------------------------
        */
       Route::get('services-export-pdf', [ServiceController::class, 'exportPDF'])->name('services.export.pdf');
@@ -155,18 +159,10 @@ Route::prefix('lions')->middleware('auth')->group(function () {
 
       /*
         |--------------------------------------------------------------------------
-        | Clubs
+        | Club Export
         |--------------------------------------------------------------------------
        */
       Route::get('clubs/export-pdf', [ClubController::class, 'exportPdf'])->name('clubs.exportPdf');
-
-      /*
-        |--------------------------------------------------------------------------
-        | Events
-        |--------------------------------------------------------------------------
-       */
-      Route::get('my-registrations', [EventMasterController::class, 'registrationHistory'])->name('events.history');
-      Route::get('event/registration-card/{event}', [EventMasterController::class, 'showRegistrationCard'])->name('event.registration.card');
 
       /*
         |--------------------------------------------------------------------------
@@ -177,21 +173,21 @@ Route::prefix('lions')->middleware('auth')->group(function () {
 
       /*
         |--------------------------------------------------------------------------
-        | Occupations
+        | Occupation Bulk Delete
         |--------------------------------------------------------------------------
        */
       Route::post('occupations/bulk-delete', [OccupationController::class, 'bulkDelete'])->name('occupations.bulkDelete');
 
       /*
         |--------------------------------------------------------------------------
-        | Districts
+        | District List
         |--------------------------------------------------------------------------
        */
       Route::get('districts/list', [DistrictController::class, 'list'])->name('districts.list');
 
       /*
         |--------------------------------------------------------------------------
-        | Member Registration Management
+        | Member Registration Routes
         |--------------------------------------------------------------------------
        */
       Route::prefix('registration')->name('member.registration.')->controller(MemberRegistrationController::class)->group(function () {

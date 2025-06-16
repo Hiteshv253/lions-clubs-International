@@ -1,65 +1,60 @@
 @extends('layouts.master')
-
 @section('content')
-<div class=" mt-4">
+<nav aria-label="breadcrumb">
+      <ol class="breadcrumb bg-light p-2 rounded shadow-sm">
+            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Users</li>
+      </ol>
+</nav>
+<div class="row mt-3">
+      <div class="col-xl-12">
+            <div class="card shadow-sm rounded-4">
+                  <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
+                        <h4 class="card-title mb-0">Users List</h4>
+                        <a href="{{ route('users.create') }}" class="btn btn-primary">Add Users</a>
+                  </div>
 
-      <!-- Breadcrumb -->
-      <nav aria-label="breadcrumb">
-            <ol class="breadcrumb bg-light p-2 rounded">
-                  <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Users</li>
-            </ol>
-      </nav>
+                  <div class="card-body">
 
-      <!-- Navigation Buttons -->
-      <div class="mb-3">
-            <a href="{{ url('roles') }}" class="btn btn-primary mx-1">Roles</a>
-            <a href="{{ url('permissions') }}" class="btn btn-info mx-1">Permissions</a>
-            <a href="{{ url('users') }}" class="btn btn-warning mx-1">Users</a>
-      </div>
+                        {{-- Filters --}}
+                        <div class="row gy-2 gx-3 mb-3">
+                              <div class="col-sm-6 col-md-2">
+                                    <label for="filterRole" class="form-label">Filter by Role</label>
+                                    <select id="filterRole" class="form-select" style="max-width: 300px;">
+                                          <option value="">All Roles</option>
+                                          @foreach ($roles as $role)
+                                          <option value="{{ $role->name }}">{{ ucfirst($role->name) }}</option>
+                                          @endforeach
+                                    </select>
+                              </div>
+                        </div>
 
-      <!-- Role filter dropdown -->
-      <div class="mb-3">
-            <label for="filterRole" class="form-label">Filter by Role</label>
-            <select id="filterRole" class="form-select" style="max-width: 300px;">
-                  <option value="">All Roles</option>
-                  @foreach ($roles as $role)
-                  <option value="{{ $role->name }}">{{ ucfirst($role->name) }}</option>
-                  @endforeach
-            </select>
-      </div>
-
-      @if (session('status'))
-      <div class="alert alert-success">{{ session('status') }}</div>
-      @endif
-
-      <div class="card shadow-sm">
-            <div class="card-header d-flex justify-content-between align-items-center">
-                  <h5 class="mb-0">Users</h5>
-                  @can('create user')
-                  <a href="{{ url('users/create') }}" class="btn btn-primary btn-sm">Add User</a>
-                  @endcan
-            </div>
-
-            <div class="card-body p-0">
-                  <table class="table table-bordered table-striped mb-0" id="users-table" style="width: 100%;">
-                        <thead class="table-light">
-                              <tr>
-                                    <th style="width:5%">Id</th>
-                                    <th style="width:25%">First Name</th>
-                                    <th style="width:25%">Last Name</th>
-                                    <th style="width:30%">Email</th>
-                                    <th style="width:25%">Roles</th>
-                                    <th style="width:15%">Action</th>
-                              </tr>
-                        </thead>
-                        <tbody></tbody>
-                  </table>
+                        <div class="mb-3">
+                              <button id="btn-filter" class="btn btn-sm btn-primary">Search</button>
+                              <button id="btn-reset" class="btn btn-sm btn-secondary">Reset</button>
+                        </div>
+                        <div class="table-responsive">
+                              @if(session('success'))
+                              <div class="alert alert-success">{{ session('success') }}</div>
+                              @endif
+                              <table class="table table-bordered table-striped mb-0" id="users-table" style="width: 100%;">
+                                    <thead class="table-light">
+                                          <tr>
+                                                <th style="width:5%">Id</th>
+                                                <th style="width:25%">First Name</th>
+                                                <th style="width:25%">Last Name</th>
+                                                <th style="width:30%">Email</th>
+                                                <th style="width:25%">Roles</th>
+                                                <th style="width:15%">Action</th>
+                                          </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                              </table>
+                        </div>
+                  </div>
             </div>
       </div>
-
 </div>
-
 <script>
       $(document).ready(function () {
             var table = $('#users-table').DataTable({
@@ -85,6 +80,10 @@
             // Reload the table when the role filter changes
             $('#filterRole').change(function () {
                   table.ajax.reload();
+            });
+            $('#btn-reset').click(function () {
+                  $('#filter-parent-region, #filter-member-id, #filter-account-name, #filter-occupation, #filter-join-date, #filter-is-active').val('');
+                  table.draw();
             });
       });
 </script>

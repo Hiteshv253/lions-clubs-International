@@ -49,10 +49,10 @@ class UserController extends Controller {
                         })
                         ->addColumn('action', function ($user) {
                               $editBtn = auth()->user()->can('update user') ?
-                                    '<a href="' . url("users/{$user->id}/edit") . '" class="btn btn-success btn-sm">Edit</a>' : '';
+                                    '<a href="' . url("lions/users/{$user->id}/edit") . '" class="btn btn-success btn-sm">Edit</a>' : '';
 
                               $deleteBtn = auth()->user()->can('delete user') ?
-                                    '<form method="POST" action="' . url("users/{$user->id}") . '" style="display:inline-block;" onsubmit="return confirm(\'Are you sure?\');">' .
+                                    '<form method="POST" action="' . url("lions/users/{$user->id}") . '" style="display:inline-block;" onsubmit="return confirm(\'Are you sure?\');">' .
                                     csrf_field() .
                                     method_field('DELETE') .
                                     '<button type="submit" class="btn btn-danger btn-sm ms-1">Delete</button></form>' : '';
@@ -84,14 +84,15 @@ class UserController extends Controller {
             ]);
 
             $user = User::create([
-                            'name' => $request->name,
+                            'name' => ($request->f_name . ' ' . $request->l_name),
+                            'f_name' => $request->f_name,
+                            'l_name' => $request->l_name,
                             'email' => $request->email,
                             'password' => Hash::make($request->password),
             ]);
 
             $user->syncRoles($request->roles);
-
-            return redirect('/users')->with('status', 'User created successfully with roles');
+            return redirect('lions/users')->with('success', 'User created successfully with roles');
       }
 
       public function show(User $user) {
@@ -122,7 +123,9 @@ class UserController extends Controller {
             ]);
 
             $data = [
-                      'name' => $request->name,
+                      'name' => ($request->f_name . ' ' . $request->l_name),
+                      'f_name' => $request->f_name,
+                      'l_name' => $request->l_name,
                       'email' => $request->email,
             ];
 
@@ -135,13 +138,13 @@ class UserController extends Controller {
             $user->update($data);
             $user->syncRoles($request->roles);
 
-            return redirect('/users')->with('status', 'User Updated Successfully with roles');
+            return redirect('lions/users')->with('success', 'User Updated Successfully with roles');
       }
 
       public function destroy($userId) {
             $user = User::findOrFail($userId);
             $user->delete();
 
-            return redirect('/users')->with('status', 'User Delete Successfully');
+            return redirect('lions/users')->with('success', 'User Delete Successfully');
       }
 }

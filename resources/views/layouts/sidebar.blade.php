@@ -161,7 +161,7 @@
                                           <li class="nav-item d-none">
                                                 <a href="{{ route('accounts.index') }}" class="nav-link {{ request()->is('lions/accounts*') ? 'active' : '' }}" data-key="t-services">Accounts</a>
                                           </li>
-                                          <li class="nav-item d-none">
+                                          <li class="nav-item">
                                                 <a href="{{ route('users.index') }}" class="nav-link {{ request()->is('lions/users*') ? 'active' : '' }}" data-key="t-services">Users</a>
                                           </li>
                                           <li class="nav-item d-none">
