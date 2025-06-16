@@ -9,7 +9,7 @@
             <li class="breadcrumb-item active" aria-current="page">Create</li>
       </ol>
 </nav>
-<div class="card shadow-sm">
+<div class="card shadow-sm rounded-4">
       <div class="card-header">
             <h5 class="mb-0 ">Add Member</h5>
       </div>

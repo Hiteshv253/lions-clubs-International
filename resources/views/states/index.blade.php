@@ -12,7 +12,7 @@
 
 <div class="row mt-3">
       <div class="col-xl-12">
-            <div class="card">
+            <div class="card shadow-sm rounded-4">
                   <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
                         <h4 class="card-title mb-0">States List</h4>
                         <a href="{{ route('states.create') }}" class="btn btn-primary">Add New States</a>

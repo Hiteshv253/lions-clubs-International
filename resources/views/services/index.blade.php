@@ -10,7 +10,7 @@
 </nav>
 
 <div class="  my-4">
-      <div class="card shadow-sm">
+      <div class="card shadow-sm rounded-4">
             <div class="card-header">
                   <h2>Service List</h2>
             </div>

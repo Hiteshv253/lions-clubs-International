@@ -10,7 +10,7 @@
 </nav>
 
 
-<div class="card shadow-sm">
+<div class="card shadow-sm rounded-4">
       <div class="card-header">
             <h5 class="mb-0">Create Account</h5>
       </div>

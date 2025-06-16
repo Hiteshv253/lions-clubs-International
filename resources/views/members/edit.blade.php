@@ -9,7 +9,7 @@
             <li class="breadcrumb-item active" aria-current="page">Edit</li>
       </ol>
 </nav>
-<div class="card shadow-sm">
+<div class="card shadow-sm rounded-4">
       <div class="card-header">
             <h5 class="mb-0">Edit Member</h5>
       </div>
@@ -93,12 +93,32 @@
                               @error('email')<div class="email-error">{{ $message }}</div>@enderror
                         </div>
                         <div class="col-sm-6 col-md-3">
+                              <label class="form-label">Address Line 1</label>
+                              <input type="text" name="address_line1" id="address_line1" class="form-control" value="{{ old('address_line1', $member->address_line1) }}">
+                              <small id="email-error" class="text-danger"></small>
+                              @error('address_line1')<div class="email-error">{{ $message }}</div>@enderror
+                        </div>
+
+                        <div class="col-sm-6 col-md-3">
+                              <label class="form-label">Address Line 2</label>
+                              <input type="text" name="address_line2" id="address_line2" class="form-control" value="{{ old('address_line2', $member->address_line2) }}">
+                              <small id="email-error" class="text-danger"></small>
+                              @error('address_line2')<div class="email-error">{{ $message }}</div>@enderror
+                        </div>
+
+                        <div class="col-sm-6 col-md-3">
+                              <label class="form-label">Address Line 3</label>
+                              <input type="text" name="address_line3" id="address_line3" class="form-control" value="{{ old('address_line3', $member->address_line3) }}">
+                              <small id="email-error" class="text-danger"></small>
+                              @error('address_line3')<div class="email-error">{{ $message }}</div>@enderror
+                        </div>
+                        <div class="col-sm-6 col-md-3">
                               <label class="form-label">Mobile</label>
                               <input type="number" name="mobile" class="form-control" value="{{ old('mobile', $member->mobile) }}">
                         </div>
-                          <div class="col-sm-6 col-md-3">
+                        <div class="col-sm-6 col-md-3">
                               <label class="form-label">Home Phone</label>
-                              <input type="number" name="home_phone" id="home_phone" class="form-control" value="{ old('mobile', $member->home_phone) }}">
+                              <input type="number" name="home_phone" id="home_phone" class="form-control" value="{{ old('home_phone', $member->home_phone) }}">
                         </div>
                         <div class="col-sm-6 col-md-3">
                               <label class="form-label">State</label>
@@ -111,11 +131,21 @@
                         </div>
                         <div class="col-sm-6 col-md-3">
                               <label class="form-label">City</label>
-                              <select id="city" name="city" class="form-control"></select>
+                              <select id="city" name="city" class="form-control">
+                                    <option value="">-- Select City --</option>
+                                    @foreach($citys as $city)
+                                    <option value="{{ $city->id }}" {{ old('city', $member->city_id) == $city->id ? 'selected' : '' }}>{{ $city->name }}</option>
+                                    @endforeach
+                              </select>
                         </div>
                         <div class="col-sm-6 col-md-3">
                               <label class="form-label">Zip Code</label>
-                              <select id="zipcode" name="zipcode" class="form-control"></select>
+                              <select id="zipcode" name="zipcode" class="form-control">
+                                    <option value="">-- Zip Code@ --</option>
+                                    @foreach($ZipCodes as $ZipCode)
+                                          <option value="{{ $ZipCode->zipcode }}" {{ old('zipcode', $member->zip_code) == $ZipCode->zipcode ? 'selected' : '' }}>{{ $ZipCode->zip_code }}</option>
+                                    @endforeach
+                              </select>
                         </div>
                         <div class="col-sm-6 col-md-3">
                               <label class="form-label">Occupation</label>
@@ -133,8 +163,8 @@
                         <div class="col-sm-6 col-md-3">
                               <label class="form-label">Status</label>
                               <select name="is_active" class="form-select">
-                                    <option value="1" {{ old('is_active', $member->is_active) == 1 ? 'selected' : '' }}>Active</option>
-                                    <option value="0" {{ old('is_active', $member->is_active) == 0 ? 'selected' : '' }}>Inactive</option>
+                                    <option value="0" {{ old('is_active', $member->is_active) == 0 ? 'selected' : '' }}>Active</option>
+                                    <option value="1" {{ old('is_active', $member->is_active) == 1 ? 'selected' : '' }}>Inactive</option>
                               </select>
                         </div>
                   </div>
@@ -208,10 +238,10 @@
 
             if (stateId) {
                   $.get("/get-cities/" + stateId, function (data) {
-                        $('#city').empty().append('<option value="">-- Select City --</option>');
-                        data.forEach(city => {
-                              $('#city').append(`<option value="${city.id}" ${city.id == cityId ? 'selected' : ''}>${city.name}</option>`);
-                        });
+//                        $('#city').empty().append('<option value="">-- Select City --</option>');
+//                        data.forEach(city => {
+//                              $('#city').append(`<option value="${city.id}" ${city.id == cityId ? 'selected' : ''}>${city.name}</option>`);
+//                        });
 
                         if (cityId) {
                               $.get("/get-zipcodes/" + cityId, function (data) {

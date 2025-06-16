@@ -8,7 +8,7 @@
             <li class="breadcrumb-item"><a href="{{ route('service-activity-types.index') }}">Service Activity Types</a></li>
       </ol>
 </nav>
-<div class="card shadow-sm">
+<div class="card shadow-sm rounded-4">
       <div class="card-header">
             <h5 class="mb-0">Service Activity Types Master</h5>
       </div>

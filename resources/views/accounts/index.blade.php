@@ -11,7 +11,7 @@
       </ol>
 </nav>
 <div class="mt-1">
-      <div class="card shadow-sm">
+      <div class="card shadow-sm rounded-4">
             <div class="card-header">
                   <h5 class="mb-0">Account Master</h5>
             </div>

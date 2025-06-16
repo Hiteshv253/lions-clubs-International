@@ -1,5 +1,4 @@
 @extends('layouts.master')
-
 @section('content')
 <nav aria-label="breadcrumb">
       <ol class="breadcrumb bg-light p-2 rounded shadow-sm">
@@ -7,13 +6,9 @@
             <li class="breadcrumb-item active" aria-current="page">Members</li>
       </ol>
 </nav>
-
 <div class="row mt-3">
       <div class="col-xl-12">
-            <div class="card">
-
-
-
+            <div class="card shadow-sm rounded-4">
                   <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
                         <h4 class="card-title mb-0">Members List</h4>
                         <a href="{{ route('members.create') }}" class="btn btn-primary">Add New Member</a>
@@ -64,7 +59,7 @@
                         <div class="mb-3">
                               <button id="btn-filter" class="btn btn-sm btn-primary">Search</button>
                               <button id="btn-reset" class="btn btn-sm btn-secondary">Reset</button>
-                              <a href="{{ route('members.bulk-upload') }}" class="btn btn-sm btn-secondary">Bulk Upload</a>
+                              <a href="{{ route('members.bulk-upload-form') }}" class="btn btn-sm btn-secondary" style="display: none;">Bulk Upload</a>
                               <!--<button id="btn-delete-selected" class="btn btn-danger btn-sm" disabled>Delete Selected</button>-->
                         </div>
                         @if(session('success'))
@@ -154,7 +149,7 @@
                               data: 'is_active',
                               name: 'is_active',
                               render: function (data) {
-                                    return data == 1 ? '<span class="badge bg-success">Active</span>' : '<span class="badge bg-secondary">Inactive</span>';
+                                    return data == 0 ? '<span class="badge bg-success">Active</span>' : '<span class="badge bg-danger">Inactive</span>';
                               }
                         },
                         {data: 'actions', name: 'actions', orderable: false, searchable: false},

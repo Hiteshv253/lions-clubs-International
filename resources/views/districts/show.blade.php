@@ -9,7 +9,7 @@
     </ol>
 </nav>
 
-<div class="card shadow-sm">
+<div class="card shadow-sm rounded-4">
     <div class="card-header"><h5>District Details</h5></div>
     <div class="card-body">
         <p><strong>Name:</strong> {{ $district->name }}</p>

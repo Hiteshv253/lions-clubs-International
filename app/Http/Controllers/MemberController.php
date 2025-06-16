@@ -19,7 +19,10 @@ use App\Imports\MembersImport;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Account;
 use App\Models\Club;
+use DB;
+use App\Models\ZipCode;
 use Illuminate\Support\Facades\Mail;
+use Maatwebsite\Excel\Concerns\ToArray;
 
 class MemberController extends Controller {
 
@@ -34,9 +37,9 @@ class MemberController extends Controller {
                   )->when($request->filled('member_id'), fn($q) =>
                         $q->where('member_id', 'like', '%' . $request->member_id . '%')
                   )->when($request->filled('account_name'), fn($q) =>
-                        $q->where('account_name', 'like', '%' . $request->account_name . '%')
+                        $q->where('account_id', 'like', '%' . $request->account_name . '%')
                   )->when($request->filled('occupation'), fn($q) =>
-                        $q->where('occupation', 'like', '%' . $request->occupation . '%')
+                        $q->where('occupation_id', 'like', '%' . $request->occupation . '%')
                   )->when($request->filled('join_date'), fn($q) =>
                         $q->whereDate('join_date', $request->join_date)
                   )->when($request->filled('is_active'), fn($q) =>
@@ -88,7 +91,8 @@ class MemberController extends Controller {
             $citys = City::select('name', 'id')->distinct()->get();
             $states = State::select('name', 'id')->distinct()->get();
             $occupations = Occupation::select('name', 'id')->distinct()->get();
-            return view('members.edit', compact('member', 'regions', 'accounts', 'citys', 'states', 'occupations'));
+            $ZipCodes = ZipCode::select('zip_code', 'id')->distinct()->get();
+            return view('members.edit', compact('member', 'regions', 'accounts', 'citys', 'states', 'occupations', 'ZipCodes'));
       }
 
       // Store new member
@@ -152,10 +156,10 @@ class MemberController extends Controller {
                       'zipcode' => $request->zipcode,
                       'occupation_id' => $request->occupation_id,
                       'join_date' => $request->join_date,
-                      'is_active' => $request->is_active,
                       'region_id' => $request->region_id,
                       'zone_id' => $request->zone_id,
                       'club_id' => $request->club_id,
+                      'is_active' => $request->is_active,
             ];
             MemberMaster::create($memberData);
 
@@ -206,42 +210,61 @@ class MemberController extends Controller {
       // Update member
       public function update(Request $request, MemberMaster $member) {
 
-            $request->validate([
-                      'account_name' => 'nullable|string|max:255',
-                      'region_id' => 'nullable|string|max:255',
-                      'parent_zone' => 'nullable|string|max:255',
-                      'member_id' => 'nullable|string|max:255',
-                      'first_name' => 'nullable|string|max:255',
-                      'last_name' => 'nullable|string|max:255',
-                      'address_line1' => 'nullable|string|max:255',
-                      'address_line2' => 'nullable|string|max:255',
-                      'address_line3' => 'nullable|string|max:255',
-                      'city' => 'nullable|string|max:255',
-                      'state' => 'nullable|string|max:255',
-                      'zip' => 'nullable|string|max:255',
-                      'birthdate' => 'nullable|date',
-                      'email' => 'nullable|email|max:255',
-                      'mobile' => 'nullable|string|max:20',
-                      'home_phone' => 'nullable|string|max:20',
-                      'gender' => 'nullable|string|max:10',
-                      'occupation' => 'nullable|string|max:255',
-                      'join_date' => 'nullable|date',
-                      'is_active' => 'boolean',
-                      'is_create_by' => 'nullable|string|max:255',
+
+//            $request->validate([
+//                      'account_name' => 'nullable|string|max:255',
+//                      'region_id' => 'nullable|string|max:255',
+//                      'parent_zone' => 'nullable|string|max:255',
+//                      'member_id' => 'nullable|string|max:255',
+//                      'first_name' => 'nullable|string|max:255',
+//                      'last_name' => 'nullable|string|max:255',
+//                      'address_line1' => 'nullable|string|max:255',
+//                      'address_line2' => 'nullable|string|max:255',
+//                      'address_line3' => 'nullable|string|max:255',
+//                      'city' => 'nullable|string|max:255',
+//                      'state' => 'nullable|string|max:255',
+//                      'zip' => 'nullable|string|max:255',
+//                      'birthdate' => 'nullable|date',
+//                      'email' => 'nullable|email|max:255',
+//                      'mobile' => 'nullable|string|max:20',
+//                      'home_phone' => 'nullable|string|max:20',
+//                      'gender' => 'nullable|string|max:10',
+//                      'occupation' => 'nullable|string|max:255',
+//                      'join_date' => 'nullable|date',
+//                      'is_active' => 'boolean',
+//                      'is_create_by' => 'nullable|string|max:255',
+//            ]);
+
+            $member->update([
+                      'account_id' => $request->account_id,
+                      'first_name' => $request->first_name,
+                      'last_name' => $request->last_name,
+                      'gender' => $request->gender,
+                      'birthdate' => $request->birthdate,
+                      'address_line1' => $request->address_line1,
+                      'address_line2' => $request->address_line2,
+                      'address_line3' => $request->address_line3,
+                      'email' => $request->email,
+                      'mobile' => $request->mobile,
+                      'home_phone' => $request->home_phone,
+                      'zipcode' => $request->zipcode,
+                      'occupation_id' => $request->occupation_id,
+                      'join_date' => $request->join_date,
+                      'is_active' => $request->is_active,
+                      'region_id' => $request->region_id,
+                      'zone_id' => $request->zone_id,
+                      'city_id' => $request->city,
+                      'state_id' => $request->state_id,
+                      'club_id' => $request->club_id,
             ]);
-
-            $member->update($request->all());
-
-            return redirect()->route('members.index')
-                        ->with('success', 'Member updated successfully');
+            return redirect()->route('members.index')->with('success', 'Member updated successfully');
       }
 
 // Delete member
       public function destroy($id) {
             $member = MemberMaster::findOrFail($id);
             $member->delete();
-            return redirect()->route('members.index')
-                        ->with('success', 'Member deleted successfully');
+            return redirect()->route('members.index')->with('success', 'Member deleted successfully');
 //            return response()->json(['message' => 'Member deleted successfully.']);
       }
 
@@ -253,34 +276,82 @@ class MemberController extends Controller {
             }
 
             MemberMaster::whereIn('id', $ids)->delete();
-            return redirect()->route('members.index')
-                        ->with('success', 'member(s) deleted successfully');
+            return redirect()->route('members.index')->with('success', 'member(s) deleted successfully');
 //            return response()->json(['message' => count($ids) . ' member(s) deleted successfully.']);
       }
 
       public function showBulkUploadForm() {
 
-            return view('members.bulk-upload');
+
+            return view('members.import.bulk-upload');
       }
 
       public function importMembers(Request $request) {
-
-            $request->validate([
-                      'file' => 'required|file|mimes:xlsx,xls,csv',
-            ]);
+            $line_no = 0;
+            $member_ids = [];
+            $prepare_data = []; // default fallback to avoid "undefined variable" in catch
 
             try {
-                  Excel::import(new MembersImport, $request->file('file'));
-                  return redirect()->route('members.index')->with('success', 'Members imported successfully.');
-            } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
-                  $failures = $e->failures();
+                  DB::beginTransaction();
 
-                  $errorMessages = [];
-                  foreach ($failures as $failure) {
-                        $errorMessages[] = 'Row ' . $failure->row() . ': ' . implode(', ', $failure->errors());
+                  // Validate file (optional but safe)
+//                  $request->validate([
+//                            'excel_file' => 'required|file|mimes:xlsx,xls,csv'
+//                  ]);
+                  // Parse Excel to array
+                  $ExcelArray = Excel::toArray([], $request->file('excel_file'));
+                  $prepare_data = $this->setData($ExcelArray[0]);
+
+                  // If status is not success, return with error
+                  if ($prepare_data['status'] !== 'success') {
+                        DB::rollBack();
+                        return redirect()->route('members.index')
+                                    ->withErrors("Please correct Excel data.")
+                                    ->with(['prepare_data' => $prepare_data]);
                   }
 
-                  return redirect()->back()->withErrors($errorMessages);
+                  // Loop and insert member data
+                  foreach ($prepare_data['response_data'] as $line_no => $row) {
+                        $member = new Member();
+                        $member->first_name = $row['first_name'] ?? null;
+                        $member->last_name = $row['last_name'] ?? null;
+                        $member->email = $row['email'] ?? null;
+                        $member->save();
+                        $member_ids[] = $member->id;
+                  }
+
+                  DB::commit();
+
+                  return redirect()->route('members.index')->with('success', 'Member Excel data has been uploaded successfully');
+            } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
+                  DB::rollBack();
+                  return redirect()->route('members.index')
+                              ->withErrors("Validation error in Excel file.")->with(['prepare_data' => $prepare_data]);
+            } catch (\Exception $e) {
+                  DB::rollBack();
+                  return redirect()->route('members.index')
+                              ->withErrors("Unexpected error: " . $e->getMessage())->with(['prepare_data' => $prepare_data]);
             }
       }
+
+//      public function importMembers(Request $request) {
+//
+//            $request->validate([
+//                      'file' => 'required|file|mimes:xlsx,xls,csv',
+//            ]);
+//
+//            try {
+//                  Excel::import(new MembersImport, $request->file('file'));
+//                  return redirect()->route('members.index')->with('success', 'Members imported successfully.');
+//            } catch (\Maatwebsite\Excel\Validators\ValidationException $e) {
+//                  $failures = $e->failures();
+//
+//                  $errorMessages = [];
+//                  foreach ($failures as $failure) {
+//                        $errorMessages[] = 'Row ' . $failure->row() . ': ' . implode(', ', $failure->errors());
+//                  }
+//
+//                  return redirect()->back()->withErrors($errorMessages);
+//            }
+//      }
 }

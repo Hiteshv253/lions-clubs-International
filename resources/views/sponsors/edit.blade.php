@@ -10,13 +10,13 @@
       </ol>
 </nav>
 
-<div class="card shadow-sm">
+<div class="card shadow-sm rounded-4">
       <div class="card-header">
             <h5 class="mb-0">Edit Sponsor</h5>
       </div>
       <div class="card-header">
 
-            <form action="{{ route('sponsors.update', $sponsor->id) }}" method="POST" enctype="multipart/form-data" class="card shadow-sm p-4">
+            <form action="{{ route('sponsors.update', $sponsor->id) }}" method="POST" enctype="multipart/form-data" class="card shadow-sm rounded-4 p-4">
                   @csrf
                   @method('PUT')
 

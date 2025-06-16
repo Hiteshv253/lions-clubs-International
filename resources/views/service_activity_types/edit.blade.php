@@ -17,7 +17,7 @@
 </div>
 
 <!-- Form -->
-<div class="card shadow-sm">
+<div class="card shadow-sm rounded-4">
       <div class="card-body">
             <form method="POST" action="{{ route('service-activity-types.update', $service_activity_type->id) }}">
                   @csrf

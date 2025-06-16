@@ -13,7 +13,7 @@
 
 
 <div class="  my-4">
-      <div class="card shadow-sm">
+      <div class="card shadow-sm rounded-4">
             <div class="card-header ">
                   <h2 class="mb-4">Edit Service</h2>
 

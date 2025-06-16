@@ -9,7 +9,7 @@
       </ol>
 </nav>
 
-<div class="card shadow-sm">
+<div class="card shadow-sm rounded-4">
       <div class="card-header"><h5>Edit District</h5></div>
       <div class="card-body">
             <form action="{{ route('districts.update', $district->id) }}" method="POST">

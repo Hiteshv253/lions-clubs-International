@@ -9,13 +9,13 @@
       </ol>
 </nav>
 
-<div class="card shadow-sm">
+<div class="card shadow-sm rounded-4">
       <div class="card-header">
             <h5 class="mb-0">Add New Sponsor</h5>
       </div>
 
       <!-- Sponsor Form -->
-      <form action="{{ route('sponsors.store') }}" method="POST" enctype="multipart/form-data" class="card shadow-sm p-4">
+      <form action="{{ route('sponsors.store') }}" method="POST" enctype="multipart/form-data" class="card shadow-sm rounded-4 p-4">
             @csrf
             <div class="row mb-3">
                   <div class="col-md-6">

@@ -110,10 +110,17 @@ Route::prefix('lions')->middleware('auth')->group(function () {
 
       /*
         |--------------------------------------------------------------------------
+        | Members
+        |--------------------------------------------------------------------------
+       */
+      Route::get('members/bulk-upload-form', [MemberController::class, 'showBulkUploadForm'])->name('members.bulk-upload-form');
+      Route::post('members/bulk-upload', [MemberController::class, 'importMembers'])->name('members.bulk-upload');
+      Route::post('members/bulk-delete', [MemberController::class, 'bulkDelete'])->name('members.bulkDelete');
+      /*
+        |--------------------------------------------------------------------------
         | Resourceful Routes
         |--------------------------------------------------------------------------
        */
-
       Route::resources([
                 'accounts' => AccountController::class,
                 'services' => ServiceController::class,
@@ -167,15 +174,6 @@ Route::prefix('lions')->middleware('auth')->group(function () {
         |--------------------------------------------------------------------------
        */
       Route::get('location', [LocationController::class, 'showForm'])->name('location.form');
-
-      /*
-        |--------------------------------------------------------------------------
-        | Members
-        |--------------------------------------------------------------------------
-       */
-      Route::get('members/bulk-upload', [MemberController::class, 'showBulkUploadForm'])->name('members.bulk-upload-form');
-      Route::post('members/bulk-upload', [MemberController::class, 'importMembers'])->name('members.bulk-upload');
-      Route::post('members/bulk-delete', [MemberController::class, 'bulkDelete'])->name('members.bulkDelete');
 
       /*
         |--------------------------------------------------------------------------

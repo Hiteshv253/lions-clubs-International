@@ -8,7 +8,7 @@
             <li class="breadcrumb-item active" aria-current="page">Add Clubs</li>
       </ol>
 </nav>
-<div class="card shadow-sm">
+<div class="card shadow-sm rounded-4">
       <div class="card-header"><h5>Create Club</h5></div>
       <div class="card-body">
             <form method="POST" action="{{ route('clubs.store') }}">

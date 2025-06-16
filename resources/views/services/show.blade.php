@@ -4,7 +4,7 @@
       <h2>Service Details</h2>
       <a href="{{ route('services.index') }}" class="btn btn-secondary mb-3">Back to List</a>
 
-      <div class="card">
+      <div class="card shadow-sm rounded-4">
             <div class="card-body">
                   <h5 class="card-title">{{ $service->title }}</h5>
                   <p><strong>Report Type:</strong> {{ $service->report_type }}</p>

@@ -11,7 +11,7 @@
 </nav>
 
 <div class="  my-4">
-  <div class="card shadow-sm">
+  <div class="card shadow-sm rounded-4">
     <div class="card-body">
       <h2 class="card-title mb-4">{{ isset($state) ? 'Edit' : 'Add' }} State</h2>
 
