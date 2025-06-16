@@ -1,11 +1,11 @@
 
 <!-- Footer Start -->
 <div class="container-fluid footer py-0 wow fadeIn" data-wow-delay="0.2s">
-      <div class="container py-5">
-            <div class="row g-5">
+      <div class="container py-3">
+            <div class="row g-1">
                   <div class="col-xl-9">
-                        <div class="mb-5">
-                              <div class="row g-4">
+                        <div class="mb-1">
+                              <div class="row g-1">
                                     <div class="col-md-6 col-lg-6 col-xl-5">
                                           <div class="footer-item">
                                                 <a href="/" class="p-0">
@@ -42,7 +42,7 @@
                                     </div>
                                     <div class="col-md-6 col-lg-6 col-xl-4">
                                           <div class="footer-item">
-                                               <h4 class="text-white">Contact Us</h4>
+                                                <h4 class="text-white">Contact Us</h4>
                                                 <form id="footer-contact-form" class="bg-dark p-3 rounded shadow-sm">
                                                       @csrf
                                                       <div class="mb-3">
