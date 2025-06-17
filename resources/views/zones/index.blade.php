@@ -11,7 +11,7 @@
 <div class="card shadow-sm rounded-4">
       <div class="card-header d-flex justify-content-between align-items-center">
             <h5>Zones List</h5>
-            <a href="{{ route('zones.create') }}" class="btn btn-success">Add New Zone</a>
+            <a href="{{ route('zones.create') }}" class="btn btn-success">Add Zone</a>
       </div>
       <div class="card-body">
             @if(session('success'))

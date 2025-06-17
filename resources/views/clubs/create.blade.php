@@ -4,8 +4,8 @@
 <nav>
       <ol class="breadcrumb bg-light p-2 rounded shadow-sm">
             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('clubs.index') }}">clubs</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Add Clubs</li>
+            <li class="breadcrumb-item"><a href="{{ route('clubs.index') }}">Clubs</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Add Club</li>
       </ol>
 </nav>
 <div class="card shadow-sm rounded-4">

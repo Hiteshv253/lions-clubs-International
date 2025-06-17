@@ -130,7 +130,7 @@ class MemberController extends Controller {
 
             $lastMember = \App\Models\MemberMaster::orderBy('id', 'desc')->first();
             $nextId = $lastMember ? $lastMember->id + 1 : 1;
-            $member_id = 'MEM' . str_pad($nextId, 4, '0', STR_PAD_LEFT);
+            $membership_id = 'MEM' . str_pad($nextId, 4, '0', STR_PAD_LEFT);
 
             $regions = Region::select('name', 'id')->distinct()->get();
             $accounts = Account::select('name', 'code', 'id')->distinct()->get();
@@ -139,7 +139,7 @@ class MemberController extends Controller {
             $occupations = Occupation::select('name', 'id')->distinct()->get();
             $clubs = Club::select('name', 'id')->distinct()->get();
 
-            return view('members.create', compact('member_id', 'regions', 'accounts', 'citys', 'states', 'occupations', 'clubs'));
+            return view('members.create', compact('membership_id', 'regions', 'accounts', 'citys', 'states', 'occupations', 'clubs'));
       }
 
 // Show form to edit member

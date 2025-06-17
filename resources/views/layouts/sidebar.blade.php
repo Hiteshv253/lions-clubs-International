@@ -82,7 +82,7 @@
                                           <a href="{{ route('events.index') }}" class="nav-link {{ request()->is('lions/events*') ? 'active' : '' }}" data-key="t-crm">Events</a>
                                     </li>
                                     <li class="nav-item">
-                                          <a href="{{ route('event_user_registration.index') }}" class="nav-link {{ request()->is('lions/event_user_registration*') ? 'active' : '' }}" data-key="t-crm">Events Registration</a>
+                                          <a href="{{ route('event_user_registration.index') }}" class="nav-link {{ request()->is('lions/event_user_registration*') ? 'active' : '' }}" data-key="t-crm">Events Registered</a>
                                     </li>
 
                               </ul>

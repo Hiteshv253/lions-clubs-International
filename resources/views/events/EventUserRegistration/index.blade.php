@@ -4,7 +4,7 @@
 <nav aria-label="breadcrumb">
       <ol class="breadcrumb bg-light p-2 rounded shadow-sm">
             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('event_user_registration.index') }}">Events User Registration</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('event_user_registration.index') }}">Event User Registered</a></li>
       </ol>
 </nav>
 
@@ -45,7 +45,7 @@
                   <div class="card-body d-flex">
                         <div class="flex-grow-1">
                               <h4>{{ $totalInActiveEvents }}</h4>
-                              <h6 class="text-muted fs-13 mb-0">Total InActive Events:</h6>
+                              <h6 class="text-muted fs-13 mb-0">Total Inactive Events:</h6>
                         </div>
                         <div class="flex-shrink-0 avatar-sm">
                               <div class="avatar-title bg-success-subtle text-success fs-22 rounded">
@@ -56,7 +56,7 @@
             </div>
       </div>
       <!--end col-->
-      <div class="col">
+      <div class="col" style="display: none;">
             <div class="card">
                   <div class="card-body d-flex">
                         <div class="flex-grow-1">
@@ -79,7 +79,7 @@
       <div class="col-xl-12">
             <div class="card shadow-sm">
                   <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
-                        <h4 class="card-title mb-0">Events Registration</h4>
+                        <h4 class="card-title mb-0">Events Registered</h4>
                         <form method="GET" class="d-flex" style="gap: 10px;">
                               <input type="text" name="search" value="{{ request('search') }}" class="form-control" placeholder="Search event name">
                               <button type="submit" class="btn btn-primary">Filter</button>
@@ -104,12 +104,12 @@
                                                 </div>
                                                 <div class="me-4">
                                                       <a href="{{ route('event_user_registration.showRegistrations', $event_registration['id']) }}" class="badge bg-primary-subtle text-primary">
-                                                            Visit Users Registration <i class="ri-arrow-right-up-line align-bottom"></i></a>
+                                                            Visit Users Registered <i class="ri-arrow-right-up-line align-bottom"></i></a>
                                                 </div>
                                           </div>
                                           <a href="{{ route('event_user_registration.showRegistrations', $event_registration['id']) }}">
                                                 <h6 class="text-muted mb-0">
-                                                      Event Registration : {{ $event_registration['registrations_count'] }} 
+                                                      Event Registered : {{ $event_registration['registrations_count'] }}
                                                       <!--<span class="badge bg-success-subtle text-success">86.61%</span>-->
                                                 </h6>
                                           </a>

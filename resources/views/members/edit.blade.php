@@ -28,7 +28,7 @@
             <form action="{{ route('members.update', $member->id) }}" method="POST">
                   @csrf
                   @method('PUT')
-                  <div class="mb-3">
+                  <div class="mb-3" style="display: none;">
                         <label for="parent_id" class="form-label">Parent Member</label>
                         <select class="form-select" name="parent_id">
                               <option value="">-- None --</option>

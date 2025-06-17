@@ -17,13 +17,13 @@
                   @method('PUT')
 
                   <div class="row g-3">
-                        <div class="col-sm-6 col-md-4">
+                        <div class="col-sm-6 col-md-6">
                               <label for="name">District Name</label>
                               <input type="text" name="name" id="name" class="form-control" value="{{ old('name', $district->name) }}" required>
                               @error('name') <small class="text-danger">{{ $message }}</small> @enderror
                         </div>
 
-                        <div class="col-sm-6 col-md-4">
+                        <div class="col-sm-6 col-md-6">
                               <label for="state_id">State</label>
                               <select name="state_id" id="state_id" class="form-select" required>
                                     <option value="">Select State</option>

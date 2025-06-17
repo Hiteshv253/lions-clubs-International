@@ -11,7 +11,7 @@
             <div class="card shadow-sm rounded-4">
                   <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
                         <h4 class="card-title mb-0">Members List</h4>
-                        <a href="{{ route('members.create') }}" class="btn btn-primary">Add New Member</a>
+                        <a href="{{ route('members.create') }}" class="btn btn-primary">Add Member</a>
                   </div>
 
                   <div class="card-body">

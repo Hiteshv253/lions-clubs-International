@@ -9,7 +9,7 @@
 
             <li class="breadcrumb-item" aria-current="page"><a href="{{ route('event_user_registration.index') }}">Event</a></li>
             <li class="breadcrumb-item" aria-current="page">{{ $event->event_name }}</li>
-            <li class="breadcrumb-item active" aria-current="page">Registrations</li>
+            <li class="breadcrumb-item active" aria-current="page">Registered</li>
       </ol>
 </nav>
 
@@ -18,7 +18,7 @@
       <div class="col-12">
             <div class="card shadow-sm">
                   <div class="card-header d-flex justify-content-between align-items-center flex-wrap">
-                        <h4 class="card-title mb-0">{{ $event->event_name }} - Registrations</h4>
+                        <h4 class="card-title mb-0">Registered Event : {{ $event->event_name }}</h4>
                   </div>
                   <div class="card-body">
                         <p><strong>Date & Time:</strong>
@@ -27,7 +27,7 @@
                         </p>
 
                         @if($event->registrations->isEmpty())
-                        <div class="alert alert-warning mb-0">No registrations yet.</div>
+                        <div class="alert alert-warning mb-0">No Registered yet.</div>
                         @else
                         <div class="table-responsive">
                               <table class="table table-bordered table-striped" id="registrations-table">
@@ -35,7 +35,7 @@
                                           <tr>
                                                 <th>#</th>
                                                 <th>Name</th>
-                                                <th>Email</th>
+                                                <th>Email ID</th>
                                                 <th>Contact Number</th>
                                                 <th>Registered At</th>
                                           </tr>

@@ -10,18 +10,18 @@
 </nav>
 
 <div class="card shadow-sm rounded-4">
-      <div class="card-header"><h5>Add New District</h5></div>
+      <div class="card-header"><h5>Add District</h5></div>
       <div class="card-body">
             <form action="{{ route('districts.store') }}" method="POST">
                   @csrf
                   <div class="row g-3">
-                        <div class="col-sm-6 col-md-4">
+                        <div class="col-sm-6 col-md-6">
                               <label for="name">District Name</label>
                               <input type="text" name="name" id="name" class="form-control" value="{{ old('name') }}" required>
                               @error('name') <small class="text-danger">{{ $message }}</small> @enderror
                         </div>
 
-                        <div class="col-sm-6 col-md-4">
+                        <div class="col-sm-6 col-md-6">
                               <label for="state_id">State</label>
                               <select name="state_id" id="state_id" class="form-select" required>
                                     <option value="">Select State</option>

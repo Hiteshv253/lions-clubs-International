@@ -36,7 +36,7 @@
                         <div class="col-md-6 d-flex gap-2">
                               <button id="btnSearch" class="btn btn-primary">Search</button>
                               <button id="btnReset" class="btn btn-secondary">Reset</button>
-                              <a href="{{ route('clubs.create') }}" class="btn btn-success">Add New Club</a>
+                              <a href="{{ route('clubs.create') }}" class="btn btn-success">Add Club</a>
                               <!--<a href="{{ route('clubs.exportPdf') }}" class="btn btn-danger">Export to PDF</a>-->
                         </div>
                   </div>

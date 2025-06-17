@@ -2,10 +2,10 @@
 
 @section('content')
 <div class="container">
-    <h2 class="mb-4">My Event Registration History</h2>
+    <h2 class="mb-4">My Event Registered History</h2>
 
     @if($events->isEmpty())
-        <div class="alert alert-info">You haven't registered for any events yet.</div>
+        <div class="alert alert-info">You haven't Registered for any events yet.</div>
     @else
         <div class="row">
             @foreach($events as $event)

@@ -15,6 +15,7 @@
                   <h5 class="mb-0">Districts List</h5>
             </div>
             <div class="card-body">
+
                   <div class="row mb-3 align-items-center">
                         <select id="filter-state" class="form-select w-auto">
                               <option value="">All States</option>
