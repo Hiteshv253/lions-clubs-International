@@ -35,7 +35,7 @@
                         </div>
 
                         <div class="col-md-6">
-                              <label for="event_start_date" class="form-label">Event Start</label>
+                              <label for="event_start_date" class="form-label">Event Start Date & time</label>
                               <input type="datetime-local" name="event_start_date" id="event_start_date"
                                      class="form-control @error('event_start_date') is-invalid @enderror"
                                      value="{{ old('event_start_date') }}" required>
@@ -43,7 +43,7 @@
                         </div>
 
                         <div class="col-md-6">
-                              <label for="event_end_date" class="form-label">Event End</label>
+                              <label for="event_end_date" class="form-label">Event End Date & time</label>
                               <input type="datetime-local" name="event_end_date" id="event_end_date"
                                      class="form-control @error('event_end_date') is-invalid @enderror"
                                      value="{{ old('event_end_date') }}" required>

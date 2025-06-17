@@ -29,54 +29,54 @@
 </div>
 
 <section class="py-5 form-section">
-      <div class="container">
-            <div class="row g-5 align-items-start">
-                  <!-- Event Image -->
-                  <div class="col-md-6">
-                        <div class="text-center">
-                              <img src="{{ $event->banner_image }}" class="rounded shadow w-100" alt="{{ $event->event_name }}">
-                        </div>
-                  </div>
-
-                  <!-- Event Content & Registration Form -->
-                  <div class="col-md-6">
-                        <h2 class="mb-3">{{ $event->event_name }}</h2>
-                        <p class="text-muted mb-2">
-                              <i class="fa fa-calendar me-2"></i>
-                              {{ \Carbon\Carbon::parse($event->start_date)->format('M d') }} to
-                              {{ \Carbon\Carbon::parse($event->end_date)->format('M d') }}
-                        </p>
-                        <p class="mb-4">{{ $event->description }}</p>
-
-                        <form class="border rounded p-4 shadow-sm bg-light" method="POST" action="{{ route('event.register') }}">
-                              @csrf
-                              <input type="hidden" name="event_id" value="{{ $event->id }}">
-                              <h5 class="mb-3">Register for this event</h5>
-
-                              <div class="mb-3">
-                                    <label for="name" class="form-label">Full Name</label>
-                                    <input name="name" id="name" type="text" class="form-control" required>
-                              </div>
-
-                              <div class="mb-3">
-                                    <label for="contact_number" class="form-label">Contact Number</label>
-                                    <input name="contact_number" id="contact_number" type="number" class="form-control" required>
-                              </div>
-
-                              <div class="mb-4">
-                                    <label for="email" class="form-label">Email Address</label>
-                                    <input name="email" type="email" id="email" class="form-control" required>
-                              </div>
-
-                              <button type="submit" class="btn btn-success w-100" id="submitBtn{{ $event->id }}">
-                                    <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
-                                    <span class="btn-text">Register Now</span>
-                              </button>
-                        </form>
-                  </div>
+    <div class="container">
+        <div class="row g-5 align-items-start">
+            <!-- 📸 Event Image (Left Column) -->
+            <div class="col-md-6">
+                <img src="{{ $event->banner_image }}" class="img-fluid rounded shadow w-100" alt="{{ $event->event_name }}">
             </div>
-      </div>
+
+            <!-- 📝 Event Content + Form (Right Column) -->
+            <div class="col-md-6">
+                <h2 class="mb-3">{{ $event->event_name }}</h2>
+                <p class="text-muted mb-2">
+                    <i class="fa fa-calendar me-2"></i>
+                    {{ \Carbon\Carbon::parse($event->start_date)->format('M d') }} to
+                    {{ \Carbon\Carbon::parse($event->end_date)->format('M d') }}
+                </p>
+                <p class="mb-4">{{ $event->description }}</p>
+
+                <form class="border rounded p-4 shadow-sm bg-light" method="POST" action="{{ route('event.register') }}">
+                    @csrf
+                    <input type="hidden" name="event_id" value="{{ $event->id }}">
+                    <h5 class="mb-3">Register for this event</h5>
+
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Full Name</label>
+                        <input name="name" id="name" type="text" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="contact_number" class="form-label">Contact Number</label>
+                        <input name="contact_number" id="contact_number" type="number" class="form-control" required>
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input name="email" type="email" id="email" class="form-control" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-success w-100" id="submitBtn{{ $event->id }}">
+                        <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                        <span class="btn-text">Register Now</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
 </section>
+
+
 
 <script>
       document.querySelector('#submitBtn{{ $event->id }}').addEventListener('click', function () {

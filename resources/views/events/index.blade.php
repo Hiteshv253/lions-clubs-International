@@ -11,7 +11,7 @@
             <div class="card shadow-sm rounded-4">
                   <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
                         <h4 class="card-title mb-0">Events Master</h4>
-                        <a href="{{ route('events.create') }}" class="btn btn-primary">Add New Events</a>
+                        <a href="{{ route('events.create') }}" class="btn btn-primary">Add Event</a>
                   </div>
 
                   <div class="p-3 shadow-sm">
@@ -27,7 +27,7 @@
                                     <thead class="table-light">
                                           <tr>
                                                 <th>Id</th>
-                                                <th>Name</th>
+                                                <th>Event Name</th>
                                                 <th>Date & Time</th>
                                                 <th>Start Date</th>
                                                 <th>End Date</th>

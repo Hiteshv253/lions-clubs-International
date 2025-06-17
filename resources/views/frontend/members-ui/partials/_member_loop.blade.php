@@ -6,7 +6,7 @@
                      class="img-fluid rounded-circle" style="width: 80px; height: 80px;" alt="Profile Photo">
             </div>
             <div class="flex-grow-1">
-                <h6 class="mb-1">{{ $member->first_name }} {{ $member->last_name }} ({{ $member->member_id }})</h6>
+                <h6 class="mb-1">{{ $member->first_name }} {{ $member->last_name }} ({{ $member->membership_id }})</h6>
                 <p class="text-muted small mb-1">{{ $member->email }}</p>
                 <span class="badge bg-{{ $member->is_active ? 'success' : 'secondary' }}">
                     {{ $member->is_active ? 'Active' : 'Inactive' }}

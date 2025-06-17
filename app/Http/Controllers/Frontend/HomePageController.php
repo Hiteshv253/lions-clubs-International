@@ -88,7 +88,7 @@ class HomePageController extends Controller {
             $offset = $request->get('offset', 0);
             $limit = 8;
 
-            $events = EventMaster::latest()->skip($offset)->take($limit)->get();
+            $events = EventMaster::latest()->skip($offset)->take($limit)->where('is_active', 0)->get();
 
             $html = '';
             foreach ($events as $event) {
@@ -123,7 +123,7 @@ class HomePageController extends Controller {
             }
 
 // Initial 10
-            $fetchEvents = EventMaster::orderBy('date_time', 'desc')->take(8)->get();
+            $fetchEvents = EventMaster::orderBy('date_time', 'desc')->where('is_active', 0)->take(8)->get();
 
             return view('frontend.event.index', ['fetchEvents' => $fetchEvents]);
       }

@@ -1,4 +1,4 @@
-<form id="filterForm" class="row align-items-end g-2">
+<form id="filterForm" class="row align-items-end g-2" style="display: none;">
       <div class="col-md-3">
             <input type="text" class="form-control" name="search" placeholder="Search by Name or Mobile">
       </div>
