@@ -13,7 +13,7 @@ class ClubMemberMasters extends Seeder {
 
             foreach (range(1, 50) as $index) {
                   \App\Models\MemberMaster::create([
-                            'member_id' => 'MEM' . str_pad($index, 4, '0', STR_PAD_LEFT),
+                            'membership_id' => 'MEM' . str_pad($index, 4, '0', STR_PAD_LEFT),
                             'first_name' => $faker->firstName,
                             'last_name' => $faker->lastName,
                             'gender' => $faker->randomElement(['Male', 'Female', 'Other']),
@@ -31,6 +31,8 @@ class ClubMemberMasters extends Seeder {
                             'region_id' => rand(1, 5),
                             'occupation_id' => rand(1, 5),
                             'account_id' => rand(1, 5),
+                            'user_id' => rand(1, 500),
+                            'parent_id' => rand(0, 100),
                             'zone_id' => rand(1, 10),
                             'club_id' => rand(1, 15),
                             'is_active' => rand(0, 1),

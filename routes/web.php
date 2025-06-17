@@ -112,6 +112,8 @@ Route::prefix('lions')->middleware('auth')->group(function () {
       Route::get('members/bulk-upload-form', [MemberController::class, 'showBulkUploadForm'])->name('members.bulk-upload-form');
       Route::post('members/bulk-upload', [MemberController::class, 'importMembers'])->name('members.bulk-upload');
       Route::post('members/bulk-delete', [MemberController::class, 'bulkDelete'])->name('members.bulkDelete');
+      Route::post('members/{id}/convert-user', [MemberController::class, 'convertToUser'])->name('members.convertToUser');
+      Route::get('/members/search', [MemberController::class, 'members_search'])->name('members.search');
 
       /*
         |--------------------------------------------------------------------------

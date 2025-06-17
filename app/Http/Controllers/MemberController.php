@@ -26,6 +26,64 @@ use Maatwebsite\Excel\Concerns\ToArray;
 
 class MemberController extends Controller {
 
+      public function members_search(Request $request) {
+            $query = $request->search;
+            $my_members = MemberMaster::where('first_name', 'like', "%$query%")
+                  ->orWhere('last_name', 'like', "%$query%")
+                  ->orWhere('membership_id', 'like', "%$query%")
+                  ->get();
+
+            return view('role-permission.user.profile.partials.cards', compact('my_members'))->render();
+      }
+
+      public function convertToUser($id) {
+
+            $member = MemberMaster::findOrFail($id);
+
+// Check if user already exists
+            if (User::where('email', $member->email)->exists()) {
+                  return redirect()->back()->with('error', 'User already exists for this member.');
+            }
+
+// Generate password
+            $passwordPlain = Str::random(10);
+            $passwordHashed = Hash::make($passwordPlain);
+
+// Create User
+            $user = User::create([
+                            'name' => $member->first_name . ' ' . $member->last_name,
+                            'first_name' => $member->first_name,
+                            'last_name' => $member->last_name,
+                            'email' => $member->email,
+                            'membership_id' => $member->membership_id,
+                            'is_active' => $member->is_active,
+                            'password' => $passwordHashed,
+            ]);
+
+            $user->assignRole('member');
+
+// Update Member with user_id
+            $member->update([
+                      'user_id' => $user->id,
+            ]);
+
+// Send login details via email
+            $loginUrl = route('login');
+
+            Mail::raw(
+                  "Dear {$user->first_name},\n\n" .
+                  "Your Email ID: {$member->email}\n" .
+                  "Your Membership ID: {$member->membership_id}\n" .
+                  "Password: {$passwordPlain}\n" .
+                  "Please login here: {$loginUrl}",
+                  function ($message) use ($user) {
+                        $message->to($user->email)->subject('Lions Club Membership Details');
+                  }
+            );
+
+            return redirect()->back()->with('success', 'Member converted to user successfully.');
+      }
+
       // Show list of members
 
       public function index(Request $request) {
@@ -53,7 +111,8 @@ class MemberController extends Controller {
                               ->addColumn('occupation', fn($query) => $query->occupation->name ?? '—')
                               ->addColumn('account_name', fn($query) => $query->account->name ?? '—')
                               ->addColumn('actions', function ($member) {
-                                    return view('members.partials.actions', compact('member'))->render();
+                                    $hasUser = \App\Models\User::where('email', $member->email)->exists();
+                                    return view('members.partials.actions', compact('member', 'hasUser'))->render();
                               })
                               ->rawColumns(['actions'])
                               ->make(true);
@@ -92,7 +151,8 @@ class MemberController extends Controller {
             $states = State::select('name', 'id')->distinct()->get();
             $occupations = Occupation::select('name', 'id')->distinct()->get();
             $ZipCodes = ZipCode::select('zip_code', 'id')->distinct()->get();
-            return view('members.edit', compact('member', 'regions', 'accounts', 'citys', 'states', 'occupations', 'ZipCodes'));
+            $allmembers = MemberMaster::select('first_name', 'membership_id', 'last_name', 'id')->distinct()->get();
+            return view('members.edit', compact('allmembers', 'member', 'regions', 'accounts', 'citys', 'states', 'occupations', 'ZipCodes'));
       }
 
       // Store new member
@@ -256,7 +316,13 @@ class MemberController extends Controller {
                       'city_id' => $request->city,
                       'state_id' => $request->state_id,
                       'club_id' => $request->club_id,
+                      'parent_id' => $request->parent_id,
             ]);
+            $user = User::where('id', '=', $member->user_id);
+            $user->update([
+                      'is_active' => $request->is_active,
+            ]);
+           
             return redirect()->route('members.index')->with('success', 'Member updated successfully');
       }
 

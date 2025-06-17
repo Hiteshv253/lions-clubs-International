@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder {
 
 
 
-            \App\Models\User::factory(100)->create();
+            \App\Models\User::factory(50)->create();
             $this->call([
                       ClubMemberMasters::class,
                       UserRolePermissionSeeder::class,

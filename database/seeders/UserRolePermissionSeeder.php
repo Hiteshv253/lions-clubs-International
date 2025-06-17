@@ -39,7 +39,7 @@ class UserRolePermissionSeeder extends Seeder {
             // Create Roles
             $superAdminRole = Role::firstOrCreate(['name' => 'super-admin'], ['guard_name' => 'web']);
             $adminRole = Role::firstOrCreate(['name' => 'admin'], ['guard_name' => 'web']);
-            $staffRole = Role::firstOrCreate(['name' => 'staff'], ['guard_name' => 'web']);
+            $memberRole = Role::firstOrCreate(['name' => 'member'], ['guard_name' => 'web']);
             $userRole = Role::firstOrCreate(['name' => 'user'], ['guard_name' => 'web']);
 
             // Lets give all permission to super-admin role.
@@ -83,6 +83,6 @@ class UserRolePermissionSeeder extends Seeder {
                             'password' => Hash::make('Password@1234'),
             ]);
 
-            $staffUser->assignRole($staffRole);
+            $staffUser->assignRole($memberRole);
       }
 }

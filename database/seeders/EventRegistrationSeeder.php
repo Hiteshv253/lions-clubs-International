@@ -11,7 +11,7 @@ class EventRegistrationSeeder extends Seeder {
       public function run(): void {
             $faker = Faker::create();
 
-            foreach (range(1, 20) as $i) {
+            foreach (range(1, 50) as $i) {
                   EventRegistration::create([
                             'name' => $faker->name,
                             'email' => $faker->unique()->safeEmail,

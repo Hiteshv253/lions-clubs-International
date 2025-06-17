@@ -28,6 +28,17 @@
             <form action="{{ route('members.update', $member->id) }}" method="POST">
                   @csrf
                   @method('PUT')
+                  <div class="mb-3">
+                        <label for="parent_id" class="form-label">Parent Member</label>
+                        <select class="form-select" name="parent_id">
+                              <option value="">-- None --</option>
+                              @foreach($allmembers as $parent)
+                              <option value="{{ $parent->id }}" {{ old('parent_id', $member->parent_id ?? '') == $parent->id ? 'selected' : '' }}>
+                                    {{ $parent->id }} - {{ $parent->first_name ?? '-' }} {{ $parent->last_name ?? '-' }} ({{ $parent->membership_id }})
+                              </option>
+                              @endforeach
+                        </select>
+                  </div>
                   <div class="row g-3">
                         <div class="col-sm-6 col-md-3">
                               <label class="form-label">Accounts</label>
@@ -61,7 +72,7 @@
                         </div>
                         <div class="col-sm-6 col-md-3">
                               <label class="form-label">Lion ID & Member ID</label>
-                              <input type="text" name="member_id" id="member_id" class="form-control" value="{{ $member->member_id }}" readonly>
+                              <input type="text" name="membership_id" id="membership_id" class="form-control" value="{{ $member->membership_id }}" readonly>
                         </div>
                         <div class="col-sm-6 col-md-3">
                               <label class="form-label">First Name</label>
@@ -143,7 +154,7 @@
                               <select id="zipcode" name="zipcode" class="form-control">
                                     <option value="">-- Zip Code@ --</option>
                                     @foreach($ZipCodes as $ZipCode)
-                                          <option value="{{ $ZipCode->zipcode }}" {{ old('zipcode', $member->zip_code) == $ZipCode->zipcode ? 'selected' : '' }}>{{ $ZipCode->zip_code }}</option>
+                                    <option value="{{ $ZipCode->zipcode }}" {{ old('zipcode', $member->zip_code) == $ZipCode->zipcode ? 'selected' : '' }}>{{ $ZipCode->zip_code }}</option>
                                     @endforeach
                               </select>
                         </div>

@@ -43,8 +43,10 @@
                                                 <th style="width:5%">Id</th>
                                                 <th style="width:25%">First Name</th>
                                                 <th style="width:25%">Last Name</th>
-                                                <th style="width:30%">Email</th>
+                                                <th style="width:30%">Email ID</th>
                                                 <th style="width:25%">Roles</th>
+                                                <th style="width:25%">Last Login</th>
+                                                <th style="width:25%">Status</th>
                                                 <th style="width:15%">Action</th>
                                           </tr>
                                     </thead>
@@ -73,6 +75,14 @@
                         {data: 'last_name', name: 'last_name'},
                         {data: 'email', name: 'email'},
                         {data: 'roles', name: 'roles', orderable: false, searchable: false},
+                        {data: 'last_login_at', name: 'last_login_at'},
+                        {
+                              data: 'is_active',
+                              name: 'is_active',
+                              render: function (data) {
+                                    return data == 0 ? '<span class="badge bg-success">Active</span>' : '<span class="badge bg-danger">Inactive</span>';
+                              }
+                        },
                         {data: 'action', name: 'action', orderable: false, searchable: false}
                   ]
             });

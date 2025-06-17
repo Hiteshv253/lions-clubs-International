@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
+use App\Models\MemberMaster;
 
 class LoginController extends Controller {
 
@@ -32,16 +33,25 @@ class LoginController extends Controller {
                   $userId = Auth::id();
                   $currentSessionId = Session::getId();
 
-                  // Delete all other sessions for this user
                   DB::table('sessions')
                         ->where('user_id', $userId)
                         ->where('id', '!=', $currentSessionId)
                         ->delete();
 
-                  // Update current session with user_id
                   DB::table('sessions')
                         ->where('id', $currentSessionId)
                         ->update(['user_id' => $userId]);
+
+                  // ✅ Update last login
+                  Auth::user()->update([
+                            'last_login_at' => now(),
+                  ]);
+
+                  $member = MemberMaster::where('user_id', '=', $userId);
+                  $member->update([
+                            'last_login_at' => now(),
+                  ]);
+//                  dd(Auth::user(), Session::getId(), now(), $member);
 
                   return redirect()->intended('/lions/dashboard');
             }
@@ -49,6 +59,7 @@ class LoginController extends Controller {
             return back()->with('error', 'The provided credentials do not match our records.');
       }
 }
+
 //
 //public function authenticate(Request $request): RedirectResponse
 //{

@@ -36,8 +36,19 @@ class MemberMaster extends Model {
                 'occupation_id',
                 'region_id',
                 'zone_id',
+                'user_id',
+                'parent_id',
                 'club_id',
+                'last_login_at',
       ];
+
+      public function parent() {
+            return $this->belongsTo(MemberMaster::class, 'parent_id');
+      }
+
+      public function children() {
+            return $this->hasMany(MemberMaster::class, 'parent_id');
+      }
 
       public function state() {
             return $this->belongsTo(State::class, 'state_id');
@@ -65,5 +76,9 @@ class MemberMaster extends Model {
 
       public function club() {
             return $this->belongsTo(Club::class, 'club_id');
+      }
+
+      public function account_() {
+            return $this->belongsTo(Account::class);
       }
 }

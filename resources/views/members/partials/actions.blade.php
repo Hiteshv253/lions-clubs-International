@@ -7,4 +7,15 @@
             Delete
       </button>
 </form>
- 
+
+@if(!$hasUser)
+<form action="{{ route('members.convertToUser', $member->id) }}" method="POST" style="display:inline-block;">
+      @csrf
+      <button type="submit" class="btn btn-sm btn-primary"
+              onclick="return confirm('Are you sure to convert this member to user?')">
+            Convert to User
+      </button>
+</form>
+@else
+<button class="btn btn-sm btn-secondary" disabled>Already User</button>
+@endif

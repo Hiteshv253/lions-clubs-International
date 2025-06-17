@@ -112,7 +112,7 @@
                         url: '{{ route('members.index') }}',
                         data: function (d) {
                               d.region_id = $('#filter-parent-region').val();
-                              d.member_id = $('#filter-member-id').val();
+                              d.membership_id = $('#filter-member-id').val();
                               d.account_name = $('#filter-account-name').val();
                               d.occupation = $('#filter-occupation').val();
 //                              d.join_date = $('#filter-join-date').val();
@@ -131,7 +131,7 @@
 //                        },
                         {data: 'id', name: 'id'},
                         {data: 'account_name', name: 'account_name'},
-                        {data: 'member_id', name: 'member_id'},
+                        {data: 'membership_id', name: 'membership_id'},
                         {data: 'first_name', name: 'first_name'},
                         {data: 'last_name', name: 'last_name'},
                         {data: 'address_line1', name: 'address_line1'},

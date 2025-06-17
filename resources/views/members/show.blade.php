@@ -22,7 +22,7 @@
                 <div class="col-md-4"><strong>Zone:</strong><br> {{ \App\Models\Zone::find($member->zone_id)->name ?? 'Not Found' }}</div>
 
                 <div class="col-md-4"><strong>Club:</strong><br> {{ \App\Models\Club::find($member->club_id)->name ?? 'Not Found' }}</div>
-                <div class="col-md-4"><strong>Lion ID & Member ID:</strong><br> {{ $member->member_id }}</div>
+                <div class="col-md-4"><strong>Lion ID & Member ID:</strong><br> {{ $member->membership_id }}</div>
                 <div class="col-md-4"><strong>Status:</strong><br>
                     <span class="badge {{ $member->is_active == 0 ? 'bg-success' : 'bg-danger' }}">
                         {{ $member->is_active == 0 ? 'Active' : 'Inactive' }}

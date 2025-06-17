@@ -22,6 +22,7 @@ return new class extends Migration {
                   $table->boolean('is_active')->default(true)->comment('0: active | 1: in-active');
                   $table->unsignedBigInteger('is_create_by')->default(true); // user ID who created
                   $table->rememberToken();
+                  $table->timestamp('last_login_at')->nullable();
                   $table->timestamps();
             });
       }

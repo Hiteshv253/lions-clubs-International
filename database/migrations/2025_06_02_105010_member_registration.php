@@ -12,7 +12,7 @@ return new class extends Migration {
       public function up(): void {
             Schema::create('club_member_masters', function (Blueprint $table) {
                   $table->id();
-                  $table->string('member_id')->unique();
+                  $table->string('membership_id')->unique();
                   $table->string('first_name');
                   $table->string('last_name');
                   $table->enum('gender', ['Male', 'Female', 'Other'])->nullable();
@@ -30,11 +30,15 @@ return new class extends Migration {
                   $table->foreignId('state_id')->nullable();
                   $table->foreignId('city_id')->nullable();
 
+                  $table->foreignId('user_id')->nullable();
                   $table->foreignId('region_id')->nullable();
                   $table->foreignId('occupation_id')->nullable();
                   $table->foreignId('account_id')->nullable();
                   $table->foreignId('zone_id')->nullable();
                   $table->foreignId('club_id')->nullable();
+
+                  $table->string('parent_id')->nullable();
+                  $table->timestamp('last_login_at')->nullable();
                   $table->boolean('is_active')->default(true)->comment('0: active | 1: in-active');
                   $table->unsignedBigInteger('is_create_by')->default(true); // user ID who created
                   $table->timestamps();

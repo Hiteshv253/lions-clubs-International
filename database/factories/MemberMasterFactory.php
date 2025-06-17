@@ -12,7 +12,7 @@ class MemberMasterFactory extends Factory {
 
       public function definition(): array {
             return [
-                      'member_id' => strtoupper(Str::random(8)),
+                      'membership_id' => strtoupper(Str::random(8)),
                       'first_name' => $this->faker->firstName,
                       'last_name' => $this->faker->lastName,
                       'address_line1' => $this->faker->streetAddress,
@@ -28,8 +28,10 @@ class MemberMasterFactory extends Factory {
                       'state_id' => $this->faker->numberBetween(1, 50),
                       'occupation_id' => $this->faker->numberBetween(1, 500),
                       'account_id' => $this->faker->numberBetween(1, 500),
+                      'user_id' => $this->faker->numberBetween(1, 500),
                       'join_date' => $this->faker->date(),
                       'is_active' => $this->faker->numberBetween(0, 1),
+                      'parent_id' => $this->faker->numberBetween(0, 100),
                       'is_create_by' => $this->faker->numberBetween(1, 5),
             ];
       }
