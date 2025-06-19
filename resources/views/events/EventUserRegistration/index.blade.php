@@ -100,7 +100,7 @@
                         </form>
                   </div>
                   <div class="container">
-                      <div class="row p-2">
+                        <div class="row p-2">
                               @forelse ($event_registrations as $event_registration)
                               <div class="col-xl-4 col-md-6 mb-4">
                                     <div class="card h-100 shadow-sm border-0 position-relative hover-scale">
@@ -137,8 +137,8 @@
 
                                                 <!-- Footer Metrics -->
                                                 <ul class="list-unstyled small text-muted mb-0">
-                                                      <li><strong>Registered:</strong> {{ $event_registration['registrations_count'] }}</li>
-                                                      <li><strong>Collected:</strong> ₹{{ number_format($event_registration['registrations_count'] * $event_registration['total_amount'], 2) }}</li>
+                                                      <li><strong>Registered:</strong> {{ $event_registration->total_persons ?? 0 }}</li>
+                                                      <li><strong>Collected:</strong> ₹{{ number_format($event_registration->total_collected ?? 0, 2) }}</li>
                                                 </ul>
                                           </div>
 

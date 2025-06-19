@@ -15,6 +15,8 @@ class EventUserRegistrationController extends Controller {
        */
       public function index(Request $request) {
             $query = EventMaster::withCount('registrations')
+                  ->withSum('registrations as total_collected', 'calculated_total')
+                  ->withSum('registrations as total_persons', 'number_of_persons')
                   ->where('is_active', 0)
                   ->has('registrations');
 
@@ -36,7 +38,6 @@ class EventUserRegistrationController extends Controller {
                   ->where('club_event_masters.is_active', 0)
                   ->sum('event_registrations.calculated_total');
 
-            
             return view('events.EventUserRegistration.index', compact(
                         'totalEvents',
                         'totalInActiveEvents',
