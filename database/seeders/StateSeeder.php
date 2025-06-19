@@ -12,6 +12,6 @@ class StateSeeder extends Seeder {
        * Run the database seeds.
        */
       public function run() {
-            \App\Models\State::factory()->count(50)->create();
+            \App\Models\State::factory()->count(10)->create();
       }
 }

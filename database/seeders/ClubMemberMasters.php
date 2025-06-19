@@ -11,7 +11,7 @@ class ClubMemberMasters extends Seeder {
       public function run(): void {
             $faker = Faker::create();
 
-            foreach (range(1, 50) as $index) {
+            foreach (range(1, 10) as $index) {
                   \App\Models\MemberMaster::create([
                             'membership_id' => 'MEM' . str_pad($index, 4, '0', STR_PAD_LEFT),
                             'first_name' => $faker->firstName,

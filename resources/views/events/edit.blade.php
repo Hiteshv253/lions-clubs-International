@@ -64,6 +64,32 @@
                               @enderror
                         </div>
 
+                        <!--===========================-->
+                        <div class="col-sm-6 col-md-3">
+                              <label for="base_amount" class="form-label">Base Amount(INR)</label>
+                              <input type="number" name="base_amount" id="base_amount"
+                                     class="form-control" value="{{ old('base_amount', $event->base_amount) }}" required>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3">
+                              <label for="gst_rate" class="form-label">GST Rate (%)</label>
+                              <input type="number" step="0.01" name="gst_rate" id="gst_rate"
+                                     class="form-control" value="{{ old('gst_rate', $event->gst_rate) }}" required>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3">
+                              <label for="gst_amount" class="form-label">GST Amount(INR)</label>
+                              <input type="text" name="gst_amount" id="gst_amount" value="{{ old('gst_amount', $event->gst_amount) }}"
+                                     class="form-control" readonly>
+                        </div>
+
+                        <div class="col-sm-6 col-md-3">
+                              <label for="total_amount" class="form-label">Total Amount(INR)</label>
+                              <input type="text" name="total_amount" id="total_amount" value="{{ old('total_amount', $event->total_amount) }}"
+                                     class="form-control" readonly>
+                        </div>
+
+                        <!--===========================-->
                         <!-- Description -->
                         <div class="col-md-12">
                               <label for="description" class="form-label">Description</label>
@@ -127,5 +153,21 @@
 <script src="https://cdn.ckeditor.com/4.21.0/standard/ckeditor.js"></script>
 <script>
 CKEDITOR.replace('description');
+</script>
+<script>
+    function calculateGST() {
+        let base = parseFloat($('#base_amount').val()) || 0;
+        let rate = parseFloat($('#gst_rate').val()) || 0;
+
+        let gst = (base * rate) / 100;
+        let total = base + gst;
+
+        $('#gst_amount').val(gst.toFixed(2));
+        $('#total_amount').val(total.toFixed(2));
+    }
+
+    $(document).ready(function () {
+        $('#base_amount, #gst_rate').on('input', calculateGST);
+    });
 </script>
 @endsection

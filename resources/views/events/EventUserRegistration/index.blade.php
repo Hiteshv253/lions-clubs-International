@@ -7,6 +7,19 @@
             <li class="breadcrumb-item"><a href="{{ route('event_user_registration.index') }}">Event User Registered</a></li>
       </ol>
 </nav>
+<style>
+      .hover-scale {
+            transition: transform 0.2s ease;
+      }
+
+      .hover-scale:hover {
+            transform: scale(1.02);
+      }
+
+      .object-fit-cover {
+            object-fit: cover;
+      }
+</style>
 
 <div class="row row-cols-xxl-5 row-cols-lg-4 row-cols-sm-2 row-cols-1">
       <div class="col">
@@ -56,12 +69,12 @@
             </div>
       </div>
       <!--end col-->
-      <div class="col" style="display: none;">
+      <div class="col">
             <div class="card">
                   <div class="card-body d-flex">
                         <div class="flex-grow-1">
-                              <h4>{{ $totalRegisteredUsers }}</h4>
-                              <h6 class="text-muted fs-13 mb-0">Total Registered Users:</h6>
+                              <h4>₹ {{ $totalCollectedFromActive }}</h4>
+                              <h6 class="text-muted fs-13 mb-0">Total Collected:</h6>
                         </div>
                         <div class="flex-shrink-0 avatar-sm">
                               <div class="avatar-title bg-info-subtle text-info fs-22 rounded">
@@ -86,57 +99,64 @@
                               <a href="{{ route('event_user_registration.index') }}" class="btn btn-secondary">Reset</a>
                         </form>
                   </div>
-                  <div class="row">
-                        @forelse ($event_registrations as $event_registration)
-                        <div class="col-xxl-3 col-md-6">
-                              <div class="card mb-2 ribbon-box ribbon-fill right">
-                                    <div class="ribbon ribbon-info shadow-none"><i class="ri-flashlight-fill me-1"></i> {{ $event_registration['registrations_count'] }}</div>
-                                    <div class="card-body">
-                                          <div class="d-flex mb-3">
-                                                <div class="flex-shrink-0 avatar-sm">
-                                                      <div class="avatar-title bg-light rounded material-shadow">
-                                                            <img src="{{ $event_registration['image'] }}" alt="" class="avatar-xxs">
+                  <div class="container">
+                      <div class="row p-2">
+                              @forelse ($event_registrations as $event_registration)
+                              <div class="col-xl-4 col-md-6 mb-4">
+                                    <div class="card h-100 shadow-sm border-0 position-relative hover-scale">
+                                          <!-- Event Image Banner -->
+                                          <img src="{{ $event_registration['image'] }}"
+                                               class="card-img-top rounded-top object-fit-cover"
+                                               style="height: 180px; width: 100%;" alt="event">
+
+                                          <!-- Card Body -->
+                                          <div class="card-body">
+                                                <h5 class="card-title mb-2">{{ $event_registration['event_name'] }}</h5>
+                                                <p class="small text-muted mb-2">
+                                                      <i class="ri-calendar-line me-1"></i>
+                                                      {{ \Carbon\Carbon::parse($event_registration['event_start_date'])->format('M d, Y') }}
+                                                      –
+                                                      {{ \Carbon\Carbon::parse($event_registration['event_end_date'])->format('M d, Y') }}
+                                                </p>
+
+                                                <!-- Pricing Summary -->
+                                                <div class="mb-3">
+                                                      <div class="d-flex justify-content-between small">
+                                                            <span>Base</span>
+                                                            <span>₹{{ number_format($event_registration['base_amount'], 2) }}</span>
+                                                      </div>
+                                                      <div class="d-flex justify-content-between small">
+                                                            <span>GST ({{ $event_registration['gst_rate'] }}%)</span>
+                                                            <span>₹{{ number_format($event_registration['gst_amount'], 2) }}</span>
+                                                      </div>
+                                                      <div class="d-flex justify-content-between fw-semibold">
+                                                            <span>Total</span>
+                                                            <span class="text-success">₹{{ number_format($event_registration['total_amount'], 2) }}</span>
                                                       </div>
                                                 </div>
-                                                <div class="flex-grow-1 ms-3">
-                                                      <h5 class="fs-15 mb-1">{{ $event_registration['event_name'] }}</h5>
-                                                      <!--<p class="text-muted mb-2">Blockchain Services</p>-->
-                                                </div>
-                                                <div class="me-4">
-                                                      <a href="{{ route('event_user_registration.showRegistrations', $event_registration['id']) }}" class="badge bg-primary-subtle text-primary">
-                                                            Visit Users Registered <i class="ri-arrow-right-up-line align-bottom"></i></a>
-                                                </div>
-                                          </div>
-                                          <a href="{{ route('event_user_registration.showRegistrations', $event_registration['id']) }}">
-                                                <h6 class="text-muted mb-0">
-                                                      Event Registered : {{ $event_registration['registrations_count'] }}
-                                                      <!--<span class="badge bg-success-subtle text-success">86.61%</span>-->
-                                                </h6>
-                                          </a>
-                                    </div>
-                                    <div class="card-body border-top border-top-dashed">
-                                          <div class="d-flex">
-                                                <div class="flex-grow-1">
-                                                      <!--<h6 class="mb-0">4.9 <i class="ri-star-fill align-bottom text-warning"></i></h6>-->
-                                                </div>
-                                                <h6 class="flex-shrink-0 text-warning mb-0"><i class="ri-time-line align-bottom"></i>
-                                                      {{ \Carbon\Carbon::parse($event_registration['event_start_date'])->format('M d, Y ') }} -
-                                                      {{ \Carbon\Carbon::parse($event_registration['event_end_date'])->format('M d, Y ') }}
 
-                                                </h6>
+                                                <!-- Footer Metrics -->
+                                                <ul class="list-unstyled small text-muted mb-0">
+                                                      <li><strong>Registered:</strong> {{ $event_registration['registrations_count'] }}</li>
+                                                      <li><strong>Collected:</strong> ₹{{ number_format($event_registration['registrations_count'] * $event_registration['total_amount'], 2) }}</li>
+                                                </ul>
+                                          </div>
+
+                                          <!-- Action -->
+                                          <div class="card-footer bg-transparent border-top-0 pt-0">
+                                                <a href="{{ route('event_user_registration.showRegistrations', $event_registration['id']) }}"
+                                                   class="btn btn-outline-primary w-100">
+                                                      View Registrations
+                                                </a>
                                           </div>
                                     </div>
                               </div>
-                              <!--end card-->
-
-                              <!--end card-->
 
 
-                              <!--end card-->
+                              @empty
+                              <p class="text-muted">No events found.</p>
+                              @endforelse
                         </div>
-                        @empty
-                        <p class="text-muted">No events found.</p>
-                        @endforelse
                   </div>
             </div>
       </div>

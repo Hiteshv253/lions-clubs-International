@@ -14,7 +14,7 @@ class CitySeeder extends Seeder {
        */
       public function run() {
             State::all()->each(function ($state) {
-                  City::factory()->count(50)->create(['state_id' => $state->id]);
+                  City::factory()->count(10)->create(['state_id' => $state->id]);
             });
       }
 }

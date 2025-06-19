@@ -15,22 +15,40 @@
 </style>
 
 <div class="col-md-6 col-lg-6 col-xl-3 wow fadeInUp" data-wow-delay="0.4s">
-    <div class="card event-card h-100 shadow-sm border-0">
+    <div class="card event-card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
         <div class="position-relative">
-            <img src="{{ $event->image }}" alt="Event Image" class="w-100 event-image">
-            <div class="position-absolute top-0 start-0 p-2 bg-primary text-white rounded-bottom-end">
-                <i class="fa fa-calendar fa-sm me-1"></i>
-                {{ \Carbon\Carbon::parse($event->start_date)->format('M d') }} to
-                {{ \Carbon\Carbon::parse($event->end_date)->format('M d') }}
+
+              @if($event->image)
+              <img src="{{ asset('storage/' . $event->image) }}" alt="Event Image" class="w-100 event-image">
+              @else
+              <img src="{{ asset('images/default-event.png') }}" alt="Default Image" class="w-100 event-image">
+              @endif
+
+            <div class="position-absolute top-0 start-0 p-2 bg-primary text-white rounded-bottom-end small">
+                <i class="fa fa-calendar me-1"></i>
+                {{ \Carbon\Carbon::parse($event->event_start_date)->format('M d') }} -
+                {{ \Carbon\Carbon::parse($event->event_end_date)->format('M d') }}
             </div>
         </div>
+
         <div class="card-body d-flex flex-column">
-            <h5 class="card-title text-truncate">{{ $event->event_name }}</h5>
+            <h5 class="card-title text-truncate mb-1">{{ $event->event_name }}</h5>
+
+            <div class="mb-2 small">
+                <span class="text-muted">Base:</span> ₹{{ number_format($event->base_amount, 2) }}<br>
+                <span class="text-muted">GST ({{ $event->gst_rate }}%):</span> ₹{{ number_format($event->gst_amount, 2) }}<br>
+                <strong>Total:</strong> ₹{{ number_format($event->total_amount, 2) }}
+            </div>
+
             <p class="small text-muted mb-2">
-                <i class="fa fa-clock me-2 text-primary"></i>
+                <i class="fa fa-clock me-1 text-primary"></i>
                 {{ \Carbon\Carbon::parse($event->date_time)->format('M d, Y h:i A') }}
             </p>
-            <p class="card-text small text-muted mb-3">{{ \Illuminate\Support\Str::limit($event->description, 90) }}</p>
+
+            <p class="card-text small text-muted mb-3">
+                {!! \Illuminate\Support\Str::limit(strip_tags($event->description), 90) !!}
+            </p>
+
             <div class="mt-auto d-flex justify-content-between">
                 <a href="{{ route('show_event', $event->id) }}" class="btn btn-outline-primary btn-sm rounded-pill px-3">
                     Read More
@@ -42,6 +60,7 @@
         </div>
     </div>
 </div>
+
 
 
 

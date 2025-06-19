@@ -14,19 +14,21 @@ return new class extends Migration {
                   $table->id();
                   $table->string('event_name');
                   $table->dateTime('date_time');
-                  $table->dateTime('event_start_date');
-                  $table->dateTime('event_end_date');
                   $table->text('description')->nullable();
-                  $table->string('image')->nullable();         // e.g. filename or URL
+                  $table->string('image')->nullable();
                   $table->string('banner_image')->nullable();
-                  $table->boolean('is_active')->default(true)->comment('0: active | 1: in-active');
-                  $table->unsignedBigInteger('is_create_by')->default(true); // user ID who created
-                  $table->timestamps();
 
-                  // If you have a users table:
-//                  $table->foreign('is_create_by')
-//                        ->references('id')->on('users')
-//                        ->onDelete('cascade');
+                  $table->decimal('base_amount', 10, 2)->default(0);
+                  $table->decimal('gst_amount', 10, 2)->default(0);
+                  $table->decimal('total_amount', 10, 2)->default(0);
+                  $table->decimal('gst_rate', 5, 2)->default(0);
+
+
+                  $table->date('event_start_date');
+                  $table->date('event_end_date');
+                  $table->boolean('is_active')->default(true);
+                  $table->unsignedBigInteger('is_create_by')->nullable();
+                  $table->timestamps();
             });
       }
 

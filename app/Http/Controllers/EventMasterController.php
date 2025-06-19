@@ -48,7 +48,12 @@ class EventMasterController extends Controller {
 
       public function index(Request $request) {
             if ($request->ajax()) {
-                  $data = EventMaster::select('id', 'event_name', 'date_time', 'is_active','event_start_date','event_end_date');
+                  $data = EventMaster::select('id',
+                              'base_amount',
+                              'gst_amount',
+                              'total_amount',
+                              'gst_rate',
+                              'event_name', 'date_time', 'is_active', 'event_start_date', 'event_end_date');
                   return DataTables::of($data)
                               ->addColumn('actions', function ($row) {
                                     return view('events.partials.actions', compact('row'))->render();
@@ -96,6 +101,17 @@ class EventMasterController extends Controller {
                   $data['banner_image'] = $path;
             }
 
+            $baseAmount = $request->input('base_amount'); // e.g., 1000
+            $gstRate = $request->input('gst_rate'); // percentage
+
+            $gstAmount = ($baseAmount * $gstRate) / 100;
+            $totalAmount = $baseAmount + $gstAmount;
+
+            $data['base_amount'] = $baseAmount;
+            $data['gst_rate'] = $gstRate;
+            $data['gst_amount'] = $gstAmount;
+            $data['total_amount'] = $totalAmount;
+
             // Assume currently authenticated user creates:
             $data['is_create_by'] = auth()->id();
 
@@ -134,6 +150,7 @@ class EventMasterController extends Controller {
        * Update the specified event in storage.
        */
       public function update(Request $request, EventMaster $event) {
+
             $data = $request->validate([
                       'event_name' => 'required|string|max:255',
                       'date_time' => 'required|date',
@@ -141,10 +158,16 @@ class EventMasterController extends Controller {
                       'event_start_date' => 'required|date',
                       'description' => 'nullable|string',
                       'image' => 'nullable|image|max:2048',
+                      'base_amount' => 'required|numeric',
+                      'gst_rate' => 'required|numeric',
                       'banner_image' => 'nullable|image|max:4096',
                       'is_active' => 'required|boolean',
             ]);
 
+            $data['gst_amount'] = ($data['base_amount'] * $data['gst_rate']) / 100;
+            $data['total_amount'] = $data['base_amount'] + $data['gst_amount'];
+
+            
             if ($request->hasFile('image')) {
                   // Delete old file if exists
                   if ($event->image) {

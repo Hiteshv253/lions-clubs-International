@@ -31,6 +31,10 @@
                                                 <th>Date & Time</th>
                                                 <th>Start Date</th>
                                                 <th>End Date</th>
+                                                <th>Base Amount</th>
+                                                <th>GST Amount</th>
+                                                <th>GST Rate(%)</th>
+                                                <th>Total Amount</th>
                                                 <th>Status</th>
                                                 <th>Actions</th>
                                           </tr>
@@ -56,6 +60,10 @@
                         {data: 'date_time', name: 'date_time'},
                         {data: 'event_start_date', name: 'event_start_date'},
                         {data: 'event_end_date', name: 'event_end_date'},
+                        {data: 'base_amount', name: 'base_amount'},
+                        {data: 'gst_amount', name: 'gst_amount'},
+                        {data: 'gst_rate', name: 'gst_rate'},
+                        {data: 'total_amount', name: 'total_amount'},
                         {
                               data: 'is_active',
                               name: 'is_active',

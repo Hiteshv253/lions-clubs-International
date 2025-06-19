@@ -2,54 +2,65 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\EventMaster;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
-use Yajra\DataTables\Facades\DataTables;
-use SimpleSoftwareIO\QrCode\Facades\QrCode;
-use PDF;
-use App\Models\User;
+use App\Models\EventMaster;
 use App\Models\EventRegistration;
-use Illuminate\Support\Facades\Validator;
+use DB;
+use Yajra\DataTables\Facades\DataTables;
 
 class EventUserRegistrationController extends Controller {
 
       /**
-       * Display a listing of events.
+       * Display a list of events that have registrations.
        */
       public function index(Request $request) {
             $query = EventMaster::withCount('registrations')
                   ->where('is_active', 0)
-                  ->has('registrations'); // fetch only events with at least one registration
+                  ->has('registrations');
 
-            if ($request->has('search') && $request->search) {
+            if ($request->filled('search')) {
                   $query->where('event_name', 'LIKE', '%' . $request->search . '%');
             }
 
             $event_registrations = $query->orderBy('id', 'desc')->get();
 
-// Summary stats
-            $totalActiveEvents = EventMaster::where('is_active', 1)->count(); // assuming 1 = active
-            $totalInActiveEvents = EventMaster::where('is_active', 0)->count();
+            // Summary stats
+            $totalActiveEvents = EventMaster::where('is_active', 1)->count(); // active
+            $totalInActiveEvents = EventMaster::where('is_active', 0)->count(); // inactive
             $totalEvents = EventMaster::count();
-            $totalRegisteredUsers = \App\Models\EventRegistration::where('is_active', 0)->count();
+            $totalRegisteredUsers = EventRegistration::where('is_active', 0)->count();
 
-            return view('events.EventUserRegistration.index', compact('totalEvents', 'totalInActiveEvents', 'event_registrations', 'totalActiveEvents', 'totalRegisteredUsers'));
+            // 💰 Total collected from active events
+            $totalCollectedFromActive = DB::table('event_registrations')
+                  ->join('club_event_masters', 'event_registrations.event_id', '=', 'club_event_masters.id')
+                  ->where('club_event_masters.is_active', 0)
+                  ->sum('event_registrations.calculated_total');
+
+            
+            return view('events.EventUserRegistration.index', compact(
+                        'totalEvents',
+                        'totalInActiveEvents',
+                        'totalActiveEvents',
+                        'totalRegisteredUsers',
+                        'event_registrations',
+                        'totalCollectedFromActive'
+            ));
       }
 
-//            $event_registrations = EventMaster::withCount('registrations')->get();
-//
-//            return view('events.EventUserRegistration.index', compact('event_registrations'));
-//      }
-
+      /**
+       * Show details of a specific event and its registrations.
+       */
       public function showRegistrations($id) {
             $event = EventMaster::with('registrations')->findOrFail($id);
             return view('events.EventUserRegistration.event-details', compact('event'));
       }
 
+      /**
+       * Return event registrations as DataTable response.
+       */
       public function getRegistrations($eventId) {
-            $data = EventRegistration::where('event_id', $eventId)->select(['id', 'name', 'email', 'created_at', 'contact_number']);
+            $data = EventRegistration::where('event_id', $eventId)->select('*');
+
             return DataTables::of($data)
                         ->editColumn('created_at', function ($row) {
                               return $row->created_at->format('M d, Y h:i A');
