@@ -16,7 +16,7 @@ return new class extends Migration {
                   $table->string('last_name');
                   $table->string('first_name');
                   $table->string('email')->unique();
-                  $table->text('membership_id')->unique()->nullable();
+                  $table->text('membership_id')->nullable();
                   $table->timestamp('email_verified_at')->nullable();
                   $table->string('password');
                   $table->boolean('is_active')->default(true)->comment('0: active | 1: in-active');
