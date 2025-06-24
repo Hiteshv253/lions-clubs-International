@@ -161,15 +161,7 @@
                                           <li class="nav-item d-none">
                                                 <a href="{{ route('accounts.index') }}" class="nav-link {{ request()->is('lions/accounts*') ? 'active' : '' }}" data-key="t-services">Accounts</a>
                                           </li>
-                                          <li class="nav-item d-none">
-                                                <a href="{{ route('users.index') }}" class="nav-link {{ request()->is('lions/users*') ? 'active' : '' }}" data-key="t-services">Users</a>
-                                          </li>
-                                          <li class="nav-item d-none">
-                                                <a href="{{ route('permissions.index') }}" class="nav-link {{ request()->is('lions/permissions*') ? 'active' : '' }}" data-key="t-services">Permissions</a>
-                                          </li>
-                                          <li class="nav-item d-none">
-                                                <a href="{{ route('roles.index') }}" class="nav-link {{ request()->is('lions/roles*') ? 'active' : '' }}" data-key="t-services">Roles</a>
-                                          </li>
+
                                           <li class="nav-item d-none">
                                                 <a href="{{ route('sponsors.index') }}" class="nav-link {{ request()->is('lions/sponsors*') ? 'active' : '' }}" data-key="t-services">Sponsors</a>
                                           </li>
@@ -180,6 +172,42 @@
                                     </ul>
                               </div>
                         </li>
+
+
+                        @php
+                        $allowedIp = env('MY_IP');
+                        @endphp
+                        @if (request()->ip() == $allowedIp)
+
+
+
+                        @php
+                        $eventActive = request()->is('lions/users*') ||
+                        request()->is('lions/permissions*') ||
+                        request()->is('lions/roles*');
+                        @endphp
+                        <a class="nav-link menu-link {{ $eventActive ? 'active' : '' }}" href="#sidebarUserShip" data-bs-toggle="collapse" role="button"
+                           aria-expanded="{{ $eventActive ? 'true' : 'false' }}" aria-controls="sidebarUserShip">
+                              <i class="ri-dashboard-2-line"></i>
+                              <span data-key="t-dashboards">Users Master</span>
+                        </a>
+                        <div class="collapse menu-dropdown {{ $eventActive ? 'show' : '' }}" id="sidebarUserShip">
+                              <ul class="nav nav-sm flex-column">
+                                    <li class="nav-item">
+                                          <a href="{{ route('users.index') }}" class="nav-link {{ request()->is('lions/users*') ? 'active' : '' }}" data-key="t-services">Users</a>
+                                    </li>
+                                    <li class="nav-item">
+                                          <a href="{{ route('permissions.index') }}" class="nav-link {{ request()->is('lions/permissions*') ? 'active' : '' }}" data-key="t-services">Permissions</a>
+                                    </li>
+                                    <li class="nav-item">
+                                          <a href="{{ route('roles.index') }}" class="nav-link {{ request()->is('lions/roles*') ? 'active' : '' }}" data-key="t-services">Roles</a>
+                                    </li>
+
+                              </ul>
+                        </div>
+                        </li>  <!--end Dashboard Menu -->
+
+                        @endif
 
                         <!--<li class="menu-title"><span data-key="t-menu">Service</span></li>-->
                         <li class="nav-item d-none">

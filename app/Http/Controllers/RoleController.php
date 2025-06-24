@@ -77,10 +77,15 @@ class RoleController extends Controller {
                   ->where('role_has_permissions.role_id', $role->id)
                   ->pluck('role_has_permissions.permission_id', 'role_has_permissions.permission_id')
                   ->all();
+            $groupedPermissions = $permissions->sortBy('name')->groupBy(function ($permission) {
+                        $parts = explode('_', $permission->name);
+                        return $parts[1] ?? 'other';
+                  })->sortKeys();
 
             return view('role-permission.role.add-permissions', [
                       'role' => $role,
                       'permissions' => $permissions,
+                      'groupedPermissions' => $groupedPermissions,
                       'rolePermissions' => $rolePermissions
             ]);
       }

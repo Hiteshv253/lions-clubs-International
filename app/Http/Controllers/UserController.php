@@ -106,9 +106,9 @@ class UserController extends Controller {
             ]);
 
             $user = User::create([
-                            'name' => $request->f_name . ' ' . $request->l_name,
-                            'f_name' => $request->f_name,
-                            'l_name' => $request->l_name,
+                            'name' => $request->first_name . ' ' . $request->last_name,
+                            'first_name' => $request->first_name,
+                            'last_name' => $request->last_name,
                             'email' => $request->email,
                             'password' => Hash::make($request->password),
             ]);
@@ -143,25 +143,35 @@ class UserController extends Controller {
        */
       public function update(Request $request, User $user) {
             $request->validate([
-                      'name' => 'required|string|max:255',
+//                      'name' => 'required|string|max:255',
+                      'first_name' => 'required|string|max:255',
+                      'last_name' => 'required|string|max:255',
                       'password' => 'nullable|string|min:8|max:20',
                       'roles' => 'required'
             ]);
 
             $data = [
-                      'name' => $request->f_name . ' ' . $request->l_name,
-                      'f_name' => $request->f_name,
-                      'l_name' => $request->l_name,
+                      'name' => $request->first_name . ' ' . $request->last_name,
+                      'first_name' => $request->first_name,
+                      'last_name' => $request->last_name,
                       'email' => $request->email,
             ];
 
             if (!empty($request->password)) {
                   $data['password'] = Hash::make($request->password);
             }
+         
 
             $user->update($data);
             $user->syncRoles($request->roles);
 
+            $member = MemberMaster::where('user_id', '=', $user->id);
+            $member->update([
+//                      'name' => $request->first_name . ' ' . $request->last_name,
+                      'first_name' => $request->first_name,
+                      'last_name' => $request->last_name,
+//                      'is_active' => $request->is_active,
+            ]);
             return redirect('lions/users')->with('success', 'User updated successfully with roles.');
       }
 

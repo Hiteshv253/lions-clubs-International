@@ -12,7 +12,7 @@
             <div class="card shadow-sm rounded-4">
                   <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
                         <h4 class="card-title mb-0">Occupations List</h4>
-                        <a href="{{ route('occupations.create') }}" class="btn btn-primary">Add New Occupations</a>
+                        <a href="{{ route('occupations.create') }}" class="btn btn-primary btn-sm">Add Occupations</a>
                   </div>
 
                   <div class="card-body">

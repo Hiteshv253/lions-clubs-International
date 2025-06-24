@@ -60,6 +60,7 @@ class UserRolePermissionSeeder extends Seeder {
                             'first_name' => 'Admin',
                             'last_name' => 'Admin',
                             'email' => 'probsoltechnology@gmail.com',
+                            'is_active' => 0,
                             'password' => Hash::make('Password@1234'),
             ]);
 
@@ -70,6 +71,7 @@ class UserRolePermissionSeeder extends Seeder {
                             'first_name' => 'Admin',
                             'last_name' => 'Admin',
                             'email' => 'hiteshv253@gmail.com',
+                            'is_active' => 0,
                             'password' => Hash::make('Password@1234'),
             ]);
 
@@ -80,6 +82,7 @@ class UserRolePermissionSeeder extends Seeder {
                             'first_name' => 'Admin',
                             'last_name' => 'Admin',
                             'email' => 'sapan@yahoo.in',
+                            'is_active' => 0,
                             'password' => Hash::make('Password@1234'),
             ]);
 

@@ -30,16 +30,16 @@
                               <div class="row g-3">
                                     <div class="col-sm-6 col-md-3">
                                           <label class="form-label">First Name</label>
-                                          <input type="text" name="f_name" value="{{ $user->f_name }}" class="form-control" />
+                                          <input type="text" name="first_name" value="{{ $user->first_name }}" class="form-control" />
                                           @error('name') <small class="text-danger">{{ $message }}</small> @enderror
                                     </div>
                                     <div class="col-sm-6 col-md-3">
                                           <label class="form-label">Last Name</label>
-                                          <input type="text" name="l_name" value="{{ $user->l_name }}" class="form-control" />
+                                          <input type="text" name="last_name" value="{{ $user->last_name }}" class="form-control" />
                                           @error('name') <small class="text-danger">{{ $message }}</small> @enderror
                                     </div>
                                     <div class="col-sm-6 col-md-3">
-                                          <label class="form-label">Email</label>
+                                          <label class="form-label">Email ID</label>
                                           <input type="text" name="email" value="{{ $user->email }}" class="form-control" readonly />
                                     </div>
                                     <div class="col-sm-6 col-md-3">

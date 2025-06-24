@@ -24,7 +24,7 @@
 
                   <button id="filterBtn" class="btn btn-primary me-2">Search</button>
                   <button id="resetBtn" class="btn btn-secondary me-2">Reset</button>
-                  <a href="{{ route('dg-teams.create') }}" class="btn btn-success">Add DG Team </a>
+                  <a href="{{ route('dg-teams.create') }}" class="btn btn-primary btn-sm">Add DG Team </a>
             </div>
             <div class="card ">
                   @if(session('success'))

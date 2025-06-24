@@ -22,7 +22,7 @@ class OccupationController extends Controller {
                                     return view('occupations.partials.actions', compact('row'))->render();
                               })
                               ->editColumn('is_active', function ($row) {
-                                    return $row->is_active ? '1' : '0';
+                                    return $row->is_active ? '0' : '1';
                               })
                               ->rawColumns(['actions']) // To render HTML
                               ->make(true);

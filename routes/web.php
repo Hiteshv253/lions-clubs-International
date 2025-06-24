@@ -50,13 +50,15 @@ Route::middleware('guest')->group(function () {
       Route::post('/auth-pass-change-basic', [ResetPasswordController::class, 'reset']);
 });
 
-Route::get('/logout', [LogoutController::class, 'logout'])->name('logout')->middleware('auth');
 
 // Static views (optional)
 Route::view('/auth-signin-basic', 'pages.auth.auth-signin-basic');
 Route::view('/auth-signin-cover', 'pages.auth.auth-signin-cover');
 Route::view('/auth-signup-basic', 'pages.auth.auth-signup-basic');
 Route::view('/auth-signup-cover', 'pages.auth.auth-signup-cover');
+
+Route::get('/logout', [LogoutController::class, 'logout'])->name('logout')->middleware('auth');
+Route::post('/logout', [LogoutController::class, 'logout'])->name('logout')->middleware('auth');
 
 /*
   |--------------------------------------------------------------------------
@@ -83,7 +85,7 @@ Route::post('/members/validate', [MemberController::class, 'validateField'])->na
   |--------------------------------------------------------------------------
  */
 
-Route::prefix('lions')->middleware('auth')->group(function () {
+Route::middleware(['auth', 'role:admin|super-admin'])->prefix('lions')->group(function () {
       Route::view('dashboard', 'backend.dashboard.index')->name('dashboard');
 
       Route::middleware(['role:super-admin|admin'])->group(function () {

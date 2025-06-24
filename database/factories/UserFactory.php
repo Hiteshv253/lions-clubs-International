@@ -16,14 +16,20 @@ class UserFactory extends Factory {
        * @return array<string, mixed>
        */
       public function definition(): array {
+            $firstName = $this->faker->firstName;
+            $lastName = $this->faker->lastName;
+
+            // Safe unique number for demonstration
+            static $counter = 1;
+
             return [
-                      'name' => fake()->name(),
-                      'last_name' => fake()->name(),
-                      'first_name' => fake()->name(),
-                      'membership_id' => fake()->name(),
-                      'email' => fake()->unique()->safeEmail(),
+                      'name' => $firstName . ' ' . $lastName,
+                      'first_name' => $firstName,
+                      'last_name' => $lastName,
+                      'membership_id' => strtolower(substr($firstName, 0, 5) . str_pad($counter++, 3, '0', STR_PAD_LEFT) . substr($lastName, 5)),
+                      'email' => $this->faker->unique()->safeEmail(),
                       'email_verified_at' => now(),
-                      'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+                      'password' => bcrypt('password'), // Or keep your hash
                       'remember_token' => Str::random(10),
                       'is_active' => $this->faker->numberBetween(0, 1),
                       'is_create_by' => $this->faker->numberBetween(1, 5),

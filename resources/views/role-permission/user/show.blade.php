@@ -34,7 +34,7 @@
                                     @error('name') <small class="text-danger">{{ $message }}</small> @enderror
                               </div>
                               <div class="mb-3">
-                                    <label class="form-label">Email</label>
+                                    <label class="form-label">Email ID</label>
                                     <input type="text" name="email" value="{{ $user->email }}" class="form-control" readonly />
                               </div>
                               <div class="mb-3">

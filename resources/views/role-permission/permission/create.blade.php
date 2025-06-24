@@ -2,65 +2,58 @@
 
 @section('content')
 
-<div class="mt-4">
+<nav aria-label="breadcrumb">
+      <ol class="breadcrumb bg-light p-2 rounded shadow-sm">
+            <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ url('permissions') }}">Permissions</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Create Permission</li>
+      </ol>
+</nav>
 
-      <!-- Breadcrumb -->
-      <nav aria-label="breadcrumb" class="mb-3">
-            <ol class="breadcrumb bg-light p-2 rounded">
-                  <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-                  <li class="breadcrumb-item"><a href="{{ url('permissions') }}">Permissions</a></li>
-                  <li class="breadcrumb-item active" aria-current="page">Create Permission</li>
-            </ol>
-      </nav>
-
-      <div class="row">
-            <div class="col-md-12">
-
-                  @if ($errors->any())
-                  <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                        <ul class="mb-0">
-                              @foreach ($errors->all() as $error)
-                              <li>{{ $error }}</li>
-                              @endforeach
-                        </ul>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                  </div>
-                  @endif
-
-                  <div class="card shadow-sm">
-                        <div class="card-header d-flex justify-content-between align-items-center bg-light">
-                              <h5 class="mb-0">Create Permission</h5>
-                              <a href="{{ url('permissions') }}" class="btn btn-danger btn-sm">Back</a>
-                        </div>
-                        <div class="card-body">
-                              <form action="{{ url('permissions') }}" method="POST">
-                                    @csrf
-
-                                    <div class="mb-3">
-                                          <label for="permissionName" class="form-label">Permission Name</label>
-                                          <input
-                                                type="text"
-                                                id="permissionName"
-                                                name="name"
-                                                class="form-control @error('name') is-invalid @enderror"
-                                                placeholder="Enter permission name"
-                                                value="{{ old('name') }}"
-                                                />
-                                          @error('name')
-                                          <div class="invalid-feedback">{{ $message }}</div>
-                                          @enderror
-                                    </div>
-
-                                    <div class="text-end">
-                                          <button type="submit" class="btn btn-primary">Save</button>
-                                    </div>
-
-                              </form>
-                        </div>
-                  </div>
-
+<div class="row">
+      <div class="col-md-12">
+            @if ($errors->any())
+            <div class="alert alert-warning">
+                  <ul class="mb-0">
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                  </ul>
             </div>
+            @endif
+            <div class="card shadow-sm rounded-4">
+                  <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Create Permission</h5>
+                  </div>
+                  <div class="card-body">
+                        <form action="{{ url('permissions') }}" method="POST">
+                              @csrf
+
+                              <div class="mb-3">
+                                    <label for="permissionName" class="form-label">Permission Name</label>
+                                    <input
+                                          type="text"
+                                          id="permissionName"
+                                          name="name"
+                                          class="form-control @error('name') is-invalid @enderror"
+                                          placeholder="Enter permission name"
+                                          value="{{ old('name') }}"
+                                          />
+                                    @error('name')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                              </div>
+
+                              <div class="text-end">
+                                    <input type="submit" id="submit" name="submit" value="Submit" class="btn btn-success" />
+                                    <a href="{{ route('permissions.index') }}" class="btn btn-secondary">Cancel</a>
+                              </div>
+                        </form>
+                  </div>
+            </div>
+
       </div>
+</div>
 </div>
 
 @endsection

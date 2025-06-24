@@ -30,9 +30,18 @@ class LoginController extends Controller {
             if (Auth::attempt($credentials, $remember)) {
                   $request->session()->regenerate();
 
-                  $userId = Auth::id();
+                  $user = Auth::user();
+                  $userId = $user->id;
+
+                  // ⛔ Check if the user is inactive
+                  if ($user->is_active == 1) {
+                        Auth::logout();
+                        return back()->with('error', 'Your account is deactivated. Please contact admin.');
+                  }
+
                   $currentSessionId = Session::getId();
 
+                  // Invalidate other sessions
                   DB::table('sessions')
                         ->where('user_id', $userId)
                         ->where('id', '!=', $currentSessionId)
@@ -42,18 +51,30 @@ class LoginController extends Controller {
                         ->where('id', $currentSessionId)
                         ->update(['user_id' => $userId]);
 
-                  // ✅ Update last login
-                  Auth::user()->update([
+                  // Update last login
+                  $user->update([
                             'last_login_at' => now(),
                   ]);
 
-                  $member = MemberMaster::where('user_id', '=', $userId);
-                  $member->update([
+                  // Update member login time if applicable
+                  MemberMaster::where('user_id', $userId)->update([
                             'last_login_at' => now(),
                   ]);
-//                  dd(Auth::user(), Session::getId(), now(), $member);
+//                  return redirect()->intended('/lions/dashboard');
+                  $role = $user->getRoleNames()->first(); // returns 'admin', 'member', etc.
 
-                  return redirect()->intended('/lions/dashboard');
+                  switch ($role) {
+                        case 'super-admin':
+                              return redirect()->intended('/lions/dashboard');
+                        case 'member':
+                              return redirect()->intended('/members/dashboard');
+//                               return redirect()->intended(); // 👈 this sends user to the original intended URL
+                        case 'admin':
+                              return redirect()->intended('/admin/dashboard');
+                        default:
+                              Auth::logout();
+                              return redirect('/login')->with('error', 'Access denied. Invalid role.');
+                  }
             }
 
             return back()->with('error', 'The provided credentials do not match our records.');

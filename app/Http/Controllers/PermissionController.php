@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Validator;
+use Str;
 
 class PermissionController extends Controller {
 
@@ -16,8 +17,16 @@ class PermissionController extends Controller {
       }
 
       public function index() {
-            $permissions = Permission::get();
-            return view('role-permission.permission.index', ['permissions' => $permissions]);
+            $permissions = Permission::all();
+
+            $groupedPermissions = $permissions->groupBy(function ($permission) {
+//                  return Str::before($permission->name, '_'); // e.g., 'user_create' → 'user'
+                  return Str::of($permission->name)->before(' ')->ucfirst(); // e.g., "View user" → "View"
+            });
+
+//            return view('permissions.index', compact('groupedPermissions'));
+//            $permissions = Permission::get();
+            return view('role-permission.permission.index', ['permissions' => $permissions, 'groupedPermissions' => $groupedPermissions]);
       }
 
       public function create() {

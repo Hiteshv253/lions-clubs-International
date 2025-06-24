@@ -65,7 +65,22 @@
                               <a href="/about" class="nav-item nav-link {{ request()->is('about*') ? 'active' : '' }}" style="    font-weight: 600;">About</a>
                               <a href="/service" class="nav-item nav-link {{ request()->is('service*') ? 'active' : '' }}" style="    font-weight: 600;">Services</a>
                               <a href="/contact" class="nav-item nav-link {{ request()->is('contact*') ? 'active' : '' }}" style="    font-weight: 600;">Contact</a>
-                              <a href="/login" class="nav-item nav-link {{ request()->is('login*') ? 'active' : '' }}" style="    font-weight: 600;">Login</a>
+                              <!--<a href="/login" class="nav-item nav-link {{ request()->is('login*') ? 'active' : '' }}" style="    font-weight: 600;">Login</a>-->
+
+
+                              @auth
+                              @if (auth()->user()->hasRole('member'))
+                              <form method="POST" action="{{ route('logout') }}" class="nav-item">
+                                    @csrf
+                                    <button type="submit" class="nav-link btn btn-link" style="font-weight: 600;">Logout</button>
+                              </form>
+                              @endif
+                              @else
+                              <a href="/login" class="nav-item nav-link {{ request()->is('login*') ? 'active' : '' }}" style="font-weight: 600;">Login</a>
+                              @endauth
+
+
+
                               <a href="blog.html" class="nav-item nav-link {{ request()->is('blog*') ? 'active' : '' }}" style="    font-weight: 600;">Blog</a>
                               <div class="nav-item dropdown">
                                     <a href="#" class="nav-link" data-bs-toggle="dropdown" style="    font-weight: 600;">

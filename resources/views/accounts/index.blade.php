@@ -27,7 +27,7 @@
                                     @endforeach
                               </select>
                         </div>
-                        <a href="{{ route('accounts.create') }}" class="btn btn-primary">Add New</a>
+                        <a href="{{ route('accounts.create') }}" class="btn btn-primary btn-sm">Add New</a>
                   </div>
 
                   <!-- Flash Message -->
@@ -51,6 +51,7 @@
                                     <table id="accounts-table" class="table table-bordered table-striped w-100">
                                           <thead class="table-light">
                                                 <tr>
+                                                      <th>#</th>
                                                       <th>Name</th>
                                                       <th>Code</th>
                                                       <th>Account No</th>
@@ -83,6 +84,7 @@
                         }
                   },
                   columns: [
+                        {data: 'id', name: 'id'},
                         {data: 'name', name: 'name'},
                         {data: 'code', name: 'code'},
                         {data: 'account_no', name: 'account_no'},

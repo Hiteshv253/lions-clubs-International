@@ -39,6 +39,7 @@ class MemberController extends Controller {
       public function convertToUser($id) {
 
             $member = MemberMaster::findOrFail($id);
+           
 
 // Check if user already exists
             if (User::where('email', $member->email)->exists()) {
@@ -48,6 +49,8 @@ class MemberController extends Controller {
 // Generate password
             $passwordPlain = Str::random(10);
             $passwordHashed = Hash::make($passwordPlain);
+
+
 
 // Create User
             $user = User::create([
@@ -130,6 +133,7 @@ class MemberController extends Controller {
 
             $lastMember = \App\Models\MemberMaster::orderBy('id', 'desc')->first();
             $nextId = $lastMember ? $lastMember->id + 1 : 1;
+
             $membership_id = 'MEM' . str_pad($nextId, 4, '0', STR_PAD_LEFT);
 
             $regions = Region::select('name', 'id')->distinct()->get();
@@ -160,8 +164,9 @@ class MemberController extends Controller {
             // Auto-generate Member ID
             $lastMember = \App\Models\MemberMaster::orderBy('id', 'desc')->first();
             $nextId = $lastMember ? $lastMember->id + 1 : 1;
-            $member_id = 'MEM' . str_pad($nextId, 4, '0', STR_PAD_LEFT);
+//            $member_id = 'MEM' . str_pad($nextId, 4, '0', STR_PAD_LEFT);
 
+            $member_id = strtolower(substr($request->first_name, 0, 5) . $lastMember . substr($request->last_name, 5));
             // Validation
 //            $request->validate([
 //                      'account_name' => 'nullable|string|max:255',
@@ -322,7 +327,7 @@ class MemberController extends Controller {
             $user->update([
                       'is_active' => $request->is_active,
             ]);
-           
+
             return redirect()->route('members.index')->with('success', 'Member updated successfully');
       }
 
