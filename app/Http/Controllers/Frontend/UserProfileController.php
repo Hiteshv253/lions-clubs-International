@@ -34,9 +34,10 @@ class UserProfileController extends Controller {
 
       public function profile_dashboard(Request $request) {
 
+            $userId = Auth::id();
+            $eventCount = EventRegistration::where('user_id', $userId)->count();
             $member = MemberMaster::select('*')->where('user_id', Auth::id())->first();
-
-            return view('frontend.member_dashboard.my-profile.dashboard', compact('member'));
+            return view('frontend.member_dashboard.my-profile.dashboard', compact('member', 'eventCount'));
       }
 
       public function profile_events() {
