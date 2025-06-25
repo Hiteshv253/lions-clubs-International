@@ -60,7 +60,7 @@
                   </div>
                   <ul class="navbar-nav" id="navbar-nav">
                         <li class="nav-item">
-                              <a class="nav-link menu-link" href="dashboard-crm" data-bs-toggle="collapse" role="button"
+                              <a class="nav-link menu-link" href="/lions/dashboard"  role="button"
                                  aria-expanded="false" aria-controls="sidebarDashboards">
                                     <i class="ri-dashboard-2-line"></i>  Dashboards</span>
                               </a>

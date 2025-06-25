@@ -11,7 +11,7 @@ class ClubMemberMasters extends Seeder {
       public function run(): void {
             $faker = Faker::create();
 
-            foreach (range(1, 10) as $index) {
+            foreach (range(1, 50) as $index) {
                   $firstName = $faker->firstName;
                   $lastName = $faker->lastName;
 

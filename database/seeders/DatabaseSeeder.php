@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder {
 
 
 
-            \App\Models\User::factory(10)->create();
+            \App\Models\User::factory(50)->create();
             $this->call([
                       ClubMemberMasters::class,
                       UserRolePermissionSeeder::class,
@@ -35,7 +35,8 @@ class DatabaseSeeder extends Seeder {
                       SponsorSeeder::class,
                       ServiceActivityTypeSeeder::class,
                       EventRegistrationSeeder::class,
-                      FooterMessageSeeder::class, SessionTableSeeder::class,
+                      FooterMessageSeeder::class,
+                      
             ]);
 
             District::factory(5)->create()->each(function ($district) {

@@ -12,6 +12,6 @@ class FooterMessageSeeder extends Seeder {
        * Run the database seeds.
        */
       public function run(): void {
-            FooterMessage::factory()->count(10)->create();
+            FooterMessage::factory()->count(50)->create();
       }
 }

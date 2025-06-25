@@ -29,6 +29,7 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\EventUserRegistrationController;
 use App\Http\Controllers\AjaxController;
+use App\Http\Controllers\Backend\DashboardController;
 
 /*
   |--------------------------------------------------------------------------
@@ -49,7 +50,6 @@ Route::middleware('guest')->group(function () {
       Route::get('/auth-pass-change-basic', [ResetPasswordController::class, 'index'])->name('password.reset');
       Route::post('/auth-pass-change-basic', [ResetPasswordController::class, 'reset']);
 });
-
 
 // Static views (optional)
 Route::view('/auth-signin-basic', 'pages.auth.auth-signin-basic');
@@ -86,7 +86,9 @@ Route::post('/members/validate', [MemberController::class, 'validateField'])->na
  */
 
 Route::middleware(['auth', 'role:admin|super-admin'])->prefix('lions')->group(function () {
-      Route::view('dashboard', 'backend.dashboard.index')->name('dashboard');
+//      Route::view('dashboard', 'backend.dashboard.index')->name('dashboard');
+
+      Route::get('dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 
       Route::middleware(['role:super-admin|admin'])->group(function () {
             Route::resource('permissions', PermissionController::class)->except(['destroy']);
