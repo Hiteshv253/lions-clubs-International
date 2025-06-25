@@ -104,7 +104,7 @@ done - Allow to set password
 Post Login - Data Dictionary
 - Once logged in then only users will be able to see directory data
 done- One user can login from one device only at a time
-- Session timeout should be of 30mins
+done- Session timeout should be of 30mins
 - ⁠Data Dictionary should show all members data
 - ⁠Filter : District, Region. zone and Club
 
