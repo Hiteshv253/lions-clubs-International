@@ -14,8 +14,10 @@ class EventRegistration extends Model {
                 'name',
                 'email',
                 'event_id',
+                'user_id',
                 'contact_number',
                 'number_of_persons',
-                'calculated_total'
+                'calculated_total',
+                'is_active'
       ];
 }

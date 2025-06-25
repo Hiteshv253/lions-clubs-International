@@ -53,7 +53,7 @@
                   <a style="display: none;"  href="#" class="btn btn-primary btn-sm rounded-pill px-3" data-bs-toggle="modal" data-bs-target="#registerModal{{ $event->id }}">
                     Register
                 </a>
-                <a href="{{ route('show_event', $event->id) }}" class="btn btn-outline-primary btn-sm rounded-pill px-3">
+                <a href="{{ route('show_event', $event->id) }}" class="btn btn-primary btn-sm rounded-pill px-3">
                     Read More
                 </a>
                 

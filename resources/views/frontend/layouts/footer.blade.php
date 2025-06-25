@@ -132,6 +132,30 @@
 
 
 </body>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<script>
+      function confirmLogout() {
+            Swal.fire({
+                  title: 'Logout?',
+                  text: "Are you sure you want to logout?",
+                  icon: 'warning',
+                  showCancelButton: true,
+                  confirmButtonColor: '#3085d6',
+                  cancelButtonColor: '#d33',
+                  confirmButtonText: 'Yes, logout'
+            }).then((result) => {
+                  if (result.isConfirmed) {
+                        document.getElementById('logout-form').submit();
+                  }
+            });
+      }
+</script>
+
+
 <script>
       document.getElementById('footer-contact-form').addEventListener('submit', function (e) {
             e.preventDefault();

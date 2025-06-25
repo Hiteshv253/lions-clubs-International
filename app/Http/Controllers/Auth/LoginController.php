@@ -73,7 +73,8 @@ class LoginController extends Controller {
                   return match ($user->getRoleNames()->first()) {
                         'super-admin' => redirect()->intended('/lions/dashboard'),
                         'admin' => redirect()->intended('/admin/dashboard'),
-                        'member' => redirect()->intended('/members/dashboard'),
+//                        'member' => redirect()->intended('/members/dashboard'),
+                        'member' => redirect()->intended('/members/profile-view'),
                         default => redirect('/login')->with('error', 'Access denied. Invalid role.')
                   };
             }

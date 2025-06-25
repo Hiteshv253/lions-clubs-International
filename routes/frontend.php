@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\HomePageController;
+use App\Http\Controllers\Frontend\UserProfileController;
 use App\Http\Controllers\EventController;
 
 /*
@@ -23,7 +24,11 @@ Route::get('/contact', [HomePageController::class, 'contact'])->name('contact');
 //Route::middleware(['auth', 'role:member'])->prefix('members')->group(function () {
 Route::middleware(['auth', 'role:member'])->group(function () {
       // Proper member dashboard
-      Route::view('/members/dashboard', 'frontend.member_dashboard.index')->name('member_dashboard');
+//      Route::view('/members/dashboard', 'frontend.member_dashboard.index')->name('member_dashboard');
+      Route::get('/members/profile-view', [UserProfileController::class, 'profile_view'])->name('profile.view');
+      Route::get('/members/profile-events', [UserProfileController::class, 'profile_events'])->name('profile.events');
+      Route::get('/members/profile-dashboard', [UserProfileController::class, 'profile_dashboard'])->name('profile.dashboard');
+      Route::get('/members/profile-our-member', [UserProfileController::class, 'profile_our_member'])->name('profile.profile_our_member');
 });
 
 // Event-related routes
@@ -39,8 +44,8 @@ Route::post('/event-register', [HomePageController::class, 'event_register'])->n
   | Public Member UI (No Auth Required)
   |--------------------------------------------------------------------------
  */
-Route::get('/members-ui', [HomePageController::class, 'members_ui'])->name('members-ui');
-Route::get('/members/ajax', [HomePageController::class, 'ajax'])->name('frontend.members.ajax');
+Route::get('/members/members-ui', [HomePageController::class, 'members_ui'])->name('members-ui');
+Route::get('/members/members/ajax', [HomePageController::class, 'ajax'])->name('frontend.members.ajax');
 
 /*
   |--------------------------------------------------------------------------

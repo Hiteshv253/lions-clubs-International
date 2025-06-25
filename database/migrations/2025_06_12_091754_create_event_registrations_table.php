@@ -19,6 +19,7 @@ return new class extends Migration {
                   $table->string('event_qr_code')->nullable();
                   $table->string('event_qr_code_path')->nullable();
                   $table->integer('number_of_persons')->default(1);
+                  $table->string('user_id')->nullable();
                   $table->decimal('calculated_total', 10, 2)->nullable();
                   $table->tinyInteger('is_active')->default(1)->comment('0: active | 1: in-active');
                   $table->timestamps();

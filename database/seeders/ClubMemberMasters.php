@@ -34,6 +34,7 @@ class ClubMemberMasters extends Seeder {
                             'region_id' => rand(1, 5),
                             'occupation_id' => rand(1, 5),
                             'account_id' => rand(1, 5),
+                            'designation_id' => rand(1, 5),
                             'user_id' => rand(1, 500),
                             'parent_id' => rand(0, 100),
                             'zone_id' => rand(1, 10),

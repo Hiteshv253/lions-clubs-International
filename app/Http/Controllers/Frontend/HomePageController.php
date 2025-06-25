@@ -85,8 +85,10 @@ class HomePageController extends Controller {
                       'email' => $request->email,
                       'contact_number' => $request->contact_number,
                       'event_id' => $request->event_id,
+                      'user_id' => Auth::id(),
                       'number_of_persons' => $request->number_of_persons,
                       'calculated_total' => $totalAmount,
+                      'is_active' => '0',
             ]);
 
             Mail::raw(

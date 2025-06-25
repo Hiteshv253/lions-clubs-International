@@ -63,29 +63,9 @@
                         <div class="navbar-nav mx-0 mx-lg-auto">
                               <a href="/home" class="nav-item nav-link {{ request()->is('home*') ? 'active' : '' }}" style="    font-weight: 600;">Home</a>
                               <a href="/about" class="nav-item nav-link {{ request()->is('about*') ? 'active' : '' }}" style="    font-weight: 600;">About</a>
-                              <a href="/service" class="nav-item nav-link {{ request()->is('service*') ? 'active' : '' }}" style="    font-weight: 600;">Services</a>
+                              <!--<a href="/service" class="nav-item nav-link {{ request()->is('service*') ? 'active' : '' }}" style="    font-weight: 600;">Services</a>-->
                               <a href="/contact" class="nav-item nav-link {{ request()->is('contact*') ? 'active' : '' }}" style="    font-weight: 600;">Contact</a>
                               <!--<a href="/login" class="nav-item nav-link {{ request()->is('login*') ? 'active' : '' }}" style="    font-weight: 600;">Login</a>-->
-
-
-                              @auth
-                              @if (auth()->user()->hasRole('member'))
-                              <a href="/members-ui" class="nav-item nav-link {{ request()->is('members-ui*') ? 'active' : '' }}" style="font-weight: 600;">
-                                    Club Members
-                              </a>
-                              <form method="POST" action="{{ route('logout') }}" class="nav-item">
-                                    @csrf
-                                    <button type="submit" class="nav-link btn btn-link" style="font-weight: 600;">Logout</button>
-                              </form>
-                              @endif
-                              @else
-                              <a href="/login" class="nav-item nav-link {{ request()->is('login*') ? 'active' : '' }}" style="font-weight: 600;">
-                                    Login
-                              </a>
-                              @endauth
-
-
-
 
                               <a href="blog.html" class="nav-item nav-link {{ request()->is('blog*') ? 'active' : '' }}" style="    font-weight: 600;">Blog</a>
                               <div class="nav-item dropdown">
@@ -97,10 +77,43 @@
                                           <a href="team.html" class="dropdown-item" style="    font-weight: 600;">Our team</a>
                                           <a href="testimonial.html" class="dropdown-item" style="    font-weight: 600;">Testimonial</a>
                                           <a href="FAQ.html" class="dropdown-item" style="    font-weight: 600;">FAQs</a>
-
                                           <a href="/event" class="dropdown-item {{ request()->is('event*') ? 'active' : '' }}" style="    font-weight: 600;">Event</a>
                                     </div>
                               </div>
+                              @auth
+                              @if(auth()->user()->hasRole('member'))
+
+                              <div class="nav-item dropdown">
+                                    <a href="" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" style="font-weight: 600;">
+                                          My Profile
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-end">
+                                          <a href="/members/profile-view" class="dropdown-item {{ request()->is('members-ui*') ? 'active' : '' }}">My Profile</a>
+                                          <a href="/members/members-ui" class="dropdown-item">Our Club Members</a>
+                                    </div>
+                              </div>
+                              <form method="POST" action="{{ route('logout') }}" id="logout-form">
+                                    @csrf
+                                    <button type="button" class="nav-link text-dark bg-transparent border-0 text-start w-100" onclick="confirmLogout()">
+                                          <i class="fas fa-sign-out-alt me-2"></i> Logout
+                                    </button>
+                              </form>
+
+                              @endif
+                              @else
+                              <a href="/login" class="nav-item nav-link {{ request()->is('login*') ? 'active' : '' }}" style="font-weight: 600;">
+                                    Login
+                                    <!--<i class="fas fa-sign-in-alt me-1"></i>-->
+                              </a>
+
+                              @endauth
+
+
+
+
+
+
+
                               <!--                              <div class="nav-btn px-3">
                                                                   <button class="btn-search btn btn-primary btn-md-square rounded-circle flex-shrink-0" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fas fa-search"></i></button>
                                                                   <a href="#" class="btn btn-primary rounded-pill py-2 px-4 ms-3 flex-shrink-0"> Get a Quote</a>
@@ -122,6 +135,7 @@
             </nav>
       </div>
 </div>
+
 <!-- Navbar & Hero End -->
 
 <!-- Modal Search Start -->

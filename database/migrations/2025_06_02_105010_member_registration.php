@@ -33,6 +33,7 @@ return new class extends Migration {
                   $table->foreignId('user_id')->nullable();
                   $table->foreignId('region_id')->nullable();
                   $table->foreignId('occupation_id')->nullable();
+                  $table->foreignId('designation_id')->nullable();
                   $table->foreignId('account_id')->nullable();
                   $table->foreignId('zone_id')->nullable();
                   $table->foreignId('club_id')->nullable();

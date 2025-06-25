@@ -57,4 +57,8 @@ class User extends Authenticatable {
                         ->withTimestamps()
                         ->withPivot('registered_at');
       }
+
+      public function events() {
+            return $this->belongsToMany(\App\Models\EventMaster::class, 'event_registrations', 'user_id', 'event_id');
+      }
 }

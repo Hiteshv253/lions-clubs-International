@@ -42,6 +42,11 @@ class MemberMaster extends Model {
                 'last_login_at',
       ];
 
+      public function events() {
+            return $this->belongsToMany(EventMaster::class, 'event_user', 'member_id', 'event_id')
+                        ->withTimestamps(); // optional, if your pivot table has timestamps
+      }
+
       public function parent() {
             return $this->belongsTo(MemberMaster::class, 'parent_id');
       }
