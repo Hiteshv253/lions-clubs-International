@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder {
                       SponsorSeeder::class,
                       ServiceActivityTypeSeeder::class,
                       EventRegistrationSeeder::class,
-                      FooterMessageSeeder::class
+                      FooterMessageSeeder::class, SessionTableSeeder::class,
             ]);
 
             District::factory(5)->create()->each(function ($district) {

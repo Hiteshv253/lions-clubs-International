@@ -70,14 +70,20 @@
 
                               @auth
                               @if (auth()->user()->hasRole('member'))
+                              <a href="/members-ui" class="nav-item nav-link {{ request()->is('members-ui*') ? 'active' : '' }}" style="font-weight: 600;">
+                                    Club Members
+                              </a>
                               <form method="POST" action="{{ route('logout') }}" class="nav-item">
                                     @csrf
                                     <button type="submit" class="nav-link btn btn-link" style="font-weight: 600;">Logout</button>
                               </form>
                               @endif
                               @else
-                              <a href="/login" class="nav-item nav-link {{ request()->is('login*') ? 'active' : '' }}" style="font-weight: 600;">Login</a>
+                              <a href="/login" class="nav-item nav-link {{ request()->is('login*') ? 'active' : '' }}" style="font-weight: 600;">
+                                    Login
+                              </a>
                               @endauth
+
 
 
 
@@ -91,7 +97,7 @@
                                           <a href="team.html" class="dropdown-item" style="    font-weight: 600;">Our team</a>
                                           <a href="testimonial.html" class="dropdown-item" style="    font-weight: 600;">Testimonial</a>
                                           <a href="FAQ.html" class="dropdown-item" style="    font-weight: 600;">FAQs</a>
-                                          <a href="/members-ui" class="dropdown-item {{ request()->is('members-ui*') ? 'active' : '' }}" style="  font-weight: 600;">Club Members</a>
+
                                           <a href="/event" class="dropdown-item {{ request()->is('event*') ? 'active' : '' }}" style="    font-weight: 600;">Event</a>
                                     </div>
                               </div>

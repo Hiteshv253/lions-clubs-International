@@ -19,7 +19,7 @@ class LoginController extends Controller {
       /**
        * Handle an authentication attempt.
        */
-      public function authenticate(Request $request): RedirectResponse {
+      function authenticate(Request $request): RedirectResponse {
             $credentials = $request->validate([
                       'email' => ['required', 'email'],
                       'password' => ['required'],
@@ -27,96 +27,57 @@ class LoginController extends Controller {
 
             $remember = $request->boolean('remember_me');
 
+            $user = \App\Models\User::where('email', $request->email)->first();
+
+            // Step 1: Check user exists and is active
+            if (!$user || !\Hash::check($request->password, $user->password)) {
+                  return back()->with('error', 'Invalid credentials.');
+            }
+
+            if ($user->is_active == 1) {
+                  return back()->with('error', 'Your account is deactivated. Please contact admin.');
+            }
+
+            // Step 2: Check for existing active session
+            $existingSession = DB::table('sessions')
+                  ->where('user_id', $user->id)
+                  ->where('last_activity', '>', now()->subMinutes(config('session.lifetime'))->timestamp)
+                  ->first();
+
+            if ($existingSession) {
+                  return back()->with('error', 'You are already logged in on another device.');
+            }
+
+            // Step 3: Proceed with login
             if (Auth::attempt($credentials, $remember)) {
                   $request->session()->regenerate();
 
-                  $user = Auth::user();
-                  $userId = $user->id;
+                  // Logout other devices (this will usually do nothing since we blocked above)
 
-                  // ⛔ Check if the user is inactive
-                  if ($user->is_active == 1) {
-                        Auth::logout();
-                        return back()->with('error', 'Your account is deactivated. Please contact admin.');
-                  }
+                  DB::table('sessions')->updateOrInsert(
+                        ['id' => Session::getId()],
+                        [
+                                  'user_id' => Auth::id(),
+                                  'ip_address' => request()->ip(),
+                                  'user_agent' => request()->userAgent(),
+                                  'payload' => base64_encode(serialize([])), // minimal payload
+                                  'last_activity' => now()->timestamp,
+                        ]
+                  );
 
-                  $currentSessionId = Session::getId();
+                  $user->update(['last_login_at' => now()]);
+                  MemberMaster::where('user_id', $user->id)->update(['last_login_at' => now()]);
+                  Auth::logoutOtherDevices($request->input('password'));
 
-                  // Invalidate other sessions
-                  DB::table('sessions')
-                        ->where('user_id', $userId)
-                        ->where('id', '!=', $currentSessionId)
-                        ->delete();
-
-                  DB::table('sessions')
-                        ->where('id', $currentSessionId)
-                        ->update(['user_id' => $userId]);
-
-                  // Update last login
-                  $user->update([
-                            'last_login_at' => now(),
-                  ]);
-
-                  // Update member login time if applicable
-                  MemberMaster::where('user_id', $userId)->update([
-                            'last_login_at' => now(),
-                  ]);
-//                  return redirect()->intended('/lions/dashboard');
-                  $role = $user->getRoleNames()->first(); // returns 'admin', 'member', etc.
-
-                  switch ($role) {
-                        case 'super-admin':
-                              return redirect()->intended('/lions/dashboard');
-                        case 'member':
-                              return redirect()->intended('/members/dashboard');
-//                               return redirect()->intended(); // 👈 this sends user to the original intended URL
-                        case 'admin':
-                              return redirect()->intended('/admin/dashboard');
-                        default:
-                              Auth::logout();
-                              return redirect('/login')->with('error', 'Access denied. Invalid role.');
-                  }
+                  // Redirect based on role
+                  return match ($user->getRoleNames()->first()) {
+                        'super-admin' => redirect()->intended('/lions/dashboard'),
+                        'admin' => redirect()->intended('/admin/dashboard'),
+                        'member' => redirect()->intended('/members/dashboard'),
+                        default => redirect('/login')->with('error', 'Access denied. Invalid role.')
+                  };
             }
 
-            return back()->with('error', 'The provided credentials do not match our records.');
+            return back()->with('error', 'Login failed.');
       }
 }
-
-//
-//public function authenticate(Request $request): RedirectResponse
-//{
-//    $request->validate([
-//        'login' => ['required'], // could be email or membership_id
-//        'password' => ['required'],
-//    ]);
-//
-//    $loginInput = $request->input('login');
-//    $remember = $request->boolean('remember_me');
-//
-//    // Determine if the input is an email
-//    $fieldType = filter_var($loginInput, FILTER_VALIDATE_EMAIL) ? 'email' : 'membership_id';
-//
-//    $credentials = [
-//        $fieldType => $loginInput,
-//        'password' => $request->input('password'),
-//    ];
-//
-//    if (Auth::attempt($credentials, $remember)) {
-//        $request->session()->regenerate();
-//
-//        $userId = Auth::id();
-//        $currentSessionId = Session::getId();
-//
-//        DB::table('sessions')
-//            ->where('user_id', $userId)
-//            ->where('id', '!=', $currentSessionId)
-//            ->delete();
-//
-//        DB::table('sessions')
-//            ->where('id', $currentSessionId)
-//            ->update(['user_id' => $userId]);
-//
-//        return redirect()->intended('/lions/dashboard');
-//    }
-//
-//    return back()->with('error', 'The provided credentials do not match our records.');
-//}

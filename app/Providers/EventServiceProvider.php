@@ -7,6 +7,9 @@ use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Session\Events\SessionCreated;
+use Illuminate\Auth\Events\Login;
+use App\Listeners\LogoutOtherDevices;
+use App\Listeners\TrackUserSession;
 
 class EventServiceProvider extends ServiceProvider {
 
@@ -19,8 +22,9 @@ class EventServiceProvider extends ServiceProvider {
                 Registered::class => [
                           SendEmailVerificationNotification::class,
                 ],
-                \Illuminate\Auth\Events\Login::class => [
-                          \App\Listeners\TrackUserSession::class,
+                Login::class => [
+                          LogoutOtherDevices::class,
+                          TrackUserSession::class,
                 ],
       ];
 
