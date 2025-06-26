@@ -45,11 +45,8 @@
 
                   <!-- 📸 Event Image -->
                   <div class="col-lg-6">
-                        @if($event->banner_image)
-                        <img src="{{ asset('storage/' . $event->banner_image) }}" class="img-fluid rounded shadow w-100" alt="{{ $event->event_name }}">
-                        @else
-                        <img src="{{ asset('images/default-event.png') }}" class="img-fluid rounded shadow w-100" alt="{{ $event->event_name }}">
-                        @endif
+                        
+                        ##<img src="{{ $event->image}}" class="img-fluid rounded shadow w-100" alt="{{ $event->event_name }}">
                   </div>
 
                   <!-- 📝 Price & Registration Form -->

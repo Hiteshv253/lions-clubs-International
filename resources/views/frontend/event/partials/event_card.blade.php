@@ -28,8 +28,8 @@
 <div class="col-md-6 col-lg-4 col-xl-3 mb-4">
     <div class="card event-card h-100 shadow-sm border-0">
         <div class="position-relative">
-            <img src="{{ $event->image ? asset('storage/' . $event->image) : asset('images/default-event.png') }}"
-                 class="w-100 event-image" alt="Event Image">
+             <img src="{{ $event->image}}" class="w-100 event-image" alt="Event Image">
+
             <div class="position-absolute top-0 start-0 p-2 bg-primary text-white rounded-bottom-end small">
                 <i class="fa fa-calendar me-1"></i>
                 {{ \Carbon\Carbon::parse($event->event_start_date)->format('M d') }} -
@@ -60,7 +60,7 @@
                         {{ \Carbon\Carbon::parse($event->event_end_date)->format('M d') }}
                     </p>
                     <p class="small">{!! \Illuminate\Support\Str::limit(strip_tags($event->description), 150) !!}</p>
-                    <img src="{{ $event->banner_image ? asset('storage/' . $event->banner_image) : asset('images/default-event.png') }}"
+                    <img src="{{ $event->image}}"
                          class="img-fluid rounded shadow-sm mt-2" alt="Event Banner">
                 </div>
                 <div class="col-lg-6">
