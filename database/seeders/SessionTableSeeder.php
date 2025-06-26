@@ -10,7 +10,7 @@ use Carbon\Carbon;
 class SessionTableSeeder extends Seeder {
 
       public function run(): void {
-            foreach (range(1, 50) as $i) {
+            foreach (range(1, 10) as $i) {
                   DB::table('sessions')->insert([
                             'id' => Str::uuid()->toString(),
                             'user_id' => rand(1, 5), // assuming user IDs 1 to 5 exist

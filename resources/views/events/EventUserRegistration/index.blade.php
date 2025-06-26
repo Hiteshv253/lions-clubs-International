@@ -21,7 +21,7 @@
       }
 </style>
 
-<div class="row row-cols-xxl-5 row-cols-lg-4 row-cols-sm-2 row-cols-1">
+      <div class="row row-cols-xxl-5 row-cols-lg-4 row-cols-sm-2 row-cols-1" style="display: none;">
       <div class="col">
             <div class="card">
                   <div class="card-body d-flex">
@@ -121,14 +121,6 @@
 
                                                 <!-- Pricing Summary -->
                                                 <div class="mb-3">
-                                                      <div class="d-flex justify-content-between small">
-                                                            <span>Base</span>
-                                                            <span>₹{{ number_format($event_registration['base_amount'], 2) }}</span>
-                                                      </div>
-                                                      <div class="d-flex justify-content-between small">
-                                                            <span>GST ({{ $event_registration['gst_rate'] }}%)</span>
-                                                            <span>₹{{ number_format($event_registration['gst_amount'], 2) }}</span>
-                                                      </div>
                                                       <div class="d-flex justify-content-between fw-semibold">
                                                             <span>Total</span>
                                                             <span class="text-success">₹{{ number_format($event_registration['total_amount'], 2) }}</span>

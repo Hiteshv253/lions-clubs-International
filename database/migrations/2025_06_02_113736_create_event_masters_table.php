@@ -13,16 +13,10 @@ return new class extends Migration {
             Schema::create('club_event_masters', function (Blueprint $table) {
                   $table->id();
                   $table->string('event_name');
-                  $table->dateTime('date_time');
                   $table->text('description')->nullable();
+
                   $table->string('image')->nullable();
-                  $table->string('banner_image')->nullable();
-
-                  $table->decimal('base_amount', 10, 2)->default(0);
-                  $table->decimal('gst_amount', 10, 2)->default(0);
                   $table->decimal('total_amount', 10, 2)->default(0);
-                  $table->decimal('gst_rate', 5, 2)->default(0);
-
 
                   $table->date('event_start_date');
                   $table->date('event_end_date');

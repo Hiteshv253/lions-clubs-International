@@ -42,7 +42,7 @@
       </div>
 </div> 
 
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
       let offset = 8;
@@ -52,7 +52,7 @@
             $.ajax({
                   url: '{{ route("events_frnt.load_more") }}',
                   type: 'GET',
-                  data: {offset: offset},
+                  data: { offset: offset },
                   success: function (response) {
                         $('#event-container').append(response.html);
                         offset += response.count;
@@ -62,8 +62,13 @@
                         }
                   },
                   error: function (xhr) {
-                        alert('Failed to load more events.');
-                        console.log(xhr.responseText);
+                        Swal.fire({
+                              icon: 'error',
+                              title: 'Oops...',
+                              text: 'Failed to load more events!',
+                              footer: '<small>Check your internet or try again later.</small>'
+                        });
+                        console.error(xhr.responseText);
                   },
                   complete: function () {
                         $('#load-spinner').hide(); // Always hide loader
@@ -71,5 +76,6 @@
             });
       });
 </script>
+
 
 @endsection

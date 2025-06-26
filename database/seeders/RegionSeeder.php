@@ -14,7 +14,7 @@ class RegionSeeder extends Seeder {
        */
       public function run(): void {
             District::all()->each(function ($district) {
-                  Region::factory(50)->create([
+                  Region::factory(10)->create([
                             'district_id' => $district->id,
                   ]);
             });

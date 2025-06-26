@@ -38,7 +38,7 @@ class HomePageController extends Controller {
       public function event(Request $request) {
             if ($request->ajax()) {
                   $offset = $request->get('offset', 0);
-                  $events = EventMaster::orderBy('date_time', 'desc')
+                  $events = EventMaster::orderBy('id', 'desc')
                         ->where('is_active', 0)
                         ->skip($offset)
                         ->take(8)
@@ -56,7 +56,7 @@ class HomePageController extends Controller {
             }
 
             $fetchEvents = EventMaster::where('is_active', 0)
-                  ->orderBy('date_time', 'desc')
+                  ->orderBy('id', 'desc')
                   ->take(8)
                   ->get();
 

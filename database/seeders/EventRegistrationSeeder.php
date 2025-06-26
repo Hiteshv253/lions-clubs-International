@@ -13,7 +13,7 @@ class EventRegistrationSeeder extends Seeder {
             $eventIds = \App\Models\EventMaster::pluck('id'); // Assumes EventMaster already seeded
             $user_Id = \App\Models\User::pluck('id'); // Assumes EventMaster already seeded
 
-            foreach (range(1, 50) as $i) {
+            foreach (range(1, 10) as $i) {
 
                   $numberOfPersons = $faker->numberBetween(1, 5);
                   $eventId = $faker->randomElement($eventIds);

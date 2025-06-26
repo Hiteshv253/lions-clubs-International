@@ -48,12 +48,7 @@ class EventMasterController extends Controller {
 
       public function index(Request $request) {
             if ($request->ajax()) {
-                  $data = EventMaster::select('id',
-                              'base_amount',
-                              'gst_amount',
-                              'total_amount',
-                              'gst_rate',
-                              'event_name', 'date_time', 'is_active', 'event_start_date', 'event_end_date');
+                  $data = EventMaster::select('*');
                   return DataTables::of($data)
                               ->addColumn('actions', function ($row) {
                                     return view('events.partials.actions', compact('row'))->render();
@@ -81,12 +76,10 @@ class EventMasterController extends Controller {
       public function store(Request $request) {
             $data = $request->validate([
                       'event_name' => 'required|string|max:255',
-                      'date_time' => 'required|date',
                       'event_end_date' => 'required|date',
                       'event_start_date' => 'required|date',
                       'description' => 'nullable|string',
                       'image' => 'nullable|image|max:2048',
-                      'banner_image' => 'nullable|image|max:4096',
                       'is_active' => 'required|boolean',
             ]);
 
@@ -96,21 +89,17 @@ class EventMasterController extends Controller {
                   $data['image'] = $path;
             }
 
-            if ($request->hasFile('banner_image')) {
-                  $path = $request->file('banner_image')->store('events/banners', 'public');
-                  $data['banner_image'] = $path;
-            }
 
-            $baseAmount = $request->input('base_amount'); // e.g., 1000
-            $gstRate = $request->input('gst_rate'); // percentage
-
-            $gstAmount = ($baseAmount * $gstRate) / 100;
-            $totalAmount = $baseAmount + $gstAmount;
-
-            $data['base_amount'] = $baseAmount;
-            $data['gst_rate'] = $gstRate;
-            $data['gst_amount'] = $gstAmount;
-            $data['total_amount'] = $totalAmount;
+//            $baseAmount = $request->input('base_amount'); // e.g., 1000
+//            $gstRate = $request->input('gst_rate'); // percentage
+//
+//            $gstAmount = ($baseAmount * $gstRate) / 100;
+//            $totalAmount = $baseAmount + $gstAmount;
+//
+//            $data['base_amount'] = $baseAmount;
+//            $data['gst_rate'] = $gstRate;
+//            $data['gst_amount'] = $gstAmount;
+            
 
             // Assume currently authenticated user creates:
             $data['is_create_by'] = auth()->id();
@@ -160,14 +149,12 @@ class EventMasterController extends Controller {
                       'image' => 'nullable|image|max:2048',
                       'base_amount' => 'required|numeric',
                       'gst_rate' => 'required|numeric',
-                      'banner_image' => 'nullable|image|max:4096',
                       'is_active' => 'required|boolean',
             ]);
 
             $data['gst_amount'] = ($data['base_amount'] * $data['gst_rate']) / 100;
             $data['total_amount'] = $data['base_amount'] + $data['gst_amount'];
 
-            
             if ($request->hasFile('image')) {
                   // Delete old file if exists
                   if ($event->image) {
@@ -176,12 +163,7 @@ class EventMasterController extends Controller {
                   $data['image'] = $request->file('image')->store('events/images', 'public');
             }
 
-            if ($request->hasFile('banner_image')) {
-                  if ($event->banner_image) {
-                        Storage::disk('public')->delete($event->banner_image);
-                  }
-                  $data['banner_image'] = $request->file('banner_image')->store('events/banners', 'public');
-            }
+
 
             $event->update($data);
 
@@ -197,9 +179,7 @@ class EventMasterController extends Controller {
             if ($event->image) {
                   Storage::disk('public')->delete($event->image);
             }
-            if ($event->banner_image) {
-                  Storage::disk('public')->delete($event->banner_image);
-            }
+
 
             $event->delete();
 

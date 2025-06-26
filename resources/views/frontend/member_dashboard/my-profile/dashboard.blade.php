@@ -3,26 +3,25 @@
 @section('content')
 
 <!-- Header -->
-<div class="container-fluid bg-breadcrumb">
-    <div class="container text-center py-5" style="max-width: 900px;">
-        <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">My Profile</h4>
-    </div>
-</div>
+      <div class="container-fluid bg-breadcrumb">
+            <div class="container text-center py-5" style="max-width: 900px;">
+                  <h4 class="text-white display-4 mb-4 wow fadeInDown" data-wow-delay="0.1s">My Profile</h4>
+            </div>
+      </div>
 
 <!-- Profile Layout -->
-<div class="container-fluid bg-light py-5">
-    <div class="container">
-        <div class="row g-4">
+      <div class="container-fluid bg-light py-5">
+            <div class=" ">
+                  <div class="row g-4">
+                  <!-- Sidebar -->
+                        <div class="col-md-3">
+                              <div class="p-3 bg-white rounded shadow-sm">
+                                    @include('frontend.layouts._member_menu')
+                              </div>
+                        </div>
 
-            <!-- Sidebar -->
-            <div class="col-md-3">
-                <div class="p-3 bg-white rounded shadow-sm">
-                    @include('frontend.layouts._member_menu')
-                </div>
-            </div>
-
-            <!-- Dashboard Content -->
-            <div class="col-md-9">
+                  <!-- Profile -->
+                        <div class="col-md-9">
                 <div class="container py-1">
 
                     <!-- Welcome -->

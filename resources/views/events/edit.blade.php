@@ -21,7 +21,7 @@
 
                   <div class="row g-3">
                         <!-- Event Name -->
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                               <label for="event_name" class="form-label">Event Name</label>
                               <input type="text" name="event_name" id="event_name"
                                      class="form-control @error('event_name') is-invalid @enderror"
@@ -32,7 +32,7 @@
                         </div>
 
                         <!-- Date & Time -->
-                        <div class="col-md-6">
+                         <div class="col-sm-6 col-md-3" style="display: none;">
                               <label for="date_time" class="form-label">Date & Time</label>
                               <input type="datetime-local" name="date_time" id="date_time"
                                      class="form-control @error('date_time') is-invalid @enderror"
@@ -43,8 +43,8 @@
                         </div>
 
                         <!-- Event Start -->
-                        <div class="col-md-6">
-                              <label for="event_start_date" class="form-label">Event Start Date & time</label>
+                        <div class="col-sm-6 col-md-4">
+                              <label for="event_start_date" class="form-label">Event Start Date & Time</label>
                               <input type="datetime-local" name="event_start_date" id="event_start_date"
                                      class="form-control @error('event_start_date') is-invalid @enderror"
                                      value="{{ old('event_start_date', \Carbon\Carbon::parse($event->event_start_date)->format('Y-m-d\TH:i')) }}" required>
@@ -54,8 +54,8 @@
                         </div>
 
                         <!-- Event End -->
-                        <div class="col-md-6">
-                              <label for="event_end_date" class="form-label">Event End Date & time</label>
+                        <div class="col-sm-6 col-md-4">
+                              <label for="event_end_date" class="form-label">Event End Date & Time</label>
                               <input type="datetime-local" name="event_end_date" id="event_end_date"
                                      class="form-control @error('event_end_date') is-invalid @enderror"
                                      value="{{ old('event_end_date', \Carbon\Carbon::parse($event->event_end_date)->format('Y-m-d\TH:i')) }}" required>
@@ -65,26 +65,26 @@
                         </div>
 
                         <!--===========================-->
-                        <div class="col-sm-6 col-md-3">
+                        <div class="col-sm-6 col-md-3" style="display: none;">
                               <label for="base_amount" class="form-label">Base Amount(INR)</label>
                               <input type="number" name="base_amount" id="base_amount"
                                      class="form-control" value="{{ old('base_amount', $event->base_amount) }}" required>
                         </div>
 
-                        <div class="col-sm-6 col-md-3">
+                        <div class="col-sm-6 col-md-3" style="display: none;">
                               <label for="gst_rate" class="form-label">GST Rate (%)</label>
                               <input type="number" step="0.01" name="gst_rate" id="gst_rate"
                                      class="form-control" value="{{ old('gst_rate', $event->gst_rate) }}" required>
                         </div>
 
-                        <div class="col-sm-6 col-md-3">
+                        <div class="col-sm-6 col-md-3" style="display: none;">
                               <label for="gst_amount" class="form-label">GST Amount(INR)</label>
                               <input type="text" name="gst_amount" id="gst_amount" value="{{ old('gst_amount', $event->gst_amount) }}"
                                      class="form-control" readonly>
                         </div>
 
-                        <div class="col-sm-6 col-md-3">
-                              <label for="total_amount" class="form-label">Total Amount(INR)</label>
+                        <div class="col-sm-6 col-md-4">
+                              <label for="total_amount" class="form-label">Inclusive of GST(INR)</label>
                               <input type="text" name="total_amount" id="total_amount" value="{{ old('total_amount', $event->total_amount) }}"
                                      class="form-control" readonly>
                         </div>
@@ -112,21 +112,6 @@
                               <input type="file" name="image" id="image"
                                      class="form-control @error('image') is-invalid @enderror">
                               @error('image')
-                              <div class="invalid-feedback">{{ $message }}</div>
-                              @enderror
-                        </div>
-
-                        <!-- Banner Preview + Upload -->
-                        <div class="col-md-6">
-                              @if($event->banner_image)
-                              <label class="form-label d-block">Current Banner:</label>
-                              <img src="{{ asset('storage/' . $event->banner_image) }}" alt="Banner Image" class="img-thumbnail mb-2" style="max-width: 300px;">
-                              @endif
-
-                              <label for="banner_image" class="form-label">Replace Banner (optional)</label>
-                              <input type="file" name="banner_image" id="banner_image"
-                                     class="form-control @error('banner_image') is-invalid @enderror">
-                              @error('banner_image')
                               <div class="invalid-feedback">{{ $message }}</div>
                               @enderror
                         </div>

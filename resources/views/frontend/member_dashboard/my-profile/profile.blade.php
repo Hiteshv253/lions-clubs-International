@@ -44,10 +44,7 @@
                                                 <div class="row mb-3">
                                                       <div class="col-md-6"><strong>Account:</strong> {{ $member->account->name ?? '-' }}</div>
                                                       <div class="col-md-6"><strong>Membership ID:</strong> {{ $member->membership_id }}</div>
-                                                      <div class="col-md-6"><strong>Status:</strong>
-                                                      <span class="badge {{ $member->is_active == 0 ? 'bg-success' : 'bg-danger' }}">
-                                                            {{ $member->is_active == 0 ? 'Active' : 'Inactive' }}
-                                                      </span>
+                                                      <div class="col-md-6"><strong>Status:</strong> {{ $member->is_active == 0 ? 'Active' : 'Inactive' }}
                                                 </div>
                                                 <div class="col-md-6"><strong>Join Date:</strong> {{ optional($member->join_date)->format('d M, Y') }}</div>
                                           </div>

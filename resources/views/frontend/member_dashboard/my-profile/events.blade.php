@@ -11,9 +11,8 @@
 
 <!-- Profile Layout -->
       <div class="container-fluid bg-light py-5">
-            <div class="container">
+            <div class=" ">
                   <div class="row g-4">
-
                   <!-- Sidebar -->
                         <div class="col-md-3">
                               <div class="p-3 bg-white rounded shadow-sm">
@@ -21,11 +20,11 @@
                               </div>
                         </div>
 
-                  <!-- Profile Section -->
+                  <!-- Profile -->
                         <div class="col-md-9">
-                              <div class="row">
+                              <div class="row mt-1">
                                     <div class="col-12">
-                                          <h5 class="mb-4">My Registered Events</h5>
+                                          <h5 class="mb-3">My Registered Events</h5>
 
                                           @if($events->isEmpty())
                                                 <p class="text-muted">You haven’t registered for any events yet.</p>
@@ -34,17 +33,17 @@
                                                       <table class="table table-bordered align-middle table-hover">
                                                             <thead class="table-light">
                                                                   <tr>
-                                                                        <th style="width: 60px;">Image</th>
+                                                                        <th style="width: 60px;display: none;">Image</th>
                                                                         <th>Event Name</th>
                                                                         <th>Date</th>
-                                                                        <th>Total Amount (₹)</th>
-                                                                        <th>Status</th>
+                                                                        <th style="display: none;">Inclusive of GST (₹)</th>
+                                                                        <th style="display: none;">Status</th>
                                                                   </tr>
                                                             </thead>
                                                             <tbody>
                                                                   @foreach($events as $event)
                                                                         <tr>
-                                                                              <td>
+                                                                              <td style="display: none;">
                                                                                     <img src="{{ asset('storage/' . $event->banner_image) }}"   class="img-thumbnail" style="height: 50px; width: 50px; object-fit: cover;">
                                                                               </td>
                                                                               <td>{{ $event->event_name }}</td>
@@ -53,8 +52,8 @@
                                                                   -
                                                                                     {{ \Carbon\Carbon::parse($event->event_end_date)->format('d M Y') }}
                                                                               </td>
-                                                                              <td>{{ number_format($event->total_amount, 2) }}</td>
-                                                                              <td>
+                                                                              <td style="display: none;">{{ number_format($event->total_amount, 2) }}</td>
+                                                                              <td style="display: none;">
                                                                                     <span class="badge bg-{{ $event->is_active ? 'success' : 'secondary' }}">
                                                                                           {{ $event->is_active == 0 ? 'Active' : 'Inactive' }}
                                                                                     </span>
@@ -66,7 +65,7 @@
                                                 </div>
                                           @endif
 
-                                          <a href="{{ url('/event') }}" class="btn btn-link mt-3">View All Events</a>
+                                          <!--<a href="{{ url('/event') }}" class="btn btn-link mt-3">View All Events</a>-->
                                     </div>
                               </div>
                         </div>

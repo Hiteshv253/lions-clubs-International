@@ -34,19 +34,19 @@ class LoginController extends Controller {
                   return back()->with('error', 'Invalid credentials.');
             }
 
-            if ($user->is_active == 1) {
-                  return back()->with('error', 'Your account is deactivated. Please contact admin.');
-            }
-
-            // Step 2: Check for existing active session
-            $existingSession = DB::table('sessions')
-                  ->where('user_id', $user->id)
-                  ->where('last_activity', '>', now()->subMinutes(config('session.lifetime'))->timestamp)
-                  ->first();
-
-            if ($existingSession) {
-                  return back()->with('error', 'You are already logged in on another device.');
-            }
+//            if ($user->is_active == 1) {
+//                  return back()->with('error', 'Your account is deactivated. Please contact admin.');
+//            }
+//
+//            // Step 2: Check for existing active session
+//            $existingSession = DB::table('sessions')
+//                  ->where('user_id', $user->id)
+//                  ->where('last_activity', '>', now()->subMinutes(config('session.lifetime'))->timestamp)
+//                  ->first();
+//
+//            if ($existingSession) {
+//                  return back()->with('error', 'You are already logged in on another device.');
+//            }
 
             // Step 3: Proceed with login
             if (Auth::attempt($credentials, $remember)) {

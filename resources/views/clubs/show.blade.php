@@ -13,6 +13,7 @@
     <div class="card-header">
         <h5 class="mb-0">View Club</h5>
     </div>
+
     <div class="card-body">
         <dl class="row mb-0">
             <dt class="col-sm-3">District</dt>
@@ -35,6 +36,19 @@
 
             <dt class="col-sm-3">Inauguration Date of Club</dt>
             <dd class="col-sm-9">{{ \Carbon\Carbon::parse($club->inauguration_date_club)->format('d M Y') }}</dd>
+
+            <dt class="col-sm-3">Description</dt>
+            <dd class="col-sm-9">{!! $club->about_club !!}</dd>
+
+            @if ($club->image)
+                <dt class="col-sm-3">Image</dt>
+                <dd class="col-sm-9">
+                    <img src="{{ asset('storage/' . $club->image) }}"
+                         alt="Club Image"
+                         class="img-fluid rounded shadow-sm"
+                         style="max-width: 300px;">
+                </dd>
+            @endif
         </dl>
 
         <div class="text-end mt-4">

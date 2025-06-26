@@ -30,9 +30,6 @@
             </div>
             <div class="card-body">
                 <ul class="list-unstyled mb-0">
-                    <li><strong>Base Amount:</strong> ₹{{ number_format($base, 2) }}</li>
-                    <li><strong>GST ({{ $event->gst_rate }}%):</strong> ₹{{ number_format($gst, 2) }}</li>
-                    <li><strong>Total Per Person:</strong> ₹{{ number_format($total, 2) }}</li>
                     <li><strong>Registered Persons:</strong> {{ $totalPersons }}</li>
                     <li><strong>Total Collected:</strong> ₹{{ number_format($totalCollected, 2) }}</li>
                 </ul>
@@ -72,7 +69,7 @@
                         <tr>
                             <th>#</th>
                             <th>Name</th>
-                            <th>Email</th>
+                            <th>Email ID</th>
                             <th>Contact Number</th>
                             <th>Persons</th>
                             <th>Total Paid</th>

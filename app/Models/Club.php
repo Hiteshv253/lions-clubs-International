@@ -10,7 +10,7 @@ class Club extends Model {
 
       use HasFactory;
 
-      protected $fillable = ['name', 'zone_id', 'club_number', 'charter_date', 'inauguration_date_club'];
+      protected $fillable = ['name', 'zone_id', 'club_number', 'charter_date', 'inauguration_date_club', 'about_club', 'image'];
 
       public function zone() {
             return $this->belongsTo(Zone::class);

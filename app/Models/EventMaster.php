@@ -13,14 +13,9 @@ class EventMaster extends Model {
       protected $table = 'club_event_masters';
       protected $fillable = [
                 'event_name',
-                'date_time',
                 'description',
                 'image',
-                'banner_image',
-                'base_amount',
-                'gst_amount',
                 'total_amount',
-                'gst_rate',
                 'event_start_date',
                 'event_end_date',
                 'is_active',

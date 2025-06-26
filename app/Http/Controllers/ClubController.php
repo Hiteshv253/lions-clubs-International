@@ -52,20 +52,31 @@ class ClubController extends Controller {
       }
 
       public function store(Request $request) {
-            $request->validate([
-                      'zone_id' => 'required|exists:zones,id',
+            $validated = $request->validate([
                       'name' => 'required|string|max:255',
+                      'zone_id' => 'required|exists:zones,id',
+                      'club_number' => 'required|string|max:50|unique:clubs,club_number',
+                      'charter_date' => 'nullable|date',
+                      'inauguration_date_club' => 'nullable|date',
+                      'about_club' => 'nullable|string',
+//                      'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
             ]);
 
-            Club::create($request->all());
-            return redirect()->route('clubs.index');
+            if ($request->hasFile('image')) {
+                  $validated['image'] = $request->file('image')->store('clubs', 'public');
+            }
+
+            Club::create($validated);
+
+            return redirect()->route('clubs.index')->with('success', 'Club created successfully.');
       }
 
       public function edit(Club $club) {
             $districts = District::with('regions.zones')->get();
             return view('clubs.edit', compact('club', 'districts'));
       }
-      public function show (Club $club) {
+
+      public function show(Club $club) {
             $districts = District::with('regions.zones')->get();
             return view('clubs.show', compact('club', 'districts'));
       }

@@ -23,39 +23,17 @@
                         <div>{{$event->event_name }}</div>
                   </div>
                   <div class="col-sm-6 col-md-3">
-                        <label class="fw-semibold text-muted">Date & Time:</label>
-                        <div>{{ \Carbon\Carbon::parse($event->date_time)->format('d M Y, h:i A') }}</div>
-                  </div>
-
-                  <div class="col-sm-6 col-md-3">
                         <label class="fw-semibold text-muted">Event Start:</label>
                         <div>{{ \Carbon\Carbon::parse($event->event_start_date)->format('d M Y, h:i A') }}</div>
                   </div>
-
                   <div class="col-sm-6 col-md-3">
                         <label class="fw-semibold text-muted">Event End:</label>
                         <div>{{ \Carbon\Carbon::parse($event->event_end_date)->format('d M Y, h:i A') }}</div>
                   </div>
-
-
                   <div class="col-sm-6 col-md-3">
-                        <label class="fw-semibold text-muted">Base Amount(INR):</label>
-                        <div>{{$event->base_amount }}</div>
-                  </div>
-                  <div class="col-sm-6 col-md-3">
-                        <label class="fw-semibold text-muted">GST Amount(INR):</label>
-                        <div>{{$event->gst_amount }}</div>
-                  </div>
-                  <div class="col-sm-6 col-md-3">
-                        <label class="fw-semibold text-muted">Total Amount(INR):</label>
+                        <label class="fw-semibold text-muted">Inclusive of GST(INR):</label>
                         <div>{{$event->total_amount }}</div>
                   </div>
-                  <div class="col-sm-6 col-md-3">
-                        <label class="fw-semibold text-muted">GST Rate(%)</label>
-                        <div>{{$event->gst_rate }}</div>
-                  </div>
-
-
                   <div class="col-sm-6 col-md-3">
                         <label class="fw-semibold text-muted">Status:</label>
                         <div>
@@ -66,12 +44,10 @@
                               @endif
                         </div>
                   </div>
-
                   <div class="col-md-12">
                         <label class="fw-semibold text-muted">Description:</label>
                         <div>{!! $event->description !!}</div>
                   </div>
-
                   @if ($event->image)
                   <div class="col-sm-6 col-md-3">
                         <label class="fw-semibold text-muted">Image:</label>
@@ -80,17 +56,7 @@
                         </div>
                   </div>
                   @endif
-
-                  @if ($event->banner_image)
-                  <div class="col-sm-6 col-md-3">
-                        <label class="fw-semibold text-muted">Banner Image:</label>
-                        <div>
-                              <img src="{{ asset('storage/' . $event->banner_image) }}" alt="Banner Image" class="img-fluid rounded shadow-sm" style="max-width: 100%;">
-                        </div>
-                  </div>
-                  @endif
             </div>
-
             <div class="mt-4 text-end">
                   <a href="{{ route('events.edit', $event) }}" class="btn btn-primary">Edit</a>
                   <a href="{{ route('events.index') }}" class="btn btn-secondary">Back</a>

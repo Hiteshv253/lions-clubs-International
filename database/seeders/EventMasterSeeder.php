@@ -14,6 +14,6 @@ class EventMasterSeeder extends Seeder {
        */
       public function run(): void {
             //
-            EventMaster::factory(50)->create();
+            EventMaster::factory(10)->create();
       }
 }
