@@ -174,11 +174,6 @@
                         </li>
 
 
-                        @php
-                        $allowedIp = env('MY_IP');
-                        @endphp
-                        @if (request()->ip() == $allowedIp)
-
 
 
                         @php
@@ -207,7 +202,7 @@
                         </div>
                         </li>  <!--end Dashboard Menu -->
 
-                        @endif
+                    
 
                         <!--<li class="menu-title"><span data-key="t-menu">Service</span></li>-->
                         <li class="nav-item d-none">
