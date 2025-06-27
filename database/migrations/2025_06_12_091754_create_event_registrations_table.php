@@ -16,12 +16,11 @@ return new class extends Migration {
                   $table->string('email');
                   $table->string('contact_number')->nullable();
                   $table->unsignedBigInteger('event_id');
-                  $table->string('event_qr_code')->nullable();
-                  $table->string('event_qr_code_path')->nullable();
-                  $table->integer('number_of_persons')->default(1);
                   $table->string('user_id')->nullable();
+                  $table->integer('number_of_persons')->default(1);
                   $table->decimal('calculated_total', 10, 2)->nullable();
-                  $table->tinyInteger('is_active')->default(1)->comment('0: active | 1: in-active');
+                  $table->tinyInteger('is_active')->default(0)->comment('0: active | 1: in-active');
+                  $table->boolean('flag')->default(0)->comment('0: from browser  | 1: from admin panle');
                   $table->timestamps();
             });
       }

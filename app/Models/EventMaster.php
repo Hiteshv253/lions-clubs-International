@@ -20,6 +20,13 @@ class EventMaster extends Model {
                 'event_end_date',
                 'is_active',
                 'is_create_by',
+                'venue_name',
+                'flag_id',
+                'total_event_users',
+                'total_registered_user',
+                'total_pendding_users',
+                'limited_sheet',
+                'event_qr_code',
       ];
 
       public function registrations() {

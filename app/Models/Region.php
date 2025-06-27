@@ -12,7 +12,7 @@ class Region extends Model {
       use HasFactory;
 
       protected $table = 'regions';
-      protected $fillable = ['name', 'district_id'];
+      protected $fillable = ['name', 'district_id', 'is_active'];
 
       public function district() {
             return $this->belongsTo(District::class);

@@ -17,8 +17,11 @@
 
         <div class="card-body">
             <div class="row g-4">
-                <div class="col-md-4"><strong>Account Name:</strong><br> {{ $member->account->name }}</div>
-                <div class="col-md-4"><strong>Region:</strong><br> {{ $member->region->name }}</div>
+                <div class="col-md-4"><strong>Account Name:</strong><br> {{ optional($member->account)->name ?? '' }}</div>
+                <div class="col-md-4"><strong>Region:</strong><br>  
+                {{ optional($member->region)->name ?? '' }}
+
+                </div>
                 <div class="col-md-4"><strong>Zone:</strong><br> {{ \App\Models\Zone::find($member->zone_id)->name ?? 'Not Found' }}</div>
 
                 <div class="col-md-4"><strong>Club:</strong><br> {{ \App\Models\Club::find($member->club_id)->name ?? 'Not Found' }}</div>
@@ -37,15 +40,21 @@
                 <div class="col-md-4"><strong>Address Line 2:</strong><br> {{ $member->address_line2 }}</div>
                 <div class="col-md-4"><strong>Address Line 3:</strong><br> {{ $member->address_line3 }}</div>
 
-                <div class="col-md-4"><strong>City:</strong><br> {{ $member->city->name }}</div>
-                <div class="col-md-4"><strong>State/Province:</strong><br> {{ $member->state->name }}</div>
+                <div class="col-md-4"><strong>City:</strong><br> 
+                  {{ optional($member->city)->name ?? '' }}
+                </div>
+                <div class="col-md-4"><strong>State/Province:</strong><br>
+                  {{ optional($member->state)->name ?? '' }}
+                </div>
                 <div class="col-md-4"><strong>Zip/Postal Code:</strong><br> {{ $member->zipcode }}</div>
 
                 <div class="col-md-4"><strong>Email ID:</strong><br> {{ $member->email }}</div>
                 <div class="col-md-4"><strong>Mobile:</strong><br> {{ $member->mobile }}</div>
                 <div class="col-md-4"><strong>Home Phone:</strong><br> {{ $member->home_phone }}</div>
 
-                <div class="col-md-4"><strong>Occupation:</strong><br> {{ $member->occupation->name }}</div>
+                <div class="col-md-4"><strong>Occupation:</strong><br>
+
+                  {{ optional($member->occupation)->name ?? '' }}</div>
                 <div class="col-md-4"><strong>Birthdate:</strong><br>
                     {{ $member->birthdate ? \Carbon\Carbon::parse($member->birthdate)->format('d M, Y') : '-' }}
                 </div>
@@ -56,7 +65,7 @@
 
             <div class="text-end mt-4">
                 <a href="{{ route('members.index') }}" class="btn btn-outline-secondary me-2">Back to List</a>
-                <a href="{{ route('members.edit', $member->id) }}" class="btn btn-primary">Edit Member</a>
+            <a href="{{ route('members.edit', $member->id) }}" class="btn btn-primary" style="display: none;">Edit Member</a>
             </div>
         </div>
     </div>

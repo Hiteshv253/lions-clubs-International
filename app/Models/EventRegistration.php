@@ -18,6 +18,6 @@ class EventRegistration extends Model {
                 'contact_number',
                 'number_of_persons',
                 'calculated_total',
-                'is_active'
+                'is_active', 'flag'
       ];
 }

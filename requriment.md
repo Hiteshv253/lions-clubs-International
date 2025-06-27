@@ -145,3 +145,39 @@ Members Sponsored - It should be exactly same in Lions International portal
 Donate - It should work exactly in same manner how International portal works
 
 My District/MD/CA should show data exactly like international portal
+
+
+
+
+###=====18-6-2025===========================================
+Admin
+- Event Registation will be done by registered users only - done
+- Also allow to out cost of event - done
+- What is the due if Date and Time - done | removed
+- Event cost should be inclusive of GST - done
+-
+Club (CURD)
+- About Club - done
+- Image to be allowed to be uploaded (Logo and Banner image - Optional) - done
+
+Front end
+- Allow to out no users to register can be 5/10/50 etc….and according to
+- Remove popup as only registered user ls are allowed to register an event  done
+- that amount should me shown done
+
+
+
+Event :: Date & Time << remove from CURD -- done
+GST Rate (%) -- done
+GST Amount(INR) -- done
+ >> Base Amount(INR) << only put that remove all gts related fileds -- done
+
+
+###=====26-6-2025 Feedback===========================================
+
+26 June 2025
+Event
+- Venue
+- ⁠Max no of Users Registration per event
+- ⁠Put a field for Limited offer message (100 seats available etc…)
+- Admin can also register event on Behalf of users

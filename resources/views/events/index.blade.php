@@ -42,7 +42,11 @@
                                 <th>Event Name</th>
                                 <th>Start Date</th>
                                 <th>End Date</th>
-                                <th>Inclusive of GST</th>
+                                <th>Venue</th>
+                                <th>Cost of Event(Inclusive of GST(INR))</th>
+                                <th>Total Allow Seats</th>
+                                <th>Total Registered Seats</th>
+                                <th>Total Pendding Seats</th>
                                 <th>Status</th>
                                 <th>Actions</th>
                             </tr>
@@ -68,7 +72,11 @@
                 { data: 'event_name', name: 'event_name' },
                 { data: 'event_start_date', name: 'event_start_date' },
                 { data: 'event_end_date', name: 'event_end_date' },
+                { data: 'venue_name', name: 'venue_name' },
                 { data: 'total_amount', name: 'total_amount' },
+                { data: 'total_event_users', name: 'total_event_users' },
+                { data: 'total_registered_user', name: 'total_registered_user' },
+                { data: 'total_pendding_users', name: 'total_pendding_users' },
                 {
                     data: 'is_active',
                     name: 'is_active',

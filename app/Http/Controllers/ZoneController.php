@@ -48,10 +48,11 @@ class ZoneController extends Controller {
       public function store(Request $request) {
             $request->validate([
                       'name' => 'required|string|max:255',
+                      'is_active' => 'required',
                       'region_id' => 'required|exists:regions,id',
             ]);
 
-            Zone::create($request->only('name', 'region_id'));
+            Zone::create($request->only('name', 'region_id', 'is_active'));
 
             return redirect()->route('zones.index')->with('success', 'Zone created successfully.');
       }
@@ -64,10 +65,11 @@ class ZoneController extends Controller {
       public function update(Request $request, Zone $zone) {
             $request->validate([
                       'name' => 'required|string|max:255',
+                      'is_active' => 'required',
                       'region_id' => 'required|exists:regions,id',
             ]);
 
-            $zone->update($request->only('name', 'region_id'));
+            $zone->update($request->only('name', 'region_id', 'is_active'));
 
             return redirect()->route('zones.index')->with('success', 'Zone updated successfully.');
       }

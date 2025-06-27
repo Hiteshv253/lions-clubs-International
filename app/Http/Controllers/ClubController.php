@@ -17,7 +17,10 @@ class ClubController extends Controller {
 
       public function index(Request $request) {
             if ($request->ajax()) {
-                  $clubs = Club::with('zone.region.district');
+//                  $clubs = Club::with('zone.region.district');
+                  $clubs = Club::with('zone.region.district')
+                        ->withCount('members'); // 👈 adds total_members
+
 
                   if ($request->region) {
                         $clubs->whereHas('zone.region', function ($q) use ($request) {
@@ -35,6 +38,7 @@ class ClubController extends Controller {
                               ->addColumn('zone_name', fn($club) => $club->zone->name ?? '—')
                               ->addColumn('region_name', fn($club) => $club->zone->region->name ?? '—')
                               ->addColumn('district_name', fn($club) => $club->zone->region->district->name ?? '—')
+                              ->addColumn('total_members', fn($club) => $club->members_count) // 👈 new column
                               ->addColumn('actions', function ($club) {
                                     return view('clubs.partials.actions', compact('club'))->render();
                               })
@@ -56,16 +60,20 @@ class ClubController extends Controller {
                       'name' => 'required|string|max:255',
                       'zone_id' => 'required|exists:zones,id',
                       'club_number' => 'required|string|max:50|unique:clubs,club_number',
+                      'district' => 'required|string|max:255',
+                      'region' => 'required|string|max:255',
                       'charter_date' => 'nullable|date',
-                      'inauguration_date_club' => 'nullable|date',
                       'about_club' => 'nullable|string',
-//                      'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
+                      'is_active' => 'required|in:0,1',
+                      'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
             ]);
 
+            // Handle image upload
             if ($request->hasFile('image')) {
                   $validated['image'] = $request->file('image')->store('clubs', 'public');
             }
-
+            $validated['is_active'] = $request->is_active;
+            $validated['inauguration_date_club'] = $request->inauguration_date_club;
             Club::create($validated);
 
             return redirect()->route('clubs.index')->with('success', 'Club created successfully.');
@@ -77,18 +85,43 @@ class ClubController extends Controller {
       }
 
       public function show(Club $club) {
+            $club->load('zone.region.district', 'members');
             $districts = District::with('regions.zones')->get();
+
             return view('clubs.show', compact('club', 'districts'));
       }
 
-      public function update(Request $request, Club $club) {
+      function update(Request $request, Club $club) {
             $request->validate([
-                      'zone_id' => 'required|exists:zones,id',
                       'name' => 'required|string|max:255',
+                      'zone_id' => 'required|exists:zones,id',
+                      'district' => 'required|string|max:255',
+                      'region' => 'required|string|max:255',
+                      'club_number' => 'required|string|max:50|unique:clubs,club_number,' . $club->id,
+                      'charter_date' => 'nullable|date',
+                      'inauguration_date_club' => 'nullable|date',
+                      'about_club' => 'nullable|string',
+                      'is_active' => 'required|in:0,1',
+//                      'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048'
             ]);
 
-            $club->update($request->all());
-            return redirect()->route('clubs.index');
+            // Handle image if uploaded
+            if ($request->hasFile('image')) {
+                  $path = $request->file('image')->store('clubs', 'public');
+                  $club->image = $path;
+            }
+
+            // Update other fields
+            $club->name = $request->name;
+            $club->zone_id = $request->zone_id;
+            $club->club_number = $request->club_number;
+            $club->charter_date = $request->charter_date;
+            $club->inauguration_date_club = $request->inauguration_date_club;
+            $club->about_club = $request->about_club;
+            $club->is_active = $request->is_active;
+            $club->save();
+
+            return redirect()->route('clubs.index')->with('success', 'Club updated successfully.');
       }
 
       public function destroy(Club $club) {

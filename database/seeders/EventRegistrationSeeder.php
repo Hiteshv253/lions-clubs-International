@@ -13,7 +13,7 @@ class EventRegistrationSeeder extends Seeder {
             $eventIds = \App\Models\EventMaster::pluck('id'); // Assumes EventMaster already seeded
             $user_Id = \App\Models\User::pluck('id'); // Assumes EventMaster already seeded
 
-            foreach (range(1, 10) as $i) {
+            foreach (range(1, 3) as $i) {
 
                   $numberOfPersons = $faker->numberBetween(1, 5);
                   $eventId = $faker->randomElement($eventIds);
@@ -29,8 +29,7 @@ class EventRegistrationSeeder extends Seeder {
                             'user_id' => $user_Id,
                             'number_of_persons' => $numberOfPersons,
                             'calculated_total' => $totalAmount,
-                            'event_qr_code' => 'https://picsum.photos/640/480?random=' . rand(1, 1000),
-                            'event_qr_code_path' => $faker->name,
+                            
                   ]);
             }
       }

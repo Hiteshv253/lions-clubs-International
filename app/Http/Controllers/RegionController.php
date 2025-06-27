@@ -43,10 +43,10 @@ class RegionController extends Controller {
 
       public function store(Request $request) {
             $request->validate([
-                      'name' => 'required|string',
+                      'name' => 'required|string', 'is_active' => 'required',
             ]);
 
-            Region::create($request->only('name', 'district_id'));
+            Region::create($request->only('name', 'district_id', 'is_active'));
             return redirect()->route('regions.index');
       }
 
@@ -62,11 +62,11 @@ class RegionController extends Controller {
 
       public function update(Request $request, Region $region) {
             $request->validate([
-                      'name' => 'required|string',
+                      'name' => 'required|string', 'is_active' => 'required',
 //                      'parent_id' => 'nullable|exists:regions,id|not_in:' . $region->id
             ]);
 
-            $region->update($request->only('name', 'district_id'));
+            $region->update($request->only('name', 'district_id', 'is_active'));
             return redirect()->route('regions.index');
       }
 

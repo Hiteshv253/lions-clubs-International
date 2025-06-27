@@ -26,7 +26,7 @@
                     <label for="name" class="form-label">Name:</label>
                     <input type="text" id="name" name="name" value="{{ old('name') }}" class="form-control">
                     @error('name')
-                        <small class="text-danger">{{ $message }}</small>
+                        <small class="invalid-feedback">{{ $message }}</small>
                     @enderror
                 </div>
 

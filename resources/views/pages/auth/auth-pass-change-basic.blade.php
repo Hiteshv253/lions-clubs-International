@@ -58,7 +58,7 @@
                                                                   type="button" id="password-addon"><i
                                                                         class="ri-eye-fill align-middle"></i></button>
                                                             @error('password')
-                                                            <small class="text-danger">
+                                                            <small class="invalid-feedback">
                                                                   {{ $message }}
                                                             </small>
                                                             @enderror

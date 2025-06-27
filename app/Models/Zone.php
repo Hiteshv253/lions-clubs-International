@@ -11,7 +11,7 @@ class Zone extends Model {
 
       use HasFactory;
 
-      protected $fillable = ['name', 'region_id'];
+      protected $fillable = ['name', 'region_id','is_active'];
 
       public function region() {
             return $this->belongsTo(Region::class);

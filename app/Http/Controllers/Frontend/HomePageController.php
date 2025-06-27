@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use Carbon\Carbon;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\EventMaster;
@@ -40,6 +41,7 @@ class HomePageController extends Controller {
                   $offset = $request->get('offset', 0);
                   $events = EventMaster::orderBy('id', 'desc')
                         ->where('is_active', 0)
+                        ->whereDate('event_end_date', '>=', \Carbon\Carbon::today())
                         ->skip($offset)
                         ->take(8)
                         ->get();
@@ -51,12 +53,14 @@ class HomePageController extends Controller {
 
                   return response()->json([
                                   'html' => $html,
-                                  'count' => $events->count()
+                                  'count' => $events->count(),
+                                  'hasMore' => $events->count() === 8
                   ]);
             }
 
             $fetchEvents = EventMaster::where('is_active', 0)
                   ->orderBy('id', 'desc')
+                  ->whereDate('event_end_date', '>=', \Carbon\Carbon::today())
                   ->take(8)
                   ->get();
 
@@ -69,15 +73,19 @@ class HomePageController extends Controller {
       }
 
       public function event_register(Request $request) {
-//            $validated = $request->validate([
-//                      'name' => 'required|string|max:255',
-//                      'email' => 'required|email|max:255',
-//                      'contact_number' => 'required|string|max:20',
-//                      'event_id' => 'required|exists:event_masters,id',
-//                      'number_of_persons' => 'required|integer|min:1',
-//            ]);
+
 
             $event = EventMaster::findOrFail($request->event_id);
+
+//// Check if user already registered for the event
+//            $existing = EventRegistration::where('user_id', Auth::id())
+//                  ->where('event_id', $request->event_id)
+//                  ->first();
+//
+//            if ($existing) {
+//                  return redirect()->back()->with('error', 'You have already registered for this event.');
+//            }
+
             $totalAmount = $event->total_amount * $request->number_of_persons;
 
             EventRegistration::create([
@@ -91,6 +99,12 @@ class HomePageController extends Controller {
                       'is_active' => '0',
             ]);
 
+            // Update event registration counts
+            $event->update([
+                      'total_registered_user' => $event->total_registered_user + $request->number_of_persons,
+                      'total_pendding_users' => max(0, $event->total_event_users - ($event->total_registered_user + $request->number_of_persons)),
+            ]);
+
             Mail::raw(
                   "Dear {$request->name},\n\nYou have successfully registered for the event: {$event->event_name}\nDate & Time: {$event->date_time}",
                   function ($message) use ($request) {
@@ -99,9 +113,7 @@ class HomePageController extends Controller {
                   }
             );
 
-            return view('pages.auth.event-success')->with([
-                            'message' => 'You have successfully registered for the event. Redirecting to event page...'
-            ]);
+            return view('pages.auth.event-success')->with(['message' => 'You have successfully registered for the event. Redirecting to event page...']);
       }
 
       public function footer_store(Request $request) {

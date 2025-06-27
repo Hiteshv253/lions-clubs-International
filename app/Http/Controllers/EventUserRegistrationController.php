@@ -52,6 +52,7 @@ class EventUserRegistrationController extends Controller {
        * Show details of a specific event and its registrations.
        */
       public function showRegistrations($id) {
+
             $event = EventMaster::with('registrations')->findOrFail($id);
             return view('events.EventUserRegistration.event-details', compact('event'));
       }

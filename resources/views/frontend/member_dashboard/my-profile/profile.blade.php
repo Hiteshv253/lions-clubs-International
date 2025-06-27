@@ -27,7 +27,7 @@
                                     <div class="col-xl-4">
                                           <div class="bg-white rounded p-4 text-center shadow-sm">
                                                 <img src="{{ asset('frontend-assets/img/profile_picture.jpg') }}" class="rounded-circle mb-3 shadow-sm" alt="Profile" style="width: 150px; height: 150px; object-fit: cover;">
-                                                <h4 class="mb-1">{{ $member->first_name }} {{ $member->last_name }}</h4>
+                                                <h4 class="mb-1">{{ optional($member)->first_name }} {{ optional($member)->last_name }}</h4>
                                                 <p class="text-muted small">Your Bio or Tagline</p>
                                                 <div class="d-flex justify-content-center gap-2 mt-3">
                                                       <a href="#" class="btn btn-sm btn-outline-primary"><i class="fab fa-twitter"></i></a>

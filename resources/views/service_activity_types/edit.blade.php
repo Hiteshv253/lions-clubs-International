@@ -26,7 +26,7 @@
                   <div class="mb-3">
                         <label for="name" class="form-label">Name:</label>
                         <input type="text" name="name" id="name" class="form-control" value="{{ old('name', $service_activity_type->name) }}">
-                        @error('name') <small class="text-danger">{{ $message }}</small> @enderror
+                        @error('name') <small class="invalid-feedback">{{ $message }}</small> @enderror
                   </div>
 
                   <div class="mb-3">

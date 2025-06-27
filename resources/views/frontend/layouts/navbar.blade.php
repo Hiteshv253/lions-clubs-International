@@ -66,9 +66,9 @@
                               <!--<a href="/service" class="nav-item nav-link {{ request()->is('service*') ? 'active' : '' }}" style="    font-weight: 600;">Services</a>-->
                               <a href="/contact" class="nav-item nav-link {{ request()->is('contact*') ? 'active' : '' }}" style="    font-weight: 600;">Contact</a>
                               <!--<a href="/login" class="nav-item nav-link {{ request()->is('login*') ? 'active' : '' }}" style="    font-weight: 600;">Login</a>-->
-
-                              <a href="blog.html" class="nav-item nav-link {{ request()->is('blog*') ? 'active' : '' }}" style="    font-weight: 600;">Blog</a>
-                              <div class="nav-item dropdown">
+                              <a href="/event" class="nav-item nav-link {{ request()->is('event*') ? 'active' : '' }}" style="    font-weight: 600;">Events</a>
+                              <!--<a href="blog.html" class="nav-item nav-link {{ request()->is('blog*') ? 'active' : '' }}" style="    font-weight: 600;">Blog</a>-->
+<!--                              <div class="nav-item dropdown">
                                     <a href="#" class="nav-link" data-bs-toggle="dropdown" style="    font-weight: 600;">
                                           <span class="dropdown-toggle">Pages</span>
                                     </a>
@@ -77,9 +77,8 @@
                                           <a href="team.html" class="dropdown-item" style="    font-weight: 600;">Our team</a>
                                           <a href="testimonial.html" class="dropdown-item" style="    font-weight: 600;">Testimonial</a>
                                           <a href="FAQ.html" class="dropdown-item" style="    font-weight: 600;">FAQs</a>
-                                          <a href="/event" class="dropdown-item {{ request()->is('event*') ? 'active' : '' }}" style="    font-weight: 600;">Event</a>
-                                    </div>
-                              </div>
+                                     </div>
+                              </div>-->
                               @auth
                               @if(auth()->user()->hasRole('member'))
 

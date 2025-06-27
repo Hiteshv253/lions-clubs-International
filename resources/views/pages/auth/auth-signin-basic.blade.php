@@ -54,7 +54,7 @@
                                                              class="form-control @error('email') is-invalid @enderror" id="email"
                                                              placeholder="Enter email" value="{{ old('email') }}">
                                                       @error('email')
-                                                      <small class="text-danger">
+                                                      <small class="invalid-feedback">
                                                             {{ $message }}
                                                       </small>
                                                       @enderror
@@ -74,7 +74,7 @@
                                                                   type="button" id="password-addon"><i
                                                                         class="ri-eye-fill align-middle"></i></button>
                                                             @error('password')
-                                                            <small class="text-danger">
+                                                            <small class="invalid-feedback">
                                                                   {{ $message }}
                                                             </small>
                                                             @enderror
@@ -82,10 +82,8 @@
                                                 </div>
 
                                                 <div class="form-check">
-                                                      <input class="form-check-input" name="remember_me" type="checkbox" value="true"
-                                                             id="auth-remember-check">
-                                                      <label class="form-check-label" for="auth-remember-check">Remember
-                                                            me</label>
+                                                      <input class="form-check-input" name="remember_me" type="checkbox" value="true" id="auth-remember-check">
+                                                      <label class="form-check-label" for="auth-remember-check">Remember me</label>
                                                 </div>
 
                                                 <div class="mt-4">
@@ -116,9 +114,8 @@
                         </div>
                         <!-- end card -->
 
-                        <div class="mt-4 text-center">
-                              <p class="mb-0">Don't have an account ? <a href="auth-signup-basic"
-                                                                         class="fw-semibold text-primary text-decoration-underline"> Signup </a> </p>
+                                                <div class="mt-4 text-center" style="display: none;">
+                              <p class="mb-0">Don't have an account ? <a href="auth-signup-basic" class="fw-semibold text-primary text-decoration-underline"> Signup </a> </p>
                         </div>
                         <div class="mt-4 text-center">
                               <p class="mb-0"><a href="/" class="fw-semibold text-primary text-decoration-underline"> Back To Website </a> </p>

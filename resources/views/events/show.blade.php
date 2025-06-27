@@ -31,7 +31,7 @@
                         <div>{{ \Carbon\Carbon::parse($event->event_end_date)->format('d M Y, h:i A') }}</div>
                   </div>
                   <div class="col-sm-6 col-md-3">
-                        <label class="fw-semibold text-muted">Inclusive of GST(INR):</label>
+                        <label class="fw-semibold text-muted">Cost of Event(Inclusive of GST(INR)):</label>
                         <div>{{$event->total_amount }}</div>
                   </div>
                   <div class="col-sm-6 col-md-3">
@@ -50,7 +50,7 @@
                   </div>
                   @if ($event->image)
                   <div class="col-sm-6 col-md-3">
-                        <label class="fw-semibold text-muted">Image:</label>
+                        <label class="fw-semibold text-muted">Event Image:</label>
                         <div>
                               <img src="{{ asset('storage/' . $event->image) }}" alt="Event Image" class="img-fluid rounded shadow-sm" style="max-width: 100%;">
                         </div>
@@ -60,6 +60,12 @@
             <div class="mt-4 text-end">
                   <a href="{{ route('events.edit', $event) }}" class="btn btn-primary">Edit</a>
                   <a href="{{ route('events.index') }}" class="btn btn-secondary">Back</a>
+
+                                                 <a href="{{ route('event_user_registration.showRegistrations', $event->id) }}"
+                                                   class="btn btn-secondary">
+                                                      View Registrations
+                                                </a>
+
             </div>
       </div>
 </div>

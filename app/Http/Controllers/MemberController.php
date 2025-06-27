@@ -39,7 +39,6 @@ class MemberController extends Controller {
       public function convertToUser($id) {
 
             $member = MemberMaster::findOrFail($id);
-           
 
 // Check if user already exists
             if (User::where('email', $member->email)->exists()) {
@@ -49,8 +48,6 @@ class MemberController extends Controller {
 // Generate password
             $passwordPlain = Str::random(10);
             $passwordHashed = Hash::make($passwordPlain);
-
-
 
 // Create User
             $user = User::create([
@@ -159,112 +156,92 @@ class MemberController extends Controller {
             return view('members.edit', compact('allmembers', 'member', 'regions', 'accounts', 'citys', 'states', 'occupations', 'ZipCodes'));
       }
 
+      public function checkMembership(Request $request) {
+            $query = MemberMaster::where('membership_id', $request->membership_id);
+            if ($request->id) {
+                  $query->where('id', '!=', $request->id);
+            }
+
+            return response()->json($query->doesntExist());
+      }
+
+      public function checkEmail(Request $request) {
+            $query = MemberMaster::where('email', $request->email);
+            if ($request->id) {
+                  $query->where('id', '!=', $request->id);
+            }
+
+            return response()->json($query->doesntExist());
+      }
+
       // Store new member
       public function store(Request $request) {
-            // Auto-generate Member ID
-            $lastMember = \App\Models\MemberMaster::orderBy('id', 'desc')->first();
-            $nextId = $lastMember ? $lastMember->id + 1 : 1;
-//            $member_id = 'MEM' . str_pad($nextId, 4, '0', STR_PAD_LEFT);
-
-            $member_id = strtolower(substr($request->first_name, 0, 5) . $lastMember . substr($request->last_name, 5));
-            // Validation
-//            $request->validate([
-//                      'account_name' => 'nullable|string|max:255',
-//                      'first_name' => 'required|string|max:255',
-//                      'last_name' => 'required|string|max:255',
-//                      'gender' => 'nullable|in:Male,Female,Other',
-//                      'birthdate' => 'nullable|date',
-//                      'address_line1' => 'nullable|string|max:255',
-//                      'address_line2' => 'nullable|string|max:255',
-//                      'address_line3' => 'nullable|string|max:255',
-//                      'email' => 'nullable|email|unique:club_member_masters,email',
-//                      'mobile' => 'nullable|string|max:20',
-//                      'home_phone' => 'nullable|string|max:20',
-//                      'state' => 'nullable|integer|exists:states,id',
-//                      'city' => 'nullable|string|max:255',
-//                      'zipcode' => 'nullable|string|max:20',
-//                      'occupation' => 'nullable|integer|exists:occupations,id',
-//                      'join_date' => 'nullable|date',
-//                      'is_active' => 'required|boolean',
-//                      // Add region/zone/club if required:
-//                      'region_id' => 'nullable|exists:regions,id',
-//                      'zone_id' => 'nullable|exists:zones,id',
-//                      'club_id' => 'nullable|exists:clubs,id',
-//            ]);
-            // Merge generated member_id
-//            $validated['member_id'] = $member_id;
-            // Create new member
-//            $validator = $request->validate([
-//                      'account_name' => 'nullable|string|max:255',
-//                      'first_name' => 'required|string|max:255',
-//                      'email' => 'nullable|email|unique:club_member_masters,email',
-//                      'mobile' => 'nullable|string|max:20',
-//            ]);
-//            if ($validator->fails()) {
-//                  return redirect()->back()->withErrors($validator)->withInput();
+//            dd($request->all());
+            // Step 1: Validate incoming data
+//            // Step 2: Auto-generate a unique membership ID
+//            $lastId = MemberMaster::max('id') + 1;
+//            $member_id = strtolower(substr($request->first_name, 0, 3) . $lastId . substr($request->last_name, -2));
+//
+//            // Step 3: Ensure uniqueness manually (edge case check)
+//            if (User::where('membership_id', $member_id)->exists()) {
+//                  return back()->withErrors(['membership_id' => 'Membership ID already exists. Try again.'])->withInput();
 //            }
-            $memberData = [
-                      'member_id' => $member_id,
-                      'account_id' => $request->account_id,
-                      'first_name' => $request->first_name,
-                      'last_name' => $request->last_name,
-                      'gender' => $request->gender,
-                      'birthdate' => $request->birthdate,
-                      'address_line1' => $request->address_line1,
-                      'address_line2' => $request->address_line2,
-                      'address_line3' => $request->address_line3,
-                      'email' => $request->email,
-                      'mobile' => $request->mobile,
-                      'home_phone' => $request->home_phone,
-                      'state_id' => $request->state_id,
-                      'city_id' => $request->city,
-                      'zipcode' => $request->zipcode,
-                      'occupation_id' => $request->occupation_id,
-                      'join_date' => $request->join_date,
-                      'region_id' => $request->region_id,
-                      'zone_id' => $request->zone_id,
-                      'club_id' => $request->club_id,
-                      'is_active' => $request->is_active,
-            ];
-            MemberMaster::create($memberData);
+            // Step 4: Create the MemberMaster record
 
-            // ✅ Step 3: Generate password
+
+            $request->validate([
+                      'membership_id' => 'required|unique:club_member_masters,membership_id',
+                      'first_name' => 'required|string|max:255',
+                      'last_name' => 'required|string|max:255',
+                      'email' => 'required|email|unique:club_member_masters,email',
+                      'is_active' => 'required|boolean',
+                  // Add more validations if needed
+            ]);
+
+            $member = MemberMaster::create([
+                            'membership_id' => $request->membership_id,
+                            'account_id' => $request->account_id,
+                            'name' => $request->first_name . '' . $request->last_name,
+                            'first_name' => $request->first_name,
+                            'last_name' => $request->last_name,
+                            'gender' => $request->gender,
+                            'birthdate' => $request->birthdate,
+                            'address_line1' => $request->address_line1,
+                            'address_line2' => $request->address_line2,
+                            'address_line3' => $request->address_line3,
+                            'email' => $request->email,
+                            'mobile' => $request->mobile,
+                            'home_phone' => $request->home_phone,
+                            'state_id' => $request->state_id,
+                            'city_id' => $request->city,
+                            'zipcode' => $request->zipcode,
+                            'occupation_id' => $request->occupation_id,
+                            'join_date' => $request->join_date,
+                            'region_id' => $request->region_id,
+                            'zone_id' => $request->zone_id,
+                            'club_id' => $request->club_id,
+                            'is_active' => $request->is_active,
+            ]);
+
+            // Step 5: Generate password and create user
             $passwordPlain = Str::random(10);
-            $passwordHashed = Hash::make($passwordPlain);
-
-            // ✅ Step 4: Create user
             $user = User::create([
+                            'name' => $request->first_name . '' . $request->last_name,
                             'first_name' => $request->first_name,
                             'last_name' => $request->last_name,
                             'email' => $request->email,
-                            'membership_id' => $member_id,
-                            'password' => $passwordHashed,
+                            'membership_id' => $request->membership_id,
+                            'password' => Hash::make($passwordPlain),
             ]);
+
+            // Step 6: Send Email
             $login = route('login');
-            Mail::raw("Dear {$user->first_name}"
-                  . ",\n\nYour Email ID: {$request->email}\n"
-                  . "\nYour Membership ID: {$member_id}\nPassword: {$passwordPlain}"
-                  . "\nPlease login with this URL {$login}",
-                  function ($message) use ($user) {
-                        $message->to($user->email)->subject('Lions Club Membership Details###');
-                  });
+            Mail::raw(
+                  "Dear {$user->first_name},\n\nYour Email: {$user->email}\nMembership ID: {$request->membership_id}\nPassword: {$passwordPlain}\n\nLogin: {$login}",
+                  fn($message) => $message->to($user->email)->subject('Lions Club Membership Details')
+            );
 
             return redirect()->route('members.index')->with('success', 'Member created successfully.');
-      }
-
-      public function validateField(Request $request) {
-            $validator = Validator::make($request->all(), [
-                            'email' => 'nullable|email|unique:club_member_masters,email'
-            ]);
-
-            if ($validator->fails()) {
-                  return response()->json([
-                                  'valid' => false,
-                                  'message' => $validator->errors()->first('email')
-                  ]);
-            }
-
-            return response()->json(['valid' => true]);
       }
 
       // Show single member
@@ -276,29 +253,14 @@ class MemberController extends Controller {
       public function update(Request $request, MemberMaster $member) {
 
 
-//            $request->validate([
-//                      'account_name' => 'nullable|string|max:255',
-//                      'region_id' => 'nullable|string|max:255',
-//                      'parent_zone' => 'nullable|string|max:255',
-//                      'member_id' => 'nullable|string|max:255',
-//                      'first_name' => 'nullable|string|max:255',
-//                      'last_name' => 'nullable|string|max:255',
-//                      'address_line1' => 'nullable|string|max:255',
-//                      'address_line2' => 'nullable|string|max:255',
-//                      'address_line3' => 'nullable|string|max:255',
-//                      'city' => 'nullable|string|max:255',
-//                      'state' => 'nullable|string|max:255',
-//                      'zip' => 'nullable|string|max:255',
-//                      'birthdate' => 'nullable|date',
-//                      'email' => 'nullable|email|max:255',
-//                      'mobile' => 'nullable|string|max:20',
-//                      'home_phone' => 'nullable|string|max:20',
-//                      'gender' => 'nullable|string|max:10',
-//                      'occupation' => 'nullable|string|max:255',
-//                      'join_date' => 'nullable|date',
-//                      'is_active' => 'boolean',
-//                      'is_create_by' => 'nullable|string|max:255',
-//            ]);
+            $request->validate([
+                      'membership_id' => 'required|string|max:255',
+                      'first_name' => 'required|string|max:255',
+                      'last_name' => 'required|string|max:255',
+                      'email' => 'required|string|max:255',
+                      'is_active' => 'required|boolean',
+                  // Add more validations if needed
+            ]);
 
             $member->update([
                       'account_id' => $request->account_id,

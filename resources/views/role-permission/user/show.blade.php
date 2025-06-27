@@ -31,7 +31,7 @@
                               <div class="mb-3">
                                     <label class="form-label">Name</label>
                                     <input type="text" name="name" value="{{ $user->name }}" class="form-control" />
-                                    @error('name') <small class="text-danger">{{ $message }}</small> @enderror
+                                    @error('name') <small class="invalid-feedback">{{ $message }}</small> @enderror
                               </div>
                               <div class="mb-3">
                                     <label class="form-label">Email ID</label>
@@ -40,7 +40,7 @@
                               <div class="mb-3">
                                     <label class="form-label">Password</label>
                                     <input type="password" name="password" class="form-control" placeholder="Leave blank to keep current" />
-                                    @error('password') <small class="text-danger">{{ $message }}</small> @enderror
+                                    @error('password') <small class="invalid-feedback">{{ $message }}</small> @enderror
                               </div>
                               <div class="mb-3">
                                     <label class="form-label">Roles</label>
@@ -52,7 +52,7 @@
                                           </option>
                                           @endforeach
                                     </select>
-                                    @error('roles') <small class="text-danger">{{ $message }}</small> @enderror
+                                    @error('roles') <small class="invalid-feedback">{{ $message }}</small> @enderror
                               </div>
                               <div class="text-end">
                                     <button type="submit" class="btn btn-primary">Update</button>

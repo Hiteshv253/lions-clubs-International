@@ -16,7 +16,7 @@ class MemberMaster extends Model {
 
       protected $table = 'club_member_masters';
       protected $fillable = [
-                'member_id',
+                'membership_id',
                 'first_name',
                 'last_name',
                 'gender',
@@ -31,8 +31,8 @@ class MemberMaster extends Model {
                 'join_date',
                 'is_active',
                 'account_id',
-                'state_id', // changed from 'state'
-                'city_id', // changed from 'city'
+                'state_id',
+                'city_id',
                 'occupation_id',
                 'region_id',
                 'zone_id',
@@ -42,9 +42,17 @@ class MemberMaster extends Model {
                 'last_login_at',
       ];
 
+      public function club() {
+            return $this->belongsTo(Club::class, 'club_id');
+      }
+
+      public function user() {
+            return $this->belongsTo(User::class, 'user_id');
+      }
+
       public function events() {
             return $this->belongsToMany(EventMaster::class, 'event_user', 'member_id', 'event_id')
-                        ->withTimestamps(); // optional, if your pivot table has timestamps
+                        ->withTimestamps();
       }
 
       public function parent() {
@@ -60,30 +68,22 @@ class MemberMaster extends Model {
       }
 
       public function city() {
-            return $this->belongsTo(City::class, 'city_id'); // 'city_id' is FK
+            return $this->belongsTo(City::class, 'city_id');
       }
 
       public function region() {
             return $this->belongsTo(Region::class, 'region_id');
       }
 
-      public function account() {
-            return $this->belongsTo(Account::class, 'account_id');
+      public function zone() {
+            return $this->belongsTo(Zone::class, 'zone_id');
       }
 
       public function occupation() {
             return $this->belongsTo(Occupation::class, 'occupation_id');
       }
 
-      public function zone() {
-            return $this->belongsTo(Zone::class, 'zone_id');
-      }
-
-      public function club() {
-            return $this->belongsTo(Club::class, 'club_id');
-      }
-
-      public function account_() {
-            return $this->belongsTo(Account::class);
+      public function account() {
+            return $this->belongsTo(Account::class, 'account_id');
       }
 }

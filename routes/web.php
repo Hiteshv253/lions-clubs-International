@@ -77,7 +77,8 @@ Route::get('/clubs-by-zone/{zone_id}', [ClubController::class, 'getByZone']);
 Route::get('/get-zones/{region_id}', [AjaxController::class, 'getZones']);
 Route::get('/get-clubs/{zone_id}', [AjaxController::class, 'getClubs']);
 
-Route::post('/members/validate', [MemberController::class, 'validateField'])->name('members.validate');
+Route::post('/members/check-membership', [MemberController::class, 'checkMembership'])->name('members.check.membership');
+Route::post('/members/check-email', [MemberController::class, 'checkEmail'])->name('members.check.email');
 
 /*
   |--------------------------------------------------------------------------
@@ -152,6 +153,8 @@ Route::middleware(['auth', 'role:admin|super-admin'])->prefix('lions')->group(fu
       Route::get('/event_user_registration/{event}/registrations/data', [EventUserRegistrationController::class, 'getRegistrations'])->name('event_user_registration.data');
 
       Route::get('my-registrations', [EventMasterController::class, 'registrationHistory'])->name('events.history');
+       
+       Route::post('self_registraion_save/', [EventMasterController::class, 'self_registraion_save'])->name('events.self_registraion_save');
       Route::get('event/registration-card/{event}', [EventMasterController::class, 'showRegistrationCard'])->name('event.registration.card');
 
       /*

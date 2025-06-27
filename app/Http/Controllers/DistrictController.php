@@ -40,10 +40,11 @@ class DistrictController extends Controller {
       public function store(Request $request) {
             $request->validate([
                       'name' => 'required',
+                      'is_active' => 'required',
                       'state_id' => 'required|exists:states,id',
             ]);
 
-            District::create($request->only(['name', 'state_id']));
+            District::create($request->only(['name', 'state_id', 'is_active']));
             return redirect()->route('districts.index')->with('success', 'District added successfully');
       }
 
@@ -55,10 +56,11 @@ class DistrictController extends Controller {
       public function update(Request $request, District $district) {
             $request->validate([
                       'name' => 'required',
+                      'is_active' => 'required',
                       'state_id' => 'required|exists:states,id',
             ]);
 
-            $district->update($request->only(['name', 'state_id']));
+            $district->update($request->only(['name', 'state_id','is_active']));
             return redirect()->route('districts.index')->with('success', 'District updated successfully');
       }
 

@@ -10,7 +10,7 @@
 
 <div class="card shadow-sm rounded-4">
     <div class="card-header d-flex justify-content-between align-items-center">
-        <h5 class="mb-0">Zones List</h5>
+        <h5 class="mb-0">Zones Master</h5>
         <a href="{{ route('zones.create') }}" class="btn btn-success btn-sm">Add Zone</a>
     </div>
 
@@ -36,6 +36,7 @@
                         <th>#</th>
                         <th>Zone Name</th>
                         <th>Region</th>
+                               <th>Status</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -55,7 +56,16 @@
                 {data: 'DT_RowIndex', name: 'DT_RowIndex', orderable: false, searchable: false},
                 {data: 'name', name: 'name'},
                 {data: 'region_name', name: 'region.name'},
-                {data: 'actions', name: 'actions', orderable: false, searchable: false}
+                {
+                    data: 'is_active',
+                    name: 'is_active',
+                    render: function (data) {
+                        return data == 0
+                            ? '<span class="badge bg-success">Active</span>'
+                            : '<span class="badge bg-secondary">Inactive</span>';
+                    }
+                },
+                {data: 'actions', name: 'actions', orderable: false, searchable: false},
             ]
         });
     });

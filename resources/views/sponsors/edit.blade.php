@@ -24,13 +24,13 @@
                         <div class="col-md-6">
                               <label class="form-label">Name</label>
                               <input type="text" name="name" value="{{ old('name', $sponsor->name) }}" class="form-control">
-                              @error('name') <small class="text-danger">{{ $message }}</small> @enderror
+                              @error('name') <small class="invalid-feedback">{{ $message }}</small> @enderror
                         </div>
 
                         <div class="col-md-6">
                               <label class="form-label">Website</label>
                               <input type="text" name="website" value="{{ old('website', $sponsor->website) }}" class="form-control">
-                              @error('website') <small class="text-danger">{{ $message }}</small> @enderror
+                              @error('website') <small class="invalid-feedback">{{ $message }}</small> @enderror
                         </div>
                   </div>
 
@@ -44,7 +44,7 @@
                   <div class="mb-3">
                         <label class="form-label">Change Logo</label>
                         <input type="file" name="logo" class="form-control">
-                        @error('logo') <small class="text-danger">{{ $message }}</small> @enderror
+                        @error('logo') <small class="invalid-feedback">{{ $message }}</small> @enderror
                   </div>
 
                   <div>

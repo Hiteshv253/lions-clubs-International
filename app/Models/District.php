@@ -11,7 +11,7 @@ class District extends Model {
 
       use HasFactory;
 
-      protected $fillable = ['name', 'state_id'];
+      protected $fillable = ['name', 'state_id', 'is_active'];
 
       // Optional relation to State model
 

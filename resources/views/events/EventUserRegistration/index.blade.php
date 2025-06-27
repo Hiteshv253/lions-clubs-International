@@ -97,7 +97,7 @@
                               <input type="text" name="search" value="{{ request('search') }}" class="form-control" placeholder="Search event name">
                               <button type="submit" class="btn btn-primary">Filter</button>
                               <a href="{{ route('event_user_registration.index') }}" class="btn btn-secondary">Reset</a>
-                        </form>
+                         </form>
                   </div>
                   <div class="container">
                         <div class="row p-2">
@@ -105,7 +105,13 @@
                               <div class="col-xl-4 col-md-6 mb-4">
                                     <div class="card h-100 shadow-sm border-0 position-relative hover-scale">
                                           <!-- Event Image Banner -->
-                                          <img src="{{ $event_registration['image'] }}"
+
+                                          @php
+    $imagePath = $event_registration->image && file_exists(public_path('storage/' . $event_registration->image))
+        ? asset('storage/' . $event_registration->image)
+        : 'https://3.imimg.com/data3/CK/HV/MY-10570443/corporate-events.jpg';
+@endphp
+                                          <img src="{{ $imagePath }}"
                                                class="card-img-top rounded-top object-fit-cover"
                                                style="height: 180px; width: 100%;" alt="event">
 

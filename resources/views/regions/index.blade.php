@@ -12,7 +12,7 @@
     <div class="col-xl-12">
         <div class="card shadow-sm rounded-4">
             <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
-                <h4 class="card-title mb-0">Regions List</h4>
+                <h4 class="card-title mb-0">Regions Master</h4>
                 <a href="{{ route('regions.create') }}" class="btn btn-primary btn-sm">Add Region</a>
             </div>
 
@@ -51,6 +51,7 @@
                                 <th>#</th>
                                 <th>Region Name</th>
                                 <th>District</th>
+                                <th>Status</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -78,6 +79,15 @@
                 {data: 'id', name: 'id'},
                 {data: 'name', name: 'name'},
                 {data: 'district_name', name: 'district.name'},
+                {
+                    data: 'is_active',
+                    name: 'is_active',
+                    render: function (data) {
+                        return data == 0
+                            ? '<span class="badge bg-success">Active</span>'
+                            : '<span class="badge bg-secondary">Inactive</span>';
+                    }
+                },
                 {data: 'actions', name: 'actions', orderable: false, searchable: false},
             ]
         });

@@ -51,7 +51,9 @@
                                 <th>ID</th>
                                 <th>Name</th>
                                 <th>State Name</th>
+                                <th>Status</th>
                                 <th>Actions</th>
+                                
                             </tr>
                         </thead>
                     </table>
@@ -77,6 +79,15 @@
             {data: 'id', name: 'id'},
             {data: 'name', name: 'name'},
             {data: 'state_name', name: 'state.name'},
+            {
+                    data: 'is_active',
+                    name: 'is_active',
+                    render: function (data) {
+                        return data == 0
+                            ? '<span class="badge bg-success">Active</span>'
+                            : '<span class="badge bg-secondary">Inactive</span>';
+                    }
+                },
             {data: 'actions', name: 'actions', orderable: false, searchable: false}
         ]
     });

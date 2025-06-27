@@ -31,12 +31,12 @@
                                     <div class="col-sm-6 col-md-3">
                                           <label class="form-label">First Name</label>
                                           <input type="text" name="first_name" value="{{ $user->first_name }}" class="form-control" />
-                                          @error('name') <small class="text-danger">{{ $message }}</small> @enderror
+                                          @error('name') <small class="invalid-feedback">{{ $message }}</small> @enderror
                                     </div>
                                     <div class="col-sm-6 col-md-3">
                                           <label class="form-label">Last Name</label>
                                           <input type="text" name="last_name" value="{{ $user->last_name }}" class="form-control" />
-                                          @error('name') <small class="text-danger">{{ $message }}</small> @enderror
+                                          @error('name') <small class="invalid-feedback">{{ $message }}</small> @enderror
                                     </div>
                                     <div class="col-sm-6 col-md-3">
                                           <label class="form-label">Email ID</label>
@@ -45,7 +45,7 @@
                                     <div class="col-sm-6 col-md-3">
                                           <label class="form-label">Password</label>
                                           <input type="password" name="password" class="form-control" placeholder="Leave blank to keep current" />
-                                          @error('password') <small class="text-danger">{{ $message }}</small> @enderror
+                                          @error('password') <small class="invalid-feedback">{{ $message }}</small> @enderror
                                     </div>
                                     <div class="col-sm-6 col-md-6">
                                           <label class="form-label">Roles</label>
@@ -57,7 +57,7 @@
                                                 </option>
                                                 @endforeach
                                           </select>
-                                          @error('roles') <small class="text-danger">{{ $message }}</small> @enderror
+                                          @error('roles') <small class="invalid-feedback">{{ $message }}</small> @enderror
                                     </div>
                               </div>
                               <div class="text-end">
