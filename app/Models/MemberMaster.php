@@ -42,6 +42,8 @@ class MemberMaster extends Model {
                 'last_login_at',
       ];
 
+
+
       public function club() {
             return $this->belongsTo(Club::class, 'club_id');
       }

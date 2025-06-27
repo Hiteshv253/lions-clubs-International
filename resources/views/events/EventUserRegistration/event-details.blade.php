@@ -32,7 +32,7 @@
                               <ul class="list-unstyled mb-0">
                                     <li><strong>Registered Persons:</strong> {{ $totalPersons }}</li>
                                     <li><strong>Total Collected:</strong> ₹{{ number_format($totalCollected, 2) }}</li>
-                                    <li><strong>Total_event_users:</strong> {{ $event->total_event_users }}</li>
+                                    <li><strong>Total Event Seats:</strong> {{ $event->total_event_users }}</li>
                                     <li><strong>Total Registered Seats :</strong> {{ $event->total_registered_user }}</li>
                                     <li><strong>Total Pendding Seats :</strong> {{ $event->total_pendding_users }}</li>
                               </ul>
@@ -51,8 +51,7 @@
                                     <li><strong>Event:</strong> {{ $event->event_name }}</li>
                                     <li><strong>Description:</strong> {{ $event->description }}</li>
                                     <li><strong>Venue:</strong> {{ $event->venue_name }}</li>
-                                    <li><strong>Event:</strong> {{ $event->event_name }}</li>
-                                    <li><strong>Date & Time:</strong> {{ \Carbon\Carbon::parse($event->event_start_date)->format('M d, Y h:i A') }} - {{ \Carbon\Carbon::parse($event->event_end_date)->format('M d, Y h:i A') }}</li>
+                                     <li><strong>Date & Time:</strong> {{ \Carbon\Carbon::parse($event->event_start_date)->format('M d, Y h:i A') }} - {{ \Carbon\Carbon::parse($event->event_end_date)->format('M d, Y h:i A') }}</li>
                               </ul>
                         </div>
                   </div>
@@ -62,7 +61,7 @@
       <!-- 🧾 Registered Users Table -->
 <div class="card shadow-sm mb-5">
             <div class="card-header d-flex justify-content-between align-items-center flex-wrap bg-white">
-                  <h5 class="mb-0">Registered Member</h5>
+                  <h5 class="mb-0">Registered Member {{$event->id}}</h5>
             </div>
             <div class="card-body">
                   @if($event->registrations->isEmpty())

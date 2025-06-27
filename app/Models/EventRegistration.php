@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\EventMaster;
 
 class EventRegistration extends Model {
 
@@ -20,4 +21,6 @@ class EventRegistration extends Model {
                 'calculated_total',
                 'is_active', 'flag'
       ];
+
+
 }

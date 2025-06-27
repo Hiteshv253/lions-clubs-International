@@ -19,6 +19,7 @@ use App\Imports\MembersImport;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Account;
 use App\Models\Club;
+use App\Models\EventRegistration;
 use DB;
 use App\Models\ZipCode;
 use Illuminate\Support\Facades\Mail;
@@ -246,7 +247,8 @@ class MemberController extends Controller {
 
       // Show single member
       public function show(MemberMaster $member) {
-            return view('members.show', compact('member'));
+            $registrations = EventRegistration::where('user_id', $member->id)->get();
+            return view('members.show', compact('member', 'registrations'));
       }
 
       // Update member
